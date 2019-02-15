@@ -1,0 +1,8 @@
+{
+  "type": "mongodb",
+  "url": "mongodb+srv://vixan:admin@playground-exizf.mongodb.net/coolinar?retryWrites=true",
+  "ssl": true,
+  "entities": ["src/**/**.entity{.ts,.js}"],
+  "synchronize": true,
+  "useNewUrlParser": true
+}
