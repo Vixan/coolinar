@@ -1,8 +1,8 @@
-import { IsString, MaxLength, IsEmail, IsNotEmpty } from 'class-validator';
-import { Expose, Exclude } from 'class-transformer';
+import { Exclude, Expose } from 'class-transformer';
+import { IsString, IsEmail, MaxLength, IsNotEmpty } from 'class-validator';
 
 @Exclude()
-export class RegisterDto {
+export class UserDto {
   @Expose()
   @IsString({ message: 'Username must be a string' })
   @IsNotEmpty({ message: 'Username is required' })
