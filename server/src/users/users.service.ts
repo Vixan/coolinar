@@ -1,9 +1,9 @@
-import { Injectable, ConflictException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './users.entity';
 import { Service } from '../shared/interfaces/service.interface';
-import { UserDto } from './dto/user.dto';
+import { RegisterUserDto } from '../auth/dto/user-register.dto';
 
 @Injectable()
 export class UsersService implements Service<User> {
@@ -31,22 +31,14 @@ export class UsersService implements Service<User> {
     });
   }
 
-  async add(userDto: UserDto): Promise<User> {
-    const userToAdd = await this.userRepository.findOne({
-      name: userDto.name,
-    });
-
-    if (userToAdd) {
-      throw new ConflictException();
-    }
-
-    const user = new User({ ...userDto });
+  async add(registerDto: RegisterUserDto): Promise<User> {
+    const user = new User({ ...registerDto });
 
     return await this.userRepository.save(user);
   }
 
   async update(user: User): Promise<User> {
-    const userToUpdate = await this.userRepository.findOne(user.name);
+    const userToUpdate = await this.userRepository.findOne({ name: user.name });
 
     if (!userToUpdate) {
       return null;

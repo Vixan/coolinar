@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { RegisterDto } from './dto/register.dto';
+import { RegisterUserDto } from './dto/user-register.dto';
 import { Repository } from 'typeorm';
 import { User } from 'src/users/users.entity';
 import { UsersService } from '../users/users.service';
@@ -13,10 +13,6 @@ export class AuthService {
     private readonly usersService: UsersService,
     @InjectRepository(User) private readonly userRepository: Repository<User>,
   ) {}
-
-  async register(user: RegisterDto): Promise<any> {
-    return await this.userRepository.save(user);
-  }
 
   createToken(user: User) {
     const expiresIn: number = 86400 * 30;

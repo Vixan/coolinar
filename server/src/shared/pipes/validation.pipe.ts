@@ -19,7 +19,7 @@ export class ValidationPipe implements PipeTransform<any> {
 
     if (errors.length > 0) {
       throw new BadRequestException({
-        message: this.toErrors(errors),
+        errors: this.toErrors(errors),
       });
     }
 

@@ -1,16 +1,16 @@
 import {
   Controller,
   Post,
-  Response,
   Body,
-  HttpStatus,
   UsePipes,
+  ForbiddenException,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { LoginDto } from './dto/login.dto';
+import { LoginUserDto } from './dto/user-login.dto';
 import { UsersService } from '../users/users.service';
-import { RegisterDto } from './dto/register.dto';
+import { RegisterUserDto } from './dto/user-register.dto';
 import { ValidationPipe } from '../shared/pipes/validation.pipe';
+import { ConflictException } from '@nestjs/common';
 
 @Controller('auth')
 export class AuthController {
@@ -19,26 +19,33 @@ export class AuthController {
     private readonly userService: UsersService,
   ) {}
 
-  @Post()
+  @Post('login')
   @UsePipes(new ValidationPipe())
-  async login(@Response() res: any, @Body() loginDto: LoginDto): Promise<any> {
+  async login(@Body() loginDto: LoginUserDto): Promise<any> {
     const user = await this.userService.findByEmail(loginDto.email);
 
     if (!user) {
-      return res
-        .status(HttpStatus.FORBIDDEN)
-        .json({ message: 'Email or password is incorrect.' });
+      throw new ForbiddenException({
+        errors: { email: 'Inexistent email' },
+      });
     }
 
     const userToken = this.authService.createToken(user);
 
-    return res.status(HttpStatus.OK).json(userToken);
+    return userToken;
   }
 
-  // @Post()
-  // @UsePipes(new ValidationPipe())
-  // async register(
-  //   @Response() res: any,
-  //   @Body() registerDto: RegisterDto,
-  // ): Promise<any> {}
+  @Post('register')
+  @UsePipes(new ValidationPipe())
+  async register(@Body() registerDto: RegisterUserDto): Promise<any> {
+    const user = await this.userService.findByEmail(registerDto.email);
+
+    if (user) {
+      throw new ConflictException({
+        errors: { email: 'Email already in use' },
+      });
+    }
+
+    this.userService.add(registerDto);
+  }
 }
