@@ -1,26 +1,24 @@
+import * as jwt from 'jsonwebtoken';
+import { ConfigService } from '../config/config.service';
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { RegisterUserDto } from './dto/user-register.dto';
-import { Repository } from 'typeorm';
+import { JwtPayload } from './interfaces/jwt-payload.interface';
 import { User } from 'src/users/users.entity';
 import { UsersService } from '../users/users.service';
-import { JwtPayload } from './interfaces/jwt-payload.interface';
-import * as jwt from 'jsonwebtoken';
 
 @Injectable()
 export class AuthService {
   constructor(
+    private readonly configService: ConfigService,
     private readonly usersService: UsersService,
-    @InjectRepository(User) private readonly userRepository: Repository<User>,
   ) {}
 
   createToken(user: User) {
-    const expiresIn: number = 86400 * 30;
+    const expiresIn = this.configService.jwtExpiration;
     const accessToken = jwt.sign(
       {
         email: user.email,
       },
-      'AdminSecret',
+      this.configService.jwtSecret,
       { expiresIn },
     );
 
