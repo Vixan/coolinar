@@ -1,12 +1,13 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import * as dotenv from 'dotenv';
 import * as fs from 'fs';
 import { Config } from './interfaces/config.interface';
-import { validate, ValidationError } from 'class-validator';
+import { InternalServerErrorException, Injectable } from '@nestjs/common';
 import { plainToClass } from 'class-transformer';
+import { validate, ValidationError } from 'class-validator';
 
+@Injectable()
 export class ConfigService {
-  private envConfig: Config;
+  private envConfig: Config = null;
 
   constructor(configFilePath: string) {
     this.readConfigFile(configFilePath)
@@ -14,7 +15,9 @@ export class ConfigService {
         this.envConfig = config;
       })
       .catch(error => {
-        throw new Error(error);
+        this.envConfig = new Config();
+        console.log(error.message);
+        console.log('Configuration file invalid. Using default values.');
       });
   }
 
@@ -53,6 +56,6 @@ export class ConfigService {
   }
 
   public get jwtExpiration() {
-      return this.envConfig.JWT_EXPIRATION;
+    return this.envConfig.JWT_EXPIRATION;
   }
 }

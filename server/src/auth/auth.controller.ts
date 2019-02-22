@@ -4,6 +4,7 @@ import {
   Body,
   UsePipes,
   ForbiddenException,
+  HttpCode,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { LoginUserDto } from './dto/user-login.dto';
@@ -20,6 +21,7 @@ export class AuthController {
   ) {}
 
   @Post('login')
+  @HttpCode(200)
   @UsePipes(new ValidationPipe())
   async login(@Body() loginDto: LoginUserDto): Promise<any> {
     const user = await this.userService.findByEmail(loginDto.email);

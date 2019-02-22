@@ -35,5 +35,6 @@ export class Config {
   JWT_SECRET: string = 'AdminSecret';
 
   @IsOptional()
-  JWT_EXPIRATION: string | number = '1d';
+  @Transform(value => parseInt(value, 10), { toClassOnly: true })
+  JWT_EXPIRATION: number = 1800;
 }
