@@ -1,10 +1,9 @@
-import { Injectable, BadRequestException, ForbiddenException } from '@nestjs/common';
-import { JwtPayload } from './interfaces/jwt-payload.interface';
+import { Injectable } from '@nestjs/common';
+import { JwtPayload } from './jwt/jwt-payload.interface';
 import { User } from 'src/users/users.entity';
 import { UsersService } from '../users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '../config/config.service';
-import { LoginUserDto } from './dto/user-login.dto';
 import { JwtResponseDto } from './jwt/jwt-response.dto';
 
 @Injectable()
