@@ -3,15 +3,13 @@ import {
   Get,
   UseGuards,
   Param,
-  Post,
-  Body,
-  UsePipes,
+  UseInterceptors,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { User } from './users.entity';
 import { AuthGuard } from '@nestjs/passport';
 import { UserDto } from './dto/user.dto';
-import { ValidationPipe } from '../shared/pipes/validation.pipe';
+import { TransformInterceptor } from './interceptors/transform.interceptor';
 
 @Controller('users')
 export class UsersController {
@@ -19,7 +17,8 @@ export class UsersController {
 
   @Get()
   @UseGuards(AuthGuard('jwt'))
-  async findAll(): Promise<User[]> {
+  @UseInterceptors(new TransformInterceptor(UserDto))
+  async findAll(): Promise<UserDto[]> {
     return this.usersService.findAll();
   }
 
@@ -27,12 +26,5 @@ export class UsersController {
   @UseGuards(AuthGuard('jwt'))
   async findOne(@Param('name') name: string): Promise<User> {
     return this.usersService.findByName(name);
-  }
-
-  @Post()
-  @UseGuards(AuthGuard('jwt'))
-  @UsePipes(new ValidationPipe())
-  async add(@Body() userDto: UserDto): Promise<User> {
-    return this.usersService.add(userDto);
   }
 }

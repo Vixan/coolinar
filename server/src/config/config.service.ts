@@ -58,4 +58,8 @@ export class ConfigService {
   public get jwtExpiration() {
     return this.envConfig.JWT_EXPIRATION;
   }
+
+  public get hashSaltRounds() {
+    return this.envConfig.HASH_SALT_ROUNDS;
+  }
 }

@@ -1,9 +1,11 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, BadRequestException, ForbiddenException } from '@nestjs/common';
 import { JwtPayload } from './interfaces/jwt-payload.interface';
 import { User } from 'src/users/users.entity';
 import { UsersService } from '../users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '../config/config.service';
+import { LoginUserDto } from './dto/user-login.dto';
+import { JwtResponseDto } from './jwt/jwt-response.dto';
 
 @Injectable()
 export class AuthService {
@@ -17,14 +19,15 @@ export class AuthService {
     const jwtPayload: JwtPayload = { email: user.email };
     const expiresIn = this.configService.jwtExpiration;
     const accessToken = this.jwtService.sign(jwtPayload, { expiresIn });
-
-    return {
+    const jwtResponseDto: JwtResponseDto = {
       expiresIn,
       accessToken,
     };
+
+    return jwtResponseDto;
   }
 
-  async validatePayload(payload: JwtPayload): Promise<any> {
+  async validateUser(payload: JwtPayload): Promise<User | null> {
     return await this.usersService.findByEmail(payload.email);
   }
 }

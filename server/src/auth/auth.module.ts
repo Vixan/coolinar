@@ -8,6 +8,7 @@ import { ConfigModule } from '../config/config.module';
 import { JwtModule } from '@nestjs/jwt';
 import { ConfigService } from '../config/config.service';
 import { JwtConfigService } from './jwt/jwt-config.service';
+import { EncryptionModule } from '../encryption/encryption.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { JwtConfigService } from './jwt/jwt-config.service';
     }),
     UsersModule,
     ConfigModule,
+    EncryptionModule,
   ],
   providers: [AuthService, JwtStrategy, UsersService],
   controllers: [AuthController],

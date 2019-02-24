@@ -4,10 +4,12 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './users.entity';
 import { Service } from '../shared/interfaces/service.interface';
 import { RegisterUserDto } from '../auth/dto/user-register.dto';
+import { EncryptionService } from '../encryption/encryption.service';
 
 @Injectable()
 export class UsersService implements Service<User> {
   constructor(
+    private readonly encryptionService: EncryptionService,
     @InjectRepository(User) private readonly userRepository: Repository<User>,
   ) {}
 
@@ -19,20 +21,30 @@ export class UsersService implements Service<User> {
     return await this.userRepository.findOne(id);
   }
 
-  async findByEmail(email: string): Promise<User> {
-    return await this.userRepository.findOne({
-      email,
-    });
-  }
-
   async findByName(name: string): Promise<User> {
     return await this.userRepository.findOne({
       name,
     });
   }
 
+  async findByEmail(email: string): Promise<User> {
+    return await this.userRepository.findOne({
+      email,
+    });
+  }
+
+  async findByEmailAndPassword(email: string, password: string): Promise<User> {
+    return await this.userRepository.findOne({
+      email,
+      password,
+    });
+  }
+
   async add(registerDto: RegisterUserDto): Promise<User> {
-    const user = new User({ ...registerDto });
+    const user = new User({
+      ...registerDto,
+      password: await this.encryptionService.getHash(registerDto.password),
+    });
 
     return await this.userRepository.save(user);
   }

@@ -37,4 +37,8 @@ export class Config {
   @IsOptional()
   @Transform(value => parseInt(value, 10), { toClassOnly: true })
   JWT_EXPIRATION: number = 1800;
+
+  @IsOptional()
+  @Transform(value => parseInt(value, 10), { toClassOnly: true })
+  HASH_SALT_ROUNDS: number = 10;
 }
