@@ -1,5 +1,6 @@
-import { ObjectIdColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { ObjectIdColumn, CreateDateColumn, UpdateDateColumn, Entity } from 'typeorm';
 
+@Entity()
 export class BaseEntity {
   @ObjectIdColumn()
   id: string;

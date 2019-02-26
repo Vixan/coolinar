@@ -2,39 +2,33 @@ import { Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './users.entity';
-import { Service } from '../shared/interfaces/service.interface';
 import { RegisterUserDto } from '../auth/dto/user-register.dto';
 import { EncryptionService } from '../encryption/encryption.service';
+import { BaseService } from '../shared/base/base.service';
 
 @Injectable()
-export class UsersService implements Service<User> {
+export class UsersService extends BaseService<User> {
   constructor(
     private readonly encryptionService: EncryptionService,
     @InjectRepository(User) private readonly userRepository: Repository<User>,
-  ) {}
-
-  async findAll(): Promise<User[]> {
-    return await this.userRepository.find();
-  }
-
-  async findById(id: string): Promise<User> {
-    return await this.userRepository.findOne(id);
+  ) {
+    super(userRepository);
   }
 
   async findByName(name: string): Promise<User> {
-    return await this.userRepository.findOne({
+    return this.userRepository.findOne({
       name,
     });
   }
 
   async findByEmail(email: string): Promise<User> {
-    return await this.userRepository.findOne({
+    return this.userRepository.findOne({
       email,
     });
   }
 
   async findByEmailAndPassword(email: string, password: string): Promise<User> {
-    return await this.userRepository.findOne({
+    return this.userRepository.findOne({
       email,
       password,
     });
@@ -46,7 +40,7 @@ export class UsersService implements Service<User> {
       password: await this.encryptionService.getHash(registerDto.password),
     });
 
-    return await this.userRepository.save(user);
+    return this.userRepository.save(user);
   }
 
   async update(user: User): Promise<User> {
@@ -60,16 +54,6 @@ export class UsersService implements Service<User> {
     userToUpdate.email = user.email;
     userToUpdate.password = user.password;
 
-    return await this.userRepository.save(userToUpdate);
-  }
-
-  async delete(user: User): Promise<User> {
-    const userToDelete: User = await this.userRepository.findOne(user.id);
-
-    if (!userToDelete) {
-      return null;
-    }
-
-    return this.userRepository.remove(userToDelete);
+    return this.userRepository.save(userToUpdate);
   }
 }

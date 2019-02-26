@@ -4,7 +4,7 @@ import {
   Index,
 } from 'typeorm';
 import { IsString, MaxLength, IsEmail } from 'class-validator';
-import { BaseEntity } from '../shared/entities/base.entity';
+import { BaseEntity } from '../shared/base/base.entity';
 
 @Entity()
 export class User extends BaseEntity {

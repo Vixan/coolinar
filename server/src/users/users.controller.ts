@@ -4,6 +4,8 @@ import {
   UseGuards,
   Param,
   UseInterceptors,
+  Delete,
+  NotFoundException,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { User } from './users.entity';
@@ -24,7 +26,19 @@ export class UsersController {
 
   @Get(':name')
   @UseGuards(AuthGuard('jwt'))
-  async findOne(@Param('name') name: string): Promise<User> {
+  async findByName(@Param('name') name: string): Promise<User> {
     return this.usersService.findByName(name);
+  }
+
+  @Delete(':name')
+  @UseGuards(AuthGuard('jwt'))
+  async delete(@Param('name') name: string): Promise<User> {
+    const user = await this.usersService.findByName(name);
+
+    if (!user) {
+      throw new NotFoundException({ errors: { name: 'Username not found' } });
+    }
+
+    return this.usersService.delete(user);
   }
 }
