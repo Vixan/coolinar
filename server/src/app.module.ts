@@ -4,9 +4,14 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Connection } from 'typeorm';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from './config/config.module';
+import { RecipesService } from './recipes/recipes.service';
+import { RecipesController } from './recipes/recipes.controller';
+import { RecipesModule } from './recipes/recipes.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(), UsersModule, AuthModule, ConfigModule],
+  imports: [TypeOrmModule.forRoot(), UsersModule, AuthModule, ConfigModule, RecipesModule],
+  providers: [RecipesService],
+  controllers: [RecipesController],
 })
 export class AppModule {
   constructor(private readonly connection: Connection) {}
