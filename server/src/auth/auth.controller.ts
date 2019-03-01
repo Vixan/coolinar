@@ -8,12 +8,13 @@ import {
   HttpStatus,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { LoginUserDto } from './dto/user-login.dto';
+import { LoginUserDto } from './dto/login-user';
 import { UsersService } from '../users/users.service';
-import { RegisterUserDto } from './dto/user-register.dto';
+import { RegisterUserDto } from './dto/register-user.dto';
 import { ValidationPipe } from '../shared/pipes/validation.pipe';
 import { ConflictException } from '@nestjs/common';
 import { EncryptionService } from '../encryption/encryption.service';
+import { User } from '../users/users.entity';
 
 @Controller('auth')
 export class AuthController {
@@ -53,15 +54,29 @@ export class AuthController {
   @HttpCode(HttpStatus.CREATED)
   @UsePipes(new ValidationPipe())
   async register(@Body() registerUserDto: RegisterUserDto): Promise<any> {
-    const user = await this.userService.findByEmail(registerUserDto.email);
+    const userfoundByEmail = await this.userService.findByEmail(
+      registerUserDto.email,
+    );
 
-    if (user) {
+    if (userfoundByEmail) {
       throw new ConflictException({
         errors: { email: 'Email already in use' },
       });
     }
 
-    const createdUser = await this.userService.add(registerUserDto);
+    const userfoundByName = await this.userService.findByName(
+      registerUserDto.name,
+    );
+
+    if (userfoundByName) {
+      throw new ConflictException({
+        errors: { name: 'Username already in use' },
+      });
+    }
+
+    const createdUser = await this.userService.add({
+      ...(registerUserDto as User),
+    });
 
     return this.authService.createToken(createdUser);
   }

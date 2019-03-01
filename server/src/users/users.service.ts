@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './users.entity';
-import { RegisterUserDto } from '../auth/dto/user-register.dto';
+import { RegisterUserDto } from '../auth/dto/register-user.dto';
 import { EncryptionService } from '../encryption/encryption.service';
 import { BaseService } from '../shared/base/base.service';
 
@@ -10,50 +10,45 @@ import { BaseService } from '../shared/base/base.service';
 export class UsersService extends BaseService<User> {
   constructor(
     private readonly encryptionService: EncryptionService,
-    @InjectRepository(User) private readonly userRepository: Repository<User>,
+    @InjectRepository(User) private readonly usersRepository: Repository<User>,
   ) {
-    super(userRepository);
+    super(usersRepository);
   }
 
   async findByName(name: string): Promise<User> {
-    return this.userRepository.findOne({
+    return this.usersRepository.findOne({
       name,
     });
   }
 
   async findByEmail(email: string): Promise<User> {
-    return this.userRepository.findOne({
+    return this.usersRepository.findOne({
       email,
     });
   }
 
   async findByEmailAndPassword(email: string, password: string): Promise<User> {
-    return this.userRepository.findOne({
+    return this.usersRepository.findOne({
       email,
       password,
     });
   }
 
-  async add(registerDto: RegisterUserDto): Promise<User> {
-    const user = new User({
-      ...registerDto,
-      password: await this.encryptionService.getHash(registerDto.password),
+  async add(user: User): Promise<User> {
+    const createdUser = new User({
+      ...user,
+      password: await this.encryptionService.getHash(user.password),
     });
 
-    return this.userRepository.save(user);
+    return this.usersRepository.save(createdUser);
   }
 
   async update(user: User): Promise<User> {
-    const userToUpdate = await this.userRepository.findOne({ name: user.name });
+    const updatedUser = new User({
+      ...user,
+      password: await this.encryptionService.getHash(user.password),
+    });
 
-    if (!userToUpdate) {
-      return null;
-    }
-
-    userToUpdate.name = user.name;
-    userToUpdate.email = user.email;
-    userToUpdate.password = user.password;
-
-    return this.userRepository.save(userToUpdate);
+    return this.usersRepository.save(updatedUser);
   }
 }

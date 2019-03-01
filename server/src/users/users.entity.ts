@@ -9,13 +9,11 @@ import { BaseEntity } from '../shared/base/base.entity';
 @Entity()
 export class User extends BaseEntity {
   @Column()
-  @Index({ unique: true })
   @IsString()
   @MaxLength(255)
   name: string;
 
   @Column()
-  @Index({ unique: true })
   @IsEmail()
   email: string;
 
