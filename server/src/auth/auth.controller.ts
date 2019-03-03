@@ -74,9 +74,8 @@ export class AuthController {
       });
     }
 
-    const createdUser = await this.userService.add({
-      ...(registerUserDto as User),
-    });
+    const user = new User({...registerUserDto});
+    const createdUser = await this.userService.add(user);
 
     return this.authService.createToken(createdUser);
   }

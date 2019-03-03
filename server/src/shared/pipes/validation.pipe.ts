@@ -5,7 +5,8 @@ import {
   BadRequestException,
 } from '@nestjs/common';
 import { plainToClass } from 'class-transformer';
-import { validate, ValidationError } from 'class-validator';
+import { validate } from 'class-validator';
+import { ErrorUtils } from '../utils/error.utils';
 
 @Injectable()
 export class ValidationPipe implements PipeTransform<any> {
@@ -19,7 +20,7 @@ export class ValidationPipe implements PipeTransform<any> {
 
     if (errors.length > 0) {
       throw new BadRequestException({
-        errors: this.toErrors(errors),
+        errors: ErrorUtils.toErrors(errors),
       });
     }
 
@@ -33,12 +34,5 @@ export class ValidationPipe implements PipeTransform<any> {
   private isPrimitiveType(metatype: any): boolean {
     const types = [String, Boolean, Number, Array, Object];
     return !types.find(type => metatype === type);
-  }
-
-  private toErrors(errors: ValidationError[]) {
-    return errors.reduce((acc, error) => {
-      acc[error.property] = Object.values(error.constraints);
-      return acc;
-    }, {});
   }
 }

@@ -12,4 +12,10 @@ export class RecipesService extends BaseService<Recipe> {
   ) {
     super(recipesRepository);
   }
+
+  async findByTitle(title: string) {
+    return this.recipesRepository.findOne({
+      title,
+    });
+  }
 }
