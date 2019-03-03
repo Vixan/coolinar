@@ -1,12 +1,14 @@
-import { IsString, IsUrl } from 'class-validator';
+import { IsString, IsUrl, IsNotEmpty, IsOptional } from 'class-validator';
 import { Column } from 'typeorm';
 
 export class Direction {
   @Column()
-  @IsString()
+  @IsNotEmpty({ message: 'Direction text is required' })
+  @IsString({ message: 'Direction text must be a string' })
   text: string;
 
   @Column()
-  @IsUrl()
-  media: string[];
+  @IsUrl({}, { message: 'Direction media link must be valid URL' })
+  @IsOptional()
+  mediaLink: string[];
 }

@@ -1,5 +1,12 @@
-import { Entity, Column, Index } from 'typeorm';
-import { IsString, MaxLength, IsOptional, IsInt, Min } from 'class-validator';
+import { Entity, Column } from 'typeorm';
+import {
+  IsString,
+  MaxLength,
+  IsOptional,
+  IsInt,
+  Min,
+  IsNotEmpty,
+} from 'class-validator';
 import { BaseEntity } from '../shared/base/base.entity';
 import { User } from '../users/users.entity';
 import { Review } from 'src/recipes/reviews.entity';
@@ -10,34 +17,34 @@ import { Nutrition } from './nutrition.entity';
 @Entity()
 export class Recipe extends BaseEntity {
   @Column()
-  @Index({ unique: true })
-  @IsString()
-  @MaxLength(255)
+  @IsNotEmpty({ message: 'Recipe title is required' })
+  @IsString({ message: 'Recipe title must be a string' })
+  @MaxLength(255, { message: 'Recipe title must be maximum 255 characters' })
   title: string;
 
   @Column()
-  @IsString()
   @IsOptional()
   description: string;
 
+  @IsNotEmpty({ message: 'Recipe ingredients is required' })
   @Column(type => Ingredient)
   ingredients: Ingredient[];
 
+  @IsNotEmpty({ message: 'Recipe directions is required' })
   @Column(type => Direction)
   directions: Direction[];
 
   @Column()
-  @IsInt()
-  @Min(1)
+  @IsInt({ message: 'Recipe preparation time must be an integer' })
+  @Min(1, { message: 'Recipe preparation time must be a pozitive integer' })
   preparationTime: number;
 
   @Column()
-  @IsInt()
-  @Min(1)
+  @IsInt({ message: 'Recipe cooking time must be an integer' })
+  @Min(1, { message: 'Recipe cooking time must be a pozitive integer' })
   cookingTime: number;
 
   @Column()
-  @IsString()
   @IsOptional()
   notes: string;
 
@@ -46,9 +53,11 @@ export class Recipe extends BaseEntity {
   nutrition: Nutrition;
 
   @Column(type => Review)
+  @IsOptional()
   reviews: Review[];
 
   @Column(type => User)
+  @IsNotEmpty({ message: 'Recipe author is required' })
   createdBy: User;
 
   constructor(props: any) {
