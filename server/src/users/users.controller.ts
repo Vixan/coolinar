@@ -14,9 +14,9 @@ import { UsersService } from './users.service';
 import { User } from './users.entity';
 import { AuthGuard } from '@nestjs/passport';
 import { UserDto } from './dto/user.dto';
-import { TransformInterceptor } from './interceptors/transform.interceptor';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { ValidationPipe } from '../shared/pipes/validation.pipe';
+import { TransformInterceptor } from '../shared/interceptors/transform.interceptor';
 
 @Controller('users')
 export class UsersController {
@@ -25,13 +25,13 @@ export class UsersController {
   @Get()
   @UseGuards(AuthGuard('jwt'))
   @UseInterceptors(new TransformInterceptor(UserDto))
-  async findAll(): Promise<UserDto[]> {
+  async getAll(): Promise<UserDto[]> {
     return this.usersService.findAll();
   }
 
   @Get(':name')
   @UseGuards(AuthGuard('jwt'))
-  async findByName(@Param('name') name: string): Promise<User> {
+  async getByName(@Param('name') name: string): Promise<User> {
     return this.usersService.findByName(name);
   }
 
@@ -48,7 +48,7 @@ export class UsersController {
       throw new NotFoundException({ errors: { name: 'Inexistent username' } });
     }
 
-    return this.usersService.update({...user, ...updateUserDto});
+    return this.usersService.update({ ...user, ...updateUserDto });
   }
 
   @Delete(':name')

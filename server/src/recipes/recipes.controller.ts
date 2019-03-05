@@ -13,6 +13,8 @@ import { Recipe } from './recipes.entity';
 import { CreateRecipeDto } from './dto/create-recipe.dto';
 import { ValidationPipe } from '../shared/pipes/validation.pipe';
 import { RecipeValidationInterceptor } from './interceptors/recipe-validation.interceptor';
+import { TransformInterceptor } from '../shared/interceptors/transform.interceptor';
+import { RecipeDto } from './dto/recipe.dto';
 
 @Controller('recipes')
 export class RecipesController {
@@ -20,7 +22,8 @@ export class RecipesController {
 
   @Get()
   @UseGuards(AuthGuard('jwt'))
-  async findAll(): Promise<any[]> {
+  @UseInterceptors(new TransformInterceptor(RecipeDto))
+  async getAll(): Promise<RecipeDto[]> {
     return this.recipesService.findAll();
   }
 
