@@ -16,6 +16,10 @@ import { Exclude, Expose } from 'class-transformer';
 @Exclude()
 export class RecipeDto {
   @Expose()
+  @IsString({ message: 'Recipe slug must be a string' })
+  readonly slug: string;
+
+  @Expose()
   @IsNotEmpty({ message: 'Recipe title is required' })
   @IsString({ message: 'Recipe title must be a string' })
   @MaxLength(255, { message: 'Recipe title must be maximum 255 characters' })

@@ -17,6 +17,10 @@ import { Nutrition } from './nutrition.entity';
 @Entity()
 export class Recipe extends BaseEntity {
   @Column()
+  @IsString({ message: 'Recipe slug must be a string' })
+  slug: string;
+
+  @Column()
   @IsNotEmpty({ message: 'Recipe title is required' })
   @IsString({ message: 'Recipe title must be a string' })
   @MaxLength(255, { message: 'Recipe title must be maximum 255 characters' })
@@ -26,12 +30,12 @@ export class Recipe extends BaseEntity {
   @IsOptional()
   description: string;
 
-  @IsNotEmpty({ message: 'Recipe ingredients is required' })
   @Column(type => Ingredient)
+  @IsNotEmpty({ message: 'Recipe ingredients is required' })
   ingredients: Ingredient[];
 
-  @IsNotEmpty({ message: 'Recipe directions is required' })
   @Column(type => Direction)
+  @IsNotEmpty({ message: 'Recipe directions is required' })
   directions: Direction[];
 
   @Column()
