@@ -75,7 +75,7 @@ export class AuthController {
     }
 
     const user = new User({...registerUserDto});
-    const createdUser = await this.userService.add(user);
+    const createdUser = await this.userService.create(user);
 
     return this.authService.createToken(createdUser);
   }

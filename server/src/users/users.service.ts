@@ -34,7 +34,7 @@ export class UsersService extends BaseService<User> {
     });
   }
 
-  async add(user: User): Promise<User> {
+  async create(user: User): Promise<User> {
     const createdUser = new User({
       ...user,
       password: await this.encryptionService.getHash(user.password),

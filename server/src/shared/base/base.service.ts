@@ -13,12 +13,12 @@ export class BaseService<T extends BaseEntity> implements Service<T> {
     return await this.entityRepository.findOne(id);
   }
 
-  async add(entity: T): Promise<T> {
-    return await this.entityRepository.save(entity as any);
+  async create(entity: T): Promise<T> {
+    return await this.entityRepository.save<{}>(entity);
   }
 
   async update(entity: T): Promise<T> {
-    return await this.entityRepository.save(entity as any);
+    return this.entityRepository.save<{}>(entity);
   }
 
   async delete(entity: T): Promise<T> {

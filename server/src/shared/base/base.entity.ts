@@ -1,8 +1,8 @@
-import { ObjectIdColumn, CreateDateColumn, UpdateDateColumn, Entity } from 'typeorm';
+import { ObjectIdColumn, CreateDateColumn, UpdateDateColumn, ObjectID } from 'typeorm';
 
 export abstract class BaseEntity {
   @ObjectIdColumn()
-  id: string;
+  id: ObjectID;
 
   @CreateDateColumn()
   dateCreated: Date;

@@ -38,10 +38,13 @@ export class UsersController {
   @Put(':name')
   @UseGuards(AuthGuard('jwt'))
   @UsePipes(new ValidationPipe())
+  @UseInterceptors(
+    new TransformInterceptor(UserDto),
+  )
   async update(
     @Param('name') userName: string,
     @Body() updateUserDto: UpdateUserDto,
-  ): Promise<User> {
+  ): Promise<UserDto> {
     const user = await this.usersService.findByName(userName);
 
     if (!user) {
