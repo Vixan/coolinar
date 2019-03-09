@@ -3,19 +3,20 @@ import { BaseService } from '../shared/base/base.service';
 import { Recipe } from './recipes.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { StringUtils } from '../shared/utils/string.utils';
+import { SlugProvider } from '../shared/providers/slug.provider';
 
 @Injectable()
 export class RecipesService extends BaseService<Recipe> {
   constructor(
     @InjectRepository(Recipe)
     private readonly recipesRepository: Repository<Recipe>,
+    private readonly slugProvider: SlugProvider,
   ) {
     super(recipesRepository);
   }
 
   async create(recipe: Recipe) {
-    const slug = StringUtils.createSlug(recipe.title, { lower: true });
+    const slug = this.slugProvider.createSlug(recipe.title, { lower: true });
 
     return this.recipesRepository.save({ ...recipe, slug });
   }
@@ -33,7 +34,7 @@ export class RecipesService extends BaseService<Recipe> {
   }
 
   async update(recipe: Recipe) {
-    const slug = StringUtils.createSlug(recipe.title, { lower: true });
+    const slug = this.slugProvider.createSlug(recipe.title, { lower: true });
     const dateUpdated = new Date();
     const id = recipe.id;
     delete recipe.id;

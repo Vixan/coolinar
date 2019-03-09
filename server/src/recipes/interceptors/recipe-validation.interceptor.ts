@@ -58,7 +58,7 @@ export class RecipeValidationInterceptor implements NestInterceptor {
   }
 
   private async validateIngredients(ingredients: Ingredient[]) {
-    if (!ingredients.length) {
+    if (!ingredients || !ingredients.length) {
       throw new BadRequestException({
         errors: { ingredients: 'Recipe must have minimum 1 ingredient' },
       });
@@ -77,7 +77,7 @@ export class RecipeValidationInterceptor implements NestInterceptor {
   }
 
   private async validateDirections(directions: Direction[]) {
-    if (!directions.length) {
+    if (!directions || !directions.length) {
       throw new BadRequestException({
         errors: { ingredients: 'Recipe must have minimum 1 direction' },
       });

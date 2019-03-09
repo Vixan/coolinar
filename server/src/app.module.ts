@@ -7,10 +7,17 @@ import { ConfigModule } from './config/config.module';
 import { RecipesService } from './recipes/recipes.service';
 import { RecipesController } from './recipes/recipes.controller';
 import { RecipesModule } from './recipes/recipes.module';
+import { SlugProvider } from './shared/providers/slug.provider';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(), UsersModule, AuthModule, ConfigModule, RecipesModule],
-  providers: [RecipesService],
+  imports: [
+    TypeOrmModule.forRoot(),
+    UsersModule,
+    AuthModule,
+    ConfigModule,
+    RecipesModule,
+  ],
+  providers: [RecipesService, SlugProvider],
   controllers: [RecipesController],
 })
 export class AppModule {

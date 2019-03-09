@@ -1,26 +1,17 @@
 import {
   NestInterceptor,
   ExecutionContext,
-  ConflictException,
   BadRequestException,
-  Inject,
 } from '@nestjs/common';
 import { Observable } from 'rxjs';
 import { plainToClass } from 'class-transformer';
 import { validate } from 'class-validator';
 import { Ingredient } from '../ingredients.entity';
 import { Direction } from '../directions.entity';
-import { UsersService } from '../../users/users.service';
-import { RecipesService } from '../recipes.service';
 import { ErrorUtils } from '../../shared/utils/error.utils';
 import { UpdateRecipeDto } from '../dto/update-recipe.dto';
 
 export class UpdateRecipeValidationInterceptor implements NestInterceptor {
-  constructor(
-    @Inject(RecipesService) private readonly recipesService: RecipesService,
-    @Inject(UsersService) private readonly usersService: UsersService,
-  ) {}
-
   async intercept(
     context: ExecutionContext,
     stream$: Observable<any>,
