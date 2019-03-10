@@ -12,6 +12,7 @@ import {
 } from 'class-validator';
 import { Ingredient } from '../ingredients.entity';
 import { Direction } from '../directions.entity';
+import { Category } from '../category.entity';
 
 @Exclude()
 export class UpdateRecipeDto {
@@ -20,6 +21,12 @@ export class UpdateRecipeDto {
   @IsString({ message: 'Recipe title must be a string' })
   @MaxLength(255, { message: 'Recipe title must be maximum 255 characters' })
   readonly title: string;
+
+  @Expose()
+  @IsNotEmpty({ message: 'Recipe categories is required' })
+  @IsArray({ message: 'Recipe categories must be an array' })
+  @ValidateNested({ each: true })
+  readonly categories: Category[];
 
   @Expose()
   @IsOptional()

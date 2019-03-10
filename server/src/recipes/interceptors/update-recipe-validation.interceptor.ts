@@ -10,6 +10,7 @@ import { Ingredient } from '../ingredients.entity';
 import { Direction } from '../directions.entity';
 import { ErrorUtils } from '../../shared/utils/error.utils';
 import { UpdateRecipeDto } from '../dto/update-recipe.dto';
+import { Category } from '../category.entity';
 
 export class UpdateRecipeValidationInterceptor implements NestInterceptor {
   async intercept(
@@ -19,47 +20,33 @@ export class UpdateRecipeValidationInterceptor implements NestInterceptor {
     const request: Request = context.switchToHttp().getRequest();
     const updateRecipeDto = plainToClass(UpdateRecipeDto, request.body);
 
-    await this.validateIngredients(updateRecipeDto.ingredients);
-    await this.validateDirections(updateRecipeDto.directions);
+    await this.validateNested(updateRecipeDto);
 
     return stream$;
   }
 
-  private async validateIngredients(ingredients: Ingredient[]) {
-    if (!ingredients.length) {
+  private async validateNested(updateRecipeDto: UpdateRecipeDto) {
+    const ingredients = updateRecipeDto.ingredients.map(ingredient =>
+      plainToClass(Ingredient, ingredient),
+    );
+    const directions = updateRecipeDto.directions.map(direction =>
+      plainToClass(Direction, direction),
+    );
+    const categories = updateRecipeDto.categories.map(category =>
+      plainToClass(Category, category),
+    );
+    const recipeDtoToValidate = plainToClass(UpdateRecipeDto, {
+      ...updateRecipeDto,
+      ingredients,
+      directions,
+      categories,
+    });
+    const validationErrors = await validate(recipeDtoToValidate);
+
+    if (validationErrors.length > 0) {
       throw new BadRequestException({
-        errors: { ingredients: 'Recipe must have minimum 1 ingredient' },
+        errors: ErrorUtils.createErrors(validationErrors),
       });
-    }
-
-    for (const ingredientPlainObject of ingredients) {
-      const ingredient = plainToClass(Ingredient, ingredientPlainObject);
-      const validationErrors = await validate(ingredient);
-
-      if (validationErrors.length) {
-        throw new BadRequestException({
-          errors: ErrorUtils.toErrors(validationErrors),
-        });
-      }
-    }
-  }
-
-  private async validateDirections(directions: Direction[]) {
-    if (!directions.length) {
-      throw new BadRequestException({
-        errors: { ingredients: 'Recipe must have minimum 1 direction' },
-      });
-    }
-
-    for (const directionPlainObject of directions) {
-      const direction = plainToClass(Direction, directionPlainObject);
-      const validationErrors = await validate(direction);
-
-      if (validationErrors.length) {
-        throw new BadRequestException({
-          errors: ErrorUtils.toErrors(validationErrors),
-        });
-      }
     }
   }
 }

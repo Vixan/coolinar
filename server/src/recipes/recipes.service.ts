@@ -4,6 +4,7 @@ import { Recipe } from './recipes.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { SlugProvider } from '../shared/providers/slug.provider';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class RecipesService extends BaseService<Recipe> {
@@ -17,8 +18,12 @@ export class RecipesService extends BaseService<Recipe> {
 
   async create(recipe: Recipe) {
     const slug = this.slugProvider.createSlug(recipe.title, { lower: true });
+    const categories = recipe.categories.map(category => ({
+      ...category,
+      slug: this.slugProvider.createSlug(category.name, { lower: true }),
+    }));
 
-    return this.recipesRepository.save({ ...recipe, slug });
+    return this.recipesRepository.save({ ...recipe, slug, categories });
   }
 
   async findBySlug(slug: string) {
@@ -35,12 +40,16 @@ export class RecipesService extends BaseService<Recipe> {
 
   async update(recipe: Recipe) {
     const slug = this.slugProvider.createSlug(recipe.title, { lower: true });
+    const categories = recipe.categories.map(category => ({
+      ...category,
+      slug: this.slugProvider.createSlug(category.name, { lower: true }),
+    }));
     const dateUpdated = new Date();
     const id = recipe.id;
     delete recipe.id;
     await this.recipesRepository.update(
       { id },
-      { ...recipe, slug, dateUpdated },
+      { ...recipe, slug, categories, dateUpdated },
     );
 
     return this.recipesRepository.findOne(id);

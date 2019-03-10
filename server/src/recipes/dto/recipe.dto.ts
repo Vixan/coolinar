@@ -10,8 +10,10 @@ import {
   IsInt,
   Min,
   IsNotEmpty,
+  IsArray,
 } from 'class-validator';
 import { Exclude, Expose } from 'class-transformer';
+import { Category } from '../category.entity';
 
 @Exclude()
 export class RecipeDto {
@@ -24,6 +26,11 @@ export class RecipeDto {
   @IsString({ message: 'Recipe title must be a string' })
   @MaxLength(255, { message: 'Recipe title must be maximum 255 characters' })
   readonly title: string;
+
+  @Expose()
+  @IsNotEmpty({ message: 'Recipe categories is required' })
+  @IsArray({ message: 'Recipe categories must be an array' })
+  readonly categories: Category[];
 
   @Expose()
   @IsOptional()
@@ -61,5 +68,9 @@ export class RecipeDto {
 
   @Expose()
   @IsNotEmpty({ message: 'Recipe author is required' })
-  readonly createdBy: User;
+  @IsString({ message: 'Recipe author username must be a string' })
+  @MaxLength(255, {
+    message: 'Recipe author username must be maximum 255 characters',
+  })
+  readonly author: string;
 }

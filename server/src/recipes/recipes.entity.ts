@@ -6,13 +6,15 @@ import {
   IsInt,
   Min,
   IsNotEmpty,
+  IsArray,
 } from 'class-validator';
 import { BaseEntity } from '../shared/base/base.entity';
-import { User } from '../users/users.entity';
 import { Review } from 'src/recipes/reviews.entity';
 import { Direction } from './directions.entity';
 import { Ingredient } from './ingredients.entity';
 import { Nutrition } from './nutrition.entity';
+import { Category } from './category.entity';
+import { isArray } from 'util';
 
 @Entity()
 export class Recipe extends BaseEntity {
@@ -26,16 +28,23 @@ export class Recipe extends BaseEntity {
   @MaxLength(255, { message: 'Recipe title must be maximum 255 characters' })
   title: string;
 
+  @Column(type => Category)
+  @IsNotEmpty({ message: 'Recipe must have minimum 1 category' })
+  @IsArray({ message: 'Recipe categories must be an array' })
+  categories: Category[];
+
   @Column()
   @IsOptional()
   description: string;
 
   @Column(type => Ingredient)
   @IsNotEmpty({ message: 'Recipe ingredients is required' })
+  @IsArray({ message: 'Recipe ingredients must be an array' })
   ingredients: Ingredient[];
 
   @Column(type => Direction)
   @IsNotEmpty({ message: 'Recipe directions is required' })
+  @IsArray({ message: 'Recipe directions must be an array' })
   directions: Direction[];
 
   @Column()
@@ -60,9 +69,10 @@ export class Recipe extends BaseEntity {
   @IsOptional()
   reviews: Review[];
 
-  @Column(type => User)
+  @Column()
   @IsNotEmpty({ message: 'Recipe author is required' })
-  createdBy: User;
+  @IsString({ message: 'Recipe author must be a string' })
+  author: string;
 
   constructor(props: any) {
     super();

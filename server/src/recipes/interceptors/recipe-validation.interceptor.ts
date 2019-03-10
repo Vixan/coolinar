@@ -15,6 +15,7 @@ import { UsersService } from '../../users/users.service';
 import { RecipesService } from '../recipes.service';
 import { ErrorUtils } from '../../shared/utils/error.utils';
 import { CreateRecipeDto } from '../dto/create-recipe.dto';
+import { Category } from '../category.entity';
 
 export class RecipeValidationInterceptor implements NestInterceptor {
   constructor(
@@ -24,17 +25,41 @@ export class RecipeValidationInterceptor implements NestInterceptor {
 
   async intercept(
     context: ExecutionContext,
-    stream$: Observable<any>,
+    call$: Observable<any>,
   ): Promise<any> {
     const request: Request = context.switchToHttp().getRequest();
     const createRecipeDto = plainToClass(CreateRecipeDto, request.body);
 
-    await this.validateAuthor(createRecipeDto.createdBy);
+    await this.validateAuthor(createRecipeDto.author);
     await this.validateTitle(createRecipeDto.title);
-    await this.validateIngredients(createRecipeDto.ingredients);
-    await this.validateDirections(createRecipeDto.directions);
+    await this.validateNested(createRecipeDto);
 
-    return stream$;
+    return call$;
+  }
+
+  private async validateNested(createRecipeDto: CreateRecipeDto) {
+    const ingredients = createRecipeDto.ingredients.map(ingredient =>
+      plainToClass(Ingredient, ingredient),
+    );
+    const directions = createRecipeDto.directions.map(direction =>
+      plainToClass(Direction, direction),
+    );
+    const categories = createRecipeDto.categories.map(category =>
+      plainToClass(Category, category),
+    );
+    const recipeDtoToValidate = plainToClass(CreateRecipeDto, {
+      ...createRecipeDto,
+      ingredients,
+      categories,
+      directions,
+    });
+    const validationErrors = await validate(recipeDtoToValidate);
+
+    if (validationErrors.length > 0) {
+      throw new BadRequestException({
+        errors: ErrorUtils.createErrors(validationErrors),
+      });
+    }
   }
 
   private async validateAuthor(author: string) {
@@ -42,7 +67,7 @@ export class RecipeValidationInterceptor implements NestInterceptor {
 
     if (!user) {
       throw new NotFoundException({
-        errors: { createdBy: 'Author username does not exist' },
+        errors: { author: 'Author username does not exist' },
       });
     }
   }
@@ -54,44 +79,6 @@ export class RecipeValidationInterceptor implements NestInterceptor {
       throw new ConflictException({
         errors: { title: 'Recipe with specified title already exists' },
       });
-    }
-  }
-
-  private async validateIngredients(ingredients: Ingredient[]) {
-    if (!ingredients || !ingredients.length) {
-      throw new BadRequestException({
-        errors: { ingredients: 'Recipe must have minimum 1 ingredient' },
-      });
-    }
-
-    for (const ingredientPlainObject of ingredients) {
-      const ingredient = plainToClass(Ingredient, ingredientPlainObject);
-      const validationErrors = await validate(ingredient);
-
-      if (validationErrors.length) {
-        throw new BadRequestException({
-          errors: ErrorUtils.toErrors(validationErrors),
-        });
-      }
-    }
-  }
-
-  private async validateDirections(directions: Direction[]) {
-    if (!directions || !directions.length) {
-      throw new BadRequestException({
-        errors: { ingredients: 'Recipe must have minimum 1 direction' },
-      });
-    }
-
-    for (const directionPlainObject of directions) {
-      const direction = plainToClass(Direction, directionPlainObject);
-      const validationErrors = await validate(direction);
-
-      if (validationErrors.length) {
-        throw new BadRequestException({
-          errors: ErrorUtils.toErrors(validationErrors),
-        });
-      }
     }
   }
 }

@@ -21,10 +21,15 @@ import { TransformInterceptor } from '../shared/interceptors/transform.intercept
 import { RecipeDto } from './dto/recipe.dto';
 import { UpdateRecipeValidationInterceptor } from './interceptors/update-recipe-validation.interceptor';
 import { UpdateRecipeDto } from './dto/update-recipe.dto';
+import { UsersService } from '../users/users.service';
+import { ConflictException } from '@nestjs/common';
 
 @Controller('recipes')
 export class RecipesController {
-  constructor(private readonly recipesService: RecipesService) {}
+  constructor(
+    private readonly recipesService: RecipesService,
+    private readonly usersService: UsersService,
+  ) {}
 
   @Get()
   @UseGuards(AuthGuard('jwt'))
@@ -67,7 +72,7 @@ export class RecipesController {
     new TransformInterceptor(RecipeDto),
   )
   async update(
-    @Param('slug') slug,
+    @Param('slug') slug: string,
     @Body() updateRecipeDto: UpdateRecipeDto,
   ): Promise<RecipeDto> {
     const recipe = await this.recipesService.findBySlug(slug);
@@ -82,10 +87,8 @@ export class RecipesController {
   @Delete(':slug')
   @UseGuards(AuthGuard('jwt'))
   @UsePipes(new ValidationPipe())
-  @UseInterceptors(
-    new TransformInterceptor(RecipeDto),
-  )
-  async delete(@Param('slug') slug) {
+  @UseInterceptors(new TransformInterceptor(RecipeDto))
+  async delete(@Param('slug') slug: string) {
     const recipe = await this.recipesService.findBySlug(slug);
 
     if (!recipe) {
