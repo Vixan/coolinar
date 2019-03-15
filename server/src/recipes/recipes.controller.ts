@@ -10,6 +10,7 @@ import {
   Param,
   NotFoundException,
   Delete,
+  ConflictException,
 } from '@nestjs/common';
 import { RecipesService } from './recipes.service';
 import { AuthGuard } from '@nestjs/passport';
@@ -21,8 +22,9 @@ import { TransformInterceptor } from '../shared/interceptors/transform.intercept
 import { RecipeDto } from './dto/recipe.dto';
 import { UpdateRecipeValidationInterceptor } from './interceptors/update-recipe-validation.interceptor';
 import { UpdateRecipeDto } from './dto/update-recipe.dto';
-import { UsersService } from '../users/users.service';
-import { ConflictException } from '@nestjs/common';
+import { CreateReviewDto } from './dto/create-review.dto';
+import { UsersService } from 'src/users/users.service';
+import { UpdateReviewDto } from './dto/update-review.dto';
 
 @Controller('recipes')
 export class RecipesController {
@@ -62,6 +64,103 @@ export class RecipesController {
     const recipe = new Recipe({ ...createRecipeDto });
 
     return this.recipesService.create(recipe);
+  }
+
+  @Post(':slug/reviews/:reviewAuthor')
+  @UseGuards(AuthGuard('jwt'))
+  @UsePipes(new ValidationPipe())
+  @UseInterceptors(new TransformInterceptor(RecipeDto))
+  async createReview(
+    @Param('slug') slug: string,
+    @Param('reviewAuthor') reviewAuthor: string,
+    @Body() createReviewDto: CreateReviewDto,
+  ): Promise<RecipeDto> {
+    const recipe = await this.recipesService.findBySlug(slug);
+
+    if (!recipe) {
+      throw new NotFoundException({ errors: { slug: 'Inexistent slug' } });
+    }
+
+    if (recipe.reviews.find(review => review.author === reviewAuthor)) {
+      throw new ConflictException({
+        errors: { author: 'Recipe already reviewd by specified user' },
+      });
+    }
+
+    const author = await this.usersService.findByName(reviewAuthor);
+
+    if (!author) {
+      throw new NotFoundException({
+        errors: { author: 'Inexistent review author' },
+      });
+    }
+
+    return this.recipesService.createReview(recipe, {
+      ...createReviewDto,
+      author: author.name,
+    });
+  }
+
+  @Put(':slug/reviews/:reviewAuthor')
+  @UseGuards(AuthGuard('jwt'))
+  @UsePipes(new ValidationPipe())
+  @UseInterceptors(new TransformInterceptor(RecipeDto))
+  async updateReview(
+    @Param('slug') slug: string,
+    @Param('reviewAuthor') reviewAuthor: string,
+    @Body() updateReviewDto: UpdateReviewDto,
+  ): Promise<RecipeDto> {
+    const recipe = await this.recipesService.findBySlug(slug);
+
+    if (!recipe) {
+      throw new NotFoundException({ errors: { slug: 'Inexistent slug' } });
+    }
+
+    const reviewToUpdate = recipe.reviews.find(
+      review => review.author === reviewAuthor,
+    );
+
+    if (!reviewToUpdate) {
+      throw new NotFoundException({
+        errors: {
+          author: 'Specified user does not have a review for this recipe',
+        },
+      });
+    }
+
+    return this.recipesService.updateReview(recipe, {
+      ...reviewToUpdate,
+      ...updateReviewDto,
+    });
+  }
+
+  @Delete(':slug/reviews/:reviewAuthor')
+  @UseGuards(AuthGuard('jwt'))
+  @UsePipes(new ValidationPipe())
+  @UseInterceptors(new TransformInterceptor(RecipeDto))
+  async deleteReview(
+    @Param('slug') slug: string,
+    @Param('reviewAuthor') reviewAuthor: string,
+  ) {
+    const recipe = await this.recipesService.findBySlug(slug);
+
+    if (!recipe) {
+      throw new NotFoundException({ errors: { slug: 'Inexistent slug' } });
+    }
+
+    const reviewToDelete = recipe.reviews.find(
+      review => review.author === reviewAuthor,
+    );
+
+    if (!reviewToDelete) {
+      throw new NotFoundException({
+        errors: {
+          author: 'Specified user does not have a review for this recipe',
+        },
+      });
+    }
+
+    return this.recipesService.deleteReview(recipe, reviewToDelete);
   }
 
   @Put(':slug')

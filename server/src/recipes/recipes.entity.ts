@@ -14,7 +14,6 @@ import { Direction } from './directions.entity';
 import { Ingredient } from './ingredients.entity';
 import { Nutrition } from './nutrition.entity';
 import { Category } from './category.entity';
-import { isArray } from 'util';
 
 @Entity()
 export class Recipe extends BaseEntity {

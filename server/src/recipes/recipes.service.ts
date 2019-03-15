@@ -4,7 +4,7 @@ import { Recipe } from './recipes.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { SlugProvider } from '../shared/providers/slug.provider';
-import { map } from 'rxjs/operators';
+import { Review } from './reviews.entity';
 
 @Injectable()
 export class RecipesService extends BaseService<Recipe> {
@@ -22,8 +22,34 @@ export class RecipesService extends BaseService<Recipe> {
       ...category,
       slug: this.slugProvider.createSlug(category.name, { lower: true }),
     }));
+    const reviews: Review[] = [];
 
-    return this.recipesRepository.save({ ...recipe, slug, categories });
+    return this.recipesRepository.save({
+      ...recipe,
+      slug,
+      categories,
+      reviews,
+    });
+  }
+
+  async createReview(recipe: Recipe, review: Review) {
+    recipe.reviews.push(review);
+
+    return this.recipesRepository.save(recipe);
+  }
+
+  async updateReview(recipe: Recipe, review: Review) {
+    const reviewIndex = recipe.reviews.findIndex(reviewToUpdate => reviewToUpdate.author === review.author);
+    recipe.reviews[reviewIndex] = review;
+
+    return this.recipesRepository.save(recipe);
+  }
+
+  async deleteReview(recipe: Recipe, review: Review) {
+    const reviewIndex = recipe.reviews.indexOf(review);
+    recipe.reviews.splice(reviewIndex, 1);
+
+    return this.recipesRepository.save(recipe);
   }
 
   async findBySlug(slug: string) {
