@@ -180,7 +180,7 @@ export class RecipesController {
       throw new NotFoundException({ errors: { slug: 'Inexistent slug' } });
     }
 
-    return this.recipesService.update({ ...recipe, ...updateRecipeDto });
+    return this.recipesService.update({...recipe, ...updateRecipeDto});
   }
 
   @Delete(':slug')

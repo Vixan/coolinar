@@ -39,7 +39,9 @@ export class RecipesService extends BaseService<Recipe> {
   }
 
   async updateReview(recipe: Recipe, review: Review) {
-    const reviewIndex = recipe.reviews.findIndex(reviewToUpdate => reviewToUpdate.author === review.author);
+    const reviewIndex = recipe.reviews.findIndex(
+      reviewToUpdate => reviewToUpdate.author === review.author,
+    );
     recipe.reviews[reviewIndex] = review;
 
     return this.recipesRepository.save(recipe);
@@ -70,20 +72,11 @@ export class RecipesService extends BaseService<Recipe> {
       ...category,
       slug: this.slugProvider.createSlug(category.name, { lower: true }),
     }));
-    const dateUpdated = new Date();
-    const id = recipe.id;
-    delete recipe.id;
-    await this.recipesRepository.update(
-      { id },
-      { ...recipe, slug, categories, dateUpdated },
-    );
 
-    return this.recipesRepository.findOne(id);
+    return this.recipesRepository.save({ ...recipe, slug, categories });
   }
 
   async delete(recipe: Recipe) {
-    await this.recipesRepository.delete({ ...recipe, id: recipe.id });
-
-    return recipe;
+    return this.recipesRepository.remove(recipe);
   }
 }
