@@ -1,7 +1,7 @@
 import { Ingredient } from '../ingredients.entity';
 import { Direction } from '../directions.entity';
 import { Nutrition } from '../nutrition.entity';
-import { Review } from '../reviews.entity';
+import { Review } from '../../reviews/reviews.entity';
 import { User } from '../../users/users.entity';
 import {
   IsString,
