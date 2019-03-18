@@ -8,6 +8,8 @@ import { RecipesService } from './recipes/recipes.service';
 import { RecipesController } from './recipes/recipes.controller';
 import { RecipesModule } from './recipes/recipes.module';
 import { SlugProvider } from './shared/providers/slug.provider';
+import { DateProvider } from './shared/providers/date.provider';
+import { ReviewsModule } from './reviews/reviews.module';
 
 @Module({
   imports: [
@@ -16,8 +18,9 @@ import { SlugProvider } from './shared/providers/slug.provider';
     AuthModule,
     ConfigModule,
     RecipesModule,
+    ReviewsModule,
   ],
-  providers: [RecipesService, SlugProvider],
+  providers: [RecipesService, SlugProvider, DateProvider],
   controllers: [RecipesController],
 })
 export class AppModule {

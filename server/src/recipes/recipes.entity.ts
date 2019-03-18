@@ -9,7 +9,7 @@ import {
   IsArray,
 } from 'class-validator';
 import { BaseEntity } from '../shared/base/base.entity';
-import { Review } from 'src/recipes/reviews.entity';
+import { Review } from 'src/reviews/reviews.entity';
 import { Direction } from './directions.entity';
 import { Ingredient } from './ingredients.entity';
 import { Nutrition } from './nutrition.entity';
@@ -67,6 +67,9 @@ export class Recipe extends BaseEntity {
   @Column(type => Review)
   @IsOptional()
   reviews: Review[];
+
+  @Column()
+  averageReviewScore: number;
 
   @Column()
   @IsNotEmpty({ message: 'Recipe author is required' })

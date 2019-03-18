@@ -1,4 +1,4 @@
-import { Column, BeforeInsert } from 'typeorm';
+import { Column } from 'typeorm';
 import { IsNotEmpty, IsString, IsOptional } from 'class-validator';
 
 export class Category {

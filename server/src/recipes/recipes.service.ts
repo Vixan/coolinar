@@ -4,7 +4,7 @@ import { Recipe } from './recipes.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { SlugProvider } from '../shared/providers/slug.provider';
-import { Review } from './reviews.entity';
+import { DateInterval } from 'src/shared/providers/date.provider';
 
 @Injectable()
 export class RecipesService extends BaseService<Recipe> {
@@ -17,39 +17,13 @@ export class RecipesService extends BaseService<Recipe> {
   }
 
   async create(recipe: Recipe) {
-    const slug = this.slugProvider.createSlug(recipe.title, { lower: true });
-    const categories = recipe.categories.map(category => ({
+    recipe.slug = this.slugProvider.createSlug(recipe.title, { lower: true });
+    recipe.categories = recipe.categories.map(category => ({
       ...category,
       slug: this.slugProvider.createSlug(category.name, { lower: true }),
     }));
-    const reviews: Review[] = [];
-
-    return this.recipesRepository.save({
-      ...recipe,
-      slug,
-      categories,
-      reviews,
-    });
-  }
-
-  async createReview(recipe: Recipe, review: Review) {
-    recipe.reviews.push(review);
-
-    return this.recipesRepository.save(recipe);
-  }
-
-  async updateReview(recipe: Recipe, review: Review) {
-    const reviewIndex = recipe.reviews.findIndex(
-      reviewToUpdate => reviewToUpdate.author === review.author,
-    );
-    recipe.reviews[reviewIndex] = review;
-
-    return this.recipesRepository.save(recipe);
-  }
-
-  async deleteReview(recipe: Recipe, review: Review) {
-    const reviewIndex = recipe.reviews.indexOf(review);
-    recipe.reviews.splice(reviewIndex, 1);
+    recipe.reviews = [];
+    recipe.averageReviewScore = 0;
 
     return this.recipesRepository.save(recipe);
   }
@@ -66,14 +40,44 @@ export class RecipesService extends BaseService<Recipe> {
     });
   }
 
+  async findByCreatedDateInterval(dateInterval: DateInterval) {
+    return this.recipesRepository.find({
+      where: {
+        dateCreated: { $gte: dateInterval.start, $lt: dateInterval.end },
+      },
+    });
+  }
+
+  async findByReviewMinScore(reviewScore: number) {
+    return this.recipesRepository.find({
+      where: {
+        'reviews.score': { $gte: reviewScore },
+      },
+      order: { averageReviewScore: -1 },
+    });
+  }
+
+  async findByTitleMatch(title: string) {
+    return this.recipesRepository.find({
+      where: {
+        title: { $regex: new RegExp(title, 'i') },
+      },
+    });
+  }
+
   async update(recipe: Recipe) {
-    const slug = this.slugProvider.createSlug(recipe.title, { lower: true });
-    const categories = recipe.categories.map(category => ({
+    recipe.slug = this.slugProvider.createSlug(recipe.title, { lower: true });
+    recipe.categories = recipe.categories.map(category => ({
       ...category,
       slug: this.slugProvider.createSlug(category.name, { lower: true }),
     }));
+    recipe.averageReviewScore =
+      recipe.reviews.reduce(
+        (totalScore, review) => review.score + totalScore,
+        0,
+      ) / recipe.reviews.length;
 
-    return this.recipesRepository.save({ ...recipe, slug, categories });
+    return this.recipesRepository.save(recipe);
   }
 
   async delete(recipe: Recipe) {

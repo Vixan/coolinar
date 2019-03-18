@@ -67,6 +67,9 @@ export class RecipeDto {
   readonly reviews: Review[];
 
   @Expose()
+  averageReviewScore: number;
+
+  @Expose()
   @IsNotEmpty({ message: 'Recipe author is required' })
   @IsString({ message: 'Recipe author username must be a string' })
   @MaxLength(255, {
