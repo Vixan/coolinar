@@ -1,3 +1,16 @@
+import { ArrayUtils } from 'src/shared/utils/array.utils';
+import { AuthGuard } from '@nestjs/passport';
+import { CreateRecipeDto } from './dto/create-recipe.dto';
+import { DatePart, DateProvider } from 'src/shared/providers/date.provider';
+import { Recipe } from './recipes.entity';
+import { RecipeDto } from './dto/recipe.dto';
+import { RecipesService } from './recipes.service';
+import { RecipeValidationInterceptor } from './interceptors/recipe-validation.interceptor';
+import { SearchRecipeDto } from './dto/search-recipe.dto';
+import { TransformInterceptor } from '../shared/interceptors/transform.interceptor';
+import { UpdateRecipeDto } from './dto/update-recipe.dto';
+import { UpdateRecipeValidationInterceptor } from './interceptors/update-recipe-validation.interceptor';
+import { ValidationPipe } from '../shared/pipes/validation.pipe';
 import {
   Controller,
   Get,
@@ -12,18 +25,6 @@ import {
   Delete,
   Query,
 } from '@nestjs/common';
-import { RecipesService } from './recipes.service';
-import { AuthGuard } from '@nestjs/passport';
-import { Recipe } from './recipes.entity';
-import { CreateRecipeDto } from './dto/create-recipe.dto';
-import { ValidationPipe } from '../shared/pipes/validation.pipe';
-import { RecipeValidationInterceptor } from './interceptors/recipe-validation.interceptor';
-import { TransformInterceptor } from '../shared/interceptors/transform.interceptor';
-import { RecipeDto } from './dto/recipe.dto';
-import { UpdateRecipeValidationInterceptor } from './interceptors/update-recipe-validation.interceptor';
-import { UpdateRecipeDto } from './dto/update-recipe.dto';
-import { DateProvider, DatePart } from 'src/shared/providers/date.provider';
-import { SearchRecipeDto } from './dto/search-recipe.dto';
 
 @Controller('recipes')
 export class RecipesController {
@@ -64,7 +65,30 @@ export class RecipesController {
   @UseGuards(AuthGuard('jwt'))
   @UseInterceptors(new TransformInterceptor(RecipeDto))
   async search(@Query() params: SearchRecipeDto) {
-    return this.recipesService.findByTitleMatch(params.title);
+    let recipes = await this.recipesService.findAll();
+
+    if (params.title) {
+      const recipesByTitle = await this.recipesService.findByTitleMatch(
+        params.title,
+      );
+      recipes = ArrayUtils.intersect(recipes, recipesByTitle, 'title');
+    }
+
+    if (params.ingredients) {
+      const recipesByIngredients = await this.recipesService.fingByIngredients(
+        params.ingredients,
+      );
+      recipes = ArrayUtils.intersect(recipes, recipesByIngredients, 'title');
+    }
+
+    if (params.categories) {
+      const recipesByCategories = await this.recipesService.fingByCategories(
+        params.categories,
+      );
+      recipes = ArrayUtils.intersect(recipes, recipesByCategories, 'title');
+    }
+
+    return recipes;
   }
 
   @Get(':slug')

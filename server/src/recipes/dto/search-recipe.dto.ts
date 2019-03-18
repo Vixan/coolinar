@@ -6,4 +6,12 @@ export class SearchRecipeDto {
   @Expose()
   @IsOptional()
   title: string;
+
+  @Expose()
+  @IsOptional()
+  ingredients: string[];
+
+  @Expose()
+  @IsOptional()
+  categories: string[];
 }

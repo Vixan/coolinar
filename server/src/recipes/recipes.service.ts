@@ -65,6 +65,26 @@ export class RecipesService extends BaseService<Recipe> {
     });
   }
 
+  async fingByIngredients(ingredientNames: string[]) {
+    return this.recipesRepository.find({
+      where: {
+        'ingredients.name': {
+          $all: ingredientNames,
+        },
+      },
+    });
+  }
+
+  async fingByCategories(categorySlugs: string[]) {
+    return this.recipesRepository.find({
+      where: {
+        'categories.slug': {
+          $all: categorySlugs,
+        },
+      },
+    });
+  }
+
   async update(recipe: Recipe) {
     recipe.slug = this.slugProvider.createSlug(recipe.title, { lower: true });
     recipe.categories = recipe.categories.map(category => ({
