@@ -24,9 +24,12 @@ import {
   NotFoundException,
   Delete,
   Query,
+  UseFilters,
 } from '@nestjs/common';
+import { HttpExceptionFilter } from 'src/shared/filters/http-exception.filter';
 
 @Controller('recipes')
+@UseFilters(HttpExceptionFilter)
 export class RecipesController {
   constructor(
     private readonly recipesService: RecipesService,

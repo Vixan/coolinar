@@ -6,6 +6,7 @@ import {
   ForbiddenException,
   HttpCode,
   HttpStatus,
+  UseFilters,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { LoginUserDto } from './dto/login-user';
@@ -15,8 +16,11 @@ import { ValidationPipe } from '../shared/pipes/validation.pipe';
 import { ConflictException } from '@nestjs/common';
 import { EncryptionService } from '../encryption/encryption.service';
 import { User } from '../users/users.entity';
+import { HttpExceptionFilter } from 'src/shared/filters/http-exception.filter';
+import { ValidationError } from 'class-validator';
 
 @Controller('auth')
+@UseFilters(HttpExceptionFilter)
 export class AuthController {
   constructor(
     private readonly authService: AuthService,
@@ -74,7 +78,7 @@ export class AuthController {
       });
     }
 
-    const user = new User({...registerUserDto});
+    const user = new User({ ...registerUserDto });
     const createdUser = await this.userService.create(user);
 
     return this.authService.createToken(createdUser);

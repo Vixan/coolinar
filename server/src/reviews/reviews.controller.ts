@@ -11,6 +11,7 @@ import {
   ConflictException,
   ValidationPipe,
   Controller,
+  UseFilters,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { TransformInterceptor } from 'src/shared/interceptors/transform.interceptor';
@@ -20,8 +21,10 @@ import { RecipesService } from 'src/recipes/recipes.service';
 import { UsersService } from 'src/users/users.service';
 import { UpdateReviewDto } from 'src/reviews/dto/update-review.dto';
 import { ReviewsService } from './reviews.service';
+import { HttpExceptionFilter } from 'src/shared/filters/http-exception.filter';
 
 @Controller('reviews')
+@UseFilters(HttpExceptionFilter)
 export class ReviewsController {
   constructor(
     private readonly recipesService: RecipesService,
