@@ -48,12 +48,12 @@ export class Recipe extends BaseEntity {
 
   @Column()
   @IsInt({ message: 'Recipe preparation time must be an integer' })
-  @Min(1, { message: 'Recipe preparation time must be a pozitive integer' })
+  @Min(1, { message: 'Recipe preparation time must be a positive integer' })
   preparationTime: number;
 
   @Column()
   @IsInt({ message: 'Recipe cooking time must be an integer' })
-  @Min(1, { message: 'Recipe cooking time must be a pozitive integer' })
+  @Min(0, { message: 'Recipe cooking time must be a positive integer' })
   cookingTime: number;
 
   @Column()
