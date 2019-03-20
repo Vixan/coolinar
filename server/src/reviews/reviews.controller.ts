@@ -74,7 +74,7 @@ export class ReviewsController {
   async update(
     @Param('slug') slug: string,
     @Param('reviewAuthor') reviewAuthor: string,
-    @Body() updateReviewDto: UpdateReviewDto,
+    @Body() updateReviewDto: Partial<UpdateReviewDto>,
   ): Promise<RecipeDto> {
     const recipe = await this.recipesService.findBySlug(slug);
 

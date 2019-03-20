@@ -129,7 +129,7 @@ export class RecipesController {
   )
   async update(
     @Param('slug') slug: string,
-    @Body() updateRecipeDto: UpdateRecipeDto,
+    @Body() updateRecipeDto: Partial<UpdateRecipeDto>,
   ): Promise<RecipeDto> {
     const recipe = await this.recipesService.findBySlug(slug);
 

@@ -26,15 +26,25 @@ export class UpdateRecipeValidationInterceptor implements NestInterceptor {
   }
 
   private async validateNested(updateRecipeDto: UpdateRecipeDto) {
-    const ingredients = updateRecipeDto.ingredients.map(ingredient =>
-      plainToClass(Ingredient, ingredient),
-    );
-    const directions = updateRecipeDto.directions.map(direction =>
-      plainToClass(Direction, direction),
-    );
-    const categories = updateRecipeDto.categories.map(category =>
-      plainToClass(Category, category),
-    );
+    let ingredients: Ingredient[] = [];
+    let directions: Direction[] = [];
+    let categories: Category[] = [];
+
+    if (updateRecipeDto.ingredients) {
+      ingredients = updateRecipeDto.ingredients.map(ingredient =>
+        plainToClass(Ingredient, ingredient),
+      );
+    }
+    if (updateRecipeDto.directions) {
+      directions = updateRecipeDto.directions.map(direction =>
+        plainToClass(Direction, direction),
+      );
+    }
+    if (updateRecipeDto.categories) {
+      categories = updateRecipeDto.categories.map(category =>
+        plainToClass(Category, category),
+      );
+    }
     const recipeDtoToValidate = plainToClass(UpdateRecipeDto, {
       ...updateRecipeDto,
       ingredients,
