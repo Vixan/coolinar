@@ -9,7 +9,6 @@ import { RecipeValidationInterceptor } from './interceptors/recipe-validation.in
 import { SearchRecipeDto } from './dto/search-recipe.dto';
 import { TransformInterceptor } from '../shared/interceptors/transform.interceptor';
 import { UpdateRecipeDto } from './dto/update-recipe.dto';
-import { UpdateRecipeValidationInterceptor } from './interceptors/update-recipe-validation.interceptor';
 import { ValidationPipe } from '../shared/pipes/validation.pipe';
 import {
   Controller,
@@ -27,6 +26,7 @@ import {
   UseFilters,
 } from '@nestjs/common';
 import { HttpExceptionFilter } from 'src/shared/filters/http-exception.filter';
+import { PaginationOptions } from 'src/shared/interfaces/pagination-options.interface';
 
 @Controller('recipes')
 @UseFilters(HttpExceptionFilter)
@@ -39,29 +39,40 @@ export class RecipesController {
   @Get()
   @UseGuards(AuthGuard('jwt'))
   @UseInterceptors(new TransformInterceptor(RecipeDto))
-  async getAll(): Promise<RecipeDto[]> {
-    return this.recipesService.findAll();
+  async getAll(
+    @Query() pagination: PaginationOptions,
+  ): Promise<RecipeDto[]> {
+    return this.recipesService.paginate({
+      take: Number(pagination.take) || 10,
+      skip: Number(pagination.skip) || 0,
+    });
   }
 
   @Get('/daily')
   @UseGuards(AuthGuard('jwt'))
   @UseInterceptors(new TransformInterceptor(RecipeDto))
-  async getDaily() {
+  async getDaily(@Query() pagination: PaginationOptions) {
     const dateInterval = this.dateProvider.createDateInterval(
       new Date(),
-      DatePart.DAY,
+      DatePart.MONTH,
     );
 
-    return this.recipesService.findByCreatedDateInterval(dateInterval);
+    return this.recipesService.findByCreatedDateInterval(dateInterval, {
+      take: Number(pagination.take) || 10,
+      skip: Number(pagination.skip) || 0,
+    });
   }
 
   @Get('/top-rated')
   @UseGuards(AuthGuard('jwt'))
   @UseInterceptors(new TransformInterceptor(RecipeDto))
-  async getTopRated() {
+  async getTopRated(@Query() pagination: PaginationOptions) {
     const minScore: number = 4;
 
-    return this.recipesService.findByReviewMinScore(minScore);
+    return this.recipesService.findByReviewMinScore(minScore, {
+      take: Number(pagination.take) || 10,
+      skip: Number(pagination.skip) || 0,
+    });
   }
 
   @Get('/search')
@@ -124,7 +135,7 @@ export class RecipesController {
   @UseGuards(AuthGuard('jwt'))
   @UsePipes(new ValidationPipe())
   @UseInterceptors(
-    UpdateRecipeValidationInterceptor,
+    RecipeValidationInterceptor,
     new TransformInterceptor(RecipeDto),
   )
   async update(
