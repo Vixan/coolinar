@@ -8,7 +8,7 @@ export class Direction {
   text: string;
 
   @Column()
-  @IsUrl({}, { message: 'Direction media links must be valid URL' })
   @IsOptional()
+  @IsUrl({}, { message: 'Direction media links must be valid URL' })
   mediaLinks: string[];
 }

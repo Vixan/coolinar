@@ -10,7 +10,7 @@ export abstract class ErrorUtils {
 
   public static createErrors(errors: ValidationError[]) {
     const errorCollector = (object: any, result: any[]) => {
-      if (object.hasOwnProperty('constraints')) {
+      if (object && object.hasOwnProperty('constraints')) {
         result.push({ [object.property]: Object.values(object.constraints) });
       }
 
@@ -21,12 +21,12 @@ export abstract class ErrorUtils {
       }
     };
 
-    const contraintErrors = [];
+    const constraintErrors = [];
 
     errors.forEach(error => {
-      errorCollector(error, contraintErrors);
+      errorCollector(error, constraintErrors);
     });
 
-    return contraintErrors;
+    return constraintErrors;
   }
 }

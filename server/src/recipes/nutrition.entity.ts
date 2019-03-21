@@ -43,4 +43,10 @@ export class Nutrition {
   @IsInt({ message: 'Recipe fibre value must be an integer' })
   @Min(0, { message: 'Recipe fibre value must be pozitive or 0' })
   fibre: number;
+
+  @Column()
+  @IsOptional()
+  @IsInt({ message: 'Recipe sodium value must be an integer' })
+  @Min(0, { message: 'Recipe sodium value must be pozitive or 0' })
+  sodium: number;
 }

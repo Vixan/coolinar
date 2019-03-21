@@ -1,11 +1,10 @@
 import { Column } from 'typeorm';
 import {
   IsString,
-  IsInt,
-  Min,
   IsNotEmpty,
   IsEnum,
   ValidateIf,
+  IsOptional,
 } from 'class-validator';
 
 export enum IngredientMeasurementUnits {
@@ -14,9 +13,16 @@ export enum IngredientMeasurementUnits {
   Tablespoon = 'tablespoon',
   Ounce = 'ounce',
   Pinch = 'pinch',
+  Stalk = 'stalk',
+  Sheet = 'sheet',
+  Kilogram = 'kilogram',
+  Pound = 'pound',
+  Head = 'head',
 }
 
-const formattedMeasurementUnits = Object.values(IngredientMeasurementUnits).join(', ');
+const formattedMeasurementUnits = Object.values(
+  IngredientMeasurementUnits,
+).join(', ');
 
 export class Ingredient {
   @Column()
@@ -25,13 +31,11 @@ export class Ingredient {
   name: string;
 
   @Column()
-  @IsInt({ message: 'Ingredient quantity must be an integer' })
-  @Min(1, {
-    message: 'Ingredient quantity must be a positive non-zero integer',
-  })
-  quantity: number;
+  @IsNotEmpty({ message: 'Ingredient quantity is required' })
+  quantity: number | string;
 
   @Column()
+  @IsOptional()
   @ValidateIf(ingredient => typeof ingredient.unit !== 'undefined')
   @IsEnum(IngredientMeasurementUnits, {
     message: `Ingredient measurement must be one of: ${formattedMeasurementUnits}`,
