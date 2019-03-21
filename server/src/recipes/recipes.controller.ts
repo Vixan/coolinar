@@ -37,7 +37,6 @@ export class RecipesController {
   ) {}
 
   @Get()
-  @UseGuards(AuthGuard('jwt'))
   @UseInterceptors(new TransformInterceptor(RecipeDto))
   async getAll(
     @Query() pagination: PaginationOptions,
@@ -49,7 +48,6 @@ export class RecipesController {
   }
 
   @Get('/daily')
-  @UseGuards(AuthGuard('jwt'))
   @UseInterceptors(new TransformInterceptor(RecipeDto))
   async getDaily(@Query() pagination: PaginationOptions) {
     const dateInterval = this.dateProvider.createDateInterval(
@@ -64,7 +62,6 @@ export class RecipesController {
   }
 
   @Get('/top-rated')
-  @UseGuards(AuthGuard('jwt'))
   @UseInterceptors(new TransformInterceptor(RecipeDto))
   async getTopRated(@Query() pagination: PaginationOptions) {
     const minScore: number = 4;
@@ -76,7 +73,6 @@ export class RecipesController {
   }
 
   @Get('/search')
-  @UseGuards(AuthGuard('jwt'))
   @UseInterceptors(new TransformInterceptor(RecipeDto))
   async search(@Query() params: SearchRecipeDto) {
     let recipes = await this.recipesService.findAll();
@@ -106,7 +102,6 @@ export class RecipesController {
   }
 
   @Get(':slug')
-  @UseGuards(AuthGuard('jwt'))
   @UseInterceptors(new TransformInterceptor(RecipeDto))
   async getBySlug(@Param('slug') slug: string): Promise<RecipeDto> {
     const recipe = await this.recipesService.findBySlug(slug);

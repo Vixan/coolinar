@@ -72,4 +72,10 @@ export class RecipeDto {
     message: 'Recipe author username must be maximum 255 characters',
   })
   readonly author: string;
+
+  @Expose()
+  readonly dateCreated: Date;
+
+  @Expose()
+  readonly dateUpdated: Date;
 }
