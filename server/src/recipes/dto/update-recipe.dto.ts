@@ -28,7 +28,7 @@ export class UpdateRecipeDto {
   @IsNotEmpty({ message: 'Recipe categories is required' })
   @IsArray({ message: 'Recipe categories must be an array' })
   @ValidateNested({ each: true })
-  readonly categories: Category[];
+  readonly categories: string[];
 
   @Expose()
   @IsOptional()
@@ -40,14 +40,14 @@ export class UpdateRecipeDto {
   @IsNotEmpty({ message: 'Recipe ingredients is required' })
   @IsArray({ message: 'Recipe ingredients must be an array' })
   @ValidateNested({ each: true })
-  readonly ingredients: Ingredient[];
+  readonly ingredients: string[];
 
   @Expose()
   @IsOptional()
   @IsNotEmpty({ message: 'Recipe directions is required' })
   @IsArray({ message: 'Recipe ingredients must be an array' })
   @ValidateNested({ each: true })
-  readonly directions: Direction[];
+  readonly directions: string[];
 
   @Expose()
   @IsOptional()

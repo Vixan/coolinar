@@ -1,8 +1,5 @@
-import { Ingredient } from '../ingredients.entity';
-import { Direction } from '../directions.entity';
 import { Nutrition } from '../nutrition.entity';
 import { Review } from '../../reviews/reviews.entity';
-import { User } from '../../users/users.entity';
 import {
   IsString,
   MaxLength,
@@ -13,7 +10,6 @@ import {
   IsArray,
 } from 'class-validator';
 import { Exclude, Expose } from 'class-transformer';
-import { Category } from '../category.entity';
 
 @Exclude()
 export class RecipeDto {
@@ -30,7 +26,7 @@ export class RecipeDto {
   @Expose()
   @IsNotEmpty({ message: 'Recipe categories is required' })
   @IsArray({ message: 'Recipe categories must be an array' })
-  readonly categories: Category[];
+  readonly categories: string[];
 
   @Expose()
   @IsOptional()
@@ -38,11 +34,11 @@ export class RecipeDto {
 
   @IsNotEmpty({ message: 'Recipe ingredients is required' })
   @Expose()
-  readonly ingredients: Ingredient[];
+  readonly ingredients: string[];
 
   @IsNotEmpty({ message: 'Recipe directions is required' })
   @Expose()
-  readonly directions: Direction[];
+  readonly directions: string[];
 
   @Expose()
   @IsInt({ message: 'Recipe preparation time must be an integer' })

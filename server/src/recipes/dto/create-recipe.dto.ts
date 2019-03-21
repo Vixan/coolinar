@@ -9,11 +9,8 @@ import {
   Min,
   ValidateNested,
   IsArray,
-  MinLength,
+  ArrayNotEmpty,
 } from 'class-validator';
-import { Ingredient } from '../ingredients.entity';
-import { Direction } from '../directions.entity';
-import { Category } from '../category.entity';
 
 @Exclude()
 export class CreateRecipeDto {
@@ -24,27 +21,27 @@ export class CreateRecipeDto {
   readonly title: string;
 
   @Expose()
-  @IsNotEmpty({ message: 'Recipe categories is required' })
-  @IsArray({ message: 'Recipe categories must be an array' })
-  @ValidateNested({ each: true })
-  readonly categories: Category[];
-
-  @Expose()
   @IsOptional()
   @IsString({ message: 'Recipe description must be a string' })
   readonly description: string;
 
   @Expose()
+  @IsNotEmpty({ message: 'Recipe categories is required' })
+  @IsArray({ message: 'Recipe categories must be an array' })
+  @ArrayNotEmpty({ message: 'Recipe categories cannot be empty' })
+  readonly categories: string[];
+
+  @Expose()
   @IsNotEmpty({ message: 'Recipe ingredients is required' })
   @IsArray({ message: 'Recipe ingredients must be an array' })
-  @ValidateNested({ each: true })
-  readonly ingredients: Ingredient[];
+  @ArrayNotEmpty({ message: 'Recipe ingredients cannot be empty' })
+  readonly ingredients: string[];
 
   @Expose()
   @IsNotEmpty({ message: 'Recipe directions is required' })
   @IsArray({ message: 'Recipe ingredients must be an array' })
-  @ValidateNested({ each: true })
-  readonly directions: Direction[];
+  @ArrayNotEmpty({ message: 'Recipe directions cannot be empty' })
+  readonly directions: string[];
 
   @Expose()
   @IsInt({ message: 'Recipe preparation time must be an integer' })

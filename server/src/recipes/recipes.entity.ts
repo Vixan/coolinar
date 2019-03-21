@@ -7,13 +7,11 @@ import {
   Min,
   IsNotEmpty,
   IsArray,
+  ArrayNotEmpty,
 } from 'class-validator';
 import { BaseEntity } from '../shared/base/base.entity';
 import { Review } from 'src/reviews/reviews.entity';
-import { Direction } from './directions.entity';
-import { Ingredient } from './ingredients.entity';
 import { Nutrition } from './nutrition.entity';
-import { Category } from './category.entity';
 
 @Entity()
 export class Recipe extends BaseEntity {
@@ -27,24 +25,25 @@ export class Recipe extends BaseEntity {
   @MaxLength(255, { message: 'Recipe title must be maximum 255 characters' })
   title: string;
 
-  @Column(type => Category)
-  @IsNotEmpty({ message: 'Recipe must have minimum 1 category' })
-  @IsArray({ message: 'Recipe categories must be an array' })
-  categories: Category[];
-
   @Column()
   @IsOptional()
+  @IsString({ message: 'Recipe description must be a string' })
   description: string;
 
-  @Column(type => Ingredient)
-  @IsNotEmpty({ message: 'Recipe ingredients is required' })
-  @IsArray({ message: 'Recipe ingredients must be an array' })
-  ingredients: Ingredient[];
+  @Column()
+  @IsArray({ message: 'Recipe categories must be an array' })
+  @ArrayNotEmpty({ message: 'Recipe categories cannot be empty' })
+  categories: string[];
 
-  @Column(type => Direction)
-  @IsNotEmpty({ message: 'Recipe directions is required' })
+  @Column()
+  @IsArray({ message: 'Recipe ingredients must be an array' })
+  @ArrayNotEmpty({ message: 'Recipe ingredients cannot be empty' })
+  ingredients: string[];
+
+  @Column()
   @IsArray({ message: 'Recipe directions must be an array' })
-  directions: Direction[];
+  @ArrayNotEmpty({ message: 'Recipe directions cannot be empty' })
+  directions: string[];
 
   @Column()
   @IsInt({ message: 'Recipe preparation time must be an integer' })
