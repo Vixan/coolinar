@@ -11,5 +11,6 @@ import { DateProvider } from 'src/shared/providers/date.provider';
   imports: [TypeOrmModule.forFeature([Recipe]), UsersModule],
   controllers: [RecipesController],
   providers: [RecipesService, SlugProvider, DateProvider],
+  exports: [RecipesService],
 })
 export class RecipesModule {}

@@ -10,6 +10,7 @@ import { RecipesModule } from './recipes/recipes.module';
 import { SlugProvider } from './shared/providers/slug.provider';
 import { DateProvider } from './shared/providers/date.provider';
 import { ReviewsModule } from './reviews/reviews.module';
+import { FavoritesModule } from './favorites/favorites.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { ReviewsModule } from './reviews/reviews.module';
     ConfigModule,
     RecipesModule,
     ReviewsModule,
+    FavoritesModule,
   ],
   providers: [RecipesService, SlugProvider, DateProvider],
   controllers: [RecipesController],

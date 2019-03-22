@@ -38,6 +38,7 @@ export class UsersService extends BaseService<User> {
     const createdUser = new User({
       ...user,
       password: await this.encryptionService.getHash(user.password),
+      favoriteRecipes: [],
     });
 
     return this.usersRepository.save(createdUser);

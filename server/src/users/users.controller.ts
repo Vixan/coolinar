@@ -38,14 +38,12 @@ export class UsersController {
   @Put(':name')
   @UseGuards(AuthGuard('jwt'))
   @UsePipes(new ValidationPipe())
-  @UseInterceptors(
-    new TransformInterceptor(UserDto),
-  )
+  @UseInterceptors(new TransformInterceptor(UserDto))
   async update(
-    @Param('name') userName: string,
+    @Param('name') name: string,
     @Body() updateUserDto: UpdateUserDto,
   ): Promise<UserDto> {
-    const user = await this.usersService.findByName(userName);
+    const user = await this.usersService.findByName(name);
 
     if (!user) {
       throw new NotFoundException({ errors: { name: 'Inexistent username' } });
