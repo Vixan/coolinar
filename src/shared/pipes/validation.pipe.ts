@@ -33,6 +33,7 @@ export class ValidationPipe implements PipeTransform<any> {
 
   private isPrimitiveType(metatype: any): boolean {
     const types = [String, Boolean, Number, Array, Object];
+
     return !types.find(type => metatype === type);
   }
 }

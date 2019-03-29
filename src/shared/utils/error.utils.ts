@@ -2,9 +2,9 @@ import { ValidationError } from 'class-validator';
 
 export abstract class ErrorUtils {
   public static createErrors(errors: ValidationError[]) {
-    const errorCollector = (object: any, result: any[]) => {
+    const errorCollector = (object: any, result: any) => {
       if (object && object.hasOwnProperty('constraints')) {
-        result.push({ [object.property]: Object.values(object.constraints) });
+        result[object.property] = (Object.values(object.constraints));
       }
 
       for (const key of Object.keys(object)) {
@@ -14,7 +14,7 @@ export abstract class ErrorUtils {
       }
     };
 
-    const constraintErrors = [];
+    const constraintErrors = {};
 
     errors.forEach(error => {
       errorCollector(error, constraintErrors);
