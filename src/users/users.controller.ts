@@ -23,14 +23,21 @@ export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Get()
+  @UseInterceptors(new TransformInterceptor(UserDto))
+  async getByEmail(@Body('email') email: string): Promise<User> {
+    return this.usersService.findByEmail(email);
+  }
+
+  @Get('/search')
   @UseGuards(AuthGuard('jwt'))
   @UseInterceptors(new TransformInterceptor(UserDto))
-  async getAll(): Promise<UserDto[]> {
+  async search(): Promise<UserDto[]> {
     return this.usersService.findAll();
   }
 
   @Get(':name')
   @UseGuards(AuthGuard('jwt'))
+  @UseInterceptors(new TransformInterceptor(UserDto))
   async getByName(@Param('name') name: string): Promise<User> {
     return this.usersService.findByName(name);
   }
