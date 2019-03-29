@@ -3,10 +3,10 @@ import {
   Post,
   Body,
   UsePipes,
-  ForbiddenException,
   HttpCode,
   HttpStatus,
   UseFilters,
+  UnauthorizedException,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { LoginUserDto } from './dto/login-user';
@@ -17,7 +17,6 @@ import { ConflictException } from '@nestjs/common';
 import { EncryptionService } from '../encryption/encryption.service';
 import { User } from '../users/users.entity';
 import { HttpExceptionFilter } from 'src/shared/filters/http-exception.filter';
-import { ValidationError } from 'class-validator';
 
 @Controller('auth')
 @UseFilters(HttpExceptionFilter)
@@ -35,7 +34,7 @@ export class AuthController {
     const user = await this.userService.findByEmail(loginUserDto.email);
 
     if (!user) {
-      throw new ForbiddenException({
+      throw new UnauthorizedException({
         errors: { email: 'Inexistent email' },
       });
     }
@@ -46,7 +45,7 @@ export class AuthController {
     );
 
     if (!isPasswordCorrect) {
-      throw new ForbiddenException({
+      throw new UnauthorizedException({
         errors: { password: 'Incorrect password' },
       });
     }
