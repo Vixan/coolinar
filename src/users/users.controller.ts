@@ -9,6 +9,7 @@ import {
   Put,
   Body,
   UsePipes,
+  Post,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { User } from './users.entity';
@@ -23,16 +24,16 @@ export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Get()
+  @UseGuards(AuthGuard('jwt'))
+  @UseInterceptors(new TransformInterceptor(UserDto))
+  async getAll(): Promise<UserDto[]> {
+    return this.usersService.findAll();
+  }
+
+  @Post()
   @UseInterceptors(new TransformInterceptor(UserDto))
   async getByEmail(@Body('email') email: string): Promise<User> {
     return this.usersService.findByEmail(email);
-  }
-
-  @Get('/search')
-  @UseGuards(AuthGuard('jwt'))
-  @UseInterceptors(new TransformInterceptor(UserDto))
-  async search(): Promise<UserDto[]> {
-    return this.usersService.findAll();
   }
 
   @Get(':name')
