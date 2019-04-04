@@ -52,13 +52,22 @@ export class RecipesController {
   async getDaily(@Query() pagination: PaginationOptions) {
     const dateInterval = this.dateProvider.createDateInterval(
       new Date(),
-      DatePart.MONTH,
+      DatePart.DAY,
     );
 
     return this.recipesService.findByCreatedDateInterval(dateInterval, {
       take: Number(pagination.take) || 10,
       skip: Number(pagination.skip) || 0,
     });
+  }
+
+  @Get('/latest')
+  @UseInterceptors(new TransformInterceptor(RecipeDto))
+  async getLatest(@Query() pagination: PaginationOptions) {
+    return this.recipesService.paginateAndSort({
+      take: Number(pagination.take) || 10,
+      skip: Number(pagination.skip) || 0,
+    }, 'dateCreated');
   }
 
   @Get('/top-rated')

@@ -37,7 +37,6 @@ export class UsersController {
   }
 
   @Get(':name')
-  @UseGuards(AuthGuard('jwt'))
   @UseInterceptors(new TransformInterceptor(UserDto))
   async getByName(@Param('name') name: string): Promise<User> {
     return this.usersService.findByName(name);

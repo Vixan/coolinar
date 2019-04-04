@@ -4,10 +4,10 @@ export abstract class ErrorUtils {
   public static createErrors(errors: ValidationError[]) {
     const errorCollector = (object: any, result: any) => {
       if (object && object.hasOwnProperty('constraints')) {
-        result[object.property] = (Object.values(object.constraints));
+        result[object.property] = Object.values(object.constraints);
       }
 
-      for (const key of Object.keys(object)) {
+      for (const key of Object.keys(object || {})) {
         if (typeof object[key] === 'object') {
           errorCollector(object[key], result);
         }

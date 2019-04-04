@@ -25,6 +25,19 @@ export class RecipesService extends BaseService<Recipe> {
     return results;
   }
 
+  async paginateAndSort(
+    paginationOptions: PaginationOptions,
+    sortBy: string,
+    isAscending?: boolean,
+  ) {
+    const [results] = await this.recipesRepository.findAndCount({
+      order: { [sortBy]: isAscending ? 1 : -1 },
+      ...paginationOptions,
+    });
+
+    return results;
+  }
+
   async findBySlug(slug: string) {
     return this.recipesRepository.findOne({
       slug,
