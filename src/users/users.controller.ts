@@ -42,30 +42,31 @@ export class UsersController {
     return this.usersService.findBySlug(slug);
   }
 
-  @Put(':name')
+  @Put(':slug')
   @UseGuards(AuthGuard('jwt'))
   @UsePipes(new ValidationPipe())
   @UseInterceptors(new TransformInterceptor(UserDto))
   async update(
-    @Param('name') name: string,
+    @Param('slug') slug: string,
     @Body() updateUserDto: UpdateUserDto,
   ): Promise<UserDto> {
-    const user = await this.usersService.findByName(name);
+    const user = await this.usersService.findBySlug(slug);
 
     if (!user) {
-      throw new NotFoundException({ errors: { name: 'Inexistent username' } });
+      throw new NotFoundException({ errors: { slug: 'User not found' } });
     }
 
     return this.usersService.update({ ...user, ...updateUserDto });
   }
 
-  @Delete(':name')
+  @Delete(':slug')
   @UseGuards(AuthGuard('jwt'))
-  async delete(@Param('name') name: string): Promise<User> {
-    const user = await this.usersService.findByName(name);
+  @UseInterceptors(new TransformInterceptor(UserDto))
+  async delete(@Param('slug') slug: string): Promise<User> {
+    const user = await this.usersService.findBySlug(slug);
 
     if (!user) {
-      throw new NotFoundException({ errors: { name: 'Username not found' } });
+      throw new NotFoundException({ errors: { slug: 'User not found' } });
     }
 
     return this.usersService.delete(user);
