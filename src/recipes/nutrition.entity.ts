@@ -22,18 +22,6 @@ export class Nutrition {
 
   @Column()
   @IsOptional()
-  @IsInt({ message: 'Recipe sugar value must be an integer' })
-  @Min(0, { message: 'Recipe sugar value must be pozitive or 0' })
-  sugar: number;
-
-  @Column()
-  @IsOptional()
-  @IsInt({ message: 'Recipe salt value must be an integer' })
-  @Min(0, { message: 'Recipe salt value must be pozitive or 0' })
-  salt: number;
-
-  @Column()
-  @IsOptional()
   @IsInt({ message: 'Recipe protein value must be an integer' })
   @Min(0, { message: 'Recipe protein value must be pozitive or 0' })
   protein: number;

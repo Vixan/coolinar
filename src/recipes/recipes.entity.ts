@@ -8,6 +8,8 @@ import {
   IsNotEmpty,
   IsArray,
   ArrayNotEmpty,
+  IsUrl,
+  IsNumber,
 } from 'class-validator';
 import { BaseEntity } from '../shared/base/base.entity';
 import { Review } from 'src/reviews/reviews.entity';
@@ -69,6 +71,19 @@ export class Recipe extends BaseEntity {
 
   @Column()
   averageReviewScore: number;
+
+  @Column()
+  @IsOptional()
+  @IsUrl(
+    {},
+    { each: true, message: 'Recipe ImagesUrl contains an invalid URL' },
+  )
+  imageUrls: string[];
+
+  @Column()
+  @IsOptional()
+  @IsNumber({}, { message: 'Recipe servings count must be a number' })
+  servings: number;
 
   @Column()
   @IsNotEmpty({ message: 'Recipe author is required' })

@@ -13,6 +13,10 @@ export class User extends BaseEntity {
   name: string;
 
   @Column()
+  @IsString()
+  slug: string;
+
+  @Column()
   @IsEmail()
   email: string;
 

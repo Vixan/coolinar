@@ -36,10 +36,10 @@ export class UsersController {
     return this.usersService.findByEmail(email);
   }
 
-  @Get(':name')
+  @Get(':slug')
   @UseInterceptors(new TransformInterceptor(UserDto))
-  async getByName(@Param('name') name: string): Promise<User> {
-    return this.usersService.findByName(name);
+  async getBySlug(@Param('slug') slug: string): Promise<User> {
+    return this.usersService.findBySlug(slug);
   }
 
   @Put(':name')

@@ -112,8 +112,9 @@ export class RecipesService extends BaseService<Recipe> {
 
   async create(recipe: Recipe) {
     recipe.slug = this.slugProvider.createSlug(recipe.title, { lower: true });
-    recipe.reviews = [];
     recipe.averageReviewScore = 0;
+    recipe.reviews = recipe.reviews || [];
+    recipe.imageUrls = recipe.imageUrls || [];
 
     return this.recipesRepository.save(recipe);
   }

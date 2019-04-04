@@ -2,15 +2,16 @@ import { Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './users.entity';
-import { RegisterUserDto } from '../auth/dto/register-user.dto';
 import { EncryptionService } from '../encryption/encryption.service';
 import { BaseService } from '../shared/base/base.service';
+import { SlugProvider } from 'src/shared/providers/slug.provider';
 
 @Injectable()
 export class UsersService extends BaseService<User> {
   constructor(
     private readonly encryptionService: EncryptionService,
     @InjectRepository(User) private readonly usersRepository: Repository<User>,
+    private readonly slugProvider: SlugProvider,
   ) {
     super(usersRepository);
   }
@@ -18,6 +19,12 @@ export class UsersService extends BaseService<User> {
   async findByName(name: string): Promise<User> {
     return this.usersRepository.findOne({
       name,
+    });
+  }
+
+  async findBySlug(slug: string): Promise<User> {
+    return this.usersRepository.findOne({
+      slug,
     });
   }
 
@@ -35,13 +42,11 @@ export class UsersService extends BaseService<User> {
   }
 
   async create(user: User): Promise<User> {
-    const createdUser = new User({
-      ...user,
-      password: await this.encryptionService.getHash(user.password),
-      favoriteRecipes: [],
-    });
+    user.slug = this.slugProvider.createSlug(user.name, { lower: true });
+    user.password = await this.encryptionService.getHash(user.password);
+    user.favoriteRecipes = [];
 
-    return this.usersRepository.save(createdUser);
+    return this.usersRepository.save(user);
   }
 
   async update(user: User): Promise<User> {

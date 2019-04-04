@@ -63,7 +63,15 @@ export class RecipeDto {
   readonly reviews: Review[];
 
   @Expose()
-  averageReviewScore: number;
+  readonly averageReviewScore: number;
+
+  @Expose()
+  @IsOptional()
+  readonly imageUrls: string[];
+
+  @Expose()
+  @IsOptional()
+  readonly servings: number;
 
   @Expose()
   @IsNotEmpty({ message: 'Recipe author is required' })

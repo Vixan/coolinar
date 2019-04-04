@@ -9,6 +9,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { ConfigService } from '../config/config.service';
 import { JwtConfigService } from './jwt/jwt-config.service';
 import { EncryptionModule } from '../encryption/encryption.module';
+import { SlugProvider } from 'src/shared/providers/slug.provider';
 
 @Module({
   imports: [
@@ -21,7 +22,7 @@ import { EncryptionModule } from '../encryption/encryption.module';
     ConfigModule,
     EncryptionModule,
   ],
-  providers: [AuthService, JwtStrategy, UsersService],
+  providers: [AuthService, JwtStrategy, UsersService, SlugProvider],
   controllers: [AuthController],
 })
 export class AuthModule {}

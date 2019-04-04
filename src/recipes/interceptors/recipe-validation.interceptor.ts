@@ -31,19 +31,19 @@ export class RecipeValidationInterceptor implements NestInterceptor {
   }
 
   private async validateAuthor(author: string) {
-    const user = await this.usersService.findByName(author);
+    const user = await this.usersService.findBySlug(author);
 
     if (!user) {
       throw new NotFoundException({
-        errors: { author: 'Author username does not exist' },
+        errors: { author: 'Specified author is not an existing username' },
       });
     }
   }
 
   private async validateTitle(title: string) {
-    const recipeByTitle = await this.recipesService.findByTitle(title);
+    const recipe = await this.recipesService.findByTitle(title);
 
-    if (recipeByTitle) {
+    if (recipe) {
       throw new ConflictException({
         errors: { title: 'Recipe with specified title already exists' },
       });

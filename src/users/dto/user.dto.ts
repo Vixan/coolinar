@@ -1,5 +1,5 @@
 import { Exclude, Expose } from 'class-transformer';
-import { IsString, IsEmail, MaxLength, IsNotEmpty } from 'class-validator';
+import { IsString, IsEmail, MaxLength, IsNotEmpty, IsOptional } from 'class-validator';
 
 @Exclude()
 export class UserDto {
@@ -13,4 +13,8 @@ export class UserDto {
   @IsEmail({}, { message: 'Incorrect email format' })
   @IsNotEmpty({ message: 'Email is required' })
   readonly email: string;
+
+  @Expose()
+  @IsOptional()
+  readonly favoriteRecipes: string[];
 }

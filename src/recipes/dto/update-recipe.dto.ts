@@ -10,9 +10,6 @@ import {
   ValidateNested,
   IsArray,
 } from 'class-validator';
-import { Ingredient } from '../ingredients.entity';
-import { Direction } from '../directions.entity';
-import { Category } from '../category.entity';
 
 @Exclude()
 export class UpdateRecipeDto {
@@ -70,4 +67,8 @@ export class UpdateRecipeDto {
   @IsOptional()
   @ValidateNested()
   readonly nutrition: Nutrition;
+
+  @Expose()
+  @IsOptional()
+  readonly imageUrls: string[];
 }
