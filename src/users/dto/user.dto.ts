@@ -1,5 +1,12 @@
 import { Exclude, Expose } from 'class-transformer';
-import { IsString, IsEmail, MaxLength, IsNotEmpty, IsOptional } from 'class-validator';
+import {
+  IsString,
+  IsEmail,
+  MaxLength,
+  IsNotEmpty,
+  IsOptional,
+  IsUrl,
+} from 'class-validator';
 
 @Exclude()
 export class UserDto {
@@ -13,6 +20,11 @@ export class UserDto {
   @IsEmail({}, { message: 'Incorrect email format' })
   @IsNotEmpty({ message: 'Email is required' })
   readonly email: string;
+
+  @Expose()
+  @IsOptional()
+  @IsUrl({}, { message: 'User avatar must be a valid URL' })
+  readonly avatarUrl: string;
 
   @Expose()
   @IsOptional()

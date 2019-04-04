@@ -1,5 +1,12 @@
 import { Exclude, Expose } from 'class-transformer';
-import { IsString, IsNotEmpty, MaxLength, IsEmail } from 'class-validator';
+import {
+  IsString,
+  IsNotEmpty,
+  MaxLength,
+  IsEmail,
+  IsOptional,
+  IsUrl,
+} from 'class-validator';
 
 @Exclude()
 export class UpdateUserDto {
@@ -18,4 +25,9 @@ export class UpdateUserDto {
   @IsString({ message: 'Password must be a string' })
   @IsNotEmpty({ message: 'Password is required' })
   readonly password: string;
+
+  @Expose()
+  @IsOptional()
+  @IsUrl({}, { message: 'User avatar must be a valid URL' })
+  readonly avatarUrl: string;
 }

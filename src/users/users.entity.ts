@@ -2,7 +2,7 @@ import {
   Entity,
   Column,
 } from 'typeorm';
-import { IsString, MaxLength, IsEmail, IsOptional } from 'class-validator';
+import { IsString, MaxLength, IsEmail, IsOptional, IsUrl } from 'class-validator';
 import { BaseEntity } from '../shared/base/base.entity';
 
 @Entity()
@@ -23,6 +23,11 @@ export class User extends BaseEntity {
   @Column()
   @IsString()
   password: string;
+
+  @Column()
+  @IsOptional()
+  @IsUrl()
+  avatarUrl: string;
 
   @Column()
   @IsOptional()
