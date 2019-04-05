@@ -17,6 +17,11 @@ export class UserDto {
   readonly name: string;
 
   @Expose()
+  @IsString({ message: 'User slug must be a string' })
+  @IsNotEmpty({ message: 'User slug is required' })
+  readonly slug: string;
+
+  @Expose()
   @IsEmail({}, { message: 'Incorrect email format' })
   @IsNotEmpty({ message: 'Email is required' })
   readonly email: string;

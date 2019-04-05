@@ -16,7 +16,7 @@ import { RecipesService } from 'src/recipes/recipes.service';
 import { FavoritesService } from './favorites.service';
 import { TransformInterceptor } from 'src/shared/interceptors/transform.interceptor';
 
-@Controller('users/:userName/favorites')
+@Controller('users/:userSlug/favorites')
 export class FavoritesController {
   constructor(
     private readonly favoritesService: FavoritesService,
@@ -28,13 +28,13 @@ export class FavoritesController {
   @UseGuards(AuthGuard('jwt'))
   @UseInterceptors(new TransformInterceptor(RecipeDto))
   async getFavoriteRecipes(
-    @Param('userName') userName: string,
+    @Param('userSlug') userSlug: string,
   ): Promise<RecipeDto[]> {
-    const user = await this.usersService.findByName(userName);
+    const user = await this.usersService.findBySlug(userSlug);
 
     if (!user) {
       throw new NotFoundException({
-        errors: { username: 'Inexistent username' },
+        errors: { userSlug: 'User not found' },
       });
     }
 
@@ -45,14 +45,14 @@ export class FavoritesController {
   @UseGuards(AuthGuard('jwt'))
   @UseInterceptors(new TransformInterceptor(RecipeDto))
   async favoriteRecipe(
-    @Param('userName') userName: string,
+    @Param('userSlug') userSlug: string,
     @Param('slug') slug: string,
   ): Promise<RecipeDto[]> {
-    let user = await this.usersService.findByName(userName);
+    let user = await this.usersService.findBySlug(userSlug);
 
     if (!user) {
       throw new NotFoundException({
-        errors: { username: 'Username not found' },
+        errors: { userSlug: 'User not found' },
       });
     }
 
@@ -79,14 +79,14 @@ export class FavoritesController {
   @UseGuards(AuthGuard('jwt'))
   @UseInterceptors(new TransformInterceptor(RecipeDto))
   async unfavoriteRecipe(
-    @Param('userName') userName: string,
+    @Param('userSlug') userSlug: string,
     @Param('slug') slug: string,
   ): Promise<RecipeDto[]> {
-    let user = await this.usersService.findByName(userName);
+    let user = await this.usersService.findBySlug(userSlug);
 
     if (!user) {
       throw new NotFoundException({
-        errors: { username: 'Inexistent username' },
+        errors: { userSlug: 'User not found' },
       });
     }
 
