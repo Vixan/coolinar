@@ -10,6 +10,7 @@ import {
   Body,
   UsePipes,
   Post,
+  Query,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { User } from './users.entity';
@@ -18,6 +19,7 @@ import { UserDto } from './dto/user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { ValidationPipe } from '../shared/pipes/validation.pipe';
 import { TransformInterceptor } from '../shared/interceptors/transform.interceptor';
+import { ArrayUtils } from 'src/shared/utils/array.utils';
 
 @Controller('users')
 export class UsersController {
@@ -28,6 +30,17 @@ export class UsersController {
   @UseInterceptors(new TransformInterceptor(UserDto))
   async getAll(): Promise<UserDto[]> {
     return this.usersService.findAll();
+  }
+
+  @Get('/search')
+  @UseGuards(AuthGuard('jwt'))
+  @UseInterceptors(new TransformInterceptor(UserDto))
+  async searchByName(@Query() params: any): Promise<UserDto | null> {
+    if (params.name) {
+      return await this.usersService.findByName(params.name);
+    }
+
+    return null;
   }
 
   @Post()
