@@ -20,4 +20,8 @@ export class UpdateReviewDto {
   @Min(1, { message: 'Review minimum score is 1' })
   @Max(5, { message: 'Review maximum score is 5' })
   readonly score: number;
+
+  @Expose()
+  @IsString({ message: 'Review author must be a string' })
+  readonly author: string;
 }
