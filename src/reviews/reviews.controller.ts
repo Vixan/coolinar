@@ -32,13 +32,12 @@ export class ReviewsController {
     private readonly reviewsService: ReviewsService,
   ) {}
 
-  @Post(':slug/:reviewAuthor')
+  @Post(':slug')
   @UseGuards(AuthGuard('jwt'))
   @UsePipes(new ValidationPipe())
   @UseInterceptors(new TransformInterceptor(RecipeDto))
   async create(
     @Param('slug') slug: string,
-    @Param('reviewAuthor') reviewAuthor: string,
     @Body() createReviewDto: CreateReviewDto,
   ): Promise<RecipeDto> {
     const recipe = await this.recipesService.findBySlug(slug);
@@ -47,13 +46,15 @@ export class ReviewsController {
       throw new NotFoundException({ errors: { slug: 'Inexistent slug' } });
     }
 
-    if (recipe.reviews.find(review => review.author === reviewAuthor)) {
+    if (
+      recipe.reviews.find(review => review.author === createReviewDto.author)
+    ) {
       throw new ConflictException({
         errors: { author: 'Recipe already reviewd by specified user' },
       });
     }
 
-    const author = await this.usersService.findByName(reviewAuthor);
+    const author = await this.usersService.findBySlug(createReviewDto.author);
 
     if (!author) {
       throw new NotFoundException({
@@ -63,17 +64,16 @@ export class ReviewsController {
 
     return this.reviewsService.create(recipe, {
       ...createReviewDto,
-      author: author.name,
+      author: author.slug,
     });
   }
 
-  @Put(':slug/:reviewAuthor')
+  @Put(':slug')
   @UseGuards(AuthGuard('jwt'))
   @UsePipes(new ValidationPipe())
   @UseInterceptors(new TransformInterceptor(RecipeDto))
   async update(
     @Param('slug') slug: string,
-    @Param('reviewAuthor') reviewAuthor: string,
     @Body() updateReviewDto: Partial<UpdateReviewDto>,
   ): Promise<RecipeDto> {
     const recipe = await this.recipesService.findBySlug(slug);
@@ -83,7 +83,7 @@ export class ReviewsController {
     }
 
     const reviewToUpdate = recipe.reviews.find(
-      review => review.author === reviewAuthor,
+      review => review.author === updateReviewDto.author,
     );
 
     if (!reviewToUpdate) {
@@ -100,14 +100,11 @@ export class ReviewsController {
     });
   }
 
-  @Delete(':slug/:reviewAuthor')
+  @Delete(':slug')
   @UseGuards(AuthGuard('jwt'))
   @UsePipes(new ValidationPipe())
   @UseInterceptors(new TransformInterceptor(RecipeDto))
-  async delete(
-    @Param('slug') slug: string,
-    @Param('reviewAuthor') reviewAuthor: string,
-  ) {
+  async delete(@Param('slug') slug: string, @Body('author') author: string) {
     const recipe = await this.recipesService.findBySlug(slug);
 
     if (!recipe) {
@@ -115,7 +112,7 @@ export class ReviewsController {
     }
 
     const reviewToDelete = recipe.reviews.find(
-      review => review.author === reviewAuthor,
+      review => review.author === author,
     );
 
     if (!reviewToDelete) {
