@@ -38,9 +38,7 @@ export class RecipesController {
 
   @Get()
   @UseInterceptors(new TransformInterceptor(RecipeDto))
-  async getAll(
-    @Query() pagination: PaginationOptions,
-  ): Promise<RecipeDto[]> {
+  async getAll(@Query() pagination: PaginationOptions): Promise<RecipeDto[]> {
     return this.recipesService.paginate({
       take: Number(pagination.take) || 10,
       skip: Number(pagination.skip) || 0,
@@ -64,10 +62,13 @@ export class RecipesController {
   @Get('/latest')
   @UseInterceptors(new TransformInterceptor(RecipeDto))
   async getLatest(@Query() pagination: PaginationOptions) {
-    return this.recipesService.paginateAndSort({
-      take: Number(pagination.take) || 10,
-      skip: Number(pagination.skip) || 0,
-    }, 'dateCreated');
+    return this.recipesService.paginateAndSort(
+      {
+        take: Number(pagination.take) || 10,
+        skip: Number(pagination.skip) || 0,
+      },
+      'dateCreated',
+    );
   }
 
   @Get('/top-rated')
@@ -83,31 +84,11 @@ export class RecipesController {
 
   @Get('/search')
   @UseInterceptors(new TransformInterceptor(RecipeDto))
-  async search(@Query() params: SearchRecipeDto) {
-    let recipes = await this.recipesService.findAll();
-
-    if (params.title) {
-      const recipesByTitle = await this.recipesService.findByTitleMatch(
-        params.title,
-      );
-      recipes = ArrayUtils.intersect(recipes, recipesByTitle, 'title');
-    }
-
-    if (params.ingredients) {
-      const recipesByIngredients = await this.recipesService.fingByIngredients(
-        params.ingredients,
-      );
-      recipes = ArrayUtils.intersect(recipes, recipesByIngredients, 'title');
-    }
-
-    if (params.categories) {
-      const recipesByCategories = await this.recipesService.fingByCategories(
-        params.categories,
-      );
-      recipes = ArrayUtils.intersect(recipes, recipesByCategories, 'title');
-    }
-
-    return recipes;
+  async search(
+    @Query() params: SearchRecipeDto,
+    @Query() pagination: PaginationOptions,
+  ) {
+    return this.recipesService.search(params, pagination);
   }
 
   @Get(':slug')

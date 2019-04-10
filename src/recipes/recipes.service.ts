@@ -6,6 +6,7 @@ import { Repository } from 'typeorm';
 import { SlugProvider } from '../shared/providers/slug.provider';
 import { DateInterval } from 'src/shared/providers/date.provider';
 import { PaginationOptions } from 'src/shared/interfaces/pagination-options.interface';
+import { SearchRecipeDto } from './dto/search-recipe.dto';
 
 @Injectable()
 export class RecipesService extends BaseService<Recipe> {
@@ -73,6 +74,37 @@ export class RecipesService extends BaseService<Recipe> {
         'reviews.score': { $gte: reviewScore },
       },
       order: { averageReviewScore: -1 },
+      ...paginationOptions,
+    });
+  }
+
+  async search(
+    searchRecipeDto: SearchRecipeDto,
+    paginationOptions?: PaginationOptions,
+  ) {
+    const conditions = [];
+
+    if (searchRecipeDto.title) {
+      conditions.push({
+        title: { $regex: new RegExp(searchRecipeDto.title, 'i') },
+      });
+    }
+    if (searchRecipeDto.ingredients) {
+      searchRecipeDto.ingredients.forEach(ingredient => {
+        conditions.push({
+          ingredients: { $regex: new RegExp(ingredient, 'i') },
+        });
+      });
+    }
+    if (searchRecipeDto.categories) {
+      searchRecipeDto.categories.forEach(category => {
+        conditions.push({ categories: { $regex: new RegExp(category, 'i') } });
+      });
+    }
+
+    return this.recipesRepository.find({
+      where: { $and: conditions },
+      order: { title: -1 },
       ...paginationOptions,
     });
   }
