@@ -88,7 +88,10 @@ export class RecipesController {
     @Query() params: SearchRecipeDto,
     @Query() pagination: PaginationOptions,
   ) {
-    return this.recipesService.search(params, pagination);
+    return this.recipesService.search(params, {
+      take: Number(pagination.take) || 10,
+      skip: Number(pagination.skip) || 0,
+    });
   }
 
   @Get(':slug')

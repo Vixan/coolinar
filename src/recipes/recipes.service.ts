@@ -102,6 +102,10 @@ export class RecipesService extends BaseService<Recipe> {
       });
     }
 
+    if (!conditions.length) {
+      return null;
+    }
+
     return this.recipesRepository.find({
       where: { $and: conditions },
       order: { title: -1 },
