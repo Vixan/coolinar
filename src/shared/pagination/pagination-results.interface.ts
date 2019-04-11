@@ -1,4 +1,4 @@
-export interface PaginationResult<T> {
+export interface PaginationResults<T> {
   results: T[];
   total: number;
   next?: string;

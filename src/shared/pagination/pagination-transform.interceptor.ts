@@ -19,6 +19,10 @@ export class PaginationTransformInterceptor<T>
   ): Observable<any> {
     return call$.pipe(
       map(data => {
+        if (!data || !data.results) {
+          return data;
+        }
+
         const results = plainToClass(this.classType, data.results);
 
         return {
