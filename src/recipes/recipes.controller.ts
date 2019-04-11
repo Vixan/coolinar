@@ -1,4 +1,3 @@
-import { ArrayUtils } from 'src/shared/utils/array.utils';
 import { AuthGuard } from '@nestjs/passport';
 import { CreateRecipeDto } from './dto/create-recipe.dto';
 import { DatePart, DateProvider } from 'src/shared/providers/date.provider';
@@ -26,7 +25,9 @@ import {
   UseFilters,
 } from '@nestjs/common';
 import { HttpExceptionFilter } from 'src/shared/filters/http-exception.filter';
-import { PaginationOptions } from 'src/shared/interfaces/pagination-options.interface';
+import { PaginationOptions } from 'src/shared/pagination/pagination-options.interface';
+import { Pagination } from 'src/shared/pagination/pagination';
+import { PaginationTransformInterceptor } from 'src/shared/pagination/pagination-transform.interceptor';
 
 @Controller('recipes')
 @UseFilters(HttpExceptionFilter)
@@ -37,16 +38,18 @@ export class RecipesController {
   ) {}
 
   @Get()
-  @UseInterceptors(new TransformInterceptor(RecipeDto))
-  async getAll(@Query() pagination: PaginationOptions): Promise<RecipeDto[]> {
-    return this.recipesService.paginate({
+  @UseInterceptors(new PaginationTransformInterceptor(RecipeDto))
+  async getAll(
+    @Query() pagination: PaginationOptions,
+  ): Promise<Pagination<RecipeDto>> {
+    return await this.recipesService.paginate({
       take: Number(pagination.take) || 10,
       skip: Number(pagination.skip) || 0,
     });
   }
 
   @Get('/daily')
-  @UseInterceptors(new TransformInterceptor(RecipeDto))
+  @UseInterceptors(new PaginationTransformInterceptor(RecipeDto))
   async getDaily(@Query() pagination: PaginationOptions) {
     const dateInterval = this.dateProvider.createDateInterval(
       new Date(),
@@ -60,7 +63,7 @@ export class RecipesController {
   }
 
   @Get('/latest')
-  @UseInterceptors(new TransformInterceptor(RecipeDto))
+  @UseInterceptors(new PaginationTransformInterceptor(RecipeDto))
   async getLatest(@Query() pagination: PaginationOptions) {
     return this.recipesService.paginateAndSort(
       {
@@ -72,7 +75,7 @@ export class RecipesController {
   }
 
   @Get('/top-rated')
-  @UseInterceptors(new TransformInterceptor(RecipeDto))
+  @UseInterceptors(new PaginationTransformInterceptor(RecipeDto))
   async getTopRated(@Query() pagination: PaginationOptions) {
     const minScore: number = 4;
 
@@ -83,7 +86,7 @@ export class RecipesController {
   }
 
   @Get('/search')
-  @UseInterceptors(new TransformInterceptor(RecipeDto))
+  @UseInterceptors(new PaginationTransformInterceptor(RecipeDto))
   async search(
     @Query() params: SearchRecipeDto,
     @Query() pagination: PaginationOptions,
