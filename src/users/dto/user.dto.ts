@@ -39,4 +39,10 @@ export class UserDto {
   @Expose()
   @IsOptional()
   readonly favoriteRecipes: string[];
+
+  @Expose()
+  readonly dateCreated: Date;
+
+  @Expose()
+  readonly dateUpdated: Date;
 }

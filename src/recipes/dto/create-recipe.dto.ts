@@ -55,7 +55,7 @@ export class CreateRecipeDto {
 
   @Expose()
   @IsInt({ message: 'Recipe cooking time must be an integer' })
-  @Min(1, { message: 'Recipe cooking time must be a positive integer' })
+  @Min(0, { message: 'Recipe cooking time must be a positive integer' })
   readonly cookingTime: number;
 
   @Expose()

@@ -14,6 +14,10 @@ export class SearchRecipeDto {
 
   @Expose()
   @IsOptional()
+  author: string;
+
+  @Expose()
+  @IsOptional()
   ingredients: string[];
 
   @Expose()

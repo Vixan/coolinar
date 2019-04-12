@@ -166,6 +166,11 @@ export class RecipesService extends BaseService<Recipe> {
         title: { $regex: new RegExp(searchRecipeDto.title, 'i') },
       });
     }
+    if (searchRecipeDto.author) {
+      conditions.push({
+        author: searchRecipeDto.author,
+      });
+    }
     if (searchRecipeDto.ingredients) {
       searchRecipeDto.ingredients.forEach(ingredient => {
         conditions.push({
