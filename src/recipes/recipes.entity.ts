@@ -15,6 +15,13 @@ import { BaseEntity } from '../shared/base/base.entity';
 import { Review } from 'src/reviews/reviews.entity';
 import { Nutrition } from './nutrition.entity';
 
+/**
+ * Recipe database entity.
+ *
+ * @export
+ * @class Recipe
+ * @extends {BaseEntity}
+ */
 @Entity()
 export class Recipe extends BaseEntity {
   @Column()

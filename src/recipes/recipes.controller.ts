@@ -29,6 +29,11 @@ import { PaginationOptions } from 'src/shared/pagination/pagination-options.inte
 import { Pagination } from 'src/shared/pagination/pagination';
 import { PaginationTransformInterceptor } from 'src/shared/pagination/pagination-transform.interceptor';
 
+/**
+ * Controller that handles the recipe routes.
+ *
+ * @class RecipesController
+ */
 @Controller('recipes')
 @UseFilters(HttpExceptionFilter)
 export class RecipesController {
@@ -37,6 +42,13 @@ export class RecipesController {
     private readonly dateProvider: DateProvider,
   ) {}
 
+  /**
+   * Retrieve all available recipes in a paginated format.
+   *
+   * @param {PaginationOptions} pagination Pagination options.
+   * @returns {Promise<Pagination<RecipeDto>>} Promise of the pagination of the recipes.
+   * @memberof RecipesController
+   */
   @Get()
   @UseInterceptors(new PaginationTransformInterceptor(RecipeDto))
   async getAll(
@@ -48,9 +60,18 @@ export class RecipesController {
     });
   }
 
+  /**
+   * Retrieve the daily recipes in a paginated format.
+   *
+   * @param {PaginationOptions} pagination Pagination options.
+   * @returns {Promise<Pagination<RecipeDto>>} Promise of the pagination of the recipes.
+   * @memberof RecipesController
+   */
   @Get('/daily')
   @UseInterceptors(new PaginationTransformInterceptor(RecipeDto))
-  async getDaily(@Query() pagination: PaginationOptions) {
+  async getDaily(
+    @Query() pagination: PaginationOptions,
+  ): Promise<Pagination<RecipeDto>> {
     const dateInterval = this.dateProvider.createDateInterval(
       new Date(),
       DatePart.DAY,
@@ -62,9 +83,18 @@ export class RecipesController {
     });
   }
 
+  /**
+   * Retrieve the latest created recipes in a paginated format.
+   *
+   * @param {PaginationOptions} pagination Pagination options.
+   * @returns {Promise<Pagination<RecipeDto>>} Promise of the pagination of the recipes.
+   * @memberof RecipesController
+   */
   @Get('/latest')
   @UseInterceptors(new PaginationTransformInterceptor(RecipeDto))
-  async getLatest(@Query() pagination: PaginationOptions) {
+  async getLatest(
+    @Query() pagination: PaginationOptions,
+  ): Promise<Pagination<RecipeDto>> {
     return this.recipesService.paginateAndSort(
       {
         take: Number(pagination.take) || 10,
@@ -74,9 +104,18 @@ export class RecipesController {
     );
   }
 
+  /**
+   * Retrieve the top rated recipes in a paginated format.
+   *
+   * @param {PaginationOptions} pagination Pagination options.
+   * @returns {Promise<Pagination<RecipeDto>>} Promise of the pagination of the recipes.
+   * @memberof RecipesController
+   */
   @Get('/top-rated')
   @UseInterceptors(new PaginationTransformInterceptor(RecipeDto))
-  async getTopRated(@Query() pagination: PaginationOptions) {
+  async getTopRated(
+    @Query() pagination: PaginationOptions,
+  ): Promise<Pagination<RecipeDto>> {
     const minScore: number = 4;
 
     return this.recipesService.findByReviewMinScore(minScore, {
@@ -85,6 +124,14 @@ export class RecipesController {
     });
   }
 
+  /**
+   * Retrieve the searched recipes in a paginated format.
+   * Recipes can be searched by title, ingredients and categories.
+   *
+   * @param {PaginationOptions} pagination Pagination options.
+   * @returns {Promise<Pagination<RecipeDto>>} Promise of the pagination of the recipes.
+   * @memberof RecipesController
+   */
   @Get('/search')
   @UseInterceptors(new PaginationTransformInterceptor(RecipeDto))
   async search(
@@ -97,6 +144,13 @@ export class RecipesController {
     });
   }
 
+  /**
+   * Retrieve recipe by slug.
+   *
+   * @param {string} slug Recipe slug.
+   * @returns {Promise<RecipeDto>} Promise of the recipe.
+   * @memberof RecipesController
+   */
   @Get(':slug')
   @UseInterceptors(new TransformInterceptor(RecipeDto))
   async getBySlug(@Param('slug') slug: string): Promise<RecipeDto> {
@@ -109,6 +163,13 @@ export class RecipesController {
     return recipe;
   }
 
+  /**
+   * Create a new recipe.
+   *
+   * @param {CreateRecipeDto} createRecipeDto Recipe data sent by the client.
+   * @returns {Promise<RecipeDto>} Promise of the created recipe.
+   * @memberof RecipesController
+   */
   @Post()
   @UseGuards(AuthGuard('jwt'))
   @UsePipes(new ValidationPipe())
@@ -122,6 +183,14 @@ export class RecipesController {
     return this.recipesService.create(recipe);
   }
 
+  /**
+   * Update an existing recipe.
+   *
+   * @param {string} slug Recipe slug.
+   * @param {Partial<UpdateRecipeDto>} updateRecipeDto Updated recipe data sent by the client.
+   * @returns {Promise<RecipeDto>} Promise of the updted recipe.
+   * @memberof RecipesController
+   */
   @Put(':slug')
   @UseGuards(AuthGuard('jwt'))
   @UsePipes(new ValidationPipe())
@@ -142,11 +211,18 @@ export class RecipesController {
     return this.recipesService.update({ ...recipe, ...updateRecipeDto });
   }
 
+  /**
+   * Remove the speficied recipe.
+   *
+   * @param {string} slug Recipe slug.
+   * @returns {Promise<Recipe>} Promise of the removed recipe.
+   * @memberof RecipesController
+   */
   @Delete(':slug')
   @UseGuards(AuthGuard('jwt'))
   @UsePipes(new ValidationPipe())
   @UseInterceptors(new TransformInterceptor(RecipeDto))
-  async delete(@Param('slug') slug: string) {
+  async delete(@Param('slug') slug: string): Promise<Recipe> {
     const recipe = await this.recipesService.findBySlug(slug);
 
     if (!recipe) {

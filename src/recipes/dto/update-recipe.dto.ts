@@ -11,6 +11,11 @@ import {
   IsArray,
 } from 'class-validator';
 
+/**
+ * Recipe updated by the client.
+ *
+ * @class UpdateRecipeDto
+ */
 @Exclude()
 export class UpdateRecipeDto {
   @Expose()

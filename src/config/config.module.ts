@@ -1,6 +1,12 @@
 import { Module } from '@nestjs/common';
 import { ConfigService } from './config.service';
 
+/**
+ * Module that encapsulates the Configuration logic.
+ *
+ * @export {ConfigService} The configuration service.
+ * @class ConfigModule
+ */
 @Module({
   providers: [
     {

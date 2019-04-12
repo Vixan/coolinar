@@ -9,6 +9,12 @@ import { PaginationOptions } from 'src/shared/pagination/pagination-options.inte
 import { SearchRecipeDto } from './dto/search-recipe.dto';
 import { Pagination } from 'src/shared/pagination/pagination';
 
+/**
+ * Injectable service that handles recipes database logic.
+ *
+ * @class RecipesService
+ * @extends {BaseService<Recipe>}
+ */
 @Injectable()
 export class RecipesService extends BaseService<Recipe> {
   constructor(
@@ -19,6 +25,13 @@ export class RecipesService extends BaseService<Recipe> {
     super(recipesRepository);
   }
 
+  /**
+   * Paginate database recipes.
+   *
+   * @param {PaginationOptions} paginationOptions
+   * @returns {Promise<Pagination<Recipe>>} Promise of the recipes pagination.
+   * @memberof RecipesService
+   */
   async paginate(
     paginationOptions: PaginationOptions,
   ): Promise<Pagination<Recipe>> {
@@ -32,6 +45,15 @@ export class RecipesService extends BaseService<Recipe> {
     });
   }
 
+  /**
+   * Paginate database recipes and retrieve them sorted in the specified order.
+   *
+   * @param {PaginationOptions} paginationOptions
+   * @param {string} sortBy Key to sort recipes by.
+   * @param {boolean} [isAscending] Sorting order ascending or descending.
+   * @returns {Promise<Pagination<Recipe>>} Promise of the paginated recipes.
+   * @memberof RecipesService
+   */
   async paginateAndSort(
     paginationOptions: PaginationOptions,
     sortBy: string,
@@ -48,18 +70,40 @@ export class RecipesService extends BaseService<Recipe> {
     });
   }
 
-  async findBySlug(slug: string) {
+  /**
+   * Retrieve recipe by slug.
+   *
+   * @param {string} slug Recipe slug.
+   * @returns {Promise<Recipe>} Promise of the recipe.
+   * @memberof RecipesService
+   */
+  async findBySlug(slug: string): Promise<Recipe> {
     return this.recipesRepository.findOne({
       slug,
     });
   }
 
-  async findByTitle(title: string) {
+  /**
+   * Retrieve recipe by title.
+   *
+   * @param {string} slug Recipe slug.
+   * @returns {Promise<Recipe>} Promise of the recipe.
+   * @memberof RecipesService
+   */
+  async findByTitle(title: string): Promise<Recipe> {
     return this.recipesRepository.findOne({
       title,
     });
   }
 
+  /**
+   * Retrieve database recipes by a date interval and pagination.
+   *
+   * @param {DateInterval} dateInterval The interval of a date (e.g. whole day, whole month, etc.).
+   * @param {PaginationOptions} [paginationOptions]
+   * @returns {Promise<Pagination<Recipe>>} Promise of the recipes pagination.
+   * @memberof RecipesService
+   */
   async findByCreatedDateInterval(
     dateInterval: DateInterval,
     paginationOptions?: PaginationOptions,
@@ -77,6 +121,14 @@ export class RecipesService extends BaseService<Recipe> {
     });
   }
 
+  /**
+   * Retrieve database recipes by a minimum review score and pagination.
+   *
+   * @param {number} reviewScore Minimum review score.
+   * @param {PaginationOptions} [paginationOptions]
+   * @returns {Promise<Pagination<Recipe>>} Promise of the recipes pagination.
+   * @memberof RecipesService
+   */
   async findByReviewMinScore(
     reviewScore: number,
     paginationOptions?: PaginationOptions,
@@ -95,6 +147,14 @@ export class RecipesService extends BaseService<Recipe> {
     });
   }
 
+  /**
+   * Retrieve searched and paginated database recipes.
+   *
+   * @param {SearchRecipeDto} searchRecipeDto Search options.
+   * @param {PaginationOptions} [paginationOptions]
+   * @returns {Promise<Pagination<Recipe>>} Promise of the recipes pagination.
+   * @memberof RecipesService
+   */
   async search(
     searchRecipeDto: SearchRecipeDto,
     paginationOptions?: PaginationOptions,
@@ -135,6 +195,14 @@ export class RecipesService extends BaseService<Recipe> {
     });
   }
 
+  /**
+   * Retrieve and paginate recipes that match a certain title.
+   *
+   * @param {string} title
+   * @param {PaginationOptions} [paginationOptions]
+   * @returns {Promise<Pagination<Recipe>>} Promise of the recipes pagination.
+   * @memberof RecipesService
+   */
   async findByTitleMatch(
     title: string,
     paginationOptions?: PaginationOptions,
@@ -152,13 +220,21 @@ export class RecipesService extends BaseService<Recipe> {
     });
   }
 
-  async fingByIngredients(
-    ingredientNames: string[],
+  /**
+   * Retrieve and paginate recipes that match at least one specified ingredient.
+   *
+   * @param {string[]} ingredients
+   * @param {PaginationOptions} [paginationOptions]
+   * @returns {Promise<Pagination<Recipe>>} Promise of the recipes pagination.
+   * @memberof RecipesService
+   */
+  async findBySomeIngredients(
+    ingredients: string[],
     paginationOptions?: PaginationOptions,
   ): Promise<Pagination<Recipe>> {
     const [results, total] = await this.recipesRepository.findAndCount({
       where: {
-        ingredients: { $regex: new RegExp(ingredientNames.join('|'), 'i') },
+        ingredients: { $regex: new RegExp(ingredients.join('|'), 'i') },
       },
       ...paginationOptions,
     });
@@ -169,7 +245,15 @@ export class RecipesService extends BaseService<Recipe> {
     });
   }
 
-  async fingByCategories(
+  /**
+   * Retrieve and paginate recipes that match at least one specified category.
+   *
+   * @param {string[]} categorySlugs Category slugs.
+   * @param {PaginationOptions} [paginationOptions]
+   * @returns {Promise<Pagination<Recipe>>} Promise of the recipes pagination.
+   * @memberof RecipesService
+   */
+  async findBySomeCategories(
     categorySlugs: string[],
     paginationOptions?: PaginationOptions,
   ): Promise<Pagination<Recipe>> {
@@ -186,7 +270,14 @@ export class RecipesService extends BaseService<Recipe> {
     });
   }
 
-  async create(recipe: Recipe) {
+  /**
+   * Add the recipe to the database.
+   *
+   * @param {Recipe} recipe Recipe to be created.
+   * @returns {Promise<Recipe>} Promise of the created recipe.
+   * @memberof RecipesService
+   */
+  async create(recipe: Recipe): Promise<Recipe> {
     recipe.slug = this.slugProvider.createSlug(recipe.title, { lower: true });
     recipe.averageReviewScore = 0;
     recipe.reviews = recipe.reviews || [];
@@ -195,7 +286,14 @@ export class RecipesService extends BaseService<Recipe> {
     return this.recipesRepository.save(recipe);
   }
 
-  async update(recipe: Recipe) {
+  /**
+   * Update the specified recipe in the database.
+   *
+   * @param {Recipe} recipe Recipe to be updated.
+   * @returns {Promise<Recipe>} Promise of the updated recipe.
+   * @memberof RecipesService
+   */
+  async update(recipe: Recipe): Promise<Recipe> {
     recipe.slug = this.slugProvider.createSlug(recipe.title, { lower: true });
     recipe.averageReviewScore =
       recipe.reviews.reduce(
@@ -206,7 +304,14 @@ export class RecipesService extends BaseService<Recipe> {
     return this.recipesRepository.save(recipe);
   }
 
-  async delete(recipe: Recipe) {
+  /**
+   * Remove the recipe from the database.
+   *
+   * @param {Recipe} recipe Recipe to be removed.
+   * @returns {Promise<Recipe>} Promise of the removed recipe.
+   * @memberof RecipesService
+   */
+  async delete(recipe: Recipe): Promise<Recipe> {
     return this.recipesRepository.remove(recipe);
   }
 }

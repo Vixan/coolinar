@@ -6,6 +6,12 @@ import { User } from './users.entity';
 import { EncryptionModule } from 'src/encryption/encryption.module';
 import { SlugProvider } from 'src/shared/providers/slug.provider';
 
+/**
+ * Module to encapsulate user logic.
+ *
+ * @export UsersService Service that exposes user handling logic.
+ * @class UsersModule
+ */
 @Module({
   imports: [TypeOrmModule.forFeature([User]), EncryptionModule],
   controllers: [UsersController],

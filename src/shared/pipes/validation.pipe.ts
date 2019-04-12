@@ -8,6 +8,13 @@ import { plainToClass } from 'class-transformer';
 import { validate } from 'class-validator';
 import { ErrorUtils } from '../utils/error.utils';
 
+/**
+ * Pipe to validate incoming data using validation rules specified 
+ * in the mapped objects.
+ *
+ * @class ValidationPipe
+ * @implements {PipeTransform<any>}
+ */
 @Injectable()
 export class ValidationPipe implements PipeTransform<any> {
   async transform(value: any, { metatype }: ArgumentMetadata) {

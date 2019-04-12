@@ -14,6 +14,13 @@ export interface HttpExceptionResponse {
   message: any;
 }
 
+/**
+ * All HttpException type exceptions thrown will be reformated
+ * and sent to the client.
+ *
+ * @class HttpExceptionFilter
+ * @implements {ExceptionFilter}
+ */
 @Catch(HttpException)
 export class HttpExceptionFilter implements ExceptionFilter {
   catch(exception: HttpException, host: ArgumentsHost) {

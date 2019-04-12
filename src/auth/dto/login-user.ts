@@ -1,6 +1,12 @@
 import { IsString, IsEmail, IsNotEmpty } from 'class-validator';
 import { Exclude, Expose } from 'class-transformer';
 
+/**
+ * User login credentials received from the client and validated.
+ *
+ * @export
+ * @class LoginUserDto
+ */
 @Exclude()
 export class LoginUserDto {
   @Expose()

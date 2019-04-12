@@ -1,10 +1,19 @@
+import { Entity, Column } from 'typeorm';
 import {
-  Entity,
-  Column,
-} from 'typeorm';
-import { IsString, MaxLength, IsEmail, IsOptional, IsUrl } from 'class-validator';
+  IsString,
+  MaxLength,
+  IsEmail,
+  IsOptional,
+  IsUrl,
+} from 'class-validator';
 import { BaseEntity } from '../shared/base/base.entity';
 
+/**
+ * User database entity.
+ *
+ * @class User
+ * @extends {BaseEntity}
+ */
 @Entity()
 export class User extends BaseEntity {
   @Column()

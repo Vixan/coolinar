@@ -11,6 +11,13 @@ import { UsersService } from '../../users/users.service';
 import { RecipesService } from '../recipes.service';
 import { CreateRecipeDto } from '../dto/create-recipe.dto';
 
+/**
+ * Http interceptor for recipe validation.
+ *
+ * @export
+ * @class RecipeValidationInterceptor
+ * @implements {NestInterceptor}
+ */
 export class RecipeValidationInterceptor implements NestInterceptor {
   constructor(
     @Inject(RecipesService) private readonly recipesService: RecipesService,

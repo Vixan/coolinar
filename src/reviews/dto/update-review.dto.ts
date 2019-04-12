@@ -7,6 +7,11 @@ import {
   Min,
 } from 'class-validator';
 
+/**
+ * Updated recipe review created by the client.
+ *
+ * @class CreateReviewDto
+ */
 @Exclude()
 export class UpdateReviewDto {
   @Expose()

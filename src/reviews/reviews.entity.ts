@@ -1,7 +1,12 @@
-import { Column, Entity } from 'typeorm';
+import { Column } from 'typeorm';
 import { IsString, Min, IsInt, Max, IsOptional, IsNotEmpty } from 'class-validator';
-import { User } from '../users/users.entity';
 
+/**
+ * Recipe review database model.
+ *
+ * @export
+ * @class Review
+ */
 export class Review {
   @Column()
   @IsString({ message: 'Review text must be a string' })

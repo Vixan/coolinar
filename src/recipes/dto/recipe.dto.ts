@@ -11,6 +11,11 @@ import {
 } from 'class-validator';
 import { Exclude, Expose } from 'class-transformer';
 
+/**
+ * Recipe data sent to the client.
+ *
+ * @class RecipeDto
+ */
 @Exclude()
 export class RecipeDto {
   @Expose()

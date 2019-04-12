@@ -8,6 +8,12 @@ import { RecipesService } from 'src/recipes/recipes.service';
 import { ReviewsController } from './reviews.controller';
 import { ReviewsService } from './reviews.service';
 
+/**
+ * Module to encapsulate reviews logic.
+ *
+ * @export
+ * @class ReviewsModule
+ */
 @Module({
   imports: [TypeOrmModule.forFeature([Recipe]), UsersModule],
   controllers: [ReviewsController],

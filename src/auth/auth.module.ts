@@ -11,6 +11,11 @@ import { JwtConfigService } from './jwt/jwt-config.service';
 import { EncryptionModule } from '../encryption/encryption.module';
 import { SlugProvider } from 'src/shared/providers/slug.provider';
 
+/**
+ * Module that encapsulates authentication logic.
+ *
+ * @class AuthModule
+ */
 @Module({
   imports: [
     JwtModule.registerAsync({

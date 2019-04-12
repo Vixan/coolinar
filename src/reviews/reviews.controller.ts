@@ -23,6 +23,11 @@ import { UpdateReviewDto } from 'src/reviews/dto/update-review.dto';
 import { ReviewsService } from './reviews.service';
 import { HttpExceptionFilter } from 'src/shared/filters/http-exception.filter';
 
+/**
+ * Controller that handles the reviews routes.
+ *
+ * @class RecipesController
+ */
 @Controller('reviews')
 @UseFilters(HttpExceptionFilter)
 export class ReviewsController {
@@ -32,6 +37,14 @@ export class ReviewsController {
     private readonly reviewsService: ReviewsService,
   ) {}
 
+  /**
+   * Create a new recipe review.
+   *
+   * @param {string} slug
+   * @param {CreateReviewDto} createReviewDto Review sent by the client.
+   * @returns {Promise<RecipeDto>} Promise of the created recipe.
+   * @memberof ReviewsController
+   */
   @Post(':slug')
   @UseGuards(AuthGuard('jwt'))
   @UsePipes(new ValidationPipe())
@@ -68,6 +81,14 @@ export class ReviewsController {
     });
   }
 
+  /**
+   * Update a recipe review.
+   *
+   * @param {string} slug
+   * @param {Partial<UpdateReviewDto>} updateReviewDto Updated review sent by the client.
+   * @returns {Promise<RecipeDto>} Promise of the updated recipe.
+   * @memberof ReviewsController
+   */
   @Put(':slug')
   @UseGuards(AuthGuard('jwt'))
   @UsePipes(new ValidationPipe())
@@ -100,11 +121,19 @@ export class ReviewsController {
     });
   }
 
+  /**
+   * Remove a recipe review.
+   *
+   * @param {string} slug
+   * @param {string} author Recipe author.
+   * @returns {Promise<RecipeDto>} Promise of the removed recipe.
+   * @memberof ReviewsController
+   */
   @Delete(':slug')
   @UseGuards(AuthGuard('jwt'))
   @UsePipes(new ValidationPipe())
   @UseInterceptors(new TransformInterceptor(RecipeDto))
-  async delete(@Param('slug') slug: string, @Body('author') author: string) {
+  async delete(@Param('slug') slug: string, @Body('author') author: string): Promise<RecipeDto> {
     const recipe = await this.recipesService.findBySlug(slug);
 
     if (!recipe) {

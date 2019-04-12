@@ -12,6 +12,12 @@ import { DateProvider } from './shared/providers/date.provider';
 import { ReviewsModule } from './reviews/reviews.module';
 import { FavoritesModule } from './favorites/favorites.module';
 
+/**
+ * Main module of the application.
+ *
+ * @export
+ * @class AppModule
+ */
 @Module({
   imports: [
     TypeOrmModule.forRoot(),

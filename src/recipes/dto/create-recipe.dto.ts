@@ -12,6 +12,11 @@ import {
   ArrayNotEmpty,
 } from 'class-validator';
 
+/**
+ * Recipe created by the client.
+ *
+ * @class CreateRecipeDto
+ */
 @Exclude()
 export class CreateRecipeDto {
   @Expose()

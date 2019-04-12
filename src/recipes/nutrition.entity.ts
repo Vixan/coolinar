@@ -1,6 +1,11 @@
 import { Column } from 'typeorm';
 import { IsInt, Min, IsOptional, IsNumber } from 'class-validator';
 
+/**
+ * Recipe nutrition database model.
+ *
+ * @class Nutrition
+ */
 export class Nutrition {
   @Column()
   @IsOptional()
