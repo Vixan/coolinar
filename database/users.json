@@ -1,0 +1,184 @@
+[{
+	"_id": {
+		"$oid": "5ca66e998efe2d21e010db28"
+	},
+	"name": "Admin",
+	"email": "admin@mail.com",
+	"password": "$2b$10$UtfplzZARMLF/rvOjdGHpOKE8s3f1uXwoD4pIw5yh4/PJ4PFc6kqC",
+	"slug": "admin",
+	"favoriteRecipes": [],
+	"dateCreated": {
+		"$date": "2019-04-04T20:52:41.034Z"
+	},
+	"dateUpdated": {
+		"$date": "2019-04-04T20:52:41.034Z"
+	}
+},
+{
+	"_id": {
+		"$oid": "5ca671578b1b35257cd4314e"
+	},
+	"name": "Alec Sanders",
+	"email": "alecsanders@gmail.com",
+	"password": "$2b$10$LGLjTJtnvFJlJR1mWFprtubuXJeJeiWVbGOZA9.yAEiwG6f27JaPm",
+	"avatarUrl": "https://s3.amazonaws.com/uifaces/faces/twitter/abelcabans/128.jpg",
+	"slug": "alec-sanders",
+	"favoriteRecipes": [
+		"coconut-cold-brew-coffee",
+		"date-night-pork-chop",
+		"kimchi-and-miso-noodle-soup",
+		"grilled-lamb-chops-with-kefir-verde-sauce",
+		"saffron-breakfast-kheer",
+		"sheet-pan-cuban-rice-and-beans",
+		"avocado-peanut-butter-brownies",
+		"foolproof-grilled-chicken",
+		"crispy-skin-chicken-with-dill-and-garlic-sauce"
+	],
+	"dateCreated": {
+		"$date": "2019-04-04T21:04:23.634Z"
+	},
+	"dateUpdated": {
+		"$date": "2019-04-12T19:32:06.946Z"
+	}
+},
+{
+	"_id": {
+		"$oid": "5caf532ef39671c80a3a42ee"
+	},
+	"name": "Cody Blick III",
+	"email": "codyblick3@outlook.com",
+	"password": "$2a$10$xoVXoiNW0jh/AZ7hCsZih.9grfC5pYBaRt25uVP4FULKey6RVjKXC",
+	"avatarUrl": "https://s3.amazonaws.com/uifaces/faces/twitter/heyimjuani/128.jpg",
+	"slug": "cody-blick-iii",
+	"favoriteRecipes": [
+		"apple-and-calvados-tart-galette-de-pommes-au-calvados"
+	],
+	"dateCreated": "2019-05-02 20:00:00.000",
+	"dateUpdated": {
+		"$date": "2019-04-12T19:56:26.251Z"
+	}
+},
+{
+	"_id": {
+		"$oid": "5caf532ef39671c80a3a42ef"
+	},
+	"name": "Tremaine Quitzon",
+	"email": "tremaine_quitzon@hotmail.com",
+	"password": "$2a$10$2dZNJ0oApLLiV8WgN3NhB.TFIhWUHeMa7hKr5IlWwv/ik9NT3awL.",
+	"avatarUrl": "https://s3.amazonaws.com/uifaces/faces/twitter/sergeysafonov/128.jpg",
+	"slug": "tremaine-quitzon",
+	"favoriteRecipes": [
+		"apple-and-calvados-tart-galette-de-pommes-au-calvados",
+		"chickpea-flatbreads-with-burst-tomato-sauce",
+		"corned-beef-with-crispy-roasted-potatoes-and-cabbage"
+	],
+	"dateCreated": "2019-05-02 20:00:00.000",
+	"dateUpdated": {
+		"$date": "2019-04-12T19:33:58.957Z"
+	}
+},
+{
+	"_id": {
+		"$oid": "5caf532ef39671c80a3a42f0"
+	},
+	"name": "Cordie Runolfsson",
+	"email": "cordierunolfsson@gmail.com",
+	"password": "$2a$10$SVLlcCtSLKdJN2wrvEgHcekDKtLTfF0QQcCBH7Q9m7O8wYNpOMo/O",
+	"avatarUrl": "https://s3.amazonaws.com/uifaces/faces/twitter/iamsteffen/128.jpg",
+	"slug": "cordie-runolfsson",
+	"favoriteRecipes": [
+		"manicotti"
+	],
+	"dateCreated": "2019-05-02 20:00:00.000",
+	"dateUpdated": {
+		"$date": "2019-04-12T14:07:09.000Z"
+	}
+},
+{
+	"_id": {
+		"$oid": "5caf532ef39671c80a3a42f1"
+	},
+	"name": "Lula Volkman",
+	"email": "lulavolkman@gmail.com",
+	"password": "$2a$10$aXhzIwgezrP4veNfIpadLOHJirbFWgQllmQdfQVRM6LG3FUxEwDdy",
+	"avatarUrl": "https://s3.amazonaws.com/uifaces/faces/twitter/kaysix_dizzy/128.jpg",
+	"slug": "lula-volkman",
+	"favoriteRecipes": [],
+	"dateCreated": "2019-05-02 20:00:00.000",
+	"dateUpdated": "2019-05-02 20:00:00.000"
+},
+{
+	"_id": {
+		"$oid": "5caf532ef39671c80a3a42f2"
+	},
+	"name": "Billy Krajcik",
+	"email": "billykrajcik@gmail.com",
+	"password": "$2a$10$86rTglPl/.8wPZjr6BSAD.w6gQM9w2CePPRj0yDO2Ck2n9xQQcjDG",
+	"avatarUrl": "https://s3.amazonaws.com/uifaces/faces/twitter/syropian/128.jpg",
+	"slug": "billy-krajcik",
+	"favoriteRecipes": [
+		"shawarma-spiced-tofu-pita-wraps",
+		"babees-easter-bread",
+		"potato-tart-with-mustard-greens-and-lemon-thyme"
+	],
+	"dateCreated": "2019-05-02 20:00:00.000",
+	"dateUpdated": {
+		"$date": "2019-04-12T19:31:18.762Z"
+	}
+},
+{
+	"_id": {
+		"$oid": "5caf532ef39671c80a3a42f3"
+	},
+	"name": "Mafalda Kemmer",
+	"email": "mafaldakemmer@gmail.com",
+	"password": "$2a$10$6lL1kHXKXYwzmoOcq/CAU.V3qABs8nSIOvrtpSrjX3IYcn26KdI1m",
+	"avatarUrl": "https://s3.amazonaws.com/uifaces/faces/twitter/_yardenoon/128.jpg",
+	"slug": "mafalda-kemmer",
+	"favoriteRecipes": [
+		"chickpea-flatbreads-with-burst-tomato-sauce",
+		"chicken-soup-with-caramelized-ginger",
+		"shawarma-spiced-tofu-pita-wraps",
+		"kimchi-and-miso-noodle-soup",
+		"babees-easter-bread"
+	],
+	"dateCreated": "2019-05-02 20:00:00.000",
+	"dateUpdated": {
+		"$date": "2019-04-12T19:35:46.029Z"
+	}
+},
+{
+	"_id": {
+		"$oid": "5caf532ef39671c80a3a42f4"
+	},
+	"name": "Gerda Friesen",
+	"email": "gerda_friesen@outlook.com",
+	"password": "$2a$10$tS8mvcOooY/IwUhUR6x14ugBoQoJ9KDBw4o9XEt9bsFbl10GU5nMi",
+	"avatarUrl": "https://s3.amazonaws.com/uifaces/faces/twitter/mocabyte/128.jpg",
+	"slug": "gerda-friesen",
+	"favoriteRecipes": [],
+	"dateCreated": "2019-05-02 20:00:00.000",
+	"dateUpdated": "2019-05-02 20:00:00.000"
+},
+{
+	"_id": {
+		"$oid": "5caf532ef39671c80a3a42f6"
+	},
+	"name": "Wilhelm Doyle",
+	"email": "wilhelmdoyle@gmail.com",
+	"password": "$2a$10$MgAtrOJdtC7KmobwlK.mHOv9G7TcqU3YAowGGBMWvaueu8qUkfbdC",
+	"avatarUrl": "https://s3.amazonaws.com/uifaces/faces/twitter/sebashton/128.jpg",
+	"slug": "wilhelm-doyle",
+	"favoriteRecipes": [
+		"date-night-pork-chop",
+		"sweet-potato-bowls-with-spiced-lamb-and-mushrooms",
+		"babees-easter-bread",
+		"peanut-butter-and-jelly-smoothie",
+		"spring-pea-fish-chowder"
+	],
+	"dateCreated": "2019-05-02 20:00:00.000",
+	"dateUpdated": {
+		"$date": "2019-04-12T20:04:13.191Z"
+	}
+}]
+

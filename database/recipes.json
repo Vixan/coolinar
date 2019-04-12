@@ -1,0 +1,2352 @@
+[{
+	"_id": {
+		"$oid": "5ca66f9a8efe2d21e010db29"
+	},
+	"title": "Lentil, Apple, and Turkey Wrap",
+	"description": "6 servings of a delicious treat",
+	"ingredients": [
+		"4 cups low-sodium vegetable or chicken stock",
+		"1 cup dried brown lentils",
+		"1/2 cup dried French green lentils",
+		"2 stalks celery, chopped",
+		"1 large carrot, peeled and chopped",
+		"1 sprig fresh thyme",
+		"1 teaspoon kosher salt",
+		"1 medium tomato, cored, seeded, and diced",
+		"1 small Fuji apple, cored and diced",
+		"1 tablespoon freshly squeezed lemon juice",
+		"2 teaspoons extra-virgin olive oil",
+		"Freshly ground black pepper to taste",
+		"3 sheets whole-wheat lavash, cut in half crosswise, or 6 (12-inch) flour tortillas",
+		"3/4 pound turkey breast, thinly sliced",
+		"1/2 head Bibb lettuce"
+	],
+	"directions": [
+		"Place the stock, lentils, celery, carrot, thyme, and salt in a medium saucepan and bring to a boil.Reduce heat to low and simmer until the lentils are tender, about 30 minutes, depending on the lentils.(If they begin to dry out, add water as needed.) Remove and discard the thyme.Drain and transfer the mixture to a bowl;let cool.",
+		"Fold in the tomato, apple, lemon juice, and olive oil.Season with the pepper.",
+		"To assemble a wrap, place 1 lavash sheet on a clean work surface.Spread some of the lentil mixture on the end nearest you, leaving a 1 - inch border.Top with several slices of turkey, then some of the lettuce.Roll up the lavash, slice crosswise, and serve.If using tortillas, spread the lentils in the center, top with the turkey and lettuce, and fold up the bottom, left side, and right side before rolling away from you."
+	],
+	"preparationTime": 45,
+	"cookingTime": 140,
+	"imageUrls": [
+		"https://assets.epicurious.com/photos/551b0595e7851a541a30b23f/6:4/w_620%2Ch_413/239173_lentil-apple-and-turkey-wrap_6x4.jpg"
+	],
+	"author": "alec-sanders",
+	"categories": [
+		"apple",
+		"wrap",
+		"turkey",
+		"healthy"
+	],
+	"nutrition": {
+		"calories": 527,
+		"fat": 9,
+		"carbohydrates": 77,
+		"protein": 35,
+		"fibre": 8,
+		"sodium": 922
+	},
+	"servings": 6,
+	"notes": "Cooking time for lentils can vary, depending on their age and variety, so taste them while they cook and add liquid as necessary. Simmer (don't boil) to prevent them from breaking down too quickly.",
+	"slug": "lentil-apple-and-turkey-wrap",
+	"averageReviewScore": 4.5,
+	"reviews": [
+		{
+			"text": "Greaaat!",
+			"author": "alec-sanders",
+			"score": 4
+		},
+		{
+			"text": "Could not get enough of it!",
+			"score": 5,
+			"author": "mafalda-kemmer"
+		}
+	],
+	"dateCreated": {
+		"$date": "2019-04-04T20:56:58.261Z"
+	},
+	"dateUpdated": {
+		"$date": "2019-04-12T19:40:01.245Z"
+	}
+},
+{
+	"_id": {
+		"$oid": "5caf39543d14ca2da8bfba61"
+	},
+	"title": "Mahi-Mahi in Tomato Olive Sauce",
+	"description": "The Sicilian-style tomato sauce has tons of Mediterranean flavor, thanks to the orange peel, olives, and oregano.",
+	"ingredients": [
+		"2 tablespoons extra-virgin olive oil",
+		"1 cup chopped onion",
+		"1 cup dry white wine",
+		"1 teaspoon anchovy paste",
+		"2 14 1/2-ounce cans diced tomatoes with garlic, basil, and oregano in juice.",
+		"4 6-ounce mahi-mahi fillets",
+		"1/2 cup large green olives, quartered, pitted",
+		"3 teaspoons chopped fresh oregano, divided",
+		"1 teaspoon (packed) finely grated orange peel",
+		"Country-style white bread cut into 1/2-inch-thick slices, toasted"
+	],
+	"directions": [
+		"Heat oil in heavy large skillet over medium-high heat. Add onion; sauté until translucent and beginning to brown, about 4 minutes. Add wine and anchovy paste. Boil until reduced to 3/4 cup, about 3 minutes. Add tomatoes with juice; bring to boil.",
+		"Sprinkle fish with salt and pepper. Add fish to skillet atop tomato mixture. Reduce heat to low, cover, and simmer until fish is cooked through, about 9 minutes. Using slotted metal spatula, transfer fish to plate and tent with foil to keep warm. Mix olives, 2 teaspoons oregano, and orange peel into sauce in skillet. Increase heat to high and boil until sauce is reduced and thickened, about 6 minutes. Season to taste with salt and pepper. Place 1 fish fillet on each of 4 plates. Pour sauce over and around fish, sprinkle with remaining 1 teaspoon oregano, and serve with warm toasted bread."
+	],
+	"preparationTime": 10,
+	"cookingTime": 30,
+	"imageUrls": [],
+	"author": "alec-sanders",
+	"categories": [
+		"fish",
+		"olive",
+		"tomato",
+		"sauté",
+		"healthy",
+		"low fat",
+		"low cal",
+		"high fiber",
+		"pescatarian",
+		"mediterranean"
+	],
+	"nutrition": {
+		"calories": 424,
+		"fat": 13,
+		"carbohydrates": 23,
+		"protein": 45,
+		"fibre": 4
+	},
+	"servings": 4,
+	"notes": null,
+	"slug": "mahi-mahi-in-tomato-olive-sauce",
+	"averageReviewScore": 2,
+	"reviews": [
+		{
+			"text": "",
+			"score": 2,
+			"author": "cody-blick-iii"
+		}
+	],
+	"dateCreated": {
+		"$date": "2019-04-11T12:55:48.202Z"
+	},
+	"dateUpdated": {
+		"$date": "2019-04-12T19:58:05.699Z"
+	}
+},
+{
+	"_id": {
+		"$oid": "5caf39713d14ca2da8bfba62"
+	},
+	"title": "Ham Persillade with Mustard Potato Salad and Mashed Peas",
+	"description": "Transform your picnic into un pique-nique to remember with this elegant arrangement of tangy potato salad, peas gently mashed with marjoram, and salty ham softly set in parsleyed gelatin.",
+	"ingredients": [
+		"6 long parsley sprigs, divided",
+		"1 3/4 cups reduced-sodium chicken broth",
+		"1 large garlic clove, minced",
+		"2 teaspoon unflavored gelatin (from 1 envelope)",
+		"3 tablespoons water",
+		"1 (3/4-pound) piece baked ham, cut into 1/2-inch cubes (2 cups)",
+		"1/2 cup mayonnaise",
+		"2 tablespoons Dijon mustard",
+		"2 tablespoons white-wine vinegar",
+		"2 celery ribs, finely chopped (1 cup)",
+		"1/4 cup chopped cornichons or sour gherkins",
+		"1 pound boiled potatoes, peeled and cut into 1/2-inch cubes (2 1/2 cup...",
+		"1 (10-ounce) box frozen baby peas, thawed",
+		"2 teaspoons finely chopped marjoram",
+		"3 tablespoons extra-virgin olive oil",
+		"Equipment: 4 (16-ounce) wide jars or containers with lids",
+		"Garnish: celery leaves"
+	],
+	"directions": [
+		"Chop enough parsley leaves to measure 1 tablespoon; reserve. Chop remaining leaves and stems and simmer with broth and garlic in a small saucepan, covered, 5 minutes.",
+		"Meanwhile, sprinkle gelatin over water in a medium bowl and let soften 1 minute. Strain broth through a fine-mesh sieve into bowl with gelatin and stir to dissolve. Season with salt and pepper. Set bowl in an ice bath and cool to room temperature, stirring.",
+		"Toss ham with reserved parsley and divide among jars. Pour gelatin on top and chill until set, at least 1 hour.",
+		"Whisk together mayonnaise, mustard, vinegar, 1/4 teaspoon salt, and 1/4 teaspoon pepper in a large bowl. Stir in celery, cornichons, and potatoes.",
+		"Pulse peas with marjoram, oil, 1/2 teaspoon pepper, and 1/4 teaspoon salt in a food processor to a coarse mash.",
+		"Layer peas, then potato salad, over ham."
+	],
+	"preparationTime": 30,
+	"cookingTime": 10,
+	"imageUrls": [
+		"https://assets.epicurious.com/photos/560d78e67b55306961bf3501/6:4/w_620%2Ch_413/243208_hires.jpg"
+	],
+	"author": "alec-sanders",
+	"categories": [
+		"french",
+		"salad",
+		"mustard",
+		"potato",
+		"picnic",
+		"lunch",
+		"mayonnaise",
+		"ham",
+		"pea",
+		"soy free",
+		"dairy free",
+		"gourmet"
+	],
+	"nutrition": {
+		"calories": 602,
+		"protein": 23,
+		"sodium": 1696
+	},
+	"servings": 4,
+	"notes": "Assembled jars can be chilled up to 6 hours. Serve at room temperature.",
+	"slug": "ham-persillade-with-mustard-potato-salad-and-mashed-peas",
+	"averageReviewScore": 4,
+	"reviews": [
+		{
+			"text": "",
+			"score": 4,
+			"author": "cody-blick-iii"
+		}
+	],
+	"dateCreated": {
+		"$date": "2019-04-11T12:56:17.414Z"
+	},
+	"dateUpdated": {
+		"$date": "2019-04-12T19:58:15.416Z"
+	}
+},
+{
+	"_id": {
+		"$oid": "5caf398e3d14ca2da8bfba63"
+	},
+	"title": "Grouper with Tomato and Basil",
+	"description": "No one can resist this dish. I mean it, no one.",
+	"ingredients": [
+		"2 tablespoons extra-virgin olive oil",
+		"1 (1-lb) piece grouper or red snapper fillet (3/4 inch thick), skinned and halved crosswise",
+		"1/4 teaspoon salt",
+		"1/8 teaspoon black pepper",
+		"1/2 cup coarsely chopped tomato",
+		"1 small garlic clove, minced (optional)",
+		"2 tablespoons thinly sliced fresh basil",
+		"Accompaniment: fresh corn spoon bread"
+	],
+	"directions": [
+		"Working off heat, put 1 tablespoon oil in a 10-inch nonstick skillet and add fish, turning to coat with oil on both sides. Arrange fish skinned sides down and sprinkle with salt and pepper.",
+		"Toss together tomato, garlic (if using), basil, remaining tablespoon oil, and salt and pepper to taste in a small bowl, then mound on top of fish. Cover skillet with a tight-fitting lid and cook fish over moderately high heat until just cooked through, about 8 minutes."
+	],
+	"preparationTime": 15,
+	"cookingTime": 25,
+	"imageUrls": [
+		"https://assets.epicurious.com/photos/560ea0f77b55306961bfefa2/6:4/w_620%2Ch_413/106744.jpg"
+	],
+	"author": "alec-sanders",
+	"categories": [
+		"fish",
+		"tomato",
+		"quick \u0026 easy",
+		"summer",
+		"gourmet"
+	],
+	"nutrition": {
+		"calories": 336,
+		"protein": 44,
+		"sodium": 413
+	},
+	"servings": 2,
+	"notes": null,
+	"slug": "grouper-with-tomato-and-basil",
+	"averageReviewScore": 4,
+	"reviews": [
+		{
+			"text": "",
+			"score": 4,
+			"author": "cody-blick-iii"
+		}
+	],
+	"dateCreated": {
+		"$date": "2019-04-11T12:56:46.480Z"
+	},
+	"dateUpdated": {
+		"$date": "2019-04-12T19:57:52.236Z"
+	}
+},
+{
+	"_id": {
+		"$oid": "5caf3e433d14ca2da8bfba64"
+	},
+	"title": "Quinoa Bowl with Lentils and Mustard Vinaigrette",
+	"description": "Yes, you can cook lentils and quinoa together. And now your life will become exponentially easier.",
+	"notes": "",
+	"ingredients": [
+		"1/2 cup green lentils, rinsed",
+		"1/2 cup red quinoa, rinsed",
+		"Kosher salt",
+		"2 tablespoons red wine vinegar",
+		"1 tablespoon fresh lemon juice",
+		"2 teaspoons Dijon mustard",
+		"1/4 cup extra-virgin olive oil",
+		"Freshly ground black pepper",
+		"3 celery stalks, thinly sliced on a diagonal",
+		"2 cups very thinly sliced green cabbage",
+		"1 cup celery leaves",
+		"1 cup torn mint leaves",
+		"3 ounces semifirm cheese (such as Gouda, Gruyère, or cheddar), shaved"
+	],
+	"directions": [
+		"Cook lentils and quinoa in a large saucepan of simmering salted water until lentils are tender but still retain their shape, 15–20 minutes. Drain; transfer to a medium bowl.",
+		"Whisk vinegar, lemon juice, and mustard in a large bowl. Whisking constantly, gradually stream in oil; whisk until emulsified. Season with salt and a generous amount of pepper. Add lentils and quinoa, celery stalks, cabbage, celery leaves, and mint and toss to coat. Add cheese and toss again. Taste and season with more salt and pepper if needed.",
+		"Do Ahead Lentils and quinoa can be cooked 1 day ahead. Let cool; cover and chill."
+	],
+	"categories": [
+		"lunch",
+		"quick \u0026 easy",
+		"healthy",
+		"quick and healthy",
+		"quinoa",
+		"lentil",
+		"cabbage",
+		"celery",
+		"mint",
+		"cheese",
+		"snack"
+	],
+	"imageUrls": [
+		"https://assets.epicurious.com/photos/5a3002b6f63b7c147f5cedb7/6:4/w_620%2Ch_413/quinoa-bowl-with-lentils-and-mustard-vinaigrette-recipe-BA-121217.jpg"
+	],
+	"preparationTime": 20,
+	"cookingTime": 20,
+	"servings": 4,
+	"nutrition": {
+		"calories": 405,
+		"fat": 23,
+		"carbohydrates": 36,
+		"protein": 16,
+		"fibre": 8,
+		"sodium": 1
+	},
+	"author": "alec-sanders",
+	"slug": "quinoa-bowl-with-lentils-and-mustard-vinaigrette",
+	"averageReviewScore": 3,
+	"reviews": [
+		{
+			"text": "",
+			"score": 3,
+			"author": "cody-blick-iii"
+		}
+	],
+	"dateCreated": {
+		"$date": "2019-04-11T13:16:51.010Z"
+	},
+	"dateUpdated": {
+		"$date": "2019-04-12T19:57:43.264Z"
+	}
+},
+{
+	"_id": {
+		"$oid": "5caf4969ef04040c78712d93"
+	},
+	"title": "Crispy Skin Chicken with Dill and Garlic Sauce",
+	"description": "Quickly shallow-frying the chicken halves in shallot oil after they’ve been roasted locks in their juices and yields beautifully crispy, golden-brown skin. Served with garlicky boiled potatoes and topped with crunchy fried shallots and lots of fresh dill, this dish is perfect to welcome spring.",
+	"notes": "Special Equipment:\nA deep-fry thermometer\n\nA salad can be made from the same ingredients, which is great!",
+	"ingredients": [
+		"2 (3 1/2–4-lb.) chickens, backbones removed, halved through the breastbone",
+		"1 1/2 tsp. plus 2 Tbsp. kosher salt; plus more",
+		"3 heads of garlic, cloves separated, peeled",
+		"3 cups vegetable or other neutral oil, divided",
+		"3 Tbsp. Aleppo-style pepper",
+		"3 large shallots, thinly sliced",
+		"2 1/2 lb. new potatoes, halved, quartered if large",
+		"1/2 cup coarsely chopped dill"
+	],
+	"directions": [
+		"Place racks in upper and lower thirds of oven; preheat to 325°F. Pat chicken halves dry with paper towels and season generously all over with salt. Arrange, skin side up, on 2 wire racks set inside 2 baking sheets so that you have 2 chicken halves on each rack. Roast chickens, rotating baking sheets top to bottom and front to back halfway through, until just golden and an instant-read thermometer inserted into the thickest part of the breasts registers 150°F, 45–50 minutes.",
+		"Meanwhile, pulse garlic in a food processor until finely chopped. Heat 1 cup oil in a small saucepan over medium until shimmering. Add garlic and cook, stirring constantly, until softened and slightly darker, about 1 minute. Transfer to a small bowl. Stir in Aleppo-style pepper and 1 1/2 tsp. salt. Set garlic oil aside for serving.",
+		"Fit a large Dutch oven or other heavy pot with deep-fry thermometer. Heat remaining 2 cups vegetable oil over medium-high until thermometer registers 350°F. Fry shallots, stirring often, until golden brown, about 5 minutes. Using a fine-mesh sieve or spider, transfer shallots to paper towels to drain; season with salt. Remove pot from heat if chicken hasn’t finished roasting yet.",
+		"As soon as chickens are done, remove from oven and lightly dab with paper towels to remove as much moisture from the underside as possible (this will prevent them from spattering too much when you put them in the hot oil). Reheat shallot oil to 350°F if needed. Working with 1 half at a time and maintaining oil temperature between batches, fry chickens, skin side down, until skin is crisp and deeply browned, 6–8 minutes. Transfer to clean wire racks as you go; season lightly with salt.",
+		"Meanwhile, combine potatoes and 2 Tbsp. salt in another large pot and pour in cold water to cover by 1\". Bring to a boil, then reduce heat to medium-low and simmer until potatoes are very tender when pierced with the tip of a paring knife, 10–15 minutes, depending on size of potatoes. Drain and return potatoes to the same pot. Gently press down on potatoes to break up slightly. Add 1/3 cup reserved garlic oil, season with salt, and toss to combine.",
+		"Transfer potatoes to a small platter. Drizzle with some more garlic oil. Cut chicken halves into pieces and arrange on a large platter. Drizzle chicken with some garlic oil, then sprinkle dill and fried shallots over. Serve with any remaining garlic oil alongside."
+	],
+	"categories": [
+		"chicken",
+		"garlic",
+		"pepper",
+		"shallot",
+		"potato",
+		"dill",
+		"fry",
+		"spring",
+		"passover",
+		"entertaining",
+		"easter",
+		"european",
+		"russian",
+		"gluten free",
+		"diary free"
+	],
+	"imageUrls": [
+		"https://assets.epicurious.com/photos/5cad32983d64354bfcd53a82/6:4/w_620%2Ch_413/Crispy-Chicken-Halves-w-Dill-and-Spicy-Garlic-Sauce-04042019.jpg",
+		"https://dwgyu36up6iuz.cloudfront.net/heru80fdn/image/upload/c_fill,d_placeholder_epicurious.png,fl_progressive,g_face,h_450,q_80,w_800/v1503346989/epicurious_red-curry-noodle-bowl.jpg"
+	],
+	"preparationTime": 30,
+	"cookingTime": 80,
+	"servings": 8,
+	"nutrition": {
+		"calories": 0,
+		"fat": 0,
+		"carbohydrates": 0,
+		"protein": 0,
+		"fibre": 0,
+		"sodium": 0
+	},
+	"author": "alec-sanders",
+	"slug": "crispy-skin-chicken-with-dill-and-garlic-sauce",
+	"averageReviewScore": 4.5,
+	"reviews": [
+		{
+			"text": "Delicious! How did you think about this one? Please add more recipes like this.",
+			"author": "mafalda-kemmer",
+			"score": 5
+		},
+		{
+			"text": "",
+			"score": 4,
+			"author": "lula-volkman"
+		}
+	],
+	"dateCreated": {
+		"$date": "2019-04-11T14:04:25.206Z"
+	},
+	"dateUpdated": {
+		"$date": "2019-04-12T20:02:18.368Z"
+	}
+},
+{
+	"_id": {
+		"$oid": "5caf4be0ef04040c78712d94"
+	},
+	"title": "Manicotti",
+	"description": "It just wouldn't be a holiday without my mom preparing a pasta course, whether it precedes the turkey at Thanksgiving or follows antipasti at Easter. My mom's manicotti recipe (which comes from her Italian mother), feeds our immediate family of 40, but I've scaled it down to feed a smaller group of 6. The tender manicotti wrappers are made by quickly cooking a batter to form a pastalike crêpe.",
+	"notes": "Special Equipment:\n2 glass or ceramic baking dishes, one 13 by 9 inches and one 8 inches square\n\nManicotti can be assembled (but not baked) 1 day ahead and chilled, covered with foil. Chill remaining sauce, covered, separately. Let stand at room temperature 15 minutes before baking, covered with foil. Reheat sauce, thinning slightly with water.",
+	"ingredients": [
+		"3 tablespoons olive oil",
+		"1 medium onion, chopped",
+		"2 (28- to 32-oz) cans Italian tomatoes in juice, drained, reserving juice, and finely chopped",
+		"1/2 cup water",
+		"1 teaspoon sugar",
+		"1 teaspoon salt",
+		"1/4 cup chopped fresh basil",
+		"3 large eggs",
+		"1 1/2 cups water",
+		"1 1/4 cups all-purpose flour",
+		"1/2 teaspoon salt for crepe",
+		"1 tablespoon unsalted butter, melted for crepe",
+		"2 lb fresh ricotta (3 cups)",
+		"2 large eggs",
+		"1 oz finely grated Parmigiano-Reggiano (1/2 cup)",
+		"1/3 cup chopped fresh parsley",
+		"1/2 teaspoon salt",
+		"1/2 teaspoon black pepper",
+		"1/2 lb fresh mozzarella"
+	],
+	"directions": [
+		"Make sauce: Heat oil in a 5- to 6-quart heavy pot over moderately high heat until hot but not smoking, then sauté onion, stirring occasionally, until golden, about 6 minutes. Add garlic and sauté, stirring, until golden, about 1 minute. Add tomatoes with juice, water, sugar, and salt and simmer, uncovered, stirring occasionally, until thickened, about 30 minutes. Stir in basil and remove from heat.",
+		"Make crêpes: Break up eggs with a wooden spoon in a medium bowl and stir in water until combined (don't beat). Sift in flour and salt, then stir batter until just combined. Force through a medium-mesh sieve into another bowl.",
+		"Lightly brush an 8-inch nonstick skillet with melted butter and heat over moderate heat until hot. Ladle about 1/4 cup batter into skillet, tilting and rotating skillet to coat bottom, then pour excess batter back into bowl. (If batter sets before skillet is coated, reduce heat slightly for next crêpe.) Cook until underside is just set and lightly browned, about 30 seconds, then invert crêpe onto a clean kitchen towel to cool completely. Make at least 11 more crêpes in same manner, brushing skillet with butter as needed and stacking crêpes in 3 piles.",
+		"Make filling and assemble manicotti: Stir together ricotta, eggs, Parmigiano-Reggiano, parsley, salt, and pepper.",
+		"Put oven rack in middle position and preheat oven to 425°F.",
+		"Cut mozzarella lengthwise into 1/4-inch-thick sticks.",
+		"Spread 2 cups sauce in larger baking dish and 1 cup in smaller one. Arrange 1 crêpe, browned side up, on a work surface, then spread about 1/4 cup filling in a line across center and top with a mozzarella strip. Fold in sides to enclose filling, leaving ends open, and transfer, seam side down, to either baking dish. Fill 11 more crêpes in same manner, arranging snugly in 1 layer in both dishes (8 in larger dish and 4 in smaller). Spread 1 cup sauce over manicotti in larger dish and 1/2 cup in smaller dish. Tightly cover dishes with foil and bake until sauce is bubbling and filling is hot, 15 to 20 minutes. Serve remaining sauce on the side."
+	],
+	"categories": [
+		"gourmet",
+		"italian",
+		"dinner",
+		"egg",
+		"pasta",
+		"tomato",
+		"bake",
+		"christmas",
+		"mozzarella",
+		"parmezan",
+		"ricota",
+		"basil",
+		"winter"
+	],
+	"imageUrls": [
+		"https://assets.epicurious.com/photos/5cad313d58fdd6210e2e3605/6:4/w_620%2Ch_413/Manicotti-recipe-03042019.jpg",
+		"data:image/jpeg;base64,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"
+	],
+	"preparationTime": 75,
+	"cookingTime": 45,
+	"servings": 6,
+	"nutrition": {
+		"calories": 0,
+		"fat": 0,
+		"carbohydrates": 0,
+		"protein": 0,
+		"fibre": 0,
+		"sodium": 0
+	},
+	"author": "alec-sanders",
+	"slug": "manicotti",
+	"averageReviewScore": 4.666666666666667,
+	"reviews": [
+		{
+			"text": "Perfect combination of ingredients and preparation methods.",
+			"author": "cody-blick-iii",
+			"score": 5
+		},
+		{
+			"text": "",
+			"author": "cordie-runolfsson",
+			"score": 5
+		},
+		{
+			"text": "",
+			"score": 4,
+			"author": "gerda-friesen"
+		}
+	],
+	"dateCreated": {
+		"$date": "2019-04-11T14:14:56.707Z"
+	},
+	"dateUpdated": {
+		"$date": "2019-04-12T20:03:40.800Z"
+	}
+},
+{
+	"_id": {
+		"$oid": "5caf4ebbef04040c78712d95"
+	},
+	"title": "Bacon and Cheddar Toasts",
+	"description": "These toasts have been served for at least 28 years at the house where my mother still lives. One Thanksgiving, my mother and grandmother underestimated their popularity and left them out of the feast, causing a near riot among our extended family. Happily, that mistake was never repeated.",
+	"notes": "• Reserved crusts (with some of topping still on them) can be baked at 375°F until lightly browned, about 10 minutes, then cooled. Break up crusts and sprinkle over salads. • Toasts can be prepared and cut 2 weeks ahead and frozen, layered between sheets of wax paper in an airtight container. Thaw before baking. Makes 56 hors d'oeuvres.",
+	"ingredients": [
+		"1/2 lb extra-sharp white Cheddar, coarsely grated (2 cups)",
+		"1/2 lb cold sliced lean bacon, finely chopped",
+		"1 small onion, finely chopped (1/3 cup)",
+		"1 1/2 tablespoons drained bottled horseradish",
+		"1/2 teaspoon salt",
+		"1/4 teaspoon black pepper",
+		"14 very thin slices firm white sandwich bread"
+	],
+	"directions": [
+		"Put oven rack in middle position and preheat oven to 375°F.",
+		"Stir together cheese, bacon, onion, horseradish, salt, and pepper in a bowl with a rubber spatula until blended well.",
+		"Spread about 1 1/2 tablespoons mixture evenly to edges of each slice of bread with a small offset spatula or butter knife. Arrange slices in 1 layer on a large baking sheet and freeze, covered with wax paper, until firm, about 15 minutes.",
+		"Trim crusts off bread and reserve for another use (see cooks' note, below), then cut each slice into 4 squares. Bake toasts on baking sheet until beginning to brown on edges, about 20 minutes."
+	],
+	"categories": [
+		"american",
+		"onion",
+		"bake",
+		"cocktail party",
+		"quick \u0026 easy",
+		"cheddar",
+		"bacon",
+		"gourmet"
+	],
+	"imageUrls": [
+		"https://assets.epicurious.com/photos/5cad3404f951650ceae995cd/master/w_1600,c_limit/Bacon-and-Cheddar-Toasts-recipe-03042019.jpg"
+	],
+	"preparationTime": 25,
+	"cookingTime": 45,
+	"servings": 1,
+	"nutrition": {
+		"calories": 43,
+		"fat": 3,
+		"carbohydrates": 2,
+		"protein": 2,
+		"sodium": 0.073
+	},
+	"author": "alec-sanders",
+	"slug": "bacon-and-cheddar-toasts",
+	"averageReviewScore": 4.5,
+	"reviews": [
+		{
+			"text": "",
+			"author": "cody-blick-iii",
+			"score": 5
+		},
+		{
+			"text": "",
+			"score": 4,
+			"author": "lula-volkman"
+		}
+	],
+	"dateCreated": {
+		"$date": "2019-04-11T14:27:07.278Z"
+	},
+	"dateUpdated": {
+		"$date": "2019-04-12T20:01:52.059Z"
+	}
+},
+{
+	"_id": {
+		"$oid": "5caf4fdfef04040c78712d96"
+	},
+	"title": "Foolproof Grilled Chicken",
+	"description": "For the very best results, we brine the chicken before it goes on the grill; sear it over the flames; finish cooking it on the other side of the grill; then toss it in a robust vinaigrette when it's done.",
+	"notes": "Special Equipment:\na 22 1/2-inch charcoal kettle grill and a charcoal chimney; or a gas grill. o make a Mediterranean vinaigrette for chicken , whisk together 1/4 cup fresh lemon juice, 1 minced large garlic clove, 1 tablespoon chopped fresh rosemary, 1 teaspoon dried hot red pepper flakes, and 1 teaspoon kosher salt, then add 1/3 cup olive oil in a slow stream, whisking.\nChicken can be brined 1 day ahead. Remove from brine, pat dry, and chill, covered.\nIf you aren't able to grill, brined chicken can be roasted, starting with skin sides up, in 2 lightly oiled shallow baking pans in upper and lower thirds of a 500°F oven, switching position of pans and turning chicken over halfway through roasting, until skin is crisp and chicken is cooked through, 30 to 40 minutes total. Lime slices can be grilled in a well-seasoned ridged grill pan on top of the stove.",
+	"ingredients": [
+		"4 quarts cold water",
+		"1/4 cup sugar",
+		"1/2 cup plus 1 teaspoon kosher salt",
+		"5 1/2 to 6 pounds chicken parts with skin and bones",
+		"1/4 cup fresh lime juice plus 4 limes, halved crosswise",
+		"2 tablespoons Asian fish sauce",
+		"1 large garlic clove, minced",
+		"3 tablespoons finely chopped fresh mint",
+		"1/4 cup finely chopped fresh cilantro",
+		"1 teaspoon dried hot red pepper flakes",
+		"1/2 cup vegetable oil"
+	],
+	"directions": [
+		"Brine chicken and make vinaigrette: Bring water, sugar, and 1/2 cup salt to a boil in a 6- to 8-quart heavy pot, then reduce heat and simmer, uncovered, 15 minutes. Cool brine completely, then add chicken and soak, covered and chilled, 6 hours.",
+		"Remove chicken and pat dry.",
+		"Whisk together lime juice, fish sauce, garlic, mint, cilantro, red pepper flakes, and remaining teaspoon salt in a large bowl, then add oil in a stream, whisking until combined.",
+		"To cook chicken using a charcoal grill: Open vents on bottom of grill and on lid. Light a large chimney starter of charcoal (80 to 100 briquettes). Leaving about one quarter of grill free of charcoal, bank lit charcoal across rest of grill so that coals are about three times higher on the opposite side.",
+		"When charcoal turns grayish white (after 15 to 20 minutes), check fire temperature and grill chicken parts according to instructions in accompanying article. Transfer chicken as cooked to bowl with vinaigrette and turn to coat, then transfer to a serving platter and keep warm, loosely covered with foil.",
+		"When chicken is almost done, grill lime halves, cut sides down, uncovered, over coals until grill marks appear, about 3 minutes, then transfer to platter with chicken. Serve limes with chicken and serve remaining vinaigrette on the side.",
+		"To cook chicken using a gas grill: Preheat all burners on high, covered, 10 minutes, then adjust heat to moderately high.",
+		"For drumsticks, thighs, and wings (cooking time is longer than cooking times for charcoal grilling): Sear chicken in 2 batches on lightly oiled grill rack, covered with lid, turning over once, until well browned, 6 to 8 minutes total. Turn off 1 burner (middle burner if there are 3) and arrange all seared chicken on rack above shut-off burner.",
+		"Cook seared chicken, covered with lid, moving chicken around grill (to avoid flare-ups) and turning over occasionally, until cooked through, 12 to 20 minutes. Transfer chicken as cooked to bowl with vinaigrette and turn to coat, then transfer to a serving platter and keep warm, loosely covered with foil.",
+		"For breast halves: Sear chicken (in 2 batches if necessary to avoid crowding), starting with skin sides down, on grill, covered with lid, turning over once, until well browned, 8 to 10 minutes total. Turn off 1 burner (middle burner if there are 3) and arrange all breasts on rack over shut-off burner.",
+		"Cook seared chicken, covered with lid, turning over once, until cooked through, 18 to 20 minutes. Transfer chicken to bowl with vinaigrette and turn to coat, then transfer to platter to keep warm, loosely covered with foil.",
+		"When chicken is almost done, grill lime halves, cut sides down, uncovered, over lit burner until grill marks appear, about 3 minutes, then transfer to platter with chicken. Serve limes with chicken and serve remaining vinaigrette on the side."
+	],
+	"categories": [
+		"american",
+		"chicken",
+		"lime",
+		"mint",
+		"summer",
+		"grill",
+		"brine",
+		"gourmet"
+	],
+	"imageUrls": [
+		"https://assets.epicurious.com/photos/5cad2f4ef951650ceae995cb/6:4/w_620%2Ch_413/Foolproof-Grilled-Chicken-03042019.jpg"
+	],
+	"preparationTime": 30,
+	"cookingTime": 65,
+	"servings": 6,
+	"nutrition": {
+		"calories": 1179,
+		"fat": 91,
+		"carbohydrates": 16,
+		"protein": 73,
+		"fibre": 1,
+		"sodium": 2.7
+	},
+	"author": "alec-sanders",
+	"slug": "foolproof-grilled-chicken",
+	"averageReviewScore": 4,
+	"reviews": [
+		{
+			"text": "",
+			"score": 4,
+			"author": "cody-blick-iii"
+		}
+	],
+	"dateCreated": {
+		"$date": "2019-04-11T14:31:59.142Z"
+	},
+	"dateUpdated": {
+		"$date": "2019-04-12T19:58:37.601Z"
+	}
+},
+{
+	"_id": {
+		"$oid": "5caf5139ef04040c78712d97"
+	},
+	"title": "Spring Pea Fish Chowder",
+	"description": "Sweet peas, pea shoots, and a sprinkle of lemon zest give this light, just-creamy-enough chowder an extra dose of freshness. While cod might be a more traditional chowder choice, we love halibut for its meatier texture and sweeter flavor.",
+	"notes": "",
+	"ingredients": [
+		"3 leeks, white and pale green parts only, tough outer layer removed",
+		"2 Tbsp. extra-virgin olive oil",
+		"1 lb. baby creamer (Yukon Gold) potatoes, halved (quartered if larger than 1 1/2\" in diameter)",
+		"2 tsp. kosher salt, divided",
+		"1 1/2 tsp. freshly ground black pepper, plus more",
+		"1 cup pure clam juice",
+		"2 bay leaves",
+		"1 lb. skinless halibut or cod fillet, cut into 2x1\" pieces",
+		"1 cup heavy cream",
+		"1 (10-oz.) bag frozen sweet peas, thawed",
+		"1 Tbsp. fresh lemon juice",
+		"Pea shoots (tendrils) or sprouts, basil leaves, finely grated lemon zest, and flaky sea salt (for serving)"
+	],
+	"directions": [
+		"Cut leeks into 1/4\" rounds. Rinse, tossing with hands so that leeks separate into individual rings, and drain thoroughly. Transfer to a medium pot. Add oil and toss to coat. Cover pot and cook over medium heat until leeks begin to soften, 5–6 minutes. Add potatoes, 1 tsp. kosher salt, and 1 1/2 tsp. pepper and stir to combine. Add clam juice, bay leaves, and 2 cups water and bring to a boil. Reduce heat to medium-low and cook, uncovered, until potatoes are fork-tender, 10–12 minutes.",
+		"Season halibut with remaining 1 tsp. kosher salt. Add to pot along with cream and peas and stir to combine. Cook, stirring occasionally, until halibut is opaque, 3–4 minutes. Remove from heat and stir in lemon juice.",
+		"Divide chowder among bowls. Top with pea shoots, basil, and lemon zest. Season with sea salt and a generous amount of pepper."
+	],
+	"categories": [
+		"chowder",
+		"leek",
+		"potato",
+		"clam",
+		"fish",
+		"halibut",
+		"cod",
+		"milk/cream",
+		"pea",
+		"lemon",
+		"basil",
+		"quick \u0026 easy"
+	],
+	"imageUrls": [
+		"https://assets.epicurious.com/photos/5ca238a2b8989122ee7dd394/6:4/w_620%2Ch_413/Springy-Cod-Chowder-recipe-28032019.jpg"
+	],
+	"preparationTime": 12,
+	"cookingTime": 25,
+	"servings": 4,
+	"nutrition": {
+		"calories": 573,
+		"fat": 31,
+		"carbohydrates": 42,
+		"protein": 33,
+		"fibre": 8,
+		"sodium": 1.144
+	},
+	"author": "alec-sanders",
+	"slug": "spring-pea-fish-chowder",
+	"averageReviewScore": 5,
+	"reviews": [
+		{
+			"text": "",
+			"author": "cody-blick-iii",
+			"score": 5
+		},
+		{
+			"text": "",
+			"author": "lula-volkman",
+			"score": 5
+		},
+		{
+			"text": "",
+			"score": 5,
+			"author": "wilhelm-doyle"
+		}
+	],
+	"dateCreated": {
+		"$date": "2019-04-11T14:37:45.123Z"
+	},
+	"dateUpdated": {
+		"$date": "2019-04-12T20:04:16.507Z"
+	}
+},
+{
+	"_id": {
+		"$oid": "5caf5248ef04040c78712d98"
+	},
+	"title": "Avocado Peanut Butter Brownies",
+	"description": "Avocados add creamy, nutrient-dense richness, taking the place of butter in these baked sweets.",
+	"notes": "",
+	"ingredients": [
+		"2 avocados",
+		"2 eggs, lightly whisked",
+		"2 tablespoons coconut oil, melted",
+		"1/2 cup maple syrup",
+		"1 teaspoon vanilla extract",
+		"1/4 cup vanilla Tone It Up Protein",
+		"1/2 cup oat flour or almond flour",
+		"1/4 cup unsweetened cocoa powder",
+		"1/2 teaspoon baking powder",
+		"1/4 teaspoon sea salt",
+		"2 tablespoons peanut butter",
+		"Coconut oil spray"
+	],
+	"directions": [
+		"Preheat oven to 350°F.",
+		"In a bowl, combine wet ingredients (minus the peanut butter).",
+		"In a separate bowl, combine dry ingredients.",
+		"Mix wet ingredients into dry ingredients.",
+		"Pour mixture into a baking pan sprayed with coconut oil spray.",
+		"Top with peanut butter, with a few dollops around the entire pan. Use your knife to drag the peanut butter through the mixture to create swirls.",
+		"Bake for 30-35 minutes, or until a toothpick comes out clean."
+	],
+	"categories": [
+		"harpercollins",
+		"desert",
+		"brownie",
+		"healthy",
+		"quick \u0026 healthy",
+		"avocado",
+		"peanut butter",
+		"chocolate",
+		"bake"
+	],
+	"imageUrls": [
+		"https://assets.epicurious.com/photos/5c9e749153a0295d7039a42d/6:4/w_620%2Ch_413/avocado-peanut-butter-brownies-recipe-HC-032919.jpg"
+	],
+	"preparationTime": 20,
+	"cookingTime": 15,
+	"servings": 9,
+	"nutrition": {
+		"calories": 219,
+		"fat": 14,
+		"carbohydrates": 22,
+		"protein": 4,
+		"fibre": 4,
+		"sodium": 0.094
+	},
+	"author": "alec-sanders",
+	"slug": "avocado-peanut-butter-brownies",
+	"averageReviewScore": 3,
+	"reviews": [
+		{
+			"text": "",
+			"score": 3,
+			"author": "mafalda-kemmer"
+		}
+	],
+	"dateCreated": {
+		"$date": "2019-04-11T14:42:16.406Z"
+	},
+	"dateUpdated": {
+		"$date": "2019-04-12T19:47:13.206Z"
+	}
+},
+{
+	"_id": {
+		"$oid": "5caf5480ef04040c78712d99"
+	},
+	"title": "Rigatoni with Meat Sauce",
+	"description": "This is the hearty pasta dish that everyone loves to eat. It gets its stick-to-your-bones, deep, rich flavor from the ground beef cooked in red wine and a double hit of tomatoes. We use canned crushed tomatoes to give the sauce body and tomato paste for intensity. The diced zucchini melds into the sauce and adds texture and heft to the meat (and more vegetable nutrients). As with all heroic pasta dishes, the rigatoni cooks right in the sauce, which not only saves you from having to wash an extra pan—it makes the pasta more flavorful. Serve this with a green salad dressed with a shallot vinaigrette.",
+	"notes": "",
+	"ingredients": [
+		"2 tablespoons extra virgin olive oil",
+		"1 medium onion, finely diced (about 1 cup)",
+		"1 medium carrot, peeled and finely chopped (about 1/3 cup)",
+		"1 celery stalk, finely chopped (about 1/3 cup)",
+		"1 tablespoon chopped fresh oregano or 1 teaspoon dried",
+		"12 ounces lean ground beef (85%)",
+		"5 garlic cloves, minced",
+		"1/2 cup dry red wine, such as Cabernet Sauvignon",
+		"1 (28-ounce) can crushed tomatoes with basil",
+		"2 tablespoons tomato paste 1 medium zucchini (about 8 ounces), trimmed and cut into 1/2-inch dice (about 1 1/4 cups)",
+		"12 ounces rigatoni pasta",
+		"1 teaspoon salt",
+		"1/4 teaspoon ground black pepper",
+		"1/2 cup grated Pecorino Romano cheese",
+		"1/3 cup fresh basil leaves, thinly sliced"
+	],
+	"directions": [
+		"Heat the oil in a large skillet over medium heat. Add the onion, carrot, celery, and oregano and cook, stirring occasionally, until slightly softened, 4 to 5 minutes. Add the beef and garlic and cook, breaking the beef into smaller pieces with a wooden spoon, until the onion and beef are lightly browned, 9 to 10 minutes. Pour in the wine and cook until it is nearly evaporated, 1 to 2 minutes. Add the crushed tomatoes, tomato paste, and zucchini; bring to a simmer and cook, stirring often, until slightly thickened, 2 minutes.",
+		"Stir in the rigatoni, salt, pepper, and 3 cups water; bring to a simmer and cook, stirring often, until the sauce is somewhat thickened, about 18 minutes. Add 1 cup water and continue cooking until the pasta is tender, 9 to 10 minutes more.",
+		"Serve the rigatoni topped with the Romano and basil."
+	],
+	"categories": [
+		"small plates",
+		"kid friendly",
+		"dinner",
+		"pasta",
+		"meat",
+		"tomato",
+		"soy free",
+		"peanut free",
+		"garlic",
+		"beef",
+		"ground beef",
+		"wine"
+	],
+	"imageUrls": [
+		"https://assets.epicurious.com/photos/5c9e7498c750f92e27bd7fb4/6:4/w_620%2Ch_413/rigatoni-with-meat-sauce-recipe-HC-032919.jpg"
+	],
+	"preparationTime": 25,
+	"cookingTime": 40,
+	"servings": 4,
+	"nutrition": {
+		"calories": 753,
+		"fat": 22,
+		"carbohydrates": 97,
+		"protein": 40,
+		"fibre": 11,
+		"sodium": 1.264
+	},
+	"author": "cody-blick-iii",
+	"slug": "rigatoni-with-meat-sauce",
+	"averageReviewScore": 3.5,
+	"reviews": [
+		{
+			"text": "",
+			"author": "mafalda-kemmer",
+			"score": 4
+		},
+		{
+			"text": "I did love it, but it was a tad bit too fatty.",
+			"score": 3,
+			"author": "alec-sanders"
+		}
+	],
+	"dateCreated": {
+		"$date": "2019-04-11T14:51:44.149Z"
+	},
+	"dateUpdated": {
+		"$date": "2019-04-12T19:55:29.014Z"
+	}
+},
+{
+	"_id": {
+		"$oid": "5caf5680ef04040c78712d9a"
+	},
+	"title": "Sheet-Pan Cuban Rice and Beans",
+	"description": "Our kids don’t want to hear the story again about how when David was a poor struggling student, he made a big batch of Cuban rice and beans and lived off it the entire week because that was all he could afford. So, kids, we won’t tell that tale here. Instead, we’ll tell everyone about how this dish is so tasty and satisfying that you’ll be happy to eat it for days, and so healthful and nutritious that you should eat it for days. And how it is so inexpensive and good to the earth that eating it for days is downright virtuous. (He told you so.) Serve the rice and beans with hot sauce on the side and a crisp green salad. To reheat leftovers, sprinkle them with a little water and reheat in the microwave.",
+	"notes": "",
+	"ingredients": [
+		"2 bell peppers, assorted colors, cut into thin strips",
+		"1 large onion, halved through the root end and thinly sliced (about 1 1/2 cups)",
+		"3 garlic cloves, thinly sliced",
+		"1 tablespoon olive oil",
+		"1 teaspoon salt, divided",
+		"1 cup long-grain white rice",
+		"2 (15-ounce) cans low-sodium black beans, drained and rinsed",
+		"1 teaspoon ground cumin",
+		"1 teaspoon dried oregano",
+		"1/2 teaspoon ground fennel",
+		"1/2 teaspoon ground coriander"
+	],
+	"directions": [
+		"Preheat the oven to 400°F. Coat a sheet pan with cooking spray.",
+		"Combine the bell peppers, onion, garlic, and oil in a medium bowl. Toss with 1/4 teaspoon of the salt. Spread the vegetables on the sheet pan and roast until somewhat softened, about 15 minutes. Remove the pan from the oven and stir.",
+		"Combine the rice, beans, cumin, oregano, fennel, coriander, remaining 3/4 teaspoon salt, and 2 1/2 cups water in a bowl. Pour the mixture onto the sheet pan, stir well, and cover with foil.",
+		"pan, stir well, and cover with foil. Bake until the water has been absorbed and the vegetables are tender, 28 to 30 minutes. Remove the pan from the oven and let it stand for 5 minutes. Remove the foil and fluff with a fork before serving."
+	],
+	"categories": [
+		"kid friendly",
+		"rice",
+		"bean",
+		"cuban",
+		"american",
+		"peanut free",
+		"soy free",
+		"diary free",
+		"vegan",
+		"dinner",
+		"lunch",
+		"gluten free"
+	],
+	"imageUrls": [
+		"https://assets.epicurious.com/photos/5c9e74946d49a92e2f39dd21/6:4/w_620%2Ch_413/cuban-rice-beans-recipe-HC-032919.jpg"
+	],
+	"preparationTime": 15,
+	"cookingTime": 23,
+	"servings": 4,
+	"nutrition": {
+		"calories": 451,
+		"fat": 5,
+		"carbohydrates": 85,
+		"protein": 18,
+		"fibre": 17,
+		"sodium": 0.882
+	},
+	"author": "cody-blick-iii",
+	"slug": "sheet-pan-cuban-rice-and-beans",
+	"averageReviewScore": 4,
+	"reviews": [
+		{
+			"text": "",
+			"author": "mafalda-kemmer",
+			"score": 4
+		},
+		{
+			"text": "",
+			"score": 4,
+			"author": "alec-sanders"
+		}
+	],
+	"dateCreated": {
+		"$date": "2019-04-11T15:00:16.723Z"
+	},
+	"dateUpdated": {
+		"$date": "2019-04-12T19:55:01.279Z"
+	}
+},
+{
+	"_id": {
+		"$oid": "5caf5762ef04040c78712d9b"
+	},
+	"title": "Peanut Butter and Jelly Smoothie",
+	"description": "Frozen berries, a dollop of peanut butter, and almond milk—plus a banana for creaminess and vanilla protein powder—blend into a delicious smoothie reminiscent of your favorite childhood lunchtime treat.",
+	"notes": "",
+	"ingredients": [
+		"10 ounces unsweetened almond milk",
+		"1 scoop vanilla Tone It Up Protein",
+		"1/2 cup frozen strawberries",
+		"1/2 frozen banana",
+		"1 tablespoon peanut butter"
+	],
+	"directions": [
+		"In a high-speed blender, blend all the ingredients until the mixture is smooth and enjoy!"
+	],
+	"categories": [
+		"smoothie",
+		"healthy",
+		"quick \u0026 healthy",
+		"drink",
+		"strawberry",
+		"vegan",
+		"vegetarian",
+		"soy free",
+		"non-alchoholic"
+	],
+	"imageUrls": [
+		"https://assets.epicurious.com/photos/5c9e7496c478893eca83cbef/6:4/w_620%2Ch_413/peanut-butter-smoothie-recipe-HC-032919.jpg"
+	],
+	"preparationTime": 5,
+	"cookingTime": 1,
+	"servings": 1,
+	"nutrition": {
+		"calories": 220,
+		"fat": 12,
+		"carbohydrates": 27,
+		"protein": 6,
+		"fibre": 6,
+		"sodium": 0.206
+	},
+	"author": "cody-blick-iii",
+	"slug": "peanut-butter-and-jelly-smoothie",
+	"averageReviewScore": 5,
+	"reviews": [
+		{
+			"text": "How can you not love smoothies?",
+			"author": "mafalda-kemmer",
+			"score": 5
+		},
+		{
+			"text": "",
+			"score": 5,
+			"author": "alec-sanders"
+		}
+	],
+	"dateCreated": {
+		"$date": "2019-04-11T15:04:02.789Z"
+	},
+	"dateUpdated": {
+		"$date": "2019-04-12T19:54:45.868Z"
+	}
+},
+{
+	"_id": {
+		"$oid": "5caf5979ef04040c78712d9c"
+	},
+	"title": "Potato Tart with Mustard Greens and Lemon Thyme",
+	"description": "I am thrilled to see whole wheat phyllo dough in the markets. It’s so much better for you than phyllo made with processed white flour and makes a crispy crust for this lively potato tart. I say “lively” because the flavors of mustard greens, lemon thyme, and goat cheese enliven the potatoes to create a treat worth making.",
+	"notes": "",
+	"ingredients": [
+		"4 sheets whole wheat phyllo dough",
+		"1 large Yukon Gold potato, sliced paper thin",
+		"1/2 cup buttermilk",
+		"Salt and freshly ground black pepper",
+		"1 tablespoon canola oil",
+		"1/2 cup chopped onion",
+		"2 cups chopped mustard greens",
+		"2 large eggs",
+		"3 large egg whites",
+		"1/2 cup skim milk",
+		"2 teaspoons lemon thyme leaves",
+		"2 ounces soft goat cheese (about 4 tablespoons)"
+	],
+	"directions": [
+		"Preheat the oven to 375°F. Line a 10-inch tart pan with the whole wheat phyllo dough. Leave a 1/2-inch overhang and trim any excess. Place the tart pan on a baking sheet. In a medium mixing bowl, toss the potato slices with the buttermilk and season with salt and pepper. In a large sauté pan, heat the canola oil over medium heat and add the onions. Cook the onions for 2 minutes over medium-high heat. Add the mustard greens to the pan and cook for 5 minutes or until they are wilted. Season with salt and pepper. Shingle half the potato slices on the bottom of the phyllo-lined tart pan. Sprinkle with half of the mustard greens. Repeat the process with the remaining potatoes and mustard greens. In a medium bowl, whisk the eggs, egg whites, and skim milk for 1 minute or until combined. Add the lemon thyme and season with salt and pepper. Pour the egg mixture over the potatoes. Drop teaspoons of the goat cheese around the tart. Bake the tart for 45 to 60 minutes or until it is just set and the potatoes are cooked. Remove from the oven and let sit for 15 minutes before cutting. Cut the tart into 6 pieces and place on a serving plate."
+	],
+	"categories": [
+		"soy free",
+		"breakfast",
+		"brunch",
+		"tart",
+		"easter",
+		"spring",
+		"potato",
+		"egg",
+		"thyme",
+		"butter milk",
+		"vegetarian",
+		"entertaining"
+	],
+	"imageUrls": [
+		"https://assets.epicurious.com/photos/5c9e7496c750f92e27bd7fb2/6:4/w_620%2Ch_413/potato-tart-with-mustard-greens-and-thyme-recipe-HC-032919.jpg"
+	],
+	"preparationTime": 30,
+	"cookingTime": 25,
+	"servings": 6,
+	"nutrition": {
+		"calories": 186,
+		"fat": 7,
+		"carbohydrates": 22,
+		"protein": 10,
+		"fibre": 3,
+		"sodium": 0.444
+	},
+	"author": "cody-blick-iii",
+	"slug": "potato-tart-with-mustard-greens-and-lemon-thyme",
+	"averageReviewScore": 2.5,
+	"reviews": [
+		{
+			"text": "",
+			"author": "mafalda-kemmer",
+			"score": 2
+		},
+		{
+			"text": "",
+			"score": 3,
+			"author": "lula-volkman"
+		}
+	],
+	"dateCreated": {
+		"$date": "2019-04-11T15:12:57.259Z"
+	},
+	"dateUpdated": {
+		"$date": "2019-04-12T20:01:39.348Z"
+	}
+},
+{
+	"_id": {
+		"$oid": "5caf5bd7ef04040c78712d9d"
+	},
+	"title": "Grilled Lamb Chops with Kefir Verde Sauce",
+	"description": "Step up your marinade game by soaking lamb chops in tart pomegranate juice and tenderizing kefir. The chops will develop a beautiful caramelization during grilling, thanks to the natural sugars in the marinade.",
+	"notes": "",
+	"ingredients": [
+		"1 teaspoon freshly cracked black pepper",
+		"2 tablespoons Maldon sea salt",
+		"3 cloves garlic, minced",
+		"1 1⁄4 cups organic plain whole-milk kefir",
+		"1⁄2 cup chopped fresh mint",
+		"1 1⁄2 cups fresh or bottled pomegranate juice",
+		"8 lamb chops",
+		"2 bunches green onions, whole",
+		"2 tablespoons extra virgin olive oil",
+		"1/2 tablespoon Maldon sea salt",
+		"1 clove garlic, peeled",
+		"1 cup fresh chopped parsley",
+		"1 cup organic plain whole-milk kefir"
+	],
+	"directions": [
+		"For the lamb: In a bowl that is large enough to accommodate the lamb, combine the black pepper, sea salt, garlic, kefir, mint, and pomegranate juice. Add the lamb, stirring well to coat, and let it marinate in the refrigerator overnight. Take the lamb out of the refrigerator 1 hour before cooking (discard the marinade). Fire up your outdoor grill to very hot. Wipe the grill grates with a bit of oil and grill the lamb on high, about 5 minutes per side. Set the chops aside and let them rest for 10 minutes. (If you don’t have an outdoor grill, you can use a grill pan or cast-iron skillet.)",
+		"For the verde sauce: In a medium bowl, toss the green onions with the olive oil and sea salt and cook on the grill until blackened. Set aside to cool. In a blender, combine the blackened green onions, garlic, parsley, and kefir and puree until smooth.",
+		"To plate: Serve the lamb family-style on a large platter, with the verde on the side."
+	],
+	"categories": [
+		"dinner",
+		"lamb",
+		"dairy",
+		"parsley",
+		"grill",
+		"spring",
+		"summer",
+		"pomegranate juice",
+		"soy free",
+		"peanut free",
+		"gluten free"
+	],
+	"imageUrls": [
+		"https://assets.epicurious.com/photos/5c9e74954b2ad14a0cf601a4/6:4/w_620%2Ch_413/grilled-lamb-chops-with-kefir-verde-sauce-recipe-HC-032919.jpg"
+	],
+	"preparationTime": 35,
+	"cookingTime": 45,
+	"servings": 4,
+	"nutrition": {
+		"calories": 10000,
+		"fat": 1102,
+		"carbohydrates": 26,
+		"protein": 467,
+		"fibre": 3,
+		"sodium": 53.94
+	},
+	"author": "tremaine-quitzon",
+	"slug": "grilled-lamb-chops-with-kefir-verde-sauce",
+	"averageReviewScore": 3.5,
+	"reviews": [
+		{
+			"text": "",
+			"author": "mafalda-kemmer",
+			"score": 3
+		},
+		{
+			"text": "Oh, summer recipes...",
+			"score": 4,
+			"author": "alec-sanders"
+		}
+	],
+	"dateCreated": {
+		"$date": "2019-04-11T15:23:03.802Z"
+	},
+	"dateUpdated": {
+		"$date": "2019-04-12T19:54:23.454Z"
+	}
+},
+{
+	"_id": {
+		"$oid": "5caf5cecef04040c78712d9e"
+	},
+	"title": "Babee’s Easter Bread",
+	"description": "Easter was a big baking holiday in our family. Our grandmother, Babee, would start baking for Easter three days in advance and would take over both her upstairs and downstairs kitchens baking for the holiday. The most important thing she baked for the Sunday feast was her traditional Greek Easter bread. Our favorite part was helping her brush the egg wash on the loaves.",
+	"notes": "",
+	"ingredients": [
+		"3/4 tablespoon dry yeast",
+		"1/4 cup whole milk (warmed in microwave for 30 seconds)",
+		"4 cups all-purpose flour, sifte",
+		"1/4 teaspoon salt",
+		"4 tablespoons unsalted butter, melted (European style recommended)",
+		"1/4 tablespoon anise",
+		"Juice and zest of 1 orange",
+		"1/2 cup water",
+		"2 eggs, at room temperature",
+		"1/4 teaspoon mastic (a Greek spice, available in specialty food stores or the international aisle of supermarkets; you can make this bread without mastic)",
+		"1/4 cup sugar",
+		"1 egg lightly beaten with 1/4 cup water (for egg wash)",
+		"1/4 cup sesame seeds"
+	],
+	"directions": [
+		"Dissolve the yeast in the warmed milk. Cover and set aside in a warm place to rise for 15 minutes.",
+		"In the bowl of an electric mixer, using the paddle attachment, mix together the flour, salt, and melted butter. Add the anise, orange juice, zest, and water. Mix together.",
+		"Add the eggs one at a time, and mix. Then add the mastic, sugar, and the risen yeast mixture. Mix together.",
+		"Using the dough hook attachment of your electric mixer (or your hands), knead the mixture for approximately 10 minutes. Cover the bowl and allow to rise in a warm place (e.g., an oven heated to 200°F) until the dough doubles in size, approximately 2 hours.",
+		"Remove the dough from the bowl and beat it down to deflate it. Then, separate the dough into three pieces and roll out each piece lengthwise about one foot long. Braid the three pieces together.",
+		"Place the dough in a greased large loaf pan (5x10-inch pan recommended—or you can use a greased cookie sheet). Place back in warm oven and allow the dough to double in size again, approximately an hour.",
+		"Brush with egg wash using a pastry brush and sprinkle sesame seeds on top.",
+		"Preheat the oven to 350°F, then bake the bread for approximately 30 minutes, or until the top turns a golden brown."
+	],
+	"categories": [
+		"bread",
+		"bake",
+		"easter",
+		"orange",
+		"greek",
+		"anise",
+		"sesame",
+		"peanut free",
+		"vegetarian"
+	],
+	"imageUrls": [
+		"https://assets.epicurious.com/photos/5c9e7494c750f92e27bd7fb0/6:4/w_620%2Ch_413/easter-bread-recipe-HC-032919.jpg"
+	],
+	"preparationTime": 5,
+	"cookingTime": 5,
+	"servings": 1,
+	"nutrition": {
+		"calories": 2945,
+		"fat": 84,
+		"carbohydrates": 464,
+		"protein": 82,
+		"fibre": 24,
+		"sodium": 0.821
+	},
+	"author": "tremaine-quitzon",
+	"slug": "babees-easter-bread",
+	"averageReviewScore": 4.8,
+	"reviews": [
+		{
+			"text": "I love Easter and I love this recipe.\nThinks to note though: 1/4 tbs of anise is too much.",
+			"author": "mafalda-kemmer",
+			"score": 5
+		},
+		{
+			"text": "Getting in the mood already!",
+			"author": "alec-sanders",
+			"score": 5
+		},
+		{
+			"text": "",
+			"author": "cody-blick-iii",
+			"score": 5
+		},
+		{
+			"text": "",
+			"author": "cordie-runolfsson",
+			"score": 5
+		},
+		{
+			"text": "",
+			"score": 4,
+			"author": "gerda-friesen"
+		}
+	],
+	"dateCreated": {
+		"$date": "2019-04-11T15:27:40.933Z"
+	},
+	"dateUpdated": {
+		"$date": "2019-04-12T20:03:20.444Z"
+	}
+},
+{
+	"_id": {
+		"$oid": "5caf5e48ef04040c78712d9f"
+	},
+	"title": "Saffron Breakfast Kheer",
+	"description": "Kheer is an Indian rice pudding eaten on high holy days and at feasts. It is a calming mix of gentle spice, milk, and rice, which I find especially good to eat at breakfast time. There is nothing more nourishing to my mind than milk and rice together—easy to eat and cleansing in the best possible sense of the word. I make a double batch of this and reheat it with a little extra milk on the following days; sometimes it's dessert too. Kheer is used in the Ayurvedic tradition to balance the system during the winter; the sweet cinnamon helps digestion, and the warmth of the rice and milk protects against any wintery cold.\n\nI use brown rice here but white rice would be just as delicious. I suggest soaking the rice overnight—it is a two-minute job and will vastly speed up the cooking process. If you don't remember to do it overnight, then soaking it as long as you can will be OK. If saffron is a bridge too far for breakfast, then you can just leave it out; the other spices will hold up.",
+	"notes": "",
+	"ingredients": [
+		"1 cup (150 g) long-grain brown rice",
+		"3/4 cup (100 g) cashew nuts",
+		"1/3 cup (50 g) blanched almonds",
+		"4 1/2 cups (1 L) almond milk (I use unsweetened)",
+		"6 cardamom pods",
+		"2/3 cup (100 g) raisins (I use golden ones)",
+		"1/4 teaspoon ground ginger",
+		"A pinch of saffron threads, soaked in 3 1/2 tablespoons (50 ml) boiling water (optional)",
+		"1 small cinnamon stick",
+		"2 tablespoons golden honey",
+		"To serve: The zest of 1 unwaxed lime",
+		"A small handful of toasted coconut flakes"
+	],
+	"directions": [
+		"Soak the rice in one bowl and the cashews and almonds in another in cold water for at least 30 minutes but ideally overnight.",
+		"In the morning, drain the rice and put it into a saucepan with the milk and 2 cups (500 ml) of cold water and bring to a simmer. Cook for 20 minutes at a gentle bubble until the rice has puffed up and the liquid is beginning to thicken.",
+		"Meanwhile, drain the nuts and finely chop them—you can do this in a food processor if you like. Bash the cardamom pods in a mortar with a pestle, spice grinder, or mixing bowl with rolling pin and remove the fragrant seeds, then discard the pods and grind the seeds until you have a powder.",
+		"After 20 minutes add the nuts, raisins, spices, and honey to the rice and cook for another 15 minutes until thick and creamy, somewhere between rice pudding and porridge. You want to reach the sweet spot where the rice is soft, with very little bite, and the kheer is creamy but not too thick. If it looks like it is thickening too fast, turn the heat down and add a little boiling water from the kettle. Serve spooned into bowls with the lime zest and coconut flakes on top; if you have a sweet tooth, you could add a little extra honey on top."
+	],
+	"categories": [
+		"breakfast",
+		"rice",
+		"dessert",
+		"nut",
+		"almond",
+		"cashew",
+		"indian",
+		"raisin",
+		"gluten free",
+		"vegetarian",
+		"cardamom"
+	],
+	"imageUrls": [
+		"https://assets.epicurious.com/photos/5c9a610153a0295d7039a413/6:4/w_620%2Ch_413/ModernCooksYear_p009.jpg"
+	],
+	"preparationTime": 35,
+	"cookingTime": 38,
+	"servings": 4,
+	"nutrition": {
+		"calories": 527,
+		"fat": 24,
+		"carbohydrates": 74,
+		"protein": 12,
+		"fibre": 7,
+		"sodium": 0.192
+	},
+	"author": "tremaine-quitzon",
+	"slug": "saffron-breakfast-kheer",
+	"averageReviewScore": 4.333333333333333,
+	"reviews": [
+		{
+			"text": "Now that's how you make rice!",
+			"author": "mafalda-kemmer",
+			"score": 5
+		},
+		{
+			"text": "",
+			"author": "alec-sanders",
+			"score": 5
+		},
+		{
+			"text": "",
+			"score": 3,
+			"author": "gerda-friesen"
+		}
+	],
+	"dateCreated": {
+		"$date": "2019-04-11T15:33:28.069Z"
+	},
+	"dateUpdated": {
+		"$date": "2019-04-12T20:03:26.477Z"
+	}
+},
+{
+	"_id": {
+		"$oid": "5caf5f66ef04040c78712da0"
+	},
+	"title": "Kimchi and Miso Noodle Soup",
+	"description": "I make kimchi purely so that I can make this soup. It is clean-tasting and enlivening, nicely sharp with spice and the mellow, vinegary punch of the kimchi. I don't care much for kimchi on its own (my husband, John, eats it by the jar), but I do think that it is an incredible ingredient to use as a flavorful base for stews, in dressings, and in wraps and sandwiches. The amount of kimchi that you use is quite dependent on how strong it is. My homemade one is quite mellow but store-bought ones can be much more potent, so taste it first and use you tastebuds as a guide, adding more if you need.\n\nI cook with miso a lot, and it happens to be really good for you too. I learned recently that if you heat it too much it loses a lot of its goodness, so now, when I can, I mix it with a little of the liquid i am adding it to, then stir it in at the end like a seasoning and don't cook it for ages.",
+	"notes": "I have used gochujang paste here, which is a fermented chile paste from Korea with complex flavors. It's getting easier to find and it does add an extra edge to the soup. If you can't get the paste, dried chile works just fine. Do be careful to check the paste's ingredient list, as some varieties contain ingredients I'd rather not eat!",
+	"ingredients": [
+		"3 cups (200 g ) Asian mushrooms (enoki, shimeji, shiitake, oyster)",
+		"1 tablespoon tamari or soy sauce, plus a little extra to season and serve",
+		"Juice of 1/2 a lemon",
+		"2 tablespoons golden honey or agave nectar",
+		"3 cups (250 g) soba noodles (I use 100 percent buckwheat ones)",
+		"3 tablespoons sesame oil",
+		"Sea salt",
+		"6 scallions, trimmed and finely chopped",
+		"A small thumb-sized piece of ginger, peeled and grated",
+		"1 teaspoon gochujang paste or red pepper flakes",
+		"4 cloves of garlic, thinly sliced",
+		"3 1/2–5 ounces (100-150 g) cabbage kimchi, drained",
+		"3 cups (250 g) purple sprouting broccoli, woody ends removed and cut into thumb-length pieces",
+		"3 tablespoons miso paste (I use a brown rice one)",
+		"9 ounces (250 g) extra-firm tofu",
+		"To serve: Sesame seeds",
+		"Squeeze of lemon or lime",
+		"Some cilantro or shiso leaves (optional)"
+	],
+	"directions": [
+		"First, put your mushrooms into a bowl with the tamari, lemon juice and 1 tablespoon of the honey, and put to one side to marinate for at least 15 minutes.",
+		"Cook the soba noodles according to packet instructions. Drain and run under cold water, then toss in 1 tablespoon of the sesame oil.",
+		"Heat the remaining 2 tablespoons of oil in a large soup pan over medium to high heat. Once the mushrooms have had their marinating time, drain them but keep the marinade Add the mushrooms to the pan in a single layer with a pinch of salt (you can do this in batches if you need to). Cook until the mushrooms are golden where they meet the pan, then toss and keep cooking until the mushrooms are deeply browned all over—this should take 5 minutes or so. Remove from the pan and set aside.",
+		"Fill and boil the kettle. Put the empty pan back over medium heat, add the scallions and sauté for a few minutes before adding the ginger and gochujang paste. After another minute or so, add the garlic and the drained kimchi. Sizzle until the garlic is starting to brown around the edges. Add 5 cups (1 1/4 liters) of water from the kettle along with the remaining tablespoon of honey and bring to a boil. Now, add the broccoli and simmer for 1 minute, or just until the broccoli becomes bright green.",
+		"Remove the soup from the heat. Place the miso in a small bowl and whisk it with a splash of the broth to thin it out. Stir the thinned miso into the soup. Taste your soup; you really need to get the balance right here. If the broth tastes a bit flat, you might need more salt or miso, or a splash of soy sauce.",
+		"Just before serving, cut the tofu into little 3/4-inch (2-cm) pieces—you'll have about 1 cup—and drizzle it with the reserved marinade from the mushrooms.",
+		"To serve, divide the noodles among four bowls and ladle over the soup. Top with to tofu, mushrooms, and a sprinkle of sesame seeds. Finish with more soy if you like, a squeeze of lemon or lime, and the shiso or cilantro leaves if using."
+	],
+	"categories": [
+		"lunch",
+		"dinner",
+		"tofu",
+		"vegetarian",
+		"winter",
+		"asian",
+		"cabbage",
+		"mushroom",
+		"soy sauce",
+		"broccoli",
+		"healthy",
+		"noodle"
+	],
+	"imageUrls": [
+		"https://assets.epicurious.com/photos/5c9a60fc5a81692e2a38a9b5/6:4/w_620%2Ch_413/ModernCooksYear_p025.jpg"
+	],
+	"preparationTime": 20,
+	"cookingTime": 18,
+	"servings": 4,
+	"nutrition": {
+		"calories": 0,
+		"fat": 0,
+		"carbohydrates": 0,
+		"protein": 0,
+		"fibre": 0,
+		"sodium": 0
+	},
+	"author": "tremaine-quitzon",
+	"slug": "kimchi-and-miso-noodle-soup",
+	"averageReviewScore": 4,
+	"reviews": [
+		{
+			"text": "",
+			"author": "mafalda-kemmer",
+			"score": 4
+		},
+		{
+			"text": "",
+			"author": "alec-sanders",
+			"score": 4
+		},
+		{
+			"text": "",
+			"score": 4,
+			"author": "wilhelm-doyle"
+		}
+	],
+	"dateCreated": {
+		"$date": "2019-04-11T15:38:14.407Z"
+	},
+	"dateUpdated": {
+		"$date": "2019-04-12T20:04:21.847Z"
+	}
+},
+{
+	"_id": {
+		"$oid": "5caf614def04040c78712da1"
+	},
+	"title": "Shawarma-Spiced Tofu Pita Wraps",
+	"description": "Squeezing the tofu to get rid of as much water as possible primes it to soak up oil, spices, and, in a word, flavor.",
+	"notes": "",
+	"ingredients": [
+		"1/2 small red onion, thinly sliced",
+		"3 Tbsp. seasoned rice vinegar",
+		"1 (14-oz.) block firm or extra-firm tofu, drained",
+		"3 Tbsp. extra-virgin olive oil",
+		"2 tsp. ground coriander",
+		"2 tsp. smoked Spanish paprika",
+		"1/2 tsp. crushed red pepper flakes",
+		"1/2 tsp. ground cinnamon",
+		"1 tsp. kosher salt, plus more",
+		"1/2 cup whole-milk Greek yogurt",
+		"1 small garlic clove, finely grated",
+		"4 pitas, warmed",
+		"2 Persian or mini cucumbers, thinly sliced lengthwise",
+		"Mint leaves (for serving)"
+	],
+	"directions": [
+		"Preheat oven to 425°F. Toss onion and vinegar in a small bowl to coat; set aside.",
+		"Squeeze tofu over a medium bowl, gently at first, then more firmly to expel as much water as possible (like squeezing out a big sponge). Don’t worry if it starts to crack apart. When no more liquid comes out, tear tofu into 1\" pieces. Arrange in a single layer on a large rimmed baking sheet. Toss with oil, then add coriander, paprika, red pepper flakes, cinnamon, and 1 tsp. salt. Toss well to coat. Roast tofu, turning once or twice, until crispy around the edges and well browned, 20–25 minutes (the tofu will get crispier as it cools, so don’t be tempted to take it too far and dry it out in the oven).",
+		"Stir yogurt and garlic in a small bowl; season with salt. Assemble by dividing yogurt among pitas, followed by tofu, cucumbers, drained pickled onion, and a handful of mint."
+	],
+	"categories": [
+		"tofu",
+		"onion",
+		"vinegar",
+		"coriander",
+		"paprika",
+		"cinnamon",
+		"yohgurt",
+		"garlic",
+		"cucumber",
+		"mint",
+		"dinner",
+		"quick \u0026 easy",
+		"vegetarian",
+		"quick \u0026 healthy"
+	],
+	"imageUrls": [
+		"https://assets.epicurious.com/photos/5c8fc9eb1808bd2c8ed6ca7b/6:4/w_620%2Ch_413/Cook-This-Now-Torn-Tofu-Hero-Alt-05032019.jpg"
+	],
+	"preparationTime": 35,
+	"cookingTime": 2,
+	"servings": 4,
+	"nutrition": {
+		"calories": 333,
+		"fat": 18,
+		"carbohydrates": 32,
+		"protein": 16,
+		"fibre": 6,
+		"sodium": 0.592
+	},
+	"author": "cordie-runolfsson",
+	"slug": "shawarma-spiced-tofu-pita-wraps",
+	"averageReviewScore": 4.666666666666667,
+	"reviews": [
+		{
+			"text": "I have never thought something can be so delicious with such simple ingredients. It was easy to make and very tasty!",
+			"author": "mafalda-kemmer",
+			"score": 5
+		},
+		{
+			"text": "Wow! Just wow!",
+			"author": "alec-sanders",
+			"score": 5
+		},
+		{
+			"text": "",
+			"score": 4,
+			"author": "gerda-friesen"
+		}
+	],
+	"dateCreated": {
+		"$date": "2019-04-11T15:46:21.020Z"
+	},
+	"dateUpdated": {
+		"$date": "2019-04-12T20:03:14.797Z"
+	}
+},
+{
+	"_id": {
+		"$oid": "5cb06be369b105099cccd4c8"
+	},
+	"title": "Sheet-Pan Chicken Meatballs and Charred Broccoli",
+	"description": "This approachable weeknight dinner takes its cue from Japanese grilled chicken meatballs (tsukune), and the glossy, sweet-and-sour sauce that comes with it.",
+	"notes": "",
+	"ingredients": [
+		"2/3 cup ketchup",
+		"1/4 cup Worcestershire sauce",
+		"2 Tbsp. rice cooking wine or water",
+		"2 Tbsp. honey",
+		"4 tsp. soy sauce",
+		"1 1/2\" piece ginger, peeled, finely grated",
+		"1/2 tsp. freshly ground black pepper",
+		"Meatballs and assembly: 2 heads of broccoli (about 1 1/2 lb.)",
+		"2 Tbsp. vegetable oil, divided",
+		"2 1/2 tsp. kosher salt, divided",
+		"Crushed red pepper flakes (optional)",
+		"1 lb. ground chicken",
+		"1 large egg, beaten to blend",
+		"4 scallions, thinly sliced",
+		"2 garlic cloves, finely grated",
+		"1 (2\") piece ginger, peeled, finely grated",
+		"1/3 cup panko (Japanese breadcrumbs)",
+		"1 Tbsp. toasted sesame oil",
+		"1/4 tsp. freshly ground black pepper",
+		"Cooked rice and sesame seeds (for serving)"
+	],
+	"directions": [
+		"Sauce Mix ketchup, Worcestershire sauce, wine (if using), honey, soy sauce, ginger, and pepper in a small saucepan. Measure out 1/4 cup mixture into a small bowl; set aside for glazing meatballs later. Bring remaining mixture to a simmer over medium-high heat, stirring occasionally and reducing heat if needed, until sauce thickens, about 5 minutes. Transfer sauce to a small bowl.",
+		"Meatballs and assembly Place a rack in upper third of oven; preheat to 450°F. Line a rimmed baking sheet with foil. Trim broccoli stems and remove from crown. Peel off tough outer skin; slice crosswise into 1/2\" pieces. Cut florets into 2\" pieces. Toss on prepared baking sheet with 1 Tbsp. vegetable oil, 1 tsp. salt, and a few pinches of red pepper flakes (if using). Push to the edges of baking sheet to create a space for meatballs. Brush space with remaining 1 Tbsp. vegetable oil.",
+		"Mix chicken, egg, scallions, garlic, ginger, panko, sesame oil, pepper, remaining 1 1/2 tsp. salt, and 1/4 cup water in a medium bowl. Using wet hands, form into twelve 1 1/2\"-diameter meatballs. Arrange on baking sheet; brush with some of the reserved glazing mixture. Bake until meatballs are cooked through, 14–18 minutes. Remove from oven; heat broiler. Brush meatballs with remaining glazing mixture; broil until broccoli is charred and meatballs are browned in spots, about 5 minutes.",
+		"Spoon meatballs and broccoli over rice in bowl. Drizzle with sauce and sprinkle with sesame seeds."
+	],
+	"categories": [
+		"dinner",
+		"kid-friendly",
+		"small plates",
+		"meatball",
+		"chicken",
+		"broccoli",
+		"sheet-pan-dinner",
+		"ginger",
+		"rice",
+		"dairy free",
+		"japanese",
+		"asian"
+	],
+	"imageUrls": [
+		"https://assets.epicurious.com/photos/5c892997b8df0b1a61bf751f/6:4/w_620%2Ch_413/sheet-pan-chicken-meatballs-and-broccoli-recipe-BA-030419.jpg"
+	],
+	"preparationTime": 30,
+	"cookingTime": 40,
+	"servings": 4,
+	"nutrition": {
+		"calories": 523,
+		"fat": 22,
+		"carbohydrates": 55,
+		"protein": 32,
+		"fibre": 9,
+		"sodium": 0.133
+	},
+	"author": "cordie-runolfsson",
+	"slug": "sheet-pan-chicken-meatballs-and-charred-broccoli",
+	"averageReviewScore": 5,
+	"reviews": [
+		{
+			"text": "The meatballs were amazing! Thank you,",
+			"author": "mafalda-kemmer",
+			"score": 5
+		},
+		{
+			"text": "",
+			"author": "alec-sanders",
+			"score": 5
+		},
+		{
+			"text": "",
+			"score": 5,
+			"author": "lula-volkman"
+		}
+	],
+	"dateCreated": {
+		"$date": "2019-04-12T10:43:47.851Z"
+	},
+	"dateUpdated": {
+		"$date": "2019-04-12T20:01:31.870Z"
+	}
+},
+{
+	"_id": {
+		"$oid": "5cb06cd069b105099cccd4c9"
+	},
+	"title": "Roasted Brussels Sprouts with Warm Honey Glaze",
+	"description": "These roasted brussels sprouts get a fair amount of spice from the crushed red pepper flakes, which cuts through the acidity and sweetness of the glaze, but if you’re spice-averse, feel free to leave them out!",
+	"notes": "",
+	"ingredients": [
+		"1 1/2 lb. brussels sprouts, trimmed, halved",
+		"1/4 cup extra-virgin olive oil",
+		"1/2 tsp. kosher salt, plus more",
+		"Freshly ground black pepper",
+		"1/4 cup honey",
+		"1/3 cup sherry vinegar or red wine vinegar",
+		"3/4 tsp. crushed red pepper flakes (optional)",
+		"3 Tbsp. unsalted butter",
+		"3 scallions, thinly sliced on a diagonal",
+		"1 tsp. finely grated lemon zest"
+	],
+	"directions": [
+		"Place a rack in bottom third of oven and set a rimmed baking sheet on top; preheat oven to 450°F. Toss brussels sprouts and oil in a large bowl; season with salt and black pepper.",
+		"Carefully remove baking sheet from oven. Using tongs, arrange brussels sprouts, cut side down, on baking sheet. Roast on bottom rack until tender and deeply browned, 20–25 minutes.",
+		"Meanwhile, bring honey to a simmer in a small saucepan over medium-high heat. Reduce heat to medium-low and cook, stirring often, until honey is a deep amber color but not burnt (it will be foamy), about 3 minutes. Remove from heat; add vinegar and red pepper flakes, if using, and whisk until sauce is smooth (it will bubble quite aggressively when you first add the vinegar). Set saucepan over medium heat, add butter and remaining 1/2 tsp. salt, and cook, whisking constantly, until glaze is glossy, bubbling, and slightly thickened, about 4 minutes.",
+		"Transfer brussels sprouts to a large bowl. Add glaze and toss to coat. Transfer to a platter and top with scallions and lemon zest."
+	],
+	"categories": [
+		"side",
+		"winter",
+		"honey",
+		"lemon",
+		"green onion",
+		"roast",
+		"thanksgiving",
+		"fall",
+		"soy free",
+		"gluten free"
+	],
+	"imageUrls": [
+		"https://assets.epicurious.com/photos/5c892d2c9d70b32d4dccd957/6:4/w_620%2Ch_413/roasted-honey-glazed-brussels-sprouts-recipe-BA-031319.jpg"
+	],
+	"preparationTime": 17,
+	"cookingTime": 30,
+	"servings": 4,
+	"nutrition": {
+		"calories": 343,
+		"fat": 23,
+		"carbohydrates": 34,
+		"protein": 6,
+		"fibre": 7,
+		"sodium": 0.282
+	},
+	"author": "cordie-runolfsson",
+	"slug": "roasted-brussels-sprouts-with-warm-honey-glaze",
+	"averageReviewScore": 2.5,
+	"reviews": [
+		{
+			"text": "",
+			"author": "mafalda-kemmer",
+			"score": 2
+		},
+		{
+			"text": "Somethings's off with the taste..could it be the lemon?",
+			"score": 3,
+			"author": "alec-sanders"
+		}
+	],
+	"dateCreated": {
+		"$date": "2019-04-12T10:47:44.326Z"
+	},
+	"dateUpdated": {
+		"$date": "2019-04-12T19:52:36.656Z"
+	}
+},
+{
+	"_id": {
+		"$oid": "5cb06e6f69b105099cccd4ca"
+	},
+	"title": "Buddha Bowl with Roasted Sweet Potatoes, Spiced Chickpeas, and Chard",
+	"description": "While Lori was in college in Northern California, we often went to visit. The food scene there had a big influence on all of us. Even those many years ago, we were into fresh, locally grown vegetables and whole grains. Our dog-eared cookbooks were The Moosewood Cookbook and Laurel’s Kitchen. One of our favorite things to make in those days is what is now commonly referred to as Buddha bowls, which are composed of four elements: a grain, vegetables, a protein, and a sauce. Today we still love our Buddha bowls—so simple, nutrient-dense, and very pretty to serve.",
+	"notes": "",
+	"ingredients": [
+		"1 1/2 cups roughly chopped poblano pepper",
+		"1 clove garlic, quartered",
+		"1/3 cup tahini (sesame paste)",
+		"3 tablespoons fresh lemon juice",
+		"1 tablespoon extra-virgin olive oil",
+		"Sea salt",
+		"Freshly ground black pepper",
+		"For the Buddha bowls: 1 cup quinoa, rice, or farro (or any grain of your choice)",
+		"2 large sweet potatoes (1 1/2 to 2 pounds), peeled and cut into 1-inch cubes",
+		"1 1/2 tablespoons coconut oil, melted",
+		"2 teaspoons pure maple syrup",
+		"1 teaspoon orange zest",
+		"1 (15-ounce) can chickpeas, drained, rinsed, and patted dry or 1 1/2 cups cooked chickpeas",
+		"1 tablespoon plus 2 teaspoons extra-virgin olive oil",
+		"1/2 teaspoon paprika",
+		"1/8 teaspoon ground cumin",
+		"1/8 teaspoon cayenne pepper",
+		"4 cloves garlic, peeled",
+		"1/8 teaspoon crushed red pepper flakes",
+		"1 bunch Swiss chard, red, green, or rainbow, stemmed, leaves cut into 1-inch strips"
+	],
+	"directions": [
+		"For the poblano tahini sauce: In a blender or food processor, combine the poblano, garlic, tahini, lemon juice, olive oil, and 1/4 cup water and blend until smooth. (If the sauce is too thick, add water as needed to reach the desired consistency.) Season with 1/2 teaspoon salt and 1/8 teaspoon pepper. Set aside. (The dressing can be made ahead and stored in an airtight container in the refrigerator for up to 1 week.)",
+		"For the Buddha bowls: Preheat the oven to 425°F.",
+		"In a medium saucepan, cook the quinoa, rice, or farro according to the directions on the package.",
+		"In a medium bowl, combine the sweet potatoes, melted coconut oil, maple syrup, orange zest, and 1/4 teaspoon salt. Mix well until the potatoes are evenly coated.",
+		"Spread the sweet potatoes on a rimmed baking sheet and roast for 20 minutes. Flip them with a spatula and roast until the potatoes are tender and beginning to brown, an additional 10 to 15 minutes.",
+		"Meanwhile, in a small bowl, combine the chickpeas, 2 teaspoons of the olive oil, the paprika, cumin, cayenne, 1/4 teaspoon salt, and 1/8 teaspoon pepper. Mix well until the chickpeas are thoroughly coated.",
+		"Spread the chickpeas on a rimmed baking sheet and roast with the sweet potatoes until golden brown, 15 to 20 minutes, stirring them once halfway through.",
+		"In a large skillet over medium-high heat, heat the remaining 1 tablespoon of the olive oil until shimmering. Add the garlic and red pepper flakes. Cook until the garlic is fragrant, 3 to 4 minutes. Add the chard, cover, and cook, stirring occasionally, until the chard begins to wilt, 2 to 3 minutes. Uncover, add 1/4 teaspoon salt and 1/8 teaspoon pepper, and cook, stirring frequently, until the chard is completely wilted and cooked through, an additional 1 to 2 minutes. Discard the garlic cloves.",
+		"Put 1/2 cup of the cooked grain in the bottom of each of four serving bowls. Top each bowl with equal portions of the roasted sweet potatoes, roasted chickpeas, and sautéed chard. Drizzle with the poblano tahini sauce and serve with extra sauce passed separately."
+	],
+	"categories": [
+		"dinner",
+		"lunch",
+		"grains",
+		"sweet potato",
+		"chickpea",
+		"chard",
+		"sesame",
+		"poblano",
+		"garlic",
+		"vegetarian",
+		"vegan",
+		"dairy free",
+		"gluten free"
+	],
+	"imageUrls": [
+		"https://assets.epicurious.com/photos/5c7561657416767cdfe7fb47/6:4/w_620%2Ch_413/buddha-bowl-sweet-potato-chickpea-recipe-HC-022619.jpg"
+	],
+	"preparationTime": 30,
+	"cookingTime": 35,
+	"servings": 2,
+	"nutrition": {
+		"calories": 256,
+		"fat": 10,
+		"carbohydrates": 35,
+		"protein": 8,
+		"fibre": 7,
+		"sodium": 0.444
+	},
+	"author": "cordie-runolfsson",
+	"slug": "buddha-bowl-with-roasted-sweet-potatoes-spiced-chickpeas-and-chard",
+	"averageReviewScore": 4,
+	"reviews": [
+		{
+			"text": "Now that's a bunch of ingredients, I dare say...But it's good.",
+			"author": "mafalda-kemmer",
+			"score": 4
+		},
+		{
+			"text": "",
+			"score": 4,
+			"author": "alec-sanders"
+		}
+	],
+	"dateCreated": {
+		"$date": "2019-04-12T10:54:39.394Z"
+	},
+	"dateUpdated": {
+		"$date": "2019-04-12T19:51:57.923Z"
+	}
+},
+{
+	"_id": {
+		"$oid": "5cb06f6869b105099cccd4cb"
+	},
+	"title": "Date Night Pork Chop",
+	"description": "Rubbing a little honey across the surface of the pork before searing guarantees a shiny, caramelized crust. Pair that with a lemony endive and apple salad, and you've got the ultimate dinner for two.",
+	"notes": "",
+	"ingredients": [
+		"1 (1-lb.) bone-in pork loin chop (1\"–1 1/2\" thick)",
+		"Kosher salt",
+		"Freshly ground black pepper",
+		"3 tsp. honey, divided",
+		"5 Tbsp. extra-virgin olive oil, divided",
+		"3 Tbsp. skin-on hazelnuts, crushed",
+		"1 medium shallot, finely chopped",
+		"1 lemon, halved",
+		"1 small Pink Lady apple",
+		"1 large or 2 small endive, leaves separated",
+		"1 oz. Parmesan, shaved, broken into small pieces"
+	],
+	"directions": [
+		"Pat pork chop dry with paper towels; season generously with salt and pepper. Let sit at room temperature 1 hour.",
+		"Heat a medium skillet, preferably cast iron, over medium. Drizzle 1/2 tsp. honey over 1 side of pork chop, then drizzle with 1 Tbsp. oil. Rub all over; repeat on the other side. Cook until deeply browned, about 3 minutes per side. Turn upright onto fat cap and hold with tongs; cook until browned, about 2 minutes. Reduce heat to low; cook 1 more minute on each side (an instant-read thermometer inserted about ½\" from bone should register 130°F; cook another minute if needed). Transfer to a cutting board and let rest 10 minutes.",
+		"Add hazelnuts and 2 Tbsp. oil to same skillet; cook over medium-low heat, tossing, until nuts are golden, about 3 minutes. Add shallot; season with salt and pepper. Cook, stirring often, until shallot is softened and browned, about 2 minutes. Add remaining 2 tsp. honey and squeeze in juice from a lemon half; toss well. Remove from heat.",
+		"Cut around apple core to remove flesh in 3 lobes. Thinly slice 2 lobes (do as you will with remaining apple). Toss apple slices, endive, and Parmesan in a medium bowl; season with salt and pepper. Drizzle with remaining 1 Tbsp. oil, squeeze in juice from remaining lemon half, and toss again.",
+		"Cut bone away from pork chop and slice meat 1/2\" thick. Arrange on a plate and drizzle juices over. Mound salad alongside and spoon hazelnut mixture over."
+	],
+	"categories": [
+		"dinner",
+		"pork",
+		"valentine's day",
+		"anniversary",
+		"endive",
+		"apple",
+		"hazelnut",
+		"honey",
+		"quick \u0026 easy",
+		"soy free",
+		"peanut free",
+		"dairy free",
+		"gluten free"
+	],
+	"imageUrls": [
+		"https://assets.epicurious.com/photos/5c89140fc0596b6e36add2c4/6:4/w_620%2Ch_413/pork-chop-with-endive-apple-salad-recipe-BA-030419.jpg"
+	],
+	"preparationTime": 20,
+	"cookingTime": 50,
+	"servings": 2,
+	"nutrition": {
+		"calories": 979,
+		"fat": 73,
+		"carbohydrates": 31,
+		"protein": 53,
+		"fibre": 6,
+		"sodium": 1.048
+	},
+	"author": "cordie-runolfsson",
+	"slug": "date-night-pork-chop",
+	"averageReviewScore": 4.666666666666667,
+	"reviews": [
+		{
+			"text": "",
+			"author": "mafalda-kemmer",
+			"score": 4
+		},
+		{
+			"text": "For a date? Count me in!",
+			"author": "alec-sanders",
+			"score": 5
+		},
+		{
+			"text": "Splendid. My girlfriend loved it!",
+			"score": 5,
+			"author": "cody-blick-iii"
+		}
+	],
+	"dateCreated": {
+		"$date": "2019-04-12T10:58:48.580Z"
+	},
+	"dateUpdated": {
+		"$date": "2019-04-12T19:57:25.591Z"
+	}
+},
+{
+	"_id": {
+		"$oid": "5cb0e3078b6c523fd86f49f6"
+	},
+	"title": "Coconut Cold Brew Coffee",
+	"description": "Mixing toasted coconut into your coffee grounds before brewing creates a pleasant coconut flavor without any added syrups. If you’re in the habit of buying an iced coffee from a shop every day, this economical homemade version will reduce your plastic use and save you time.",
+	"notes": "",
+	"ingredients": [
+		"16 oz. coffee beans (about 4 cups), coarsely ground",
+		"1 1/2 cups toasted unsweetened shredded coconut",
+		"3 cups milk (cow’s, oat, or nut) or water",
+		"2 Tbsp. (or more) pure maple syrup"
+	],
+	"directions": [
+		"Place coffee and coconut in large bowl, jar, or pot. Slowly pour in 8 cups cool water and stir very gently until grounds are just moistened. Cover and chill 24 hours.",
+		"Strain coffee grounds through a fine-mesh sieve into a large measuring glass or bowl. Discard grinds. Line sieve with a coffee filter and add as much coffee as will fit. Strain gradually into a 1-qt. airtight container or jar, adding more coffee as space is available until all the coffee has been added. Allow grounds to sit in strainer and continue to drip 20 minutes.",
+		"To serve, pour 1/2 cup coffee into an ice-filled glass; add ½ cup milk and 1 tsp. maple syrup and stir to combine.",
+		"Do Ahead Cold brew (without milk and maple syrup) can be made 2 weeks ahead. Keep chilled."
+	],
+	"categories": [
+		"drink",
+		"coffee",
+		"non-alcoholic",
+		"coconut",
+		"brunch",
+		"quick \u0026 healthy",
+		"soy free",
+		"gluten free"
+	],
+	"imageUrls": [
+		"https://assets.epicurious.com/photos/5c890f53497d052b6f17c938/6:4/w_620%2Ch_413/coconut-cold-brew-recipe-BA-030119.jpg"
+	],
+	"preparationTime": 10,
+	"cookingTime": 0,
+	"servings": 3,
+	"nutrition": {
+		"calories": 159,
+		"fat": 14,
+		"carbohydrates": 9,
+		"protein": 2,
+		"fibre": 3,
+		"sodium": 0.017
+	},
+	"author": "lula-volkman",
+	"slug": "coconut-cold-brew-coffee",
+	"averageReviewScore": 3,
+	"reviews": [
+		{
+			"text": "I like my coffee plain and simple.",
+			"author": "mafalda-kemmer",
+			"score": 3
+		},
+		{
+			"text": "",
+			"author": "alec-sanders",
+			"score": 4
+		},
+		{
+			"text": "",
+			"author": "cody-blick-iii",
+			"score": 4
+		},
+		{
+			"text": "",
+			"score": 1,
+			"author": "wilhelm-doyle"
+		}
+	],
+	"dateCreated": {
+		"$date": "2019-04-12T19:12:07.161Z"
+	},
+	"dateUpdated": {
+		"$date": "2019-04-12T20:04:47.844Z"
+	}
+},
+{
+	"_id": {
+		"$oid": "5cb0e3eb8b6c523fd86f49f7"
+	},
+	"title": "Sweet Potato Bowls with Spiced Lamb and Mushrooms",
+	"description": "These sweet potato bowls are an easy go-to weeknight dinner: Steam the sweet potatoes while you sauté the mushrooms with spiced ground lamb, quick-pickle fennel and onions, make a simple yogurt sauce, and dinner is ready in about half an hour.",
+	"notes": "",
+	"ingredients": [
+		"1 tsp. kosher salt, divided, plus more",
+		"1 large sweet potato (about 1 lb.), halved lengthwise",
+		"1/2 fennel bulb (about 6 oz.), thinly sliced, plus fronds (for serving; optional)",
+		"1/2 small red onion, thinly sliced",
+		"1/4 cup apple cider, coconut, or unseasoned rice vinegar",
+		"3 Tbsp. extra-virgin olive oil, divided",
+		"1/2 lb. ground lamb",
+		"1 tsp. ground cumin",
+		"1/2 tsp. ground cinnamon",
+		"1 tsp. Aleppo-style pepper, plus more for serving",
+		"8 oz. wild mushrooms (such as oyster or shiitake), sliced into 1/4\" slices",
+		"1/2 cup plain whole-milk yogurt",
+		"2 Tbsp. fresh lemon juice",
+		"1/4 cup mint leaves"
+	],
+	"directions": [
+		"Fill a large pot with about 1\" water; season with a big pinch of salt. Set a steamer basket in pot. Cover pot and bring water to a boil. Add potato, cover, and steam until fork-tender, 20–25 minutes.",
+		"Meanwhile, toss sliced fennel, onion, vinegar, and 1/4 tsp. salt in a medium bowl. Let sit, tossing occasionally, at least 10 minutes and up to 30 minutes.",
+		"Heat 2 Tbsp. oil in a large skillet over medium-high. Add lamb, cumin, cinnamon, 1 tsp. pepper, and 1/2 tsp. salt and press into an even layer. Cook, undisturbed, until well browned on the bottom, about 4 minutes. Break up into pieces with a spatula and continue to cook, stirring occasionally, until browned, 1–2 minutes. Push mixture to one side of skillet and add mushrooms in an even layer; season with salt. Cook, undisturbed, until beginning to brown and soften, 3 minutes, then stir together with lamb mixture. Continue to cook, stirring occasionally, until mushrooms are golden brown, about 2 minutes more.",
+		"Whisk yogurt, lemon juice, and remaining 1 Tbsp. oil and 1/4 tsp. salt in a small bowl.",
+		"Divide potato halves between bowls and mash slightly with a fork. Top with yogurt sauce and mushroom mixture. Lift fennel and onion out of vinegar with your hands and scatter over bowls; discard vinegar. Top with mint, fennel fronds (if using), and pepper."
+	],
+	"categories": [
+		"dinner",
+		"sweet potato",
+		"potato",
+		"lamb",
+		"fennel",
+		"spice",
+		"quic \u0026 easy",
+		"mushroom",
+		"yohgurt",
+		"gluten free",
+		"soy free"
+	],
+	"imageUrls": [
+		"https://assets.epicurious.com/photos/5c891cb1c0596b6e36add2c6/6:4/w_620%2Ch_413/sweet-potato-bowls-with-spiced-lamb-and-mushrooms-recipe-BA-031319.jpg"
+	],
+	"preparationTime": 15,
+	"cookingTime": 35,
+	"servings": 2,
+	"nutrition": {
+		"calories": 749,
+		"fat": 50,
+		"carbohydrates": 49,
+		"protein": 26,
+		"fibre": 11,
+		"sodium": 1.1433
+	},
+	"author": "lula-volkman",
+	"slug": "sweet-potato-bowls-with-spiced-lamb-and-mushrooms",
+	"averageReviewScore": 4,
+	"reviews": [
+		{
+			"text": "",
+			"author": "mafalda-kemmer",
+			"score": 4
+		},
+		{
+			"text": "",
+			"score": 4,
+			"author": "alec-sanders"
+		}
+	],
+	"dateCreated": {
+		"$date": "2019-04-12T19:15:55.237Z"
+	},
+	"dateUpdated": {
+		"$date": "2019-04-12T19:51:20.747Z"
+	}
+},
+{
+	"_id": {
+		"$oid": "5cb0e4c68b6c523fd86f49f8"
+	},
+	"title": "Chicken Soup with Caramelized Ginger",
+	"description": "A feel-good classic with a new lease on life, this sinus-clearing broth starts with ginger softened in savory caramel",
+	"notes": "Do Ahead\nSoup (without scallion greens or cilantro) can be made 3 days ahead. Let cool, then cover and chill.",
+	"ingredients": [
+		"1/2 bunch cilantro, divided",
+		"2 Tbsp. sugar",
+		"1 (6\") piece ginger, peeled, thinly sliced into rounds",
+		"3 garlic cloves, thinly sliced",
+		"4 scallions, pale-green and white parts left whole, dark-green parts thinly sliced lengthwise",
+		"1 1/2 lb. skinless, boneless chicken thighs",
+		"1 Fresno chile, halved, seeds removed",
+		"Kosher salt",
+		"2 Tbsp. soy sauce",
+		"Freshly ground black pepper"
+	],
+	"directions": [
+		"Gather half of cilantro into a bundle and tie together with kitchen twine. Coarsely chop remaining cilantro (stems and all); set aside for serving.",
+		"Heat sugar and 3 Tbsp. water in a large saucepan over medium. Cook, stirring often, until sugar dissolves, about 2 minutes. Continue to cook, swirling pan occasionally, until syrup is golden amber, 4–6 minutes.",
+		"Add ginger and cook, stirring occasionally, until ginger is softened slightly, about 5 minutes. Add garlic and pale-green and white scallion parts and cook, stirring often, until garlic is fragrant, about 2 minutes. Stir in cilantro bundle, chicken, chile, and a big pinch of salt. Pour in 8 cups cold water and bring to a boil. Reduce heat to medium-low, bring to a bare simmer, and cook, stirring occasionally, until chicken is cooked through, 10–12 minutes. Discard chile and scallions. Keep soup warm over medium-low heat.",
+		"Transfer chicken to a plate and let cool slightly. Shred chicken and stir back into soup. Add soy sauce and stir to combine. Remove pot from heat; taste and season with salt, if needed.",
+		"Serve soup topped with dark-green scallion parts, reserved chopped cilantro, and a few turns of pepper."
+	],
+	"categories": [
+		"soup/stew",
+		"chicken",
+		"winter",
+		"ginger",
+		"cilantro",
+		"green onion/scallion",
+		"healthy",
+		"dinner",
+		"diary free",
+		"gluten free"
+	],
+	"imageUrls": [
+		"https://assets.epicurious.com/photos/5c89116f49d0022aa36183cd/6:4/w_620%2Ch_413/chicken-soup-with-caramelized-ginger-recipe-BA-030119.jpg"
+	],
+	"preparationTime": 30,
+	"cookingTime": 30,
+	"servings": 4,
+	"nutrition": {
+		"calories": 432,
+		"fat": 29,
+		"carbohydrates": 12,
+		"protein": 30,
+		"fibre": 1,
+		"sodium": 0.583
+	},
+	"author": "lula-volkman",
+	"slug": "chicken-soup-with-caramelized-ginger",
+	"averageReviewScore": 4.75,
+	"reviews": [
+		{
+			"text": "I don't usually eat soups, but this one was great. Would make it again.",
+			"author": "mafalda-kemmer",
+			"score": 5
+		},
+		{
+			"text": "Adding ginger was a nice idea.",
+			"author": "alec-sanders",
+			"score": 5
+		},
+		{
+			"text": "",
+			"author": "cordie-runolfsson",
+			"score": 5
+		},
+		{
+			"text": "",
+			"score": 4,
+			"author": "lula-volkman"
+		}
+	],
+	"dateCreated": {
+		"$date": "2019-04-12T19:19:34.081Z"
+	},
+	"dateUpdated": {
+		"$date": "2019-04-12T20:01:23.856Z"
+	}
+},
+{
+	"_id": {
+		"$oid": "5cb0e5a28b6c523fd86f49f9"
+	},
+	"title": "Corned Beef with Crispy Roasted Potatoes and Cabbage",
+	"description": "This update of the classic corned beef dinner features extra-crispy cabbage and golden roasted potatoes—a major upgrade from the traditional boiled vegetables. Serve it drizzled with a dill vinaigrette bursting with all the spices used to make the corned beef: coriander seeds, mustard seeds, red pepper flakes, cloves, and garlic. (Hot tip: you’re going to want to eat this sauce with a spoon, so make extra.)",
+	"notes": "Special Equipment\nA mortar and pestle",
+	"ingredients": [
+		"1 (3–4-lb.) corned beef brisket",
+		"2 lb. russet potatoes, scrubbed, quartered",
+		"1 1/4 cups extra-virgin olive oil, divided",
+		"Kosher salt, freshly ground pepper",
+		"1 large green cabbage, cut through the core into 8 wedges",
+		"4 whole cloves",
+		"1 tsp. coriander seeds",
+		"1 tsp. mustard seeds",
+		"1 tsp. peppercorns",
+		"1/2 tsp. crushed red pepper flakes",
+		"2 garlic cloves, finely grated",
+		"6 Tbsp. white wine vinegar",
+		"1 Tbsp. honey",
+		"1 cup finely chopped dill"
+	],
+	"directions": [
+		"Place corned beef in a large pot. Add enough water to cover by 2\" and bring to a boil. Reduce heat to low, cover, and simmer until very tender, 3–3 1/2 hours.",
+		"Once beef has been simmering for 2 1/2 hours, arrange racks in top and bottom thirds of oven; preheat to 375°F. Toss potatoes, 1/4 cup oil, 1 tsp. salt, and 1 tsp. pepper on a rimmed baking sheet. Rub cabbage wedges with 1/4 cup oil; season on all sides with 1 tsp. salt and 1 tsp. pepper. Arrange on another rimmed baking sheet. Roast, turning cabbage, tossing potatoes, and rotating sheets top to bottom halfway through, until golden brown and tender, 45–40 minutes. (The cabbage might be done before the potatoes.)",
+		"Meanwhile, coarsely crush cloves, coriander seeds, mustard seeds, peppercorns, and red pepper flakes with mortar and pestle. Transfer to a small saucepan and cook over medium heat, swirling often, until fragrant, about 2 minutes. Add garlic and remaining 3/4 cup oil and cook, stirring, until garlic sizzles, about 1 minute. Transfer to a medium heatproof bowl. Stir in vinegar, honey, and 2 tsp. salt. Let cool, then stir in dill.",
+		"Transfer beef to a cutting board and let sit 10 minutes. Trim off excess fat, then thinly slice against the grain. Serve alongside roasted cabbage and potatoes with dill sauce drizzled over."
+	],
+	"categories": [
+		"beef",
+		"brisket",
+		"potato",
+		"cabbage",
+		"clove",
+		"coriander",
+		"mustard",
+		"garlic",
+		"vinegar",
+		"honey",
+		"dill"
+	],
+	"imageUrls": [
+		"https://assets.epicurious.com/photos/5c86addd7233972d223482e6/6:4/w_620%2Ch_413/Sunday-Supper-Corned-Beef-Dinner-3-05032019.jpg"
+	],
+	"preparationTime": 60,
+	"cookingTime": 270,
+	"servings": 8,
+	"nutrition": {
+		"calories": 0,
+		"fat": 0,
+		"carbohydrates": 0,
+		"protein": 0,
+		"fibre": 0,
+		"sodium": 0
+	},
+	"author": "lula-volkman",
+	"slug": "corned-beef-with-crispy-roasted-potatoes-and-cabbage",
+	"averageReviewScore": 3,
+	"reviews": [
+		{
+			"text": "",
+			"author": "mafalda-kemmer",
+			"score": 3
+		},
+		{
+			"text": "",
+			"score": 3,
+			"author": "alec-sanders"
+		}
+	],
+	"dateCreated": {
+		"$date": "2019-04-12T19:23:14.498Z"
+	},
+	"dateUpdated": {
+		"$date": "2019-04-12T19:50:36.661Z"
+	}
+},
+{
+	"_id": {
+		"$oid": "5cb0e65a8b6c523fd86f49fa"
+	},
+	"title": "Apple and Calvados Tart (Galette de Pommes au Calvados)",
+	"description": "This is a dessert you'll make over and over in the fall when interesting apples fill the farmers’ market; but the Calvados sauce ensures it even makes out-of-season apples sing.",
+	"notes": "Galette can be made 8 hours ahead and kept at room temperature.",
+	"ingredients": [
+		"All-butter pastry dough",
+		"1 3/4 pound Gala apples",
+		"2 teaspoons fresh lemon juice",
+		"1/3 cup plus 1/2 tablespoon granulated sugar",
+		"Calvados applesauce",
+		"3 tablespoons unsalted butter, cut into 1/2-inch pieces",
+		"1 1/2 tablespoons apple jelly",
+		"1 cup chilled heavy cream",
+		"1 tablespoon confectioners sugar",
+		"1 1/2 tablespoons Calvados"
+	],
+	"directions": [
+		"Roll out pastry on a lightly floured surface with a floured rolling pin into a rough 16-inch round (1/8 inch thick), then transfer carefully to parchment-lined large baking sheet. Loosely fold in edge of pastry where necessary to fit on baking sheet, then chill, covered loosely with plastic wrap, 30 minutes.",
+		"Preheat oven to 425°F.",
+		"While pastry is chilling, peel and core apples, then cut into 1/8-inch-thick slices. Toss slices with lemon juice and 1/3 cup granulated sugar.",
+		"Put baking sheet with pastry on a work surface and unfold any edges so pastry is flat. Spread applesauce over pastry, leaving a 2-inch border, and top sauce with sliced apples, mounding slightly. Fold edges of dough over filling, partially covering apples (center will not be covered) and pleating dough as necessary. Dot apples with butter, then brush pastry edge lightly with water and sprinkle with remaining 1/2 tablespoon granulated sugar. Bake galette in middle of oven until pastry is golden and apples are tender, 40 to 45 minutes.",
+		"While galette is baking, melt apple jelly in a very small saucepan over moderately low heat, stirring.",
+		"Slide baked galette on parchment onto a rack, then brush with melted jelly and cool galette until warm or room temperature.",
+		"Beat together cream and confectioners sugar in a bowl with an electric mixer until cream just holds soft peaks, then beat in Calvados. Serve galette topped with dollops of Calvados cream."
+	],
+	"categories": [
+		"american",
+		"french",
+		"milk/cream",
+		"fruit",
+		"dessert",
+		"bake",
+		"lemon",
+		"apple",
+		"brandy",
+		"winter"
+	],
+	"imageUrls": [
+		"https://assets.epicurious.com/photos/5cad30144507ff1282e77141/6:4/w_620%2Ch_413/Apple-and-Calvados-Tart-recipe-03042019.jpg"
+	],
+	"preparationTime": 45,
+	"cookingTime": 225,
+	"servings": 8,
+	"nutrition": {
+		"calories": 0,
+		"fat": 0,
+		"carbohydrates": 0,
+		"protein": 0,
+		"fibre": 0,
+		"sodium": 0
+	},
+	"author": "lula-volkman",
+	"slug": "apple-and-calvados-tart-galette-de-pommes-au-calvados",
+	"averageReviewScore": 4,
+	"reviews": [
+		{
+			"text": "Loved it, but some preparation detail were missed out. Preheating the oven to 425°F is way too high. 350 is enough.",
+			"author": "mafalda-kemmer",
+			"score": 4
+		},
+		{
+			"text": "",
+			"author": "alec-sanders",
+			"score": 3
+		},
+		{
+			"text": "",
+			"score": 5,
+			"author": "cody-blick-iii"
+		}
+	],
+	"dateCreated": {
+		"$date": "2019-04-12T19:26:18.471Z"
+	},
+	"dateUpdated": {
+		"$date": "2019-04-12T19:56:55.710Z"
+	}
+},
+{
+	"_id": {
+		"$oid": "5cb0e7438b6c523fd86f49fb"
+	},
+	"title": "Chickpea Flatbreads with Burst Tomato Sauce",
+	"description": "These crispy-edged flatbreads are made from just chickpea flour, water, olive oil, and salt. Use them to dip and scoop a saucy, sweet-tart mix of burst tomatoes and chickpeas, or pile the sauce on top, add feta and greens, and eat with a knife and fork.",
+	"notes": "",
+	"ingredients": [
+		"1 cup chickpea flour",
+		"10 Tbsp. extra-virgin olive oil, divided, plus more for serving",
+		"1 1/2 tsp. kosher salt, divided",
+		"2 pints cherry tomatoes, halved if large",
+		"2 garlic cloves, finely chopped",
+		"1 (15-oz.) can chickpeas, drained, rinsed",
+		"1 Tbsp. dried oregano",
+		"1 tsp. sherry or red wine vinegar",
+		"1/4 tsp. smoked paprika (optional)",
+		"2 Tbsp. cold unsalted butter, cut into pieces",
+		"1 cup coarsely crumbled feta (about 5 oz.)",
+		"Baby greens, such as arugula, kale, or spinach, and lemon wedges (for serving)"
+	],
+	"directions": [
+		"Place a rack in top third of oven; preheat to 450°F. Whisk chickpea flour, 2 Tbsp. oil, 1 tsp. salt, and 1 cup water in a medium bowl or large measuring cup until combined. Let sit at least 10 minutes and up to 1 hour to let flour hydrate.",
+		"Heat 2 Tbsp. oil in a 12\" cast-iron skillet over high until shimmering. Pour in exactly half (3/4 cup) of the chickpea batter and tilt to evenly coat skillet. Transfer to oven and bake flatbread until edges are golden brown, 8–10 minutes. Using a large spatula, transfer flatbread to a wire rack. Repeat with remaining batter.",
+		"Meanwhile, cook tomatoes, garlic, 1/4 cup oil, and remaining 1/2 tsp. salt in a large skillet over medium-high heat, stirring occasionally, until tomatoes begin to burst, 4–5 minutes. Stir in chickpeas, oregano, vinegar, and paprika (if using). Reduce heat to medium and continue to cook, stirring often, until tomatoes have burst more into a fully formed sauce, 3–4 minutes. Remove from heat and stir in butter.",
+		"Slice flatbreads in half. Serve with tomato-chickpea mixture, feta, greens, and lemon wedges alongside for squeezing and oil for drizzling."
+	],
+	"categories": [
+		"chickpea",
+		"tomato",
+		"small plates",
+		"garlic",
+		"oregano",
+		"vinegar",
+		"paprika"
+	],
+	"imageUrls": [
+		"https://assets.epicurious.com/photos/5c7d6ee0d6c37575ccdd79c3/6:4/w_620%2Ch_413/SMALL-PLATES-Chickpea-Flatbread-recipe-27022019.jpg"
+	],
+	"preparationTime": 15,
+	"cookingTime": 20,
+	"servings": 4,
+	"nutrition": {
+		"calories": 718,
+		"fat": 52,
+		"carbohydrates": 47,
+		"protein": 20,
+		"fibre": 12,
+		"sodium": 0.85
+	},
+	"author": "billy-krajcik",
+	"slug": "chickpea-flatbreads-with-burst-tomato-sauce",
+	"averageReviewScore": 4.666666666666667,
+	"reviews": [
+		{
+			"text": "Smoked paprika certainly is not needed...\nOtherwise good recipe.",
+			"author": "mafalda-kemmer",
+			"score": 3
+		},
+		{
+			"text": "Tasty indeed. And looks fantastic.",
+			"author": "alec-sanders",
+			"score": 5
+		},
+		{
+			"text": "",
+			"author": "cody-blick-iii",
+			"score": 5
+		},
+		{
+			"text": "",
+			"author": "cordie-runolfsson",
+			"score": 5
+		},
+		{
+			"text": "",
+			"author": "lula-volkman",
+			"score": 5
+		},
+		{
+			"text": "",
+			"score": 5,
+			"author": "gerda-friesen"
+		}
+	],
+	"dateCreated": {
+		"$date": "2019-04-12T19:30:11.150Z"
+	},
+	"dateUpdated": {
+		"$date": "2019-04-12T20:03:02.041Z"
+	}
+}]
+
