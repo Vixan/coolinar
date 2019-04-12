@@ -26,11 +26,11 @@ This project requires having [Node.js with NPM](https://nodejs.org/en/) and
 
 1. Download the project using the **Download ZIP** button on the GitHub page.
 2. Clone the git project as follows
-  1. Download and install Git from https://git-scm.com
-  2. Clone the project in the desired directory on your computer using:
-  ```bash
-  git clone https://github.com/Vixan/coolinar-server
-  ```
+    1. Download and install Git from https://git-scm.com
+    2. Clone the project in the desired directory on your computer using:
+    ```bash
+    git clone https://github.com/Vixan/coolinar-server
+    ```
 3. Import the initial data. 
    1. Import users.
    ```bash
