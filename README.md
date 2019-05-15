@@ -30,7 +30,11 @@ This project requires having [Node.js with NPM](https://nodejs.org/en/) and
     ```bash
     git clone https://github.com/Vixan/coolinar-server
     ```
-2. Import the initial data. 
+2. Start mongo server.
+  ```bash
+  mongod
+  ```
+3. Import the initial data. 
    1. Import users.
    ```bash
    cd coolinar-server
@@ -40,17 +44,13 @@ This project requires having [Node.js with NPM](https://nodejs.org/en/) and
    ```bash
    mongoimport -d "coolinar" -c "recipe" --jsonArray --file "./database/recipes.json"
    ```
-3. Enter the directory and install the npm dependencies.
+4. Enter the directory and install the npm dependencies.
   ```bash
   npm install
   ```
-4. Start mongo server.
-  ```bash
-  mongod
-  ```
 5. Start the server.
   ```bash
-  npm run start
+  npm run start:dev
   ```
 
 ## License
