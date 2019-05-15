@@ -24,32 +24,31 @@ Coolinar is a simple recipes website where users can explore, create recipes and
 This project requires having [Node.js with NPM](https://nodejs.org/en/) and 
 [MongoDB](https://www.mongodb.com/download-center) installed on your computer.
 
-1. Download the project using the **Download ZIP** button on the GitHub page.
-2. Clone the git project as follows
+1. Download the project using the **Download ZIP** button on the GitHub page or Clone the git project as follows
     1. Download and install Git from https://git-scm.com
     2. Clone the project in the desired directory on your computer using:
     ```bash
     git clone https://github.com/Vixan/coolinar-server
     ```
-3. Import the initial data. 
+2. Import the initial data. 
    1. Import users.
    ```bash
+   cd coolinar-server
    mongoimport -d "coolinar" -c "user" --jsonArray --file "./database/users.json"
    ```
    2. Import recipes.
    ```bash
    mongoimport -d "coolinar" -c "recipe" --jsonArray --file "./database/recipes.json"
    ```
-4. Enter the directory and install the npm dependencies.
+3. Enter the directory and install the npm dependencies.
   ```bash
-  cd coolinar-server
   npm install
   ```
-5. Start mongo server.
+4. Start mongo server.
   ```bash
   mongod
   ```
-6. Start the server.
+5. Start the server.
   ```bash
   npm run start
   ```
