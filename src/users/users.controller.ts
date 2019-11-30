@@ -51,7 +51,6 @@ export class UsersController {
    * @memberof UsersController
    */
   @Get('/search')
-  @UseGuards(AuthGuard('jwt'))
   @UseInterceptors(new TransformInterceptor(UserDto))
   async searchByName(@Query() params: any): Promise<UserDto | null> {
     if (params.name) {
