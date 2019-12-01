@@ -1,4 +1,4 @@
-import { Entity, Column } from 'typeorm';
+import { Entity, Column, OneToMany, ManyToMany, JoinTable } from 'typeorm';
 import {
   IsString,
   MaxLength,
@@ -7,6 +7,8 @@ import {
   IsUrl,
 } from 'class-validator';
 import { BaseEntity } from '../shared/base/base.entity';
+import { Review } from '../reviews/reviews.entity';
+import { Recipe } from '../recipes/recipes.entity';
 
 /**
  * User database entity.
@@ -38,9 +40,16 @@ export class User extends BaseEntity {
   @IsUrl()
   avatarUrl: string;
 
-  @Column()
+  @ManyToMany(type => Recipe)
+  @JoinTable()
   @IsOptional()
-  favoriteRecipes: string[];
+  favoriteRecipes: Recipe[];
+
+  @OneToMany(type => Recipe, recipe => recipe.author)
+  createdRecipes: Recipe[];
+
+  @OneToMany(type => Review, review => review.author)
+  reviews: Review[];
 
   constructor(props: any) {
     super();

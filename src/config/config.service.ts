@@ -51,7 +51,7 @@ export class ConfigService {
    * Validate the environment variables configuration file.
    *
    * @param {*} configObject Configuration read from file.
-   * @returns {Promise<Config>} Promise of the Configuration if 
+   * @returns {Promise<Config>} Promise of the Configuration if
    * validation passes
    * @memberof ConfigService
    */

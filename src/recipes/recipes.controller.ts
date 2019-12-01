@@ -13,6 +13,10 @@ import { SearchRecipeDto } from './dto/search-recipe.dto';
 import { TransformInterceptor } from '../shared/interceptors/transform.interceptor';
 import { UpdateRecipeDto } from './dto/update-recipe.dto';
 import { ValidationPipe } from '../shared/pipes/validation.pipe';
+import { UsersService } from '../users/users.service';
+import { DirectionsService } from '../directions/directions.service';
+import { CategoriesService } from '../categories/categories.service';
+import { IngredientsService } from '../ingredients/ingredients.service';
 import {
   Controller,
   Get,
@@ -28,6 +32,9 @@ import {
   Query,
   UseFilters,
 } from '@nestjs/common';
+import { Category } from 'src/categories/categories.entity';
+import { Ingredient } from 'src/ingredients/ingredients.entity';
+import { Direction } from 'src/directions/directions.entity';
 
 /**
  * Controller that handles the recipe routes.
@@ -39,6 +46,10 @@ import {
 export class RecipesController {
   constructor(
     private readonly recipesService: RecipesService,
+    private readonly usersService: UsersService,
+    private readonly directionsService: DirectionsService,
+    private readonly categoriesService: CategoriesService,
+    private readonly ingredientsService: IngredientsService,
     private readonly dateProvider: DateProvider,
   ) {}
 
@@ -53,7 +64,7 @@ export class RecipesController {
   @UseInterceptors(new PaginationTransformInterceptor(RecipeDto))
   async getAll(
     @Query() pagination: PaginationOptions,
-  ): Promise<Pagination<RecipeDto>> {
+  ): Promise<Pagination<Recipe>> {
     return await this.recipesService.paginate({
       take: Number(pagination.take) || 10,
       skip: Number(pagination.skip) || 0,
@@ -71,7 +82,7 @@ export class RecipesController {
   @UseInterceptors(new PaginationTransformInterceptor(RecipeDto))
   async getDaily(
     @Query() pagination: PaginationOptions,
-  ): Promise<Pagination<RecipeDto>> {
+  ): Promise<Pagination<Recipe>> {
     const dateInterval = this.dateProvider.createDateInterval(
       new Date(),
       DatePart.DAY,
@@ -94,7 +105,7 @@ export class RecipesController {
   @UseInterceptors(new PaginationTransformInterceptor(RecipeDto))
   async getLatest(
     @Query() pagination: PaginationOptions,
-  ): Promise<Pagination<RecipeDto>> {
+  ): Promise<Pagination<Recipe>> {
     return this.recipesService.paginateAndSort(
       {
         take: Number(pagination.take) || 10,
@@ -115,7 +126,7 @@ export class RecipesController {
   @UseInterceptors(new PaginationTransformInterceptor(RecipeDto))
   async getTopRated(
     @Query() pagination: PaginationOptions,
-  ): Promise<Pagination<RecipeDto>> {
+  ): Promise<Pagination<Recipe>> {
     const minScore: number = 4;
 
     return this.recipesService.findByReviewMinScore(minScore, {
@@ -153,7 +164,7 @@ export class RecipesController {
    */
   @Get(':slug')
   @UseInterceptors(new TransformInterceptor(RecipeDto))
-  async getBySlug(@Param('slug') slug: string): Promise<RecipeDto> {
+  async getBySlug(@Param('slug') slug: string): Promise<Recipe> {
     const recipe = await this.recipesService.findBySlug(slug);
 
     if (!recipe) {
@@ -177,8 +188,53 @@ export class RecipesController {
     RecipeValidationInterceptor,
     new TransformInterceptor(RecipeDto),
   )
-  async create(@Body() createRecipeDto: CreateRecipeDto): Promise<RecipeDto> {
-    const recipe = new Recipe({ ...createRecipeDto });
+  async create(@Body() createRecipeDto: CreateRecipeDto): Promise<Recipe> {
+    const categories: Category[] = [];
+    for (const categoryName of createRecipeDto.categories) {
+      let foundCategory = await this.categoriesService.findByName(categoryName);
+      if (!foundCategory) {
+        foundCategory = await this.categoriesService.create(
+          new Category({ name: categoryName }),
+        );
+      }
+      categories.push(foundCategory);
+    }
+
+    const ingredients: Ingredient[] = [];
+    for (const ingredientName of createRecipeDto.ingredients) {
+      let foundIngredient = await this.ingredientsService.findByName(
+        ingredientName,
+      );
+      if (!foundIngredient) {
+        foundIngredient = await this.ingredientsService.create(
+          new Ingredient({ name: ingredientName }),
+        );
+      }
+      ingredients.push(foundIngredient);
+    }
+
+    const directions: Direction[] = [];
+    for (const directionName of createRecipeDto.directions) {
+      let foundDirection = await this.directionsService.findByName(
+        directionName,
+      );
+      if (!foundDirection) {
+        foundDirection = await this.directionsService.create(
+          new Direction({ name: directionName }),
+        );
+      }
+      directions.push(foundDirection);
+    }
+
+    const author = await this.usersService.findBySlug(createRecipeDto.author);
+
+    const recipe = new Recipe({
+      ...createRecipeDto,
+      author,
+      categories,
+      ingredients,
+      directions,
+    });
 
     return this.recipesService.create(recipe);
   }
@@ -201,14 +257,62 @@ export class RecipesController {
   async update(
     @Param('slug') slug: string,
     @Body() updateRecipeDto: Partial<UpdateRecipeDto>,
-  ): Promise<RecipeDto> {
-    const recipe = await this.recipesService.findBySlug(slug);
+  ): Promise<Recipe> {
+    let recipe = await this.recipesService.findBySlug(slug);
 
     if (!recipe) {
       throw new NotFoundException({ errors: { slug: 'Inexistent slug' } });
     }
 
-    return this.recipesService.update({ ...recipe, ...updateRecipeDto });
+    const categories: Category[] = [];
+    for (const categoryName of updateRecipeDto.categories) {
+      let foundCategory = await this.categoriesService.findByName(categoryName);
+      if (!foundCategory) {
+        foundCategory = await this.categoriesService.create(
+          new Category({ name: categoryName }),
+        );
+      }
+      categories.push(foundCategory);
+    }
+
+    const ingredients: Ingredient[] = [];
+    for (const ingredientName of updateRecipeDto.ingredients) {
+      let foundIngredient = await this.ingredientsService.findByName(
+        ingredientName,
+      );
+      if (!foundIngredient) {
+        foundIngredient = await this.ingredientsService.create(
+          new Ingredient({ name: ingredientName }),
+        );
+      }
+      ingredients.push(foundIngredient);
+    }
+
+    const directions: Direction[] = [];
+    for (const directionName of updateRecipeDto.directions) {
+      let foundDirection = await this.directionsService.findByName(
+        directionName,
+      );
+      if (!foundDirection) {
+        foundDirection = await this.directionsService.create(
+          new Direction({ name: directionName }),
+        );
+      }
+      directions.push(foundDirection);
+    }
+
+    recipe = {
+      ...recipe,
+      ...updateRecipeDto,
+      categories,
+      ingredients,
+      directions,
+      author: recipe.author,
+    };
+
+    console.log(recipe);
+
+    return this.recipesService.update(recipe);
   }
 
   /**

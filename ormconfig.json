@@ -1,7 +1,11 @@
 {
-  "type": "mongodb",
-  "url": "mongodb://localhost:27017/coolinar",
+  "type": "postgres",
+  "host": "localhost",
+  "port": 5432,
+  "username": "postgres",
+  "password": "admin",
+  "database": "coolinar",
   "entities": ["src/**/**.entity{.ts,.js}"],
-  "synchronize": true,
-  "useNewUrlParser": true
+  "logging": false,
+  "synchronize": true
 }

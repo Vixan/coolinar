@@ -15,6 +15,7 @@ import { UsersService } from 'src/users/users.service';
 import { RecipesService } from 'src/recipes/recipes.service';
 import { FavoritesService } from './favorites.service';
 import { TransformInterceptor } from 'src/shared/interceptors/transform.interceptor';
+import { Recipe } from '../recipes/recipes.entity';
 
 /**
  * Controller that handles the routes for favorite collections.
@@ -41,7 +42,7 @@ export class FavoritesController {
   @UseInterceptors(new TransformInterceptor(RecipeDto))
   async getFavoriteRecipes(
     @Param('userSlug') userSlug: string,
-  ): Promise<RecipeDto[]> {
+  ): Promise<Recipe[]> {
     const user = await this.usersService.findBySlug(userSlug);
 
     if (!user) {
@@ -67,7 +68,7 @@ export class FavoritesController {
   async favoriteRecipe(
     @Param('userSlug') userSlug: string,
     @Param('slug') slug: string,
-  ): Promise<RecipeDto[]> {
+  ): Promise<Recipe[]> {
     let user = await this.usersService.findBySlug(userSlug);
 
     if (!user) {
@@ -76,7 +77,9 @@ export class FavoritesController {
       });
     }
 
-    if (user.favoriteRecipes.includes(slug)) {
+    if (
+      user.favoriteRecipes.some(favoriteRecipe => favoriteRecipe.slug === slug)
+    ) {
       throw new ConflictException({
         errors: { slug: 'Recipe already favorited' },
       });
@@ -109,7 +112,7 @@ export class FavoritesController {
   async unfavoriteRecipe(
     @Param('userSlug') userSlug: string,
     @Param('slug') slug: string,
-  ): Promise<RecipeDto[]> {
+  ): Promise<Recipe[]> {
     let user = await this.usersService.findBySlug(userSlug);
 
     if (!user) {

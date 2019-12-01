@@ -22,6 +22,8 @@ import { UsersService } from 'src/users/users.service';
 import { UpdateReviewDto } from 'src/reviews/dto/update-review.dto';
 import { ReviewsService } from './reviews.service';
 import { HttpExceptionFilter } from 'src/shared/filters/http-exception.filter';
+import { Review } from './reviews.entity';
+import { Recipe } from '../recipes/recipes.entity';
 
 /**
  * Controller that handles the reviews routes.
@@ -52,7 +54,7 @@ export class ReviewsController {
   async create(
     @Param('slug') slug: string,
     @Body() createReviewDto: CreateReviewDto,
-  ): Promise<RecipeDto> {
+  ): Promise<Recipe> {
     const recipe = await this.recipesService.findBySlug(slug);
 
     if (!recipe) {
@@ -60,7 +62,9 @@ export class ReviewsController {
     }
 
     if (
-      recipe.reviews.find(review => review.author === createReviewDto.author)
+      recipe.reviews.find(
+        review => review.author.name === createReviewDto.author,
+      )
     ) {
       throw new ConflictException({
         errors: { author: 'Recipe already reviewd by specified user' },
@@ -75,10 +79,13 @@ export class ReviewsController {
       });
     }
 
-    return this.reviewsService.create(recipe, {
-      ...createReviewDto,
-      author: author.slug,
-    });
+    return this.reviewsService.create(
+      recipe,
+      new Review({
+        ...createReviewDto,
+        author: author.slug,
+      }),
+    );
   }
 
   /**
@@ -96,7 +103,7 @@ export class ReviewsController {
   async update(
     @Param('slug') slug: string,
     @Body() updateReviewDto: Partial<UpdateReviewDto>,
-  ): Promise<RecipeDto> {
+  ): Promise<Recipe> {
     const recipe = await this.recipesService.findBySlug(slug);
 
     if (!recipe) {
@@ -104,7 +111,7 @@ export class ReviewsController {
     }
 
     const reviewToUpdate = recipe.reviews.find(
-      review => review.author === updateReviewDto.author,
+      review => review.author.name === updateReviewDto.author,
     );
 
     if (!reviewToUpdate) {
@@ -115,10 +122,13 @@ export class ReviewsController {
       });
     }
 
-    return this.reviewsService.update(recipe, {
-      ...reviewToUpdate,
-      ...updateReviewDto,
-    });
+    return this.reviewsService.update(
+      recipe,
+      new Review({
+        ...reviewToUpdate,
+        ...updateReviewDto,
+      }),
+    );
   }
 
   /**
@@ -133,7 +143,10 @@ export class ReviewsController {
   @UseGuards(AuthGuard('jwt'))
   @UsePipes(new ValidationPipe())
   @UseInterceptors(new TransformInterceptor(RecipeDto))
-  async delete(@Param('slug') slug: string, @Body('author') author: string): Promise<RecipeDto> {
+  async delete(
+    @Param('slug') slug: string,
+    @Body('author') author: string,
+  ): Promise<Recipe> {
     const recipe = await this.recipesService.findBySlug(slug);
 
     if (!recipe) {
@@ -141,7 +154,7 @@ export class ReviewsController {
     }
 
     const reviewToDelete = recipe.reviews.find(
-      review => review.author === author,
+      review => review.author.name === author,
     );
 
     if (!reviewToDelete) {

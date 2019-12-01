@@ -11,6 +11,10 @@ export class ReviewsService {
     private readonly recipesRepository: Repository<Recipe>,
   ) {}
 
+    async getByRecipe(recipe: Recipe): Promise<Review> {
+      return this.
+    }
+
   /**
    * Add a recipe review to the database.
    *

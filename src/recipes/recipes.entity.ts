@@ -1,4 +1,11 @@
-import { Entity, Column } from 'typeorm';
+import {
+  Entity,
+  Column,
+  ManyToOne,
+  ManyToMany,
+  JoinTable,
+  OneToMany,
+} from 'typeorm';
 import {
   IsString,
   MaxLength,
@@ -6,14 +13,15 @@ import {
   IsInt,
   Min,
   IsNotEmpty,
-  IsArray,
-  ArrayNotEmpty,
-  IsUrl,
   IsNumber,
 } from 'class-validator';
 import { BaseEntity } from '../shared/base/base.entity';
 import { Review } from 'src/reviews/reviews.entity';
 import { Nutrition } from './nutrition.entity';
+import { User } from '../users/users.entity';
+import { Category } from '../categories/categories.entity';
+import { Ingredient } from '../ingredients/ingredients.entity';
+import { Direction } from '../directions/directions.entity';
 
 /**
  * Recipe database entity.
@@ -39,20 +47,17 @@ export class Recipe extends BaseEntity {
   @IsString({ message: 'Recipe description must be a string' })
   description: string;
 
-  @Column()
-  @IsArray({ message: 'Recipe categories must be an array' })
-  @ArrayNotEmpty({ message: 'Recipe categories cannot be empty' })
-  categories: string[];
+  @ManyToMany(type => Category)
+  @JoinTable()
+  categories: Category[];
 
-  @Column()
-  @IsArray({ message: 'Recipe ingredients must be an array' })
-  @ArrayNotEmpty({ message: 'Recipe ingredients cannot be empty' })
-  ingredients: string[];
+  @ManyToMany(type => Ingredient)
+  @JoinTable()
+  ingredients: Ingredient[];
 
-  @Column()
-  @IsArray({ message: 'Recipe directions must be an array' })
-  @ArrayNotEmpty({ message: 'Recipe directions cannot be empty' })
-  directions: string[];
+  @ManyToMany(type => Direction)
+  @JoinTable()
+  directions: Direction[];
 
   @Column()
   @IsInt({ message: 'Recipe preparation time must be an integer' })
@@ -64,27 +69,21 @@ export class Recipe extends BaseEntity {
   @Min(0, { message: 'Recipe cooking time must be a positive integer' })
   cookingTime: number;
 
-  @Column()
+  @Column({ nullable: true })
   @IsOptional()
   notes: string;
 
-  @Column(type => Nutrition)
+  @Column({ type: 'jsonb', nullable: false })
   @IsOptional()
   nutrition: Nutrition;
 
-  @Column(type => Review)
-  @IsOptional()
+  @OneToMany(type => Review, review => review.recipe)
   reviews: Review[];
 
   @Column()
   averageReviewScore: number;
 
-  @Column()
-  @IsOptional()
-  @IsUrl(
-    {},
-    { each: true, message: 'Recipe ImagesUrl contains an invalid URL' },
-  )
+  @Column({ type: String, array: true })
   imageUrls: string[];
 
   @Column()
@@ -92,10 +91,8 @@ export class Recipe extends BaseEntity {
   @IsNumber({}, { message: 'Recipe servings count must be a number' })
   servings: number;
 
-  @Column()
-  @IsNotEmpty({ message: 'Recipe author is required' })
-  @IsString({ message: 'Recipe author must be a string' })
-  author: string;
+  @ManyToOne(type => User, user => user.createdRecipes)
+  author: User;
 
   constructor(props: any) {
     super();

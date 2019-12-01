@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { BaseService } from '../shared/base/base.service';
 import { Recipe } from './recipes.entity';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Repository, Between } from 'typeorm';
 import { SlugProvider } from '../shared/providers/slug.provider';
 import { DateInterval } from 'src/shared/providers/date.provider';
 import { PaginationOptions } from 'src/shared/pagination/pagination-options.interface';
@@ -110,7 +110,7 @@ export class RecipesService extends BaseService<Recipe> {
   ): Promise<Pagination<Recipe>> {
     const [results, total] = await this.recipesRepository.findAndCount({
       where: {
-        dateCreated: { $gte: dateInterval.start, $lt: dateInterval.end },
+        dateCreated:  Between(dateInterval.start, dateInterval.end),
       },
       ...paginationOptions,
     });
@@ -300,11 +300,13 @@ export class RecipesService extends BaseService<Recipe> {
    */
   async update(recipe: Recipe): Promise<Recipe> {
     recipe.slug = this.slugProvider.createSlug(recipe.title, { lower: true });
-    recipe.averageReviewScore =
-      recipe.reviews.reduce(
-        (totalScore, review) => review.score + totalScore,
-        0,
-      ) / recipe.reviews.length;
+    if (recipe.reviews) {
+      recipe.averageReviewScore =
+        recipe.reviews.reduce(
+          (totalScore, review) => review.score + totalScore,
+          0,
+        ) / recipe.reviews.length;
+    }
 
     return this.recipesRepository.save(recipe);
   }

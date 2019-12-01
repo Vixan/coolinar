@@ -11,6 +11,9 @@ import { SlugProvider } from './shared/providers/slug.provider';
 import { DateProvider } from './shared/providers/date.provider';
 import { ReviewsModule } from './reviews/reviews.module';
 import { FavoritesModule } from './favorites/favorites.module';
+import { CategoriesModule } from './categories/categories.module';
+import { IngredientsModule } from './ingredients/ingredients.module';
+import { DirectionsModule } from './directions/directions.module';
 
 /**
  * Main module of the application.
@@ -24,9 +27,15 @@ import { FavoritesModule } from './favorites/favorites.module';
     UsersModule,
     AuthModule,
     ConfigModule,
+    CategoriesModule,
+    IngredientsModule,
+    DirectionsModule,
     RecipesModule,
     ReviewsModule,
     FavoritesModule,
+    CategoriesModule,
+    IngredientsModule,
+    DirectionsModule,
   ],
   providers: [RecipesService, SlugProvider, DateProvider],
   controllers: [RecipesController],

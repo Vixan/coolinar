@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Repository, In } from 'typeorm';
 import { Recipe } from 'src/recipes/recipes.entity';
 import { User } from 'src/users/users.entity';
 
@@ -26,15 +26,7 @@ export class FavoritesService {
    * @memberof FavoritesService
    */
   async findAll(user: User): Promise<Recipe[]> {
-    const favoriteSlugs = user.favoriteRecipes;
-    const favoriteRecipes: Recipe[] = [];
-
-    for (const slug of favoriteSlugs) {
-      const recipe = await this.recipesRepository.findOne({ slug });
-      favoriteRecipes.push(recipe);
-    }
-
-    return favoriteRecipes;
+    return user.favoriteRecipes;
   }
 
   /**
@@ -46,7 +38,10 @@ export class FavoritesService {
    * @memberof FavoritesService
    */
   async favoriteRecipe(user: User, recipeSlug: string): Promise<User> {
-    user.favoriteRecipes.push(recipeSlug);
+    const recipe = await this.recipesRepository.findOne({ slug: recipeSlug });
+    if (recipe) {
+      user.favoriteRecipes.push(recipe);
+    }
 
     return this.usersRepository.save(user);
   }
@@ -60,7 +55,11 @@ export class FavoritesService {
    * @memberof FavoritesService
    */
   async updateFavorites(user: User, recipeSlugs: string[]): Promise<User> {
-    user.favoriteRecipes = recipeSlugs;
+    const recipes = await this.recipesRepository.find({
+      where: { slug: In(recipeSlugs) },
+    });
+
+    user.favoriteRecipes = recipes;
 
     return this.usersRepository.save(user);
   }
@@ -74,8 +73,9 @@ export class FavoritesService {
    * @memberof FavoritesService
    */
   async unfavoriteRecipe(user: User, recipeSlug: string): Promise<User> {
-    const recipeSlugIndex = user.favoriteRecipes.indexOf(recipeSlug);
-    user.favoriteRecipes.splice(recipeSlugIndex, 1);
+    user.favoriteRecipes = user.favoriteRecipes.filter(
+      favoriteRecipe => favoriteRecipe.slug === recipeSlug,
+    );
 
     return this.usersRepository.save(user);
   }

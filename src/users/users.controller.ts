@@ -39,7 +39,7 @@ export class UsersController {
   @Get()
   @UseGuards(AuthGuard('jwt'))
   @UseInterceptors(new TransformInterceptor(UserDto))
-  async getAll(): Promise<UserDto[]> {
+  async getAll(): Promise<User[]> {
     return this.usersService.findAll();
   }
 
@@ -52,7 +52,7 @@ export class UsersController {
    */
   @Get('/search')
   @UseInterceptors(new TransformInterceptor(UserDto))
-  async searchByName(@Query() params: any): Promise<UserDto | null> {
+  async searchByName(@Query() params: any): Promise<User> {
     if (params.name) {
       return await this.usersService.findByName(params.name);
     }
@@ -101,7 +101,7 @@ export class UsersController {
   async update(
     @Param('slug') slug: string,
     @Body() updateUserDto: UpdateUserDto,
-  ): Promise<UserDto> {
+  ): Promise<User> {
     const user = await this.usersService.findBySlug(slug);
 
     if (!user) {
