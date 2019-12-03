@@ -47,15 +47,15 @@ export class Recipe extends BaseEntity {
   @IsString({ message: 'Recipe description must be a string' })
   description: string;
 
-  @ManyToMany(type => Category)
+  @ManyToMany(type => Category, { onDelete: 'CASCADE' })
   @JoinTable()
   categories: Category[];
 
-  @ManyToMany(type => Ingredient)
+  @ManyToMany(type => Ingredient, { onDelete: 'CASCADE' })
   @JoinTable()
   ingredients: Ingredient[];
 
-  @ManyToMany(type => Direction)
+  @ManyToMany(type => Direction, { onDelete: 'CASCADE' })
   @JoinTable()
   directions: Direction[];
 
@@ -77,7 +77,7 @@ export class Recipe extends BaseEntity {
   @IsOptional()
   nutrition: Nutrition;
 
-  @OneToMany(type => Review, review => review.recipe)
+  @OneToMany(type => Review, review => review.recipe, { onDelete: 'CASCADE' })
   reviews: Review[];
 
   @Column()

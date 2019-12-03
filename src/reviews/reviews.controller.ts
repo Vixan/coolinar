@@ -24,6 +24,7 @@ import { ReviewsService } from './reviews.service';
 import { HttpExceptionFilter } from 'src/shared/filters/http-exception.filter';
 import { Review } from './reviews.entity';
 import { Recipe } from '../recipes/recipes.entity';
+import { ReviewDto } from './dto/review.dto';
 
 /**
  * Controller that handles the reviews routes.
@@ -50,25 +51,15 @@ export class ReviewsController {
   @Post(':slug')
   @UseGuards(AuthGuard('jwt'))
   @UsePipes(new ValidationPipe())
-  @UseInterceptors(new TransformInterceptor(RecipeDto))
+  @UseInterceptors(new TransformInterceptor(ReviewDto))
   async create(
     @Param('slug') slug: string,
     @Body() createReviewDto: CreateReviewDto,
-  ): Promise<Recipe> {
+  ): Promise<Review> {
     const recipe = await this.recipesService.findBySlug(slug);
 
     if (!recipe) {
       throw new NotFoundException({ errors: { slug: 'Inexistent slug' } });
-    }
-
-    if (
-      recipe.reviews.find(
-        review => review.author.name === createReviewDto.author,
-      )
-    ) {
-      throw new ConflictException({
-        errors: { author: 'Recipe already reviewd by specified user' },
-      });
     }
 
     const author = await this.usersService.findBySlug(createReviewDto.author);
@@ -79,11 +70,19 @@ export class ReviewsController {
       });
     }
 
+    const review = await this.reviewsService.findOne(recipe, author);
+
+    if (review) {
+      throw new ConflictException({
+        errors: { author: 'Recipe already reviewd by specified user' },
+      });
+    }
+
     return this.reviewsService.create(
-      recipe,
       new Review({
         ...createReviewDto,
-        author: author.slug,
+        recipe,
+        author,
       }),
     );
   }
@@ -99,22 +98,28 @@ export class ReviewsController {
   @Put(':slug')
   @UseGuards(AuthGuard('jwt'))
   @UsePipes(new ValidationPipe())
-  @UseInterceptors(new TransformInterceptor(RecipeDto))
+  @UseInterceptors(new TransformInterceptor(ReviewDto))
   async update(
     @Param('slug') slug: string,
     @Body() updateReviewDto: Partial<UpdateReviewDto>,
-  ): Promise<Recipe> {
+  ): Promise<Review> {
     const recipe = await this.recipesService.findBySlug(slug);
 
     if (!recipe) {
       throw new NotFoundException({ errors: { slug: 'Inexistent slug' } });
     }
 
-    const reviewToUpdate = recipe.reviews.find(
-      review => review.author.name === updateReviewDto.author,
-    );
+    const author = await this.usersService.findBySlug(updateReviewDto.author);
 
-    if (!reviewToUpdate) {
+    if (!author) {
+      throw new NotFoundException({
+        errors: { author: 'Inexistent review author' },
+      });
+    }
+
+    let review = await this.reviewsService.findOne(recipe, author);
+
+    if (!review) {
       throw new NotFoundException({
         errors: {
           author: 'Specified user does not have a review for this recipe',
@@ -122,13 +127,14 @@ export class ReviewsController {
       });
     }
 
-    return this.reviewsService.update(
+    review = {
+      ...review,
+      ...updateReviewDto,
       recipe,
-      new Review({
-        ...reviewToUpdate,
-        ...updateReviewDto,
-      }),
-    );
+      author,
+    };
+
+    return this.reviewsService.update(review);
   }
 
   /**
@@ -142,22 +148,28 @@ export class ReviewsController {
   @Delete(':slug')
   @UseGuards(AuthGuard('jwt'))
   @UsePipes(new ValidationPipe())
-  @UseInterceptors(new TransformInterceptor(RecipeDto))
+  @UseInterceptors(new TransformInterceptor(ReviewDto))
   async delete(
     @Param('slug') slug: string,
     @Body('author') author: string,
-  ): Promise<Recipe> {
+  ): Promise<Review> {
     const recipe = await this.recipesService.findBySlug(slug);
 
     if (!recipe) {
       throw new NotFoundException({ errors: { slug: 'Inexistent slug' } });
     }
 
-    const reviewToDelete = recipe.reviews.find(
-      review => review.author.name === author,
-    );
+    const foundAuthor = await this.usersService.findBySlug(author);
 
-    if (!reviewToDelete) {
+    if (!foundAuthor) {
+      throw new NotFoundException({
+        errors: { author: 'Inexistent review author' },
+      });
+    }
+
+    const review = await this.reviewsService.findOne(recipe, foundAuthor);
+
+    if (!review) {
       throw new NotFoundException({
         errors: {
           author: 'Specified user does not have a review for this recipe',
@@ -165,6 +177,6 @@ export class ReviewsController {
       });
     }
 
-    return this.reviewsService.delete(recipe, reviewToDelete);
+    return this.reviewsService.delete(review);
   }
 }

@@ -7,6 +7,7 @@ import { Recipe } from 'src/recipes/recipes.entity';
 import { RecipesService } from 'src/recipes/recipes.service';
 import { ReviewsController } from './reviews.controller';
 import { ReviewsService } from './reviews.service';
+import { Review } from './reviews.entity';
 
 /**
  * Module to encapsulate reviews logic.
@@ -15,7 +16,7 @@ import { ReviewsService } from './reviews.service';
  * @class ReviewsModule
  */
 @Module({
-  imports: [TypeOrmModule.forFeature([Recipe]), UsersModule],
+  imports: [TypeOrmModule.forFeature([Review, Recipe]), UsersModule],
   controllers: [ReviewsController],
   providers: [RecipesService, ReviewsService, SlugProvider, DateProvider],
 })

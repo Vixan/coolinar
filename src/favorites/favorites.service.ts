@@ -74,7 +74,7 @@ export class FavoritesService {
    */
   async unfavoriteRecipe(user: User, recipeSlug: string): Promise<User> {
     user.favoriteRecipes = user.favoriteRecipes.filter(
-      favoriteRecipe => favoriteRecipe.slug === recipeSlug,
+      favoriteRecipe => favoriteRecipe.slug !== recipeSlug,
     );
 
     return this.usersRepository.save(user);

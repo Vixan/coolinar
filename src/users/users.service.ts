@@ -22,6 +22,12 @@ export class UsersService extends BaseService<User> {
     super(usersRepository);
   }
 
+  async findAll(): Promise<User[]> {
+    return this.usersRepository.find({
+      relations: ['favoriteRecipes', 'createdRecipes', 'reviews'],
+    });
+  }
+
   /**
    * Retrieve user by name.
    *
@@ -31,7 +37,8 @@ export class UsersService extends BaseService<User> {
    */
   async findByName(name: string): Promise<User> {
     return this.usersRepository.findOne({
-      name,
+      relations: ['favoriteRecipes', 'createdRecipes', 'reviews'],
+      where: { name },
     });
   }
 
@@ -44,7 +51,8 @@ export class UsersService extends BaseService<User> {
    */
   async findBySlug(slug: string): Promise<User> {
     return this.usersRepository.findOne({
-      slug,
+      relations: ['favoriteRecipes', 'createdRecipes', 'reviews'],
+      where: { slug },
     });
   }
 
@@ -57,7 +65,8 @@ export class UsersService extends BaseService<User> {
    */
   async findByEmail(email: string): Promise<User> {
     return this.usersRepository.findOne({
-      email,
+      relations: ['favoriteRecipes', 'createdRecipes', 'reviews'],
+      where: { email },
     });
   }
 
@@ -71,8 +80,8 @@ export class UsersService extends BaseService<User> {
    */
   async findByEmailAndPassword(email: string, password: string): Promise<User> {
     return this.usersRepository.findOne({
-      email,
-      password,
+      relations: ['favoriteRecipes', 'createdRecipes', 'reviews'],
+      where: { email, password },
     });
   }
 

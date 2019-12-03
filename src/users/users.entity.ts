@@ -40,15 +40,15 @@ export class User extends BaseEntity {
   @IsUrl()
   avatarUrl: string;
 
-  @ManyToMany(type => Recipe)
+  @ManyToMany(type => Recipe, { onDelete: 'CASCADE' })
   @JoinTable()
   @IsOptional()
   favoriteRecipes: Recipe[];
 
-  @OneToMany(type => Recipe, recipe => recipe.author)
+  @OneToMany(type => Recipe, recipe => recipe.author, { onDelete: 'CASCADE' })
   createdRecipes: Recipe[];
 
-  @OneToMany(type => Review, review => review.author)
+  @OneToMany(type => Review, review => review.author, { onDelete: 'CASCADE' })
   reviews: Review[];
 
   constructor(props: any) {

@@ -250,10 +250,7 @@ export class RecipesController {
   @Put(':slug')
   @UseGuards(AuthGuard('jwt'))
   @UsePipes(new ValidationPipe())
-  @UseInterceptors(
-    RecipeValidationInterceptor,
-    new TransformInterceptor(RecipeDto),
-  )
+  @UseInterceptors(new TransformInterceptor(RecipeDto))
   async update(
     @Param('slug') slug: string,
     @Body() updateRecipeDto: Partial<UpdateRecipeDto>,
@@ -309,8 +306,6 @@ export class RecipesController {
       directions,
       author: recipe.author,
     };
-
-    console.log(recipe);
 
     return this.recipesService.update(recipe);
   }

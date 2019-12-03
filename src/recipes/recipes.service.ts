@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { BaseService } from '../shared/base/base.service';
 import { Recipe } from './recipes.entity';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository, Between } from 'typeorm';
+import { Repository, Between, MoreThanOrEqual, Like, In } from 'typeorm';
 import { SlugProvider } from '../shared/providers/slug.provider';
 import { DateInterval } from 'src/shared/providers/date.provider';
 import { PaginationOptions } from 'src/shared/pagination/pagination-options.interface';
@@ -36,6 +36,7 @@ export class RecipesService extends BaseService<Recipe> {
     paginationOptions: PaginationOptions,
   ): Promise<Pagination<Recipe>> {
     const [results, total] = await this.recipesRepository.findAndCount({
+      relations: ['categories', 'ingredients', 'directions', 'reviews', 'author', 'reviews.author'],
       ...paginationOptions,
     });
 
@@ -60,6 +61,7 @@ export class RecipesService extends BaseService<Recipe> {
     isAscending?: boolean,
   ): Promise<Pagination<Recipe>> {
     const [results, total] = await this.recipesRepository.findAndCount({
+      relations: ['categories', 'ingredients', 'directions', 'reviews', 'author', 'reviews.author'],
       order: { [sortBy]: isAscending ? 1 : -1 },
       ...paginationOptions,
     });
@@ -78,9 +80,14 @@ export class RecipesService extends BaseService<Recipe> {
    * @memberof RecipesService
    */
   async findBySlug(slug: string): Promise<Recipe> {
-    return this.recipesRepository.findOne({
-      slug,
-    });
+    return this.recipesRepository.findOne(
+      {
+        slug,
+      },
+      {
+        relations: ['categories', 'ingredients', 'directions', 'reviews', 'author', 'reviews.author'],
+      },
+    );
   }
 
   /**
@@ -91,9 +98,14 @@ export class RecipesService extends BaseService<Recipe> {
    * @memberof RecipesService
    */
   async findByTitle(title: string): Promise<Recipe> {
-    return this.recipesRepository.findOne({
-      title,
-    });
+    return this.recipesRepository.findOne(
+      {
+        title,
+      },
+      {
+        relations: ['categories', 'ingredients', 'directions', 'reviews', 'author', 'reviews.author'],
+      },
+    );
   }
 
   /**
@@ -110,7 +122,8 @@ export class RecipesService extends BaseService<Recipe> {
   ): Promise<Pagination<Recipe>> {
     const [results, total] = await this.recipesRepository.findAndCount({
       where: {
-        dateCreated:  Between(dateInterval.start, dateInterval.end),
+        relations: ['categories', 'ingredients', 'directions', 'reviews', 'author', 'reviews.author'],
+        dateCreated: Between(dateInterval.start, dateInterval.end),
       },
       ...paginationOptions,
     });
@@ -135,7 +148,8 @@ export class RecipesService extends BaseService<Recipe> {
   ): Promise<Pagination<Recipe>> {
     const [results, total] = await this.recipesRepository.findAndCount({
       where: {
-        'reviews.score': { $gte: reviewScore },
+        relations: ['categories', 'ingredients', 'directions', 'reviews', 'author', 'reviews.author'],
+        reviews: { score: MoreThanOrEqual(reviewScore) },
       },
       order: { averageReviewScore: -1 },
       ...paginationOptions,
@@ -159,12 +173,10 @@ export class RecipesService extends BaseService<Recipe> {
     searchRecipeDto: SearchRecipeDto,
     paginationOptions?: PaginationOptions,
   ): Promise<Pagination<Recipe>> {
-    const conditions = [];
+    const conditions: any[] = [];
 
     if (searchRecipeDto.title) {
-      conditions.push({
-        title: { $regex: new RegExp(searchRecipeDto.title, 'i') },
-      });
+      conditions.push(`"title" ILIKE '${searchRecipeDto.title}'`);
     }
     if (searchRecipeDto.author) {
       conditions.push({
@@ -173,23 +185,18 @@ export class RecipesService extends BaseService<Recipe> {
     }
     if (searchRecipeDto.ingredients) {
       searchRecipeDto.ingredients.forEach(ingredient => {
-        conditions.push({
-          ingredients: { $regex: new RegExp(ingredient, 'i') },
-        });
+        conditions.push(`'${ingredient}' IN (SELECT name FROM ingredients)`);
       });
     }
     if (searchRecipeDto.categories) {
       searchRecipeDto.categories.forEach(category => {
-        conditions.push({ categories: { $regex: new RegExp(category, 'i') } });
+        conditions.push(`'${category}' IN (SELECT name FROM categories)`);
       });
     }
 
-    if (!conditions.length) {
-      return null;
-    }
-
     const [results, total] = await this.recipesRepository.findAndCount({
-      where: { $and: conditions },
+      where: conditions,
+      relations: ['categories', 'ingredients', 'directions', 'reviews', 'author', 'reviews.author'],
       order: { title: -1 },
       ...paginationOptions,
     });
@@ -214,7 +221,8 @@ export class RecipesService extends BaseService<Recipe> {
   ): Promise<Pagination<Recipe>> {
     const [results, total] = await this.recipesRepository.findAndCount({
       where: {
-        title: { $regex: new RegExp(title, 'i') },
+        relations: ['categories', 'ingredients', 'directions', 'reviews', 'author', 'reviews.author'],
+        title: Like(title),
       },
       ...paginationOptions,
     });
@@ -239,7 +247,10 @@ export class RecipesService extends BaseService<Recipe> {
   ): Promise<Pagination<Recipe>> {
     const [results, total] = await this.recipesRepository.findAndCount({
       where: {
-        ingredients: { $regex: new RegExp(ingredients.join('|'), 'i') },
+        relations: ['categories', 'ingredients', 'directions', 'reviews', 'author', 'reviews.author'],
+        ingredients: {
+          name: In(ingredients),
+        },
       },
       ...paginationOptions,
     });
@@ -264,7 +275,10 @@ export class RecipesService extends BaseService<Recipe> {
   ): Promise<Pagination<Recipe>> {
     const [results, total] = await this.recipesRepository.findAndCount({
       where: {
-        categories: { $regex: new RegExp(categorySlugs.join('|'), 'i') },
+        relations: ['categories', 'ingredients', 'directions', 'reviews', 'author', 'reviews.author'],
+        categories: {
+          name: In(categorySlugs),
+        },
       },
       ...paginationOptions,
     });

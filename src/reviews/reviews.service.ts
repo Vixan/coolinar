@@ -3,17 +3,37 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Recipe } from 'src/recipes/recipes.entity';
 import { Review } from 'src/reviews/reviews.entity';
+import { User } from '../users/users.entity';
 
 @Injectable()
 export class ReviewsService {
   constructor(
+    @InjectRepository(Review)
+    private readonly reviewsRepository: Repository<Review>,
     @InjectRepository(Recipe)
     private readonly recipesRepository: Repository<Recipe>,
   ) {}
 
-    async getByRecipe(recipe: Recipe): Promise<Review> {
-      return this.
-    }
+  async findByRecipe(recipe: Recipe): Promise<Review[]> {
+    return this.reviewsRepository.find({
+      relations: ['recipe', 'author'],
+      where: { recipe },
+    });
+  }
+
+  async findByAuthor(author: User): Promise<Review[]> {
+    return this.reviewsRepository.find({
+      relations: ['recipe', 'author'],
+      where: { author },
+    });
+  }
+
+  async findOne(recipe: Recipe, author: User): Promise<Review> {
+    return this.reviewsRepository.findOne({
+      relations: ['recipe', 'author'],
+      where: { recipe, author },
+    });
+  }
 
   /**
    * Add a recipe review to the database.
@@ -23,11 +43,13 @@ export class ReviewsService {
    * @returns {Promise<Recipe>} Promise of the reviewed recipe.
    * @memberof ReviewsService
    */
-  async create(recipe: Recipe, review: Review): Promise<Recipe> {
-    recipe.reviews.push(review);
-    recipe.averageReviewScore = this.calculateReviewsAverage(recipe);
+  async create(review: Review): Promise<Review> {
+    review.recipe.averageReviewScore = this.calculateReviewsAverage(
+      review.recipe,
+    );
+    this.recipesRepository.save(review.recipe);
 
-    return this.recipesRepository.save(recipe);
+    return this.reviewsRepository.save(review);
   }
 
   /**
@@ -38,14 +60,13 @@ export class ReviewsService {
    * @returns {Promise<Recipe>} Promise of the reviewed recipe.
    * @memberof ReviewsService
    */
-  async update(recipe: Recipe, review: Review): Promise<Recipe> {
-    const reviewIndex = recipe.reviews.findIndex(
-      reviewToUpdate => reviewToUpdate.author === review.author,
+  async update(review: Review): Promise<Review> {
+    review.recipe.averageReviewScore = this.calculateReviewsAverage(
+      review.recipe,
     );
-    recipe.reviews[reviewIndex] = review;
-    recipe.averageReviewScore = this.calculateReviewsAverage(recipe);
+    this.recipesRepository.save(review.recipe);
 
-    return this.recipesRepository.save(recipe);
+    return this.reviewsRepository.save(review);
   }
 
   /**
@@ -56,12 +77,13 @@ export class ReviewsService {
    * @returns {Promise<Recipe>} Promise of the reviewed recipe.
    * @memberof ReviewsService
    */
-  async delete(recipe: Recipe, review: Review): Promise<Recipe> {
-    const reviewIndex = recipe.reviews.indexOf(review);
-    recipe.reviews.splice(reviewIndex, 1);
-    recipe.averageReviewScore = this.calculateReviewsAverage(recipe);
+  async delete(review: Review): Promise<Review> {
+    review.recipe.averageReviewScore = this.calculateReviewsAverage(
+      review.recipe,
+    );
+    this.recipesRepository.save(review.recipe);
 
-    return this.recipesRepository.save(recipe);
+    return this.reviewsRepository.remove(review);
   }
 
   /**
@@ -73,6 +95,10 @@ export class ReviewsService {
    * @memberof ReviewsService
    */
   private calculateReviewsAverage(recipe: Recipe): number {
+    if (!recipe.reviews) {
+      return;
+    }
+
     return (
       recipe.reviews.reduce((avg, review) => avg + review.score, 0) /
         recipe.reviews.length || 0
