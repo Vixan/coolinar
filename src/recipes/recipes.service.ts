@@ -2,7 +2,15 @@ import { Injectable } from '@nestjs/common';
 import { BaseService } from '../shared/base/base.service';
 import { Recipe } from './recipes.entity';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository, Between, MoreThanOrEqual, Like, In } from 'typeorm';
+import {
+  Repository,
+  Between,
+  MoreThanOrEqual,
+  Like,
+  In,
+  Raw,
+  SelectQueryBuilder,
+} from 'typeorm';
 import { SlugProvider } from '../shared/providers/slug.provider';
 import { DateInterval } from 'src/shared/providers/date.provider';
 import { PaginationOptions } from 'src/shared/pagination/pagination-options.interface';
@@ -36,7 +44,14 @@ export class RecipesService extends BaseService<Recipe> {
     paginationOptions: PaginationOptions,
   ): Promise<Pagination<Recipe>> {
     const [results, total] = await this.recipesRepository.findAndCount({
-      relations: ['categories', 'ingredients', 'directions', 'reviews', 'author', 'reviews.author'],
+      relations: [
+        'categories',
+        'ingredients',
+        'directions',
+        'reviews',
+        'author',
+        'reviews.author',
+      ],
       ...paginationOptions,
     });
 
@@ -61,7 +76,14 @@ export class RecipesService extends BaseService<Recipe> {
     isAscending?: boolean,
   ): Promise<Pagination<Recipe>> {
     const [results, total] = await this.recipesRepository.findAndCount({
-      relations: ['categories', 'ingredients', 'directions', 'reviews', 'author', 'reviews.author'],
+      relations: [
+        'categories',
+        'ingredients',
+        'directions',
+        'reviews',
+        'author',
+        'reviews.author',
+      ],
       order: { [sortBy]: isAscending ? 1 : -1 },
       ...paginationOptions,
     });
@@ -85,7 +107,14 @@ export class RecipesService extends BaseService<Recipe> {
         slug,
       },
       {
-        relations: ['categories', 'ingredients', 'directions', 'reviews', 'author', 'reviews.author'],
+        relations: [
+          'categories',
+          'ingredients',
+          'directions',
+          'reviews',
+          'author',
+          'reviews.author',
+        ],
       },
     );
   }
@@ -103,7 +132,14 @@ export class RecipesService extends BaseService<Recipe> {
         title,
       },
       {
-        relations: ['categories', 'ingredients', 'directions', 'reviews', 'author', 'reviews.author'],
+        relations: [
+          'categories',
+          'ingredients',
+          'directions',
+          'reviews',
+          'author',
+          'reviews.author',
+        ],
       },
     );
   }
@@ -122,7 +158,14 @@ export class RecipesService extends BaseService<Recipe> {
   ): Promise<Pagination<Recipe>> {
     const [results, total] = await this.recipesRepository.findAndCount({
       where: {
-        relations: ['categories', 'ingredients', 'directions', 'reviews', 'author', 'reviews.author'],
+        relations: [
+          'categories',
+          'ingredients',
+          'directions',
+          'reviews',
+          'author',
+          'reviews.author',
+        ],
         dateCreated: Between(dateInterval.start, dateInterval.end),
       },
       ...paginationOptions,
@@ -148,7 +191,14 @@ export class RecipesService extends BaseService<Recipe> {
   ): Promise<Pagination<Recipe>> {
     const [results, total] = await this.recipesRepository.findAndCount({
       where: {
-        relations: ['categories', 'ingredients', 'directions', 'reviews', 'author', 'reviews.author'],
+        relations: [
+          'categories',
+          'ingredients',
+          'directions',
+          'reviews',
+          'author',
+          'reviews.author',
+        ],
         reviews: { score: MoreThanOrEqual(reviewScore) },
       },
       order: { averageReviewScore: -1 },
@@ -173,33 +223,45 @@ export class RecipesService extends BaseService<Recipe> {
     searchRecipeDto: SearchRecipeDto,
     paginationOptions?: PaginationOptions,
   ): Promise<Pagination<Recipe>> {
-    const conditions: any[] = [];
+    let query = this.recipesRepository.manager
+      .createQueryBuilder(Recipe, 'recipe')
+      .leftJoinAndSelect('recipe.author', 'author')
+      .leftJoinAndSelect('recipe.ingredients', 'ingredient')
+      .leftJoinAndSelect('recipe.directions', 'direction')
+      .leftJoinAndSelect('recipe.categories', 'category')
+      .leftJoinAndSelect('recipe.reviews', 'review')
+      .offset(paginationOptions.skip)
+      .limit(paginationOptions.take);
 
     if (searchRecipeDto.title) {
-      conditions.push(`"title" ILIKE '${searchRecipeDto.title}'`);
-    }
-    if (searchRecipeDto.author) {
-      conditions.push({
-        author: searchRecipeDto.author,
-      });
-    }
-    if (searchRecipeDto.ingredients) {
-      searchRecipeDto.ingredients.forEach(ingredient => {
-        conditions.push(`'${ingredient}' IN (SELECT name FROM ingredients)`);
-      });
-    }
-    if (searchRecipeDto.categories) {
-      searchRecipeDto.categories.forEach(category => {
-        conditions.push(`'${category}' IN (SELECT name FROM categories)`);
+      query = query.andWhere(`recipe.title ILIKE :title`, {
+        title: `%${searchRecipeDto.title}%`,
       });
     }
 
-    const [results, total] = await this.recipesRepository.findAndCount({
-      where: conditions,
-      relations: ['categories', 'ingredients', 'directions', 'reviews', 'author', 'reviews.author'],
-      order: { title: -1 },
-      ...paginationOptions,
-    });
+    if (searchRecipeDto.author) {
+      query = query
+        .andWhere(`author.name = :author`, {
+          author: searchRecipeDto.author,
+        })
+        .orWhere('author.slug = :author', {
+          author: searchRecipeDto.author,
+        });
+    }
+
+    if (searchRecipeDto.ingredients) {
+      query = query.andWhere(`ingredient.name ILIKE ANY(:ingredients)`, {
+        ingredients: searchRecipeDto.ingredients.map(i => `%${i}%`),
+      });
+    }
+
+    if (searchRecipeDto.categories) {
+      query = query.andWhere(`category.name ILIKE ANY(:categories)`, {
+        categories: searchRecipeDto.categories.map(c => `%${c}%`),
+      });
+    }
+
+    const [results, total] = await query.getManyAndCount();
 
     return new Pagination<Recipe>({
       results,
@@ -221,7 +283,14 @@ export class RecipesService extends BaseService<Recipe> {
   ): Promise<Pagination<Recipe>> {
     const [results, total] = await this.recipesRepository.findAndCount({
       where: {
-        relations: ['categories', 'ingredients', 'directions', 'reviews', 'author', 'reviews.author'],
+        relations: [
+          'categories',
+          'ingredients',
+          'directions',
+          'reviews',
+          'author',
+          'reviews.author',
+        ],
         title: Like(title),
       },
       ...paginationOptions,
@@ -247,7 +316,14 @@ export class RecipesService extends BaseService<Recipe> {
   ): Promise<Pagination<Recipe>> {
     const [results, total] = await this.recipesRepository.findAndCount({
       where: {
-        relations: ['categories', 'ingredients', 'directions', 'reviews', 'author', 'reviews.author'],
+        relations: [
+          'categories',
+          'ingredients',
+          'directions',
+          'reviews',
+          'author',
+          'reviews.author',
+        ],
         ingredients: {
           name: In(ingredients),
         },
@@ -275,7 +351,14 @@ export class RecipesService extends BaseService<Recipe> {
   ): Promise<Pagination<Recipe>> {
     const [results, total] = await this.recipesRepository.findAndCount({
       where: {
-        relations: ['categories', 'ingredients', 'directions', 'reviews', 'author', 'reviews.author'],
+        relations: [
+          'categories',
+          'ingredients',
+          'directions',
+          'reviews',
+          'author',
+          'reviews.author',
+        ],
         categories: {
           name: In(categorySlugs),
         },

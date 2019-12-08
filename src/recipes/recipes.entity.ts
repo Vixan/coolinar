@@ -51,12 +51,10 @@ export class Recipe extends BaseEntity {
   @JoinTable()
   categories: Category[];
 
-  @ManyToMany(type => Ingredient, { onDelete: 'CASCADE' })
-  @JoinTable()
+  @OneToMany(type => Ingredient, ingredient => ingredient.recipe, { onDelete: 'CASCADE' })
   ingredients: Ingredient[];
 
-  @ManyToMany(type => Direction, { onDelete: 'CASCADE' })
-  @JoinTable()
+  @OneToMany(type => Direction, direction => direction.recipe, { onDelete: 'CASCADE' })
   directions: Direction[];
 
   @Column()

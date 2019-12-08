@@ -168,7 +168,6 @@ export class ReviewsController {
     }
 
     const review = await this.reviewsService.findOne(recipe, foundAuthor);
-
     if (!review) {
       throw new NotFoundException({
         errors: {

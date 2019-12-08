@@ -1,6 +1,7 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
 import { IsString, MaxLength } from 'class-validator';
 import { BaseEntity } from '../shared/base/base.entity';
+import { Recipe } from '../recipes/recipes.entity';
 
 /**
  * Recipe Direction database model.
@@ -13,6 +14,9 @@ export class Direction extends BaseEntity {
   @IsString()
   @MaxLength(255)
   name: string;
+
+  @ManyToOne(type => Recipe, recipe => recipe.directions)
+  recipe: Recipe;
 
   constructor(props: any) {
     super();
