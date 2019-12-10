@@ -230,8 +230,8 @@ export class RecipesService extends BaseService<Recipe> {
       .leftJoinAndSelect('recipe.directions', 'direction')
       .leftJoinAndSelect('recipe.categories', 'category')
       .leftJoinAndSelect('recipe.reviews', 'review')
-      .offset(paginationOptions.skip)
-      .limit(paginationOptions.take);
+      .skip(paginationOptions.skip)
+      .take(paginationOptions.take);
 
     if (searchRecipeDto.title) {
       query = query.andWhere(`recipe.title ILIKE :title`, {
@@ -240,13 +240,9 @@ export class RecipesService extends BaseService<Recipe> {
     }
 
     if (searchRecipeDto.author) {
-      query = query
-        .andWhere(`author.name = :author`, {
-          author: searchRecipeDto.author,
-        })
-        .orWhere('author.slug = :author', {
-          author: searchRecipeDto.author,
-        });
+      query = query.andWhere(`author.slug = :author`, {
+        author: searchRecipeDto.author,
+      });
     }
 
     if (searchRecipeDto.ingredients) {
