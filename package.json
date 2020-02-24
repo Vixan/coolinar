@@ -10,6 +10,9 @@
     "start": "ts-node -r tsconfig-paths/register src/main.ts",
     "start:dev": "SET NODE_ENV=development&& nodemon",
     "start:debug": "SET NODE_ENV=development&& nodemon --config nodemon-debug.json",
+    "start:services:init-db": "./src/scripts/start-db.sh",
+    "start:services": "docker-compose up -d && exit 0",
+    "stop:services": "docker-compose kill",
     "prestart:prod": "rimraf dist && npm run build",
     "start:prod": "node dist/main.js",
     "lint": "tslint -p tsconfig.json -c tslint.json",
@@ -18,7 +21,7 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js"    
+    "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js"
   },
   "dependencies": {
     "@nestjs/common": "^5.7.4",

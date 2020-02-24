@@ -1,0 +1,24 @@
+version: '3'
+services:
+  postgres:
+    container_name: coolinar_postgres
+    image: postgres
+    volumes:
+      - './db/scripts:/docker-entrypoint-initdb.d'
+    ports:
+      - '5432:5432'
+
+  pgadmin:
+    container_name: coolinar_pgadmin
+    image: dpage/pgadmin4
+    links:
+      - postgres
+    depends_on:
+      - postgres
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    volumes:
+      - './db/pgadmin/.pgadmin'
+    ports:
+      - '5433:80'
