@@ -3,8 +3,6 @@ import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from './config/config.module';
-import { RecipesService } from './recipes/recipes.service';
-import { RecipesController } from './recipes/recipes.controller';
 import { RecipesModule } from './recipes/recipes.module';
 import { DateProvider } from './shared/providers/date.provider';
 import { ReviewsModule } from './reviews/reviews.module';
@@ -36,7 +34,7 @@ import { DbConfigService } from './config/db-config.service';
       useExisting: DbConfigService,
     }),
   ],
-  providers: [RecipesService, DateProvider],
-  controllers: [RecipesController],
+  providers: [DateProvider],
+  controllers: [],
 })
 export class AppModule {}

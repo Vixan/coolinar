@@ -34,7 +34,7 @@ export class DbConfigService implements TypeOrmOptionsFactory {
   }
 
   get port(): number {
-    return parseInt(this.configService.get('DB_PORT'), 10);
+    return this.configService.get('DB_PORT');
   }
 
   get username(): string {
@@ -50,6 +50,6 @@ export class DbConfigService implements TypeOrmOptionsFactory {
   }
 
   private get isSynchronizationEnabled(): boolean {
-    return this.configService.get('DB_SYNCHRONIZE') === 'true';
+    return this.configService.get<boolean>('DB_SYNCHRONIZE');
   }
 }

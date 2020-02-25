@@ -1,40 +1,40 @@
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  NotFoundException,
+  Param,
+  Post,
+  Put,
+  Query,
+  UseFilters,
+  UseGuards,
+  UseInterceptors,
+  UsePipes,
+} from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { CreateRecipeDto } from './dto/create-recipe.dto';
-import { DatePart, DateProvider } from 'src/shared/providers/date.provider';
+import { Category } from 'src/categories/categories.entity';
+import { Direction } from 'src/directions/directions.entity';
+import { Ingredient } from 'src/ingredients/ingredients.entity';
 import { HttpExceptionFilter } from 'src/shared/filters/http-exception.filter';
 import { Pagination } from 'src/shared/pagination/pagination';
 import { PaginationOptions } from 'src/shared/pagination/pagination-options.interface';
 import { PaginationTransformInterceptor } from 'src/shared/pagination/pagination-transform.interceptor';
-import { Recipe } from './recipes.entity';
-import { RecipeDto } from './dto/recipe.dto';
-import { RecipesService } from './recipes.service';
-import { RecipeValidationInterceptor } from './interceptors/recipe-validation.interceptor';
-import { SearchRecipeDto } from './dto/search-recipe.dto';
+import { DatePart, DateProvider } from 'src/shared/providers/date.provider';
+import { CategoriesService } from '../categories/categories.service';
+import { DirectionsService } from '../directions/directions.service';
+import { IngredientsService } from '../ingredients/ingredients.service';
 import { TransformInterceptor } from '../shared/interceptors/transform.interceptor';
-import { UpdateRecipeDto } from './dto/update-recipe.dto';
 import { ValidationPipe } from '../shared/pipes/validation.pipe';
 import { UsersService } from '../users/users.service';
-import { DirectionsService } from '../directions/directions.service';
-import { CategoriesService } from '../categories/categories.service';
-import { IngredientsService } from '../ingredients/ingredients.service';
-import {
-  Controller,
-  Get,
-  UseGuards,
-  Post,
-  Body,
-  UsePipes,
-  UseInterceptors,
-  Put,
-  Param,
-  NotFoundException,
-  Delete,
-  Query,
-  UseFilters,
-} from '@nestjs/common';
-import { Category } from 'src/categories/categories.entity';
-import { Ingredient } from 'src/ingredients/ingredients.entity';
-import { Direction } from 'src/directions/directions.entity';
+import { CreateRecipeDto } from './dto/create-recipe.dto';
+import { RecipeDto } from './dto/recipe.dto';
+import { SearchRecipeDto } from './dto/search-recipe.dto';
+import { UpdateRecipeDto } from './dto/update-recipe.dto';
+import { RecipeValidationInterceptor } from './interceptors/recipe-validation.interceptor';
+import { Recipe } from './recipes.entity';
+import { RecipesService } from './recipes.service';
 
 /**
  * Controller that handles the recipe routes.
@@ -165,7 +165,7 @@ export class RecipesController {
   @Get(':slug')
   @UseInterceptors(new TransformInterceptor(RecipeDto))
   async getBySlug(@Param('slug') slug: string): Promise<Recipe> {
-    const recipe = await this.recipesService.findBySlug(slug);
+    const recipe = await this.recipesService.findOneBySlug(slug);
 
     if (!recipe) {
       throw new NotFoundException({ errors: { slug: 'Inexisting slug' } });
@@ -226,7 +226,9 @@ export class RecipesController {
       directions.push(foundDirection);
     }
 
-    const author = await this.usersService.findBySlug(createRecipeDto.author);
+    const author = await this.usersService.findOneBySlug(
+      createRecipeDto.author,
+    );
 
     const recipe = new Recipe({
       ...createRecipeDto,
@@ -255,7 +257,7 @@ export class RecipesController {
     @Param('slug') slug: string,
     @Body() updateRecipeDto: Partial<UpdateRecipeDto>,
   ): Promise<Recipe> {
-    let recipe = await this.recipesService.findBySlug(slug);
+    let recipe = await this.recipesService.findOneBySlug(slug);
 
     if (!recipe) {
       throw new NotFoundException({ errors: { slug: 'Inexistent slug' } });
@@ -300,6 +302,7 @@ export class RecipesController {
 
     recipe = {
       ...recipe,
+      beforeSave: recipe.beforeSave,
       ...updateRecipeDto,
       categories,
       ingredients,
@@ -322,7 +325,7 @@ export class RecipesController {
   @UsePipes(new ValidationPipe())
   @UseInterceptors(new TransformInterceptor(RecipeDto))
   async delete(@Param('slug') slug: string): Promise<Recipe> {
-    const recipe = await this.recipesService.findBySlug(slug);
+    const recipe = await this.recipesService.findOneBySlug(slug);
 
     if (!recipe) {
       throw new NotFoundException({ errors: { slug: 'Inexistent slug' } });

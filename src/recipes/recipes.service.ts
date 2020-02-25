@@ -91,7 +91,7 @@ export class RecipesService extends BaseService<Recipe> {
    * @returns {Promise<Recipe>} Promise of the recipe.
    * @memberof RecipesService
    */
-  async findBySlug(slug: string): Promise<Recipe> {
+  async findOneBySlug(slug: string): Promise<Recipe> {
     return this.recipesRepository.findOne(
       {
         slug,

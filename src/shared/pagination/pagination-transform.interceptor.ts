@@ -1,4 +1,9 @@
-import { Injectable, NestInterceptor, ExecutionContext } from '@nestjs/common';
+import {
+  Injectable,
+  NestInterceptor,
+  ExecutionContext,
+  CallHandler,
+} from '@nestjs/common';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { plainToClass } from 'class-transformer';
@@ -13,11 +18,8 @@ export class PaginationTransformInterceptor<T>
   implements NestInterceptor<Partial<Pagination<T>>, T> {
   constructor(private readonly classType: ClassType<T>) {}
 
-  intercept(
-    context: ExecutionContext,
-    call$: Observable<Partial<Pagination<T>>>,
-  ): Observable<any> {
-    return call$.pipe(
+  intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
+    return next.handle().pipe(
       map(data => {
         if (!data || !data.results) {
           return data;

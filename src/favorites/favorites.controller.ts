@@ -43,7 +43,7 @@ export class FavoritesController {
   async getFavoriteRecipes(
     @Param('userSlug') userSlug: string,
   ): Promise<Recipe[]> {
-    const user = await this.usersService.findBySlug(userSlug);
+    const user = await this.usersService.findOneBySlug(userSlug);
 
     if (!user) {
       throw new NotFoundException({
@@ -69,7 +69,7 @@ export class FavoritesController {
     @Param('userSlug') userSlug: string,
     @Param('slug') slug: string,
   ): Promise<Recipe[]> {
-    let user = await this.usersService.findBySlug(userSlug);
+    let user = await this.usersService.findOneBySlug(userSlug);
 
     if (!user) {
       throw new NotFoundException({
@@ -85,7 +85,7 @@ export class FavoritesController {
       });
     }
 
-    const recipe = await this.recipesService.findBySlug(slug);
+    const recipe = await this.recipesService.findOneBySlug(slug);
 
     if (!recipe) {
       throw new NotFoundException({
@@ -113,7 +113,7 @@ export class FavoritesController {
     @Param('userSlug') userSlug: string,
     @Param('slug') slug: string,
   ): Promise<Recipe[]> {
-    let user = await this.usersService.findBySlug(userSlug);
+    let user = await this.usersService.findOneBySlug(userSlug);
 
     if (!user) {
       throw new NotFoundException({
@@ -121,7 +121,7 @@ export class FavoritesController {
       });
     }
 
-    const recipe = await this.recipesService.findBySlug(slug);
+    const recipe = await this.recipesService.findOneBySlug(slug);
 
     if (!recipe) {
       throw new NotFoundException({ errors: { slug: 'Inexistent slug' } });

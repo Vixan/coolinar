@@ -56,13 +56,13 @@ export class ReviewsController {
     @Param('slug') slug: string,
     @Body() createReviewDto: CreateReviewDto,
   ): Promise<Review> {
-    const recipe = await this.recipesService.findBySlug(slug);
+    const recipe = await this.recipesService.findOneBySlug(slug);
 
     if (!recipe) {
       throw new NotFoundException({ errors: { slug: 'Inexistent slug' } });
     }
 
-    const author = await this.usersService.findBySlug(createReviewDto.author);
+    const author = await this.usersService.findOneBySlug(createReviewDto.author);
 
     if (!author) {
       throw new NotFoundException({
@@ -103,13 +103,13 @@ export class ReviewsController {
     @Param('slug') slug: string,
     @Body() updateReviewDto: Partial<UpdateReviewDto>,
   ): Promise<Review> {
-    const recipe = await this.recipesService.findBySlug(slug);
+    const recipe = await this.recipesService.findOneBySlug(slug);
 
     if (!recipe) {
       throw new NotFoundException({ errors: { slug: 'Inexistent slug' } });
     }
 
-    const author = await this.usersService.findBySlug(updateReviewDto.author);
+    const author = await this.usersService.findOneBySlug(updateReviewDto.author);
 
     if (!author) {
       throw new NotFoundException({
@@ -153,13 +153,13 @@ export class ReviewsController {
     @Param('slug') slug: string,
     @Body('author') author: string,
   ): Promise<Review> {
-    const recipe = await this.recipesService.findBySlug(slug);
+    const recipe = await this.recipesService.findOneBySlug(slug);
 
     if (!recipe) {
       throw new NotFoundException({ errors: { slug: 'Inexistent slug' } });
     }
 
-    const foundAuthor = await this.usersService.findBySlug(author);
+    const foundAuthor = await this.usersService.findOneBySlug(author);
 
     if (!foundAuthor) {
       throw new NotFoundException({

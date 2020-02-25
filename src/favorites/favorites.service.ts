@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository, In } from 'typeorm';
 import { Recipe } from 'src/recipes/recipes.entity';
+import { RecipesService } from 'src/recipes/recipes.service';
 import { User } from 'src/users/users.entity';
+import { UsersService } from '../users/users.service';
 
 /**
  * Injectable service that exposes methods for handling user favorites.
@@ -12,10 +12,8 @@ import { User } from 'src/users/users.entity';
 @Injectable()
 export class FavoritesService {
   constructor(
-    @InjectRepository(User)
-    private readonly usersRepository: Repository<User>,
-    @InjectRepository(Recipe)
-    private readonly recipesRepository: Repository<Recipe>,
+    private readonly usersService: UsersService,
+    private readonly recipesService: RecipesService,
   ) {}
 
   /**
@@ -37,31 +35,13 @@ export class FavoritesService {
    * @returns {Promise<User>} Promise of the list owner.
    * @memberof FavoritesService
    */
-  async favoriteRecipe(user: User, recipeSlug: string): Promise<User> {
-    const recipe = await this.recipesRepository.findOne({ slug: recipeSlug });
+  async favoriteRecipe(user: User, slug: string): Promise<User> {
+    const recipe = await this.recipesService.findOneBySlug(slug);
     if (recipe) {
       user.favoriteRecipes.push(recipe);
     }
 
-    return this.usersRepository.save(user);
-  }
-
-  /**
-   * Update the list of favorite user recipes in the database.
-   *
-   * @param {User} user
-   * @param {string[]} recipeSlugs Recipe slugs to be favorited.
-   * @returns {Promise<User>} Promise of the list owner.
-   * @memberof FavoritesService
-   */
-  async updateFavorites(user: User, recipeSlugs: string[]): Promise<User> {
-    const recipes = await this.recipesRepository.find({
-      where: { slug: In(recipeSlugs) },
-    });
-
-    user.favoriteRecipes = recipes;
-
-    return this.usersRepository.save(user);
+    return this.usersService.save(user);
   }
 
   /**
@@ -77,6 +57,6 @@ export class FavoritesService {
       favoriteRecipe => favoriteRecipe.slug !== recipeSlug,
     );
 
-    return this.usersRepository.save(user);
+    return this.usersService.save(user);
   }
 }
