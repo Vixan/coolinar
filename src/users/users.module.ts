@@ -3,8 +3,9 @@ import { UsersController } from './users.controller';
 import { UsersService } from './users.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './users.entity';
-import { EncryptionModule } from 'src/encryption/encryption.module';
-import { SlugProvider } from 'src/shared/providers/slug.provider';
+import { IsUserEmailAvailable } from 'src/auth/validation/user-email-available.constraint';
+import { IsUserEmailUnavailable } from 'src/auth/validation/user-email-unavailable.constraint';
+import { IsUserNameAvailable } from 'src/auth/validation/user-name-available.constraint';
 
 /**
  * Module to encapsulate user logic.
@@ -13,9 +14,14 @@ import { SlugProvider } from 'src/shared/providers/slug.provider';
  * @class UsersModule
  */
 @Module({
-  imports: [TypeOrmModule.forFeature([User]), EncryptionModule],
+  imports: [TypeOrmModule.forFeature([User])],
   controllers: [UsersController],
-  providers: [UsersService, SlugProvider],
+  providers: [
+    UsersService,
+    IsUserEmailAvailable,
+    IsUserEmailUnavailable,
+    IsUserNameAvailable,
+  ],
   exports: [UsersService],
 })
 export class UsersModule {}

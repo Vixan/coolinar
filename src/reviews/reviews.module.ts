@@ -1,7 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from '../users/users.module';
-import { SlugProvider } from '../shared/providers/slug.provider';
 import { DateProvider } from 'src/shared/providers/date.provider';
 import { Recipe } from 'src/recipes/recipes.entity';
 import { RecipesService } from 'src/recipes/recipes.service';
@@ -18,6 +17,6 @@ import { Review } from './reviews.entity';
 @Module({
   imports: [TypeOrmModule.forFeature([Review, Recipe]), UsersModule],
   controllers: [ReviewsController],
-  providers: [RecipesService, ReviewsService, SlugProvider, DateProvider],
+  providers: [RecipesService, ReviewsService, DateProvider],
 })
 export class ReviewsModule {}

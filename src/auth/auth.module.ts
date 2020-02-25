@@ -1,15 +1,15 @@
 import { Module } from '@nestjs/common';
-import { AuthService } from './auth.service';
-import { AuthController } from './auth.controller';
-import { UsersModule } from '../users/users.module';
-import { JwtStrategy } from './jwt/jwt.strategy';
-import { UsersService } from '../users/users.service';
-import { ConfigModule } from '../config/config.module';
+import { ConfigService } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
-import { ConfigService } from '../config/config.service';
-import { JwtConfigService } from './jwt/jwt-config.service';
-import { EncryptionModule } from '../encryption/encryption.module';
-import { SlugProvider } from 'src/shared/providers/slug.provider';
+import { PassportModule } from '@nestjs/passport';
+import { ConfigModule } from '../config/config.module';
+import { UsersModule } from '../users/users.module';
+import { UsersService } from '../users/users.service';
+import { AuthController } from './auth.controller';
+import { AuthService } from './auth.service';
+import { JwtConfigService } from './strategies/jwt/jwt-config.service';
+import { JwtStrategy } from './strategies/jwt/jwt.strategy';
+import { LocalStrategy } from './strategies/local/local.strategy';
 
 /**
  * Module that encapsulates authentication logic.
@@ -18,16 +18,16 @@ import { SlugProvider } from 'src/shared/providers/slug.provider';
  */
 @Module({
   imports: [
+    ConfigModule,
+    PassportModule,
     JwtModule.registerAsync({
       imports: [ConfigModule],
       useClass: JwtConfigService,
       inject: [ConfigService],
     }),
     UsersModule,
-    ConfigModule,
-    EncryptionModule,
   ],
-  providers: [AuthService, JwtStrategy, UsersService, SlugProvider],
+  providers: [AuthService, LocalStrategy, JwtStrategy, UsersService],
   controllers: [AuthController],
 })
 export class AuthModule {}

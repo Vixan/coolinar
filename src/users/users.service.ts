@@ -2,9 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './users.entity';
-import { EncryptionService } from '../encryption/encryption.service';
 import { BaseService } from '../shared/base/base.service';
-import { SlugProvider } from 'src/shared/providers/slug.provider';
 
 /**
  * Injectable service for user database logic.
@@ -15,9 +13,7 @@ import { SlugProvider } from 'src/shared/providers/slug.provider';
 @Injectable()
 export class UsersService extends BaseService<User> {
   constructor(
-    private readonly encryptionService: EncryptionService,
     @InjectRepository(User) private readonly usersRepository: Repository<User>,
-    private readonly slugProvider: SlugProvider,
   ) {
     super(usersRepository);
   }
@@ -35,7 +31,7 @@ export class UsersService extends BaseService<User> {
    * @returns {Promise<User>} Promise of the user.
    * @memberof UsersService
    */
-  async findByName(name: string): Promise<User> {
+  async findOneByName(name: string): Promise<User> {
     return this.usersRepository.findOne({
       relations: ['favoriteRecipes', 'createdRecipes', 'reviews'],
       where: { name },
@@ -49,7 +45,7 @@ export class UsersService extends BaseService<User> {
    * @returns {Promise<User>} Promise of the user.
    * @memberof UsersService
    */
-  async findBySlug(slug: string): Promise<User> {
+  async findOneBySlug(slug: string): Promise<User> {
     return this.usersRepository.findOne({
       relations: ['favoriteRecipes', 'createdRecipes', 'reviews'],
       where: { slug },
@@ -63,56 +59,14 @@ export class UsersService extends BaseService<User> {
    * @returns {Promise<User>} Promise of the user.
    * @memberof UsersService
    */
-  async findByEmail(email: string): Promise<User> {
+  async findOneByEmail(email: string): Promise<User> {
     return this.usersRepository.findOne({
       relations: ['favoriteRecipes', 'createdRecipes', 'reviews'],
       where: { email },
     });
   }
 
-  /**
-   * Retrieve the user by email and password.
-   *
-   * @param {string} email
-   * @param {string} password
-   * @returns {Promise<User>} Promise of the user.
-   * @memberof UsersService
-   */
-  async findByEmailAndPassword(email: string, password: string): Promise<User> {
-    return this.usersRepository.findOne({
-      relations: ['favoriteRecipes', 'createdRecipes', 'reviews'],
-      where: { email, password },
-    });
-  }
-
-  /**
-   * Add a user to the database.
-   *
-   * @param {User} user
-   * @returns {Promise<User>} Promise of created the user.
-   * @memberof UsersService
-   */
-  async create(user: User): Promise<User> {
-    user.slug = this.slugProvider.createSlug(user.name, { lower: true });
-    user.password = await this.encryptionService.getHash(user.password);
-    user.favoriteRecipes = [];
-
+  async save(user: User): Promise<User> {
     return this.usersRepository.save(user);
-  }
-
-  /**
-   * Update a user in the database.
-   *
-   * @param {User} user
-   * @returns {Promise<User>} Promise of the updated user.
-   * @memberof UsersService
-   */
-  async update(user: User): Promise<User> {
-    const updatedUser = new User({
-      ...user,
-      password: await this.encryptionService.getHash(user.password),
-    });
-
-    return this.usersRepository.save(updatedUser);
   }
 }

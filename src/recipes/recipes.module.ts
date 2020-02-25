@@ -1,14 +1,13 @@
 import { Module } from '@nestjs/common';
-import { Recipe } from './recipes.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { RecipesController } from './recipes.controller';
-import { RecipesService } from './recipes.service';
-import { UsersModule } from '../users/users.module';
-import { SlugProvider } from '../shared/providers/slug.provider';
 import { DateProvider } from 'src/shared/providers/date.provider';
 import { CategoriesModule } from '../categories/categories.module';
-import { IngredientsModule } from '../ingredients/ingredients.module';
 import { DirectionsModule } from '../directions/directions.module';
+import { IngredientsModule } from '../ingredients/ingredients.module';
+import { UsersModule } from '../users/users.module';
+import { RecipesController } from './recipes.controller';
+import { Recipe } from './recipes.entity';
+import { RecipesService } from './recipes.service';
 
 /**
  * Module to encapsulate recipes logic.
@@ -25,7 +24,7 @@ import { DirectionsModule } from '../directions/directions.module';
     DirectionsModule,
   ],
   controllers: [RecipesController],
-  providers: [RecipesService, SlugProvider, DateProvider],
+  providers: [RecipesService, DateProvider],
   exports: [RecipesService],
 })
 export class RecipesModule {}

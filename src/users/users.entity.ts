@@ -1,14 +1,18 @@
-import { Entity, Column, OneToMany, ManyToMany, JoinTable } from 'typeorm';
 import {
-  IsString,
-  MaxLength,
-  IsEmail,
-  IsOptional,
-  IsUrl,
-} from 'class-validator';
+  Entity,
+  Column,
+  OneToMany,
+  ManyToMany,
+  JoinTable,
+  BeforeInsert,
+  BeforeUpdate,
+} from 'typeorm';
 import { BaseEntity } from '../shared/base/base.entity';
 import { Review } from '../reviews/reviews.entity';
 import { Recipe } from '../recipes/recipes.entity';
+import * as bcrypt from 'bcryptjs';
+import constraints from './users.constraints';
+import slug = require('slug');
 
 /**
  * User database entity.
@@ -19,30 +23,22 @@ import { Recipe } from '../recipes/recipes.entity';
 @Entity()
 export class User extends BaseEntity {
   @Column()
-  @IsString()
-  @MaxLength(255)
   name: string;
 
   @Column()
-  @IsString()
   slug: string;
 
   @Column()
-  @IsEmail()
   email: string;
 
   @Column()
-  @IsString()
   password: string;
 
   @Column()
-  @IsOptional()
-  @IsUrl()
   avatarUrl: string;
 
   @ManyToMany(type => Recipe, { onDelete: 'CASCADE' })
   @JoinTable()
-  @IsOptional()
   favoriteRecipes: Recipe[];
 
   @OneToMany(type => Recipe, recipe => recipe.author, { onDelete: 'CASCADE' })
@@ -51,7 +47,22 @@ export class User extends BaseEntity {
   @OneToMany(type => Review, review => review.author, { onDelete: 'CASCADE' })
   reviews: Review[];
 
-  constructor(props: any) {
+  @BeforeInsert()
+  @BeforeUpdate()
+  async beforeSave(): Promise<void> {
+    this.password = await bcrypt.hash(
+      this.password,
+      constraints.PASSWORD_HASH_SALT_LENGTH,
+    );
+
+    this.slug = slug(this.name, { lower: true });
+  }
+
+  async comparePassword(password: string): Promise<boolean> {
+    return bcrypt.compare(password, this.password);
+  }
+
+  constructor(props: Partial<User>) {
     super();
     Object.assign(this, props);
   }

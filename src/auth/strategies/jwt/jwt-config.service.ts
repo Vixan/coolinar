@@ -1,6 +1,6 @@
 import { JwtOptionsFactory, JwtModuleOptions } from '@nestjs/jwt';
-import { ConfigService } from '../../config/config.service';
 import { Injectable } from '@nestjs/common';
+import { ApiConfigService } from 'src/config/api-config.service';
 
 /**
  * Factory service for creating JWT configuration options.
@@ -11,7 +11,7 @@ import { Injectable } from '@nestjs/common';
  */
 @Injectable()
 export class JwtConfigService implements JwtOptionsFactory {
-  constructor(private readonly configService: ConfigService) {}
+  constructor(private readonly configService: ApiConfigService) {}
 
   /**
    * Creates a JWT options object, which includes the secret or private key
@@ -24,13 +24,11 @@ export class JwtConfigService implements JwtOptionsFactory {
     const secretOrPrivateKey = this.configService.jwtSecret;
     const expiresIn = this.configService.jwtExpiration;
 
-    const jwtOptions: JwtModuleOptions = {
+    return {
       secretOrPrivateKey,
       signOptions: {
         expiresIn,
       },
     };
-
-    return jwtOptions;
   }
 }

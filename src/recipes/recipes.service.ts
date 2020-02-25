@@ -1,21 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import { BaseService } from '../shared/base/base.service';
-import { Recipe } from './recipes.entity';
 import { InjectRepository } from '@nestjs/typeorm';
-import {
-  Repository,
-  Between,
-  MoreThanOrEqual,
-  Like,
-  In,
-  Raw,
-  SelectQueryBuilder,
-} from 'typeorm';
-import { SlugProvider } from '../shared/providers/slug.provider';
-import { DateInterval } from 'src/shared/providers/date.provider';
-import { PaginationOptions } from 'src/shared/pagination/pagination-options.interface';
-import { SearchRecipeDto } from './dto/search-recipe.dto';
 import { Pagination } from 'src/shared/pagination/pagination';
+import { PaginationOptions } from 'src/shared/pagination/pagination-options.interface';
+import { DateInterval } from 'src/shared/providers/date.provider';
+import { Between, In, Like, MoreThanOrEqual, Repository } from 'typeorm';
+import { BaseService } from '../shared/base/base.service';
+import { SearchRecipeDto } from './dto/search-recipe.dto';
+import { Recipe } from './recipes.entity';
 
 /**
  * Injectable service that handles recipes database logic.
@@ -28,7 +19,6 @@ export class RecipesService extends BaseService<Recipe> {
   constructor(
     @InjectRepository(Recipe)
     private readonly recipesRepository: Repository<Recipe>,
-    private readonly slugProvider: SlugProvider,
   ) {
     super(recipesRepository);
   }
@@ -376,7 +366,6 @@ export class RecipesService extends BaseService<Recipe> {
    * @memberof RecipesService
    */
   async create(recipe: Recipe): Promise<Recipe> {
-    recipe.slug = this.slugProvider.createSlug(recipe.title, { lower: true });
     recipe.averageReviewScore = 0;
     recipe.reviews = recipe.reviews || [];
     recipe.imageUrls = recipe.imageUrls || [];
@@ -392,7 +381,6 @@ export class RecipesService extends BaseService<Recipe> {
    * @memberof RecipesService
    */
   async update(recipe: Recipe): Promise<Recipe> {
-    recipe.slug = this.slugProvider.createSlug(recipe.title, { lower: true });
     if (recipe.reviews) {
       recipe.averageReviewScore =
         recipe.reviews.reduce(
