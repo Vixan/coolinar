@@ -4,6 +4,7 @@ import {
   ConflictException,
   NotFoundException,
   Inject,
+  CallHandler,
 } from '@nestjs/common';
 import { Observable } from 'rxjs';
 import { plainToClass } from 'class-transformer';
@@ -24,21 +25,18 @@ export class RecipeValidationInterceptor implements NestInterceptor {
     @Inject(UsersService) private readonly usersService: UsersService,
   ) {}
 
-  async intercept(
-    context: ExecutionContext,
-    call$: Observable<any>,
-  ): Promise<any> {
+  async intercept(context: ExecutionContext, next: CallHandler): Promise<any> {
     const request: Request = context.switchToHttp().getRequest();
     const createRecipeDto = plainToClass(CreateRecipeDto, request.body);
 
     await this.validateAuthor(createRecipeDto.author);
     await this.validateTitle(createRecipeDto.title);
 
-    return call$;
+    return next.handle();
   }
 
   private async validateAuthor(author: string) {
-    const user = await this.usersService.findBySlug(author);
+    const user = await this.usersService.findOneBySlug(author);
 
     if (!user) {
       throw new NotFoundException({

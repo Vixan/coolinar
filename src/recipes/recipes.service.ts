@@ -381,7 +381,7 @@ export class RecipesService extends BaseService<Recipe> {
    * @memberof RecipesService
    */
   async update(recipe: Recipe): Promise<Recipe> {
-    if (recipe.reviews) {
+    if (recipe.reviews && recipe.reviews.length) {
       recipe.averageReviewScore =
         recipe.reviews.reduce(
           (totalScore, review) => review.score + totalScore,

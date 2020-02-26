@@ -9,6 +9,7 @@ import { AuthService } from './auth.service';
 import { JwtConfigService } from './strategies/jwt/jwt-config.service';
 import { JwtStrategy } from './strategies/jwt/jwt.strategy';
 import { LocalStrategy } from './strategies/local/local.strategy';
+import { IsUserEmailAvailable } from './validation/user-email-available.constraint';
 
 /**
  * Module that encapsulates authentication logic.
@@ -26,7 +27,7 @@ import { LocalStrategy } from './strategies/local/local.strategy';
     }),
     UsersModule,
   ],
-  providers: [AuthService, LocalStrategy, JwtStrategy],
+  providers: [AuthService, LocalStrategy, JwtStrategy, IsUserEmailAvailable],
   controllers: [AuthController],
 })
 export class AuthModule {}

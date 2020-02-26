@@ -15,7 +15,9 @@ export class Ingredient extends BaseEntity {
   @MaxLength(255)
   name: string;
 
-  @ManyToOne(type => Recipe, recipe => recipe.ingredients)
+  @ManyToOne(type => Recipe, recipe => recipe.ingredients, {
+    onDelete: 'CASCADE',
+  })
   recipe: Recipe;
 
   constructor(props: any) {

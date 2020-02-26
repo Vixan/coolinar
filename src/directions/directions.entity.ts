@@ -15,7 +15,9 @@ export class Direction extends BaseEntity {
   @MaxLength(255)
   name: string;
 
-  @ManyToOne(type => Recipe, recipe => recipe.directions)
+  @ManyToOne(type => Recipe, recipe => recipe.directions, {
+    onDelete: 'CASCADE',
+  })
   recipe: Recipe;
 
   constructor(props: any) {

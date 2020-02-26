@@ -1,16 +1,14 @@
-import { ValidatorConstraint, ValidationArguments } from 'class-validator';
-import { Inject, Injectable } from '@nestjs/common';
-import { UsersService } from '../../users/users.service';
+import { Injectable } from '@nestjs/common';
+import { ValidationArguments, ValidatorConstraint } from 'class-validator';
+import { app } from 'src/main';
+import { UsersService } from 'src/users/users.service';
 
 @ValidatorConstraint({ name: 'IsUserEmailUnavailable', async: true })
 @Injectable()
 export class IsUserEmailUnavailable {
-  constructor(
-    @Inject('UsersService') private readonly usersService: UsersService,
-  ) {}
-
   async validate(email: string) {
-    const user = await this.usersService.findOneByEmail(email);
+    const usersService = app.get(UsersService);
+    const user = await usersService.findOneByEmail(email);
 
     return !user;
   }

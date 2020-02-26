@@ -10,9 +10,9 @@ export abstract class BaseEntity {
   @IsUUID()
   id: string;
 
-  @CreateDateColumn()
+  @CreateDateColumn({ type: 'timestamptz' })
   dateCreated: Date;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ type: 'timestamptz' })
   dateUpdated: Date;
 }

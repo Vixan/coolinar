@@ -1,12 +1,14 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { ValidationPipe } from '@nestjs/common';
+import { ValidationPipe, INestApplication } from '@nestjs/common';
 import { HttpExceptionFilter } from 'src/shared/filters/http-exception.filter';
 import { ApiConfigService } from 'src/config/api-config.service';
 import { useContainer } from 'typeorm';
 
+export let app: INestApplication;
+
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  app = await NestFactory.create(AppModule);
   const apiConfigService = app.get(ApiConfigService);
 
   app.setGlobalPrefix(apiConfigService.globalPrefix);
