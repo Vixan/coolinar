@@ -300,16 +300,6 @@ export class RecipesController {
       directions.push(foundDirection);
     }
 
-    // recipe = {
-    //   ...recipe,
-    //   ...updateRecipeDto,
-    //   categories,
-    //   ingredients,
-    //   directions,
-    //   author: recipe.author,
-    //   beforeSave: recipe.beforeSave,
-    // };
-
     recipe.title = updateRecipeDto.title;
     recipe.description = updateRecipeDto.description;
     recipe.cookingTime = updateRecipeDto.cookingTime;

@@ -1,4 +1,12 @@
-import { Column, ManyToOne, Entity, OneToMany } from 'typeorm';
+import {
+  Column,
+  ManyToOne,
+  Entity,
+  OneToMany,
+  BeforeInsert,
+  BeforeUpdate,
+  BeforeRemove,
+} from 'typeorm';
 import {
   IsString,
   Min,
@@ -28,7 +36,7 @@ export class Review extends BaseEntity {
   @ManyToOne(type => User, user => user.reviews)
   author: User;
 
-  @ManyToOne(type => Recipe, recipe => recipe.reviews)
+  @ManyToOne(type => Recipe, recipe => recipe.reviews, { onDelete: 'CASCADE' })
   recipe: Recipe;
 
   @Column()

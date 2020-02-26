@@ -1,25 +1,24 @@
 import {
-  Controller,
-  Get,
-  UseGuards,
-  Param,
-  UseInterceptors,
-  Delete,
-  NotFoundException,
-  Put,
   Body,
-  UsePipes,
+  Controller,
+  Delete,
+  Get,
+  NotFoundException,
+  Param,
   Post,
+  Put,
   Query,
+  UseGuards,
+  UseInterceptors,
+  UsePipes,
 } from '@nestjs/common';
-import { UsersService } from './users.service';
-import { User } from './users.entity';
 import { AuthGuard } from '@nestjs/passport';
-import { UserDto } from './dto/user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
-import { ValidationPipe } from '../shared/pipes/validation.pipe';
 import { TransformInterceptor } from '../shared/interceptors/transform.interceptor';
-import { ArrayUtils } from 'src/shared/utils/array.utils';
+import { ValidationPipe } from '../shared/pipes/validation.pipe';
+import { UpdateUserDto } from './dto/update-user.dto';
+import { UserDto } from './dto/user.dto';
+import { User } from './users.entity';
+import { UsersService } from './users.service';
 
 /**
  * Controller to handle user routes logic.
@@ -54,7 +53,7 @@ export class UsersController {
   @UseInterceptors(new TransformInterceptor(UserDto))
   async searchByName(@Query() params: any): Promise<User> {
     if (params.name) {
-      return await this.usersService.findByName(params.name);
+      return await this.usersService.findOneByName(params.name);
     }
 
     return null;
@@ -70,7 +69,7 @@ export class UsersController {
   @Post()
   @UseInterceptors(new TransformInterceptor(UserDto))
   async getByEmail(@Body('email') email: string): Promise<User> {
-    return this.usersService.findByEmail(email);
+    return this.usersService.findOneByEmail(email);
   }
 
   /**
@@ -83,7 +82,7 @@ export class UsersController {
   @Get(':slug')
   @UseInterceptors(new TransformInterceptor(UserDto))
   async getBySlug(@Param('slug') slug: string): Promise<User> {
-    return this.usersService.findBySlug(slug);
+    return this.usersService.findOneBySlug(slug);
   }
 
   /**
@@ -102,13 +101,18 @@ export class UsersController {
     @Param('slug') slug: string,
     @Body() updateUserDto: UpdateUserDto,
   ): Promise<User> {
-    const user = await this.usersService.findBySlug(slug);
+    const user = await this.usersService.findOneBySlug(slug);
 
     if (!user) {
       throw new NotFoundException({ errors: { slug: 'User not found' } });
     }
 
-    return this.usersService.update({ ...user, ...updateUserDto });
+    user.email = updateUserDto.email;
+    user.name = updateUserDto.name;
+    user.password = updateUserDto.password;
+    user.avatarUrl = updateUserDto.avatarUrl;
+
+    return this.usersService.update(user);
   }
 
   /**
@@ -122,7 +126,7 @@ export class UsersController {
   @UseGuards(AuthGuard('jwt'))
   @UseInterceptors(new TransformInterceptor(UserDto))
   async delete(@Param('slug') slug: string): Promise<User> {
-    const user = await this.usersService.findBySlug(slug);
+    const user = await this.usersService.findOneBySlug(slug);
 
     if (!user) {
       throw new NotFoundException({ errors: { slug: 'User not found' } });
