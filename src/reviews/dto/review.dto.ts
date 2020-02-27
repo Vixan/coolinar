@@ -1,6 +1,6 @@
-import { Exclude, Expose } from 'class-transformer';
-import { User } from '../../users/users.entity';
-import { Recipe } from '../../recipes/recipes.entity';
+import { Exclude, Expose } from "class-transformer";
+import { User } from "../../users/users.entity";
+import { Recipe } from "../../recipes/recipes.entity";
 
 /**
  * Recipe review created by the client.
@@ -9,15 +9,15 @@ import { Recipe } from '../../recipes/recipes.entity';
  */
 @Exclude()
 export class ReviewDto {
-  @Expose()
-  readonly text: string;
+    @Expose()
+    readonly text: string;
 
-  @Expose()
-  readonly score: number;
+    @Expose()
+    readonly score: number;
 
-  @Expose()
-  readonly author: User;
+    @Expose()
+    readonly author: User;
 
-  @Expose()
-  readonly recipe: Recipe;
+    @Expose()
+    readonly recipe: Recipe;
 }

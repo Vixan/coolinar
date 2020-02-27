@@ -1,4 +1,4 @@
 export class ApiTokenDto {
-  accessToken: string;
-  expiresIn: number | string;
+    accessToken: string;
+    expiresIn: number | string;
 }

@@ -1,18 +1,18 @@
 import {
-  CreateDateColumn,
-  UpdateDateColumn,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
-import { IsUUID } from 'class-validator';
+    CreateDateColumn,
+    UpdateDateColumn,
+    PrimaryGeneratedColumn
+} from "typeorm";
+import { IsUUID } from "class-validator";
 
 export abstract class BaseEntity {
-  @PrimaryGeneratedColumn('uuid')
-  @IsUUID()
-  id: string;
+    @PrimaryGeneratedColumn("uuid")
+    @IsUUID()
+    id: string;
 
-  @CreateDateColumn({ type: 'timestamptz' })
-  dateCreated: Date;
+    @CreateDateColumn({ type: "timestamptz" })
+    dateCreated: Date;
 
-  @UpdateDateColumn({ type: 'timestamptz' })
-  dateUpdated: Date;
+    @UpdateDateColumn({ type: "timestamptz" })
+    dateUpdated: Date;
 }
