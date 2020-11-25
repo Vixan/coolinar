@@ -22,3 +22,10 @@ services:
       - './db/pgadmin/.pgadmin'
     ports:
       - '5433:80'
+
+  sonarqube:
+    container_name: sonarqube
+    image: sonarqube:latest
+    ports:
+      - '9000:9000'
+      - '9092:9092'
