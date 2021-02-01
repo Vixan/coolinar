@@ -1,9 +1,9 @@
 import { Exclude, Expose } from "class-transformer";
 import {
-    IsString,
-    IsOptional,
-    IsNotEmpty,
-    IsInt,
+    IsInt, IsOptional, IsString,
+
+
+
     Max,
     Min
 } from "class-validator";

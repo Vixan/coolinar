@@ -1,5 +1,4 @@
-import { Column, Entity } from "typeorm";
-import { IsInt, Min, IsOptional, IsNumber } from "class-validator";
+import { IsOptional, Min } from "class-validator";
 import { BaseEntity } from "../shared/base/base.entity";
 
 /**

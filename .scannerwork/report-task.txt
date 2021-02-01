@@ -2,5 +2,5 @@ projectKey=coolinar-server
 serverUrl=http://localhost:9000
 serverVersion=8.5.1.38104
 dashboardUrl=http://localhost:9000/dashboard?id=coolinar-server
-ceTaskId=AXYBeoj7KabQo8-pTPgm
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AXYBeoj7KabQo8-pTPgm
+ceTaskId=AXZnI_OFGm5sLx2Iu_mL
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AXZnI_OFGm5sLx2Iu_mL

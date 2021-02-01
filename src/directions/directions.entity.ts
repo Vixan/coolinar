@@ -1,7 +1,7 @@
-import { Column, Entity, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
 import { IsString, MaxLength } from "class-validator";
-import { BaseEntity } from "../shared/base/base.entity";
+import { Column, Entity, ManyToOne } from "typeorm";
 import { Recipe } from "../recipes/recipes.entity";
+import { BaseEntity } from "../shared/base/base.entity";
 
 /**
  * Recipe Direction database model.

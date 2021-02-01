@@ -1,12 +1,8 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 import {
-    IsInt,
-    Min,
-    IsOptional,
-    IsNumber,
     IsString,
     MaxLength
 } from "class-validator";
+import { Column, Entity } from "typeorm";
 import { BaseEntity } from "../shared/base/base.entity";
 
 /**

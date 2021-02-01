@@ -1,23 +1,20 @@
 import {
-    Column,
-    ManyToOne,
-    Entity,
-    OneToMany,
-    BeforeInsert,
-    BeforeUpdate,
-    BeforeRemove
-} from "typeorm";
-import {
-    IsString,
-    Min,
     IsInt,
-    Max,
-    IsOptional,
-    IsNotEmpty
+
+
+    IsNotEmpty, IsOptional, IsString,
+
+
+    Max, Min
 } from "class-validator";
-import { User } from "../users/users.entity";
-import { BaseEntity } from "../shared/base/base.entity";
+import {
+    Column,
+
+    Entity, ManyToOne
+} from "typeorm";
 import { Recipe } from "../recipes/recipes.entity";
+import { BaseEntity } from "../shared/base/base.entity";
+import { User } from "../users/users.entity";
 
 /**
  * Recipe review database model.
