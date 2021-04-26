@@ -1,0 +1,708 @@
+{
+	"info": {
+		"_postman_id": "c3bf32ca-0875-41e7-aac0-78850a79b3a7",
+		"name": "Coolinar",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get All Users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{url}}/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User By Slug",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{url}}/users/:slug",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								":slug"
+							],
+							"variable": [
+								{
+									"key": "slug",
+									"value": "alec-sanders"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users/admin",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"Alec Sanders\",\n\t\"email\":\"alecsanders@gmail.com\",\n\t\"password\":\"alecsanders\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/users/alec-sanders",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"alec-sanders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User By Email",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"alecsanders@gmail.com\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search User By Name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users/search?name=Alec Sanders",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"search"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Alec Sanders"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Sign In User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json();\r",
+									"pm.environment.set(\"accessToken\", data.accessToken);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\":\"alecsanders@gmail.com\",\n\t\"password\":\"alecsanders\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/auth/sign-in",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"sign-in"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign Up User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json();\r",
+									"pm.environment.set(\"accessToken\", data.accessToken);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Alec Sanders\",\r\n    \"email\": \"alecsanders@gmail.com\",\r\n    \"password\": \"alecsanders\",\r\n    \"avatarUrl\": \"https://s3.amazonaws.com/uifaces/faces/twitter/abelcabans/128.jpg\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/auth/sign-up",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"sign-up"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Recipes",
+			"item": [
+				{
+					"name": "Get All Recipes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/recipes?take=50&skip=0",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"recipes"
+							],
+							"query": [
+								{
+									"key": "take",
+									"value": "50"
+								},
+								{
+									"key": "skip",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Recipe",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"title\": \"Grouper with Tomato and Basil\",\r\n        \"description\": \"No one can resist this dish. I mean it, no one.\",\r\n        \"ingredients\": [\r\n            \"2 tablespoons extra-virgin olive oil\",\r\n            \"1 (1-lb) piece grouper or red snapper fillet (3/4 inch thick), skinned and halved crosswise\",\r\n            \"1/4 teaspoon salt\",\r\n            \"1/8 teaspoon black pepper\",\r\n            \"1/2 cup coarsely chopped tomato\",\r\n            \"1 small garlic clove, minced (optional)\",\r\n            \"2 tablespoons thinly sliced fresh basil\",\r\n            \"Accompaniment: fresh corn spoon bread\"\r\n        ],\r\n        \"directions\": [\r\n            \"Working off heat, put 1 tablespoon oil in a 10-inch nonstick skillet and add fish, turning to coat with oil on both sides. Arrange fish skinned sides down and sprinkle with salt and pepper.\",\r\n            \"Toss together tomato, garlic (if using), basil, remaining tablespoon oil, and salt and pepper to taste in a small bowl, then mound on top of fish. Cover skillet with a tight-fitting lid and cook fish over moderately high heat until just cooked through, about 8 minutes.\"\r\n        ],\r\n        \"preparationTime\": 15,\r\n        \"cookingTime\": 25,\r\n        \"imageUrls\": [\r\n            \"https://assets.epicurious.com/photos/560ea0f77b55306961bfefa2/6:4/w_620%2Ch_413/106744.jpg\"\r\n        ],\r\n        \"author\": \"alec-sanders\",\r\n        \"categories\": [\r\n            \"fish\",\r\n            \"tomato\",\r\n            \"quick & easy\",\r\n            \"summer\",\r\n            \"gourmet\"\r\n        ],\r\n        \"nutrition\": {\r\n            \"calories\": 336,\r\n            \"fat\": null,\r\n            \"carbohydrates\": null,\r\n            \"protein\": 44,\r\n            \"fibre\": null,\r\n            \"sodium\": 413\r\n        },\r\n        \"servings\": 2,\r\n        \"notes\": null\r\n    }"
+						},
+						"url": {
+							"raw": "{{url}}/recipes",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"recipes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Recipe",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"title\": \"Grouper with Tomato and Basil\",\r\n        \"description\": \"No one can resist this dish. I mean it, no one.\",\r\n        \"ingredients\": [\r\n            \"2 tablespoons extra-virgin olive oil\",\r\n            \"1 (1-lb) piece grouper or red snapper fillet (3/4 inch thick), skinned and halved crosswise\",\r\n            \"1/4 teaspoon salt\",\r\n            \"1/8 teaspoon black pepper\",\r\n            \"1/2 cup coarsely chopped tomato\",\r\n            \"1 small garlic clove, minced (optional)\",\r\n            \"2 tablespoons thinly sliced fresh basil\",\r\n            \"Accompaniment: fresh corn spoon bread\"\r\n        ],\r\n        \"directions\": [\r\n            \"Working off heat, put 1 tablespoon oil in a 10-inch nonstick skillet and add fish, turning to coat with oil on both sides. Arrange fish skinned sides down and sprinkle with salt and pepper.\",\r\n            \"Toss together tomato, garlic (if using), basil, remaining tablespoon oil, and salt and pepper to taste in a small bowl, then mound on top of fish. Cover skillet with a tight-fitting lid and cook fish over moderately high heat until just cooked through, about 8 minutes.\"\r\n        ],\r\n        \"preparationTime\": 15,\r\n        \"cookingTime\": 25,\r\n        \"imageUrls\": [\r\n            \"https://assets.epicurious.com/photos/560ea0f77b55306961bfefa2/6:4/w_620%2Ch_413/106744.jpg\"\r\n        ],\r\n        \"categories\": [\r\n            \"fish\",\r\n            \"tomato\",\r\n            \"quick & easy\",\r\n            \"summer\",\r\n            \"gourmet\"\r\n        ],\r\n        \"nutrition\": {\r\n            \"calories\": 336,\r\n            \"fat\": null,\r\n            \"carbohydrates\": null,\r\n            \"protein\": 44,\r\n            \"fibre\": null,\r\n            \"sodium\": 413\r\n        },\r\n        \"servings\": 2,\r\n        \"notes\": null,\r\n        \"author\": \"alec-sanders\"\r\n    }"
+						},
+						"url": {
+							"raw": "{{url}}/recipes/grouper-with-tomato-and-basil",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"recipes",
+								"grouper-with-tomato-and-basil"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Recipe By Slug",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/recipes/grouper-with-tomato-and-basil",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"recipes",
+								"grouper-with-tomato-and-basil"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Recipe",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/recipes/grouper-with-tomato-and-basil",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"recipes",
+								"grouper-with-tomato-and-basil"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Daily Recipes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/recipes/daily",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"recipes",
+								"daily"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Latest Recipes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/recipes/latest?take=4&skip=0",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"recipes",
+								"latest"
+							],
+							"query": [
+								{
+									"key": "take",
+									"value": "4"
+								},
+								{
+									"key": "skip",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Top Rated Recipes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/recipes/top-rated",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"recipes",
+								"top-rated"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Recipes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/recipes/search?author=alec-sanders",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"recipes",
+								"search"
+							],
+							"query": [
+								{
+									"key": "author",
+									"value": "alec-sanders"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reviews",
+			"item": [
+				{
+					"name": "Create Recipe Review",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"text\": \"Great recipe! Absolutely love it. But I think some changes can be done\",\n\t\"score\": 4,\n\t\"author\": \"wilhelm-doyle\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/reviews/grouper-with-tomato-and-basil",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"reviews",
+								"grouper-with-tomato-and-basil"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Recipe Review",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"author\": \"wilhelm-doyle\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/reviews/grouper-with-tomato-and-basil",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"reviews",
+								"grouper-with-tomato-and-basil"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Recipe Review",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"text\": \"This is not great\",\n\t\"score\": 2,\n\t\"author\": \"wilhelm-doyle\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/reviews/grouper-with-tomato-and-basil",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"reviews",
+								"grouper-with-tomato-and-basil"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Favorites",
+			"item": [
+				{
+					"name": "Favorite Recipe",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users/:user/favorites/recipes/:slug",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								":user",
+								"favorites",
+								"recipes",
+								":slug"
+							],
+							"variable": [
+								{
+									"key": "user",
+									"value": "alec-sanders",
+									"type": "string"
+								},
+								{
+									"key": "slug",
+									"value": "grouper-with-tomato-and-basil",
+									"type": "string"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Unfavorite Recipe",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users/:user/favorites/recipes/:slug",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								":user",
+								"favorites",
+								"recipes",
+								":slug"
+							],
+							"variable": [
+								{
+									"key": "user",
+									"value": "alec-sanders",
+									"type": "string"
+								},
+								{
+									"key": "slug",
+									"value": "grouper-with-tomato-and-basil",
+									"type": "string"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Favorite Recipes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users/:user/favorites/recipes",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								":user",
+								"favorites",
+								"recipes"
+							],
+							"variable": [
+								{
+									"key": "user",
+									"value": "alec-sanders",
+									"type": "string"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{accessToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
