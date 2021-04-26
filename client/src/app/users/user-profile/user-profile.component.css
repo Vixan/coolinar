@@ -1,0 +1,13 @@
+.user-profile {
+  padding: 28px 0;
+}
+
+.user-profile__avatar {
+  margin: 28px 0;
+}
+
+@media only screen and (min-width: 768px) {
+  .user-profile {
+    padding: 28px;
+  }
+}

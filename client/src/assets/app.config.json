@@ -1,0 +1,4 @@
+{
+  "apiBaseUrl": "http://localhost:4100/api",
+  "accessTokenName": "accessToken"
+}

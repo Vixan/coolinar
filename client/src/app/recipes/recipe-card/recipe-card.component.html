@@ -1,0 +1,26 @@
+<div *ngIf="cardRecipe">
+  <nz-card [nzCover]="coverTemplate" [nzActions]="[actionFavorite]" [nzHoverable]="true" class="top-recipes__card">
+    <nz-card-meta [nzTitle]="cardRecipe.title" nzDescription="{{truncateDescription(cardRecipe.description) || 'No description'}}"
+      class="top-recipes__card-meta" [nzAvatar]="avatarTemplate" [routerLink]="['/recipes', cardRecipe.slug]">
+    </nz-card-meta>
+  </nz-card>
+  <ng-template #coverTemplate>
+    <img alt="{{cardRecipe.title}}" src="{{cardRecipe.imageUrls[0] || '/assets/images/recipe-placeholder.png'}}"
+      class="top-recipes__card-img" [routerLink]="['/recipes', cardRecipe.slug]" />
+  </ng-template>
+  <ng-template #actionFavorite>
+    <div (click)="user && toggleFavorite(cardRecipe.slug)" [routerLink]="user? null : ['/login']">
+      <span *ngIf="!isRecipeInFavorites(cardRecipe.slug)">
+        <i nz-icon nzType="heart"></i>
+        Add to favorites
+      </span>
+      <span *ngIf="isRecipeInFavorites(cardRecipe.slug)">
+        <i nz-icon nzType="heart" nzTheme="fill"></i>
+        Remove from favorites
+      </span>
+    </div>
+  </ng-template>
+  <ng-template #avatarTemplate>
+    <nz-avatar nzText="{{cardRecipe.averageReviewScore | number: '0.0-1'}}" class="top-recipes__average-score"></nz-avatar>
+  </ng-template>
+</div>

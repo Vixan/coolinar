@@ -1,0 +1,68 @@
+<nz-header class="header">
+  <a [routerLink]="['/']"><img src="assets/images/logo.svg" class="header__logo" /></a>
+  <ul nz-menu [nzTheme]="'light'" [nzMode]="'horizontal'" class="header__links">
+    <li nz-menu-item [nzSelected]="isRouteActive('/recipes/explore')"><a [routerLink]="['/recipes/explore']">Explore</a>
+    </li>
+    <li nz-menu-item [nzSelected]="isRouteActive('/recipes/top-rated')"><a [routerLink]="['/recipes/top-rated']">Top
+        rated</a></li>
+    <li nz-menu-item [nzSelected]="isRouteActive('/recipes/latest')"><a [routerLink]="['/recipes/latest']">Latest</a>
+    </li>
+  </ul>
+  <div class="header__filler"></div>
+  <div class="header__add-recipe">
+    <a *ngIf="this.authService.isLoggedIn && user" nz-tooltip nzTitle="Create a new recipe"
+      [routerLink]="['/recipes/create']">
+      <i nz-icon type="plus"></i>
+    </a>
+  </div>
+  <nz-dropdown *ngIf="this.authService.isLoggedIn && user" [nzTrigger]="'click'" class="header__user"
+    [nzPlacement]="'bottomRight'">
+    <a nz-dropdown>
+      <nz-avatar nzIcon="user" [nzSrc]="user.avatarUrl" class="header__user-avatar"></nz-avatar>
+      <i nz-icon type="down"></i>
+    </a>
+    <ul nz-menu>
+      <li nz-menu-item>
+        <a [routerLink]="['/users/', user.slug]">
+          Hi, <span class="header__username">{{user.name}}</span>
+        </a>
+      </li>
+      <li nz-menu-item>
+        <a [routerLink]="['/recipes/favorite']">
+          Your favorite recipes
+        </a>
+      </li>
+      <li nz-menu-item>
+        <a [routerLink]="['/recipes/authored']">
+          Your created recipes
+        </a>
+      </li>
+      <li nz-menu-divider></li>
+      <li nz-menu-item (click)="this.authService.logout()" [routerLink]="['/login']">Log out</li>
+    </ul>
+  </nz-dropdown>
+  <button *ngIf="!this.authService.isLoggedIn" nz-button nzType="primary" class="header__login-btn"
+    [routerLink]="['/login']"><i nz-icon type="user"></i>Log in</button>
+</nz-header>
+<nz-layout class="sider">
+  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzBreakpoint]="'lg'" [nzCollapsedWidth]="0"
+    [nzZeroTrigger]="zeroTrigger" class="sider__nav">
+    <ul nz-menu [nzTheme]="'light'" [nzMode]="'inline'" [nzInlineCollapsed]="isCollapsed">
+      <li nz-menu-item class="sider__logo-container">
+        <a [routerLink]="['/']"><img src="assets/images/logo.svg" class="header__logo sider__logo" /></a>
+      </li>
+      <li nz-menu-item [nzSelected]="isRouteActive('/recipes/explore')">
+        <a [routerLink]="['/recipes/explore']">Explore</a>
+      </li>
+      <li nz-menu-item [nzSelected]="isRouteActive('/recipes/top-rated')">
+        <a [routerLink]="['/recipes/top-rated']">Top rated</a>
+      </li>
+      <li nz-menu-item [nzSelected]="isRouteActive('/recipes/latest')">
+        <a [routerLink]="['/recipes/latest']">Latest</a>
+      </li>
+    </ul>
+  </nz-sider>
+</nz-layout>
+<ng-template #zeroTrigger>
+  <i nz-icon type="menu-fold" theme="outline"></i>
+</ng-template>

@@ -1,0 +1,34 @@
+.login {
+  padding: 0;
+  height: 100vh;
+}
+
+@media only screen and (min-width: 768px) {
+  .login {
+    padding: 28px;
+  }
+}
+
+.login__content {
+  height: 100%;
+}
+
+.login__header {
+  margin-bottom: 14px;
+}
+
+.login__logo {
+  width: 92px;
+}
+
+.login__message {
+  text-align: center;
+}
+
+.login__forgot-password {
+  float: right;
+}
+
+.login__button {
+  width: 100%;
+}

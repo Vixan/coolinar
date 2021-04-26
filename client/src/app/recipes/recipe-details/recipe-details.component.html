@@ -1,0 +1,123 @@
+<nz-layout class="recipe-details">
+  <nz-page-header *ngIf="!recipe">
+    <nz-page-header-content>
+      <nz-skeleton [nzActive]="true" [nzLoading]="isLoading"></nz-skeleton>
+      <nz-empty *ngIf="!isLoading" nzNotFoundContent="Recipe not found"></nz-empty>
+    </nz-page-header-content>
+  </nz-page-header>
+  <nz-page-header [nzBackIcon]="backIconTemplate" *ngIf="recipe">
+    <nz-breadcrumb nz-page-header-breadcrumb>
+      <nz-breadcrumb-item><a [routerLink]="['/']">Recipes</a></nz-breadcrumb-item>
+      <nz-breadcrumb-item>{{recipe.title}}</nz-breadcrumb-item>
+    </nz-breadcrumb>
+    <ng-template #backIconTemplate>
+      <i nz-icon nzType="arrow-left" [routerLink]="['/']"></i>
+    </ng-template>
+    <nz-page-header-title>
+      <h3 class="recipe-details__title">{{recipe.title}}</h3>
+    </nz-page-header-title>
+    <nz-page-header-content>
+      <p>{{recipe.description}}</p>
+      <nz-row [nzGutter]="24">
+        <nz-col [nzSpan]="6" nzXs="12" nzSm="12" nzMd="4" nzLg="4">
+          <nz-statistic [nzValue]="recipe.servings" nzTitle="Servings" [nzPrefix]="servingsPrefix">
+            <ng-template #servingsPrefix>
+              <i nz-icon nzType="coffee"></i>
+            </ng-template>
+          </nz-statistic>
+        </nz-col>
+        <nz-col [nzSpan]="6" nzXs="12" nzSm="12" nzMd="6" nzLg="4">
+          <nz-statistic [nzValue]="recipe.cookingTime + recipe.preparationTime + 'min'" nzTitle="Time to make"
+            [nzPrefix]="timePrefix">
+            <ng-template #timePrefix>
+              <i nz-icon nzType="clock-circle"></i>
+            </ng-template>
+          </nz-statistic>
+        </nz-col>
+        <nz-col [nzSpan]="6" nzXs="12" nzSm="12" nzMd="6" nzLg="6">
+          <nz-statistic [nzValue]="recipe.dateCreated | date" nzTitle="Date Added" [nzPrefix]="datePrefix">
+            <ng-template #datePrefix>
+              <i nz-icon nzType="calendar"></i>
+            </ng-template>
+          </nz-statistic>
+        </nz-col>
+        <nz-col [nzSpan]="6" nzXs="12" nzSm="12" nzMd="8" nzLg="8">
+          <nz-statistic *ngIf="author" [nzValue]="author.name" nzTitle="Author" [nzPrefix]="userPrefix">
+            <ng-template #userPrefix>
+              <nz-avatar nzIcon="user" [nzSrc]="author.avatarUrl"></nz-avatar>
+            </ng-template>
+          </nz-statistic>
+        </nz-col>
+      </nz-row>
+    </nz-page-header-content>
+    <nz-page-header-footer>
+      <nz-tabset [nzSelectedIndex]="0">
+        <nz-tab [nzTitle]="ingredientsHeader">
+          <nz-list [nzItemLayout]="'horizontal'" nzSize="small" class="recipe-details__ingredients">
+            <nz-list-item *ngFor="let ingredient of recipe.ingredients; let i = index">
+              <nz-list-item-meta [nzTitle]="title">
+                <ng-template #title>
+                  <nz-avatar [nzText]="i + 1" class="recipe-details__ingredient-avatar"></nz-avatar>
+                  <div class="recipe-details__ingredient-text">{{ingredient.name}}</div>
+                </ng-template>
+              </nz-list-item-meta>
+            </nz-list-item>
+            <ng-template #ingredientsHeader>
+              <h3 class="recipe-details__list-title"><i nz-icon nzType="experiment"></i> Ingredients</h3>
+            </ng-template>
+          </nz-list>
+        </nz-tab>
+        <nz-tab [nzTitle]="directionsHeader">
+          <nz-list [nzItemLayout]="'horizontal'" nzSize="small" class="recipe-details__directions">
+            <nz-list-item *ngFor="let direction of recipe.directions; let i = index">
+              <nz-list-item-meta [nzTitle]="title">
+                <ng-template #title>
+                  <nz-avatar [nzText]="i + 1" class="recipe-details__ingredient-avatar"></nz-avatar>
+                  <div class="recipe-details__ingredient-text">{{direction.name}}</div>
+                </ng-template>
+              </nz-list-item-meta>
+            </nz-list-item>
+            <ng-template #directionsHeader>
+              <h3 class="recipe-details__list-title"><i nz-icon nzType="ordered-list"></i> Directions</h3>
+            </ng-template>
+          </nz-list>
+          <nz-alert *ngIf="recipe.notes" nzType="info" nzMessage="Author notes" [nzDescription]="recipe.notes"
+            nzShowIcon class="recipe-details__notes"></nz-alert>
+        </nz-tab>
+        <nz-tab *ngIf="recipe.nutrition && hasNutrition()" [nzTitle]="nutritionHeader">
+          <nz-row [nzGutter]="16" *ngIf="recipe.nutrition">
+            <nz-col nzXs="12" nzSm="6" nzMd="4" nzLg="4" *ngFor="let nutritionComponent of recipe.nutrition | keyvalue">
+              <div class="recipe_details__nutrition">
+                <nz-statistic [nzValue]="nutritionComponent.value || 'N\\A'" [nzTitle]="nutritionComponent.key | titlecase">
+                </nz-statistic>
+              </div>
+            </nz-col>
+          </nz-row>
+          <ng-template #nutritionHeader>
+            <h3 class="recipe-details__list-title"><i nz-icon nzType="medicine-box"></i> Nutrition</h3>
+          </ng-template>
+        </nz-tab>
+      </nz-tabset>
+    </nz-page-header-footer>
+  </nz-page-header>
+  <nz-card [nzBordered]="false" *ngIf="recipe">
+    <div nz-row [nzGutter]="24">
+      <div nz-col [nzSpan]="8" nzXs="24" nzSm="12" nzMd="12" nzLg="6" *ngFor="let recipeImage of recipe.imageUrls">
+        <div nz-card-grid class="recipe-details__image-grid">
+          <img src="{{recipeImage}}" class="recipe-details__image">
+        </div>
+      </div>
+    </div>
+  </nz-card>
+  <nz-card [nzBordered]="false" *ngIf="recipe">
+    <div nz-col [nzSpan]="8" nzXs="24" nzSm="24" nzMd="24" nzLg="24">
+      <div>
+        <nz-tag *ngFor="let category of recipe.categories; " [nzColor]="'blue'" class="recipe-details__categories">
+          {{category.name}}</nz-tag>
+      </div>
+    </div>
+  </nz-card>
+  <nz-card *ngIf="recipe && user" [nzBordered]="false" class="recipe-details__reviews">
+    <app-recipe-reviews [recipe]="recipe"></app-recipe-reviews>
+  </nz-card>
+</nz-layout>

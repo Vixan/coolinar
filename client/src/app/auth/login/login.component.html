@@ -1,0 +1,80 @@
+<div class="login">
+  <nz-card nz-row nzType="flex" nzJustify="center" nzAlign="middle" class="login__content">
+    <div nz-col nzSpan="24">
+      <div class="login__header">
+        <div nz-row nzType="flex" nzJustify="center">
+          <a [routerLink]="['/']"><img src="assets/images/logo.svg" class="login__logo" alt="logo"/></a>
+        </div>
+        <div nz-row nzType="flex" nzJustify="center" nzAlign="top">
+          <h1 class="login__message">Login to your Coolinar account</h1>
+        </div>
+      </div>
+      <div class="login__body">
+        <div nz-row nzType="flex" nzJustify="center" nzAlign="top">
+          <div nz-col nzSpan="24">
+            <form nz-form [formGroup]="loginForm" class="login__form" (ngSubmit)="submitForm()">
+              <nz-form-item>
+                <nz-form-control>
+                  <nz-input-group [nzPrefix]="prefixMail">
+                    <input type="email" nz-input formControlName="email" placeholder="Email" email
+                      (ngModelChange)="updateEmailValidator()" />
+                  </nz-input-group>
+                  <nz-form-explain *ngIf="
+                    loginFormControls.email?.dirty &&
+                    loginFormControls.email?.errors
+                  ">
+                    <ng-container *ngIf="loginFormControls.email?.hasError('required')">
+                      Email is required
+                    </ng-container>
+                    <ng-container *ngIf="loginFormControls.email?.hasError('email')">
+                      Email format is invalid
+                    </ng-container>
+                    <ng-container *ngIf="loginFormControls.email?.hasError('notFound')">
+                      Email not found
+                    </ng-container>
+                  </nz-form-explain>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <nz-form-control>
+                  <nz-input-group [nzPrefix]="prefixLock">
+                    <input type="password" nz-input formControlName="password" placeholder="Password" />
+                  </nz-input-group>
+                  <nz-form-explain *ngIf="
+                    loginFormControls.password?.dirty &&
+                    loginFormControls.password?.errors
+                  ">
+                    <ng-container *ngIf="loginFormControls.password?.hasError('required')">
+                      Password is required
+                    </ng-container>
+                    <ng-container *ngIf="loginFormControls.password?.hasError('incorrect')">
+                      Password is incorrect
+                    </ng-container>
+                    <ng-container *ngIf="loginFormControls.password?.hasError('minlength')">
+                      Password must be at least {{passwordMinLength}} characters long
+                    </ng-container>
+                  </nz-form-explain>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <nz-form-control>
+                  <label nz-checkbox formControlName="remember">
+                    <span>Remember me</span>
+                  </label>
+                  <!-- <a class="login__forgot-password">Forgot password</a> -->
+                  <button nz-button class="login__button" [nzType]="'primary'">
+                    Log in
+                  </button>
+                  Or
+                  <a [routerLink]="['/register']">Register a new account</a>
+                </nz-form-control>
+              </nz-form-item>
+            </form>
+            <ng-template #prefixMail><i nz-icon type="mail"></i></ng-template>
+            <ng-template #prefixLock><i nz-icon type="lock"></i></ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nz-card>
+</div>

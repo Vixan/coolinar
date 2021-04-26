@@ -1,0 +1,64 @@
+.header {
+  display: flex;
+  align-items: center;
+}
+
+.header__logo {
+  width: 32px;
+  margin: 10px;
+}
+
+.header__links {
+  display: inline-block;
+  line-height: 64px;
+}
+
+.header__username {
+  font-weight: bold;
+}
+
+.header__user-avatar {
+  margin: 10px;
+  color: #f56a00;
+  background-color: #fde3cf;
+}
+
+.header__filler {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.header__add-recipe {
+  font-size: 18px;
+  padding: 0 12px;
+}
+
+.sider {
+  display: none;
+  position: fixed;
+  height: 100%;
+  z-index: 1;
+  top: 0;
+}
+
+.sider__nav {
+  background-color: #fff;
+}
+
+.sider__logo-container {
+  padding-left: 50px !important;
+  margin-top: 2px !important;
+  height: 64px;
+  display: flex;
+  align-items: center;
+}
+
+@media only screen and (max-width: 576px) {
+  .header__links {
+    display: none;
+  }
+
+  .sider {
+    display: flex;
+  }
+}

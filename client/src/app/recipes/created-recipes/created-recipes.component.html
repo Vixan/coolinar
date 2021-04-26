@@ -1,0 +1,31 @@
+<nz-layout class="created-recipes">
+  <nz-page-header [nzBackIcon]="backIconTemplate">
+    <nz-breadcrumb nz-page-header-breadcrumb>
+      <nz-breadcrumb-item><a [routerLink]="['/']">Recipes</a></nz-breadcrumb-item>
+      <nz-breadcrumb-item>Your created recipes</nz-breadcrumb-item>
+    </nz-breadcrumb>
+    <ng-template #backIconTemplate>
+      <i nz-icon nzType="arrow-left" [routerLink]="['/']"></i>
+    </ng-template>
+    <nz-page-header-title>
+      Your created recipes
+    </nz-page-header-title>
+    <nz-page-header-subtitle nzMd="12">
+      <span>Your personally crafted recipes are right here</span>
+    </nz-page-header-subtitle>
+    <nz-page-header-content>
+      <div nz-row [nzGutter]="24">
+        <nz-empty *ngIf="!recipes?.results.length && !isLoading" nzNotFoundContent="No matching recipes found"></nz-empty>
+        <nz-skeleton *ngIf="recipes" [nzActive]="true" [nzLoading]="isLoading" class="explore-recipes__skeleton">
+          <div nz-col [nzSpan]="8" *ngFor="let recipe of recipes.results" nzXs="24" nzSm="12" nzMd="12" nzLg="6">
+            <app-recipe-card [recipe]="recipe"></app-recipe-card>
+          </div>
+        </nz-skeleton>
+      </div>
+      <nz-pagination *ngIf="recipes && recipes.total" [(nzPageIndex)]="paginationOptions.skip" [(nzTotal)]="recipes.total"
+      [(nzPageSize)]="paginationOptions.take" [nzPageSizeOptions]="[8, 16, 32, 48]" nzShowQuickJumper nzShowSizeChanger
+      (nzPageIndexChange)="initRecipes()" (nzPageSizeChange)="initRecipes()">
+    </nz-pagination>
+    </nz-page-header-content>
+  </nz-page-header>
+</nz-layout>

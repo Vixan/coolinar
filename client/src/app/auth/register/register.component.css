@@ -1,0 +1,30 @@
+.register {
+  padding: 0;
+  height: 100vh;
+}
+
+@media only screen and (min-width: 768px) {
+  .register {
+    padding: 28px;
+  }
+}
+
+.register__content {
+  height: 100%;
+}
+
+.register__header {
+  margin-bottom: 14px;
+}
+
+.register__logo {
+  width: 92px;
+}
+
+.register__message {
+  text-align: center;
+}
+
+.register__button {
+  width: 100%;
+}

@@ -1,0 +1,13 @@
+.top-recipes {
+  padding: 28px 0;
+}
+
+@media only screen and (min-width: 768px) {
+  .top-recipes {
+    padding: 28px;
+  }
+}
+
+.top-recipes__skeleton {
+  display: block;
+}

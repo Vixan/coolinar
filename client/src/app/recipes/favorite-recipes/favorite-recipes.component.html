@@ -1,0 +1,28 @@
+<nz-layout class="favorite-recipes">
+    <nz-page-header [nzBackIcon]="backIconTemplate">
+      <nz-breadcrumb nz-page-header-breadcrumb>
+        <nz-breadcrumb-item><a [routerLink]="['/']">Recipes</a></nz-breadcrumb-item>
+        <nz-breadcrumb-item>Your favorite recipes</nz-breadcrumb-item>
+      </nz-breadcrumb>
+      <ng-template #backIconTemplate>
+        <i nz-icon nzType="arrow-left" [routerLink]="['/']"></i>
+      </ng-template>
+      <nz-page-header-title>
+          Your favorite recipes
+      </nz-page-header-title>
+      <nz-page-header-subtitle nzMd="12">
+        <span>Your most favorite recipes are right here</span>
+      </nz-page-header-subtitle>
+      <nz-page-header-content>
+        <div nz-row [nzGutter]="24">
+        <nz-empty *ngIf="!recipes?.length && !isLoading" nzNotFoundContent="No matching recipes found"></nz-empty>
+          <nz-skeleton [nzActive]="true" [nzLoading]="isLoading" class="top-recipes__skeleton">
+            <div nz-col [nzSpan]="8" *ngFor="let recipe of recipes" nzXs="24" nzSm="12" nzMd="12" nzLg="6">
+              <app-recipe-card [recipe]="recipe"></app-recipe-card>
+            </div>
+          </nz-skeleton>
+        </div>
+      </nz-page-header-content>
+    </nz-page-header>
+  </nz-layout>
+  

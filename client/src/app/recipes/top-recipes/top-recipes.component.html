@@ -1,0 +1,31 @@
+<nz-layout class="top-recipes">
+  <nz-page-header [nzBackIcon]="backIconTemplate">
+    <nz-breadcrumb nz-page-header-breadcrumb>
+      <nz-breadcrumb-item><a [routerLink]="['/']">Recipes</a></nz-breadcrumb-item>
+      <nz-breadcrumb-item>Top rated recipes</nz-breadcrumb-item>
+    </nz-breadcrumb>
+    <ng-template #backIconTemplate>
+      <i nz-icon nzType="arrow-left" [routerLink]="['/']"></i>
+    </ng-template>
+    <nz-page-header-title>
+      Top rated recipes
+    </nz-page-header-title>
+    <nz-page-header-subtitle nzMd="12">
+      <span>We've picked the best rated recipes, because we care what you think.</span>
+    </nz-page-header-subtitle>
+    <nz-page-header-content>
+      <div nz-row [nzGutter]="24">
+        <nz-empty *ngIf="!recipes?.results.length && !loading" nzNotFoundContent="No matching recipes found"></nz-empty>
+        <nz-skeleton [nzActive]="true" [nzLoading]="loading" class="top-recipes__skeleton">
+          <div nz-col [nzSpan]="8" *ngFor="let recipe of recipes.results" nzXs="24" nzSm="12" nzMd="12" nzLg="6">
+            <app-recipe-card [recipe]="recipe"></app-recipe-card>
+          </div>
+        </nz-skeleton>
+      </div>
+      <nz-pagination [(nzPageIndex)]="paginationOptions.skip" [(nzTotal)]="recipes.total"
+        [(nzPageSize)]="paginationOptions.take" [nzPageSizeOptions]="[8, 16, 32, 48]" nzShowQuickJumper
+        nzShowSizeChanger (nzPageIndexChange)="initRecipes()" (nzPageSizeChange)="initRecipes()">
+      </nz-pagination>
+    </nz-page-header-content>
+  </nz-page-header>
+</nz-layout>

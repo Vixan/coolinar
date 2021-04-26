@@ -1,0 +1,13 @@
+.favorite-recipes {
+  padding: 28px 0;
+}
+
+@media only screen and (min-width: 768px) {
+  .favorite-recipes {
+    padding: 28px;
+  }
+}
+
+.favorite-recipes__skeleton {
+  display: block;
+}

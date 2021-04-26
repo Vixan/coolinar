@@ -1,0 +1,17 @@
+.recipes__widget {
+  padding: 28px 0 14px 0;
+}
+
+.recipes:first-child {
+    padding-top: 14px;
+}
+
+.recipes:last-child {
+    padding-bottom: 14px;
+}
+
+@media only screen and (min-width: 768px) {
+  .recipes__widget {
+    padding: 14px 28px;
+  }
+}

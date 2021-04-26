@@ -1,0 +1,9 @@
+<nz-layout>
+  <app-header *ngIf="!isAuthPageActive"></app-header>
+  <nz-content>
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+  </nz-content>
+  <app-footer *ngIf="!isAuthPageActive"></app-footer>
+</nz-layout>

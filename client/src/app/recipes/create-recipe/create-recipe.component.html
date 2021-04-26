@@ -1,0 +1,162 @@
+<nz-layout class="create-recipe">
+  <nz-page-header [nzBackIcon]="backIconTemplate">
+    <nz-breadcrumb nz-page-header-breadcrumb>
+      <nz-breadcrumb-item><a [routerLink]="['/']">Recipes</a></nz-breadcrumb-item>
+      <nz-breadcrumb-item>Create recipe</nz-breadcrumb-item>
+    </nz-breadcrumb>
+    <ng-template #backIconTemplate>
+      <i nz-icon nzType="arrow-left" [routerLink]="['/']"></i>
+    </ng-template>
+    <nz-page-header-title>
+      Create a new recipe
+    </nz-page-header-title>
+    <nz-page-header-subtitle nzMd="12">
+      <span>We are sure you know some amazing recipes. So share them with everyone!</span>
+    </nz-page-header-subtitle>
+    <nz-page-header-content>
+      <div nz-row [nzGutter]="24">
+        <div nz-col [nzXs]="24" nzXs="24" nzSm="24" nzMd="24" nzLg="12">
+          <nz-form-item>
+            <input type="text" nz-input [(ngModel)]="title" placeholder="Title" (ngModelChange)="null" />
+          </nz-form-item>
+          <nz-form-item>
+            <textarea nz-input [(ngModel)]="description" placeholder="Description"></textarea>
+          </nz-form-item>
+          <nz-form-item>
+            <h3>Ingredients</h3>
+            <nz-list [nzSplit]="false">
+              <nz-list-item *ngFor="let ingredient of ingredients.values; let i = index">
+                <nz-list-item-meta [nzTitle]="title">
+                  <ng-template #title>
+                    <nz-avatar [nzText]="i + 1" class="create-recipe__list-item-index"></nz-avatar>
+                    <div class="create-recipe__list-item">
+                      <p>{{ingredient}}</p>
+                      <div class="create-recipe__list-item-delete">
+                        <button nz-button nzType="danger" (click)="deleteTag(ingredient, 'ingredients')"><i nz-icon
+                            type="delete"></i></button>
+                      </div>
+                    </div>
+                  </ng-template>
+                </nz-list-item-meta>
+              </nz-list-item>
+            </nz-list>
+            <button nz-button *ngIf="!ingredients.isVisible" class="create-recipe__ingredient-button"
+              (click)="showTagInput('ingredients')">
+              <i nz-icon type="plus" class="create-recipe__ingredient-button-icon"></i> New Ingredient
+            </button>
+            <input #ingredientInputElement nz-input nzSize="small" *ngIf="ingredients.isVisible" type="text"
+              [(ngModel)]="ingredients.inputValue" (blur)="addTag('ingredients')"
+              (keydown.enter)="addTag('ingredients')" class="create-recipe__ingredient-input" />
+          </nz-form-item>
+          <nz-form-item>
+            <h3>Directions</h3>
+            <nz-list [nzSplit]="false">
+              <nz-list-item *ngFor="let direction of directions.values; let i = index">
+                <nz-list-item-meta [nzTitle]="title">
+                  <ng-template #title>
+                    <nz-avatar [nzText]="i + 1" class="create-recipe__list-item-index"></nz-avatar>
+                    <div class="create-recipe__list-item">
+                      <p>{{direction}}</p>
+                      <div class="create-recipe__list-item-delete">
+                        <button nz-button nzType="danger" (click)="deleteTag(direction, 'directions')"><i nz-icon
+                            type="delete"></i></button>
+                      </div>
+                    </div>
+                  </ng-template>
+                </nz-list-item-meta>
+              </nz-list-item>
+            </nz-list>
+            <button nz-button *ngIf="!directions.isVisible" class="create-recipe__ingredient-button"
+              (click)="showTagInput('directions')">
+              <i nz-icon type="plus" class="create-recipe__ingredient-button-icon"></i> New Direction
+            </button>
+            <input #directionInputElement nz-input nzSize="small" *ngIf="directions.isVisible" type="text"
+              [(ngModel)]="directions.inputValue" (blur)="addTag('directions')" (keydown.enter)="addTag('directions')"
+              class="create-recipe__ingredient-input" />
+          </nz-form-item>
+          <nz-form-item>
+            <div nz-row [nzGutter]="24">
+              <div nz-col [nzXs]="24" nzXs="12" nzSm="8" nzMd="8" nzLg="8">
+                <h3>Preparation time</h3>
+                <nz-input-number [(ngModel)]="preparationTime" [nzMin]="0" [nzMax]="4320" [nzStep]="1">
+                </nz-input-number>
+              </div>
+              <div nz-col [nzXs]="24" nzXs="12" nzSm="8" nzMd="8" nzLg="8">
+                <h3>Cooking time</h3>
+                <nz-input-number [(ngModel)]="cookingTime" [nzMin]="0" [nzMax]="4320" [nzStep]="1"></nz-input-number>
+              </div>
+              <div nz-col [nzXs]="24" nzXs="12" nzSm="8" nzMd="8" nzLg="8">
+                <h3>Servings</h3>
+                <nz-input-number [(ngModel)]="servings" [nzMin]="1" [nzMax]="99" [nzStep]="1"></nz-input-number>
+              </div>
+            </div>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-collapse [nzBordered]="true">
+              <nz-collapse-panel nzHeader="Nutrition">
+                <div nz-row [nzGutter]="24">
+                  <div nz-col [nzXs]="12" nzXs="12" nzSm="6" nzMd="6" nzLg="6"
+                    *ngFor="let nutritionComponent of nutrition | keyvalue">
+                    <h3>{{nutritionComponent.key | titlecase}}</h3>
+                    <nz-input-number [(ngModel)]="nutrition[nutritionComponent.key]" [nzMin]="0"
+                      [nzMax]="10000" [nzStep]="0.1">
+                    </nz-input-number>
+                  </div>
+                </div>
+              </nz-collapse-panel>
+            </nz-collapse>
+          </nz-form-item>
+          <nz-form-item>
+            <h3>Images</h3>
+            <div nz-row [nzGutter]="24">
+              <div nz-col [nzSpan]="8" nzXs="24" nzSm="12" nzMd="12" nzLg="12"
+                *ngFor="let imageUrl of imageUrls.values">
+                <div class="create-recipe__image-url">
+                  <img alt="recipe" [src]="imageUrl" class="create-recipe__image" />
+                  <div class="create-recipe__image-item-delete">
+                    <button nz-button nzType="danger" (click)="deleteTag(imageUrl, 'imageUrls')"><i nz-icon
+                        type="delete"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button nz-button *ngIf="!imageUrls.isVisible" class="create-recipe__ingredient-button"
+              (click)="showTagInput('imageUrls')">
+              <i nz-icon type="plus" class="create-recipe__ingredient-button-icon"></i> New Image
+            </button>
+            <input #imageUrlInputElement nz-input nzSize="small" *ngIf="imageUrls.isVisible" type="text"
+              [(ngModel)]="imageUrls.inputValue" (blur)="addTag('imageUrls')" (keydown.enter)="addTag('imageUrls')"
+              class="create-recipe__ingredient-input" />
+          </nz-form-item>
+          <nz-form-item>
+            <textarea nz-input [(ngModel)]="notes" placeholder="Additional notes"></textarea>
+          </nz-form-item>
+          <nz-form-item>
+            <h3>Categories</h3>
+            <nz-tag *ngFor="let category of categories.values; let i = index" [nzMode]="'closeable'"
+              (nzAfterClose)="deleteTag(category, 'categories')" class="create-recipe__category-tag">
+              {{sliceTagName(category)}}
+            </nz-tag>
+            <nz-tag *ngIf="!categories.isVisible" class="editable-tag" nzNoAnimation
+              (click)="showTagInput('categories')">
+              <i nz-icon type="plus"></i> New Category
+            </nz-tag>
+            <input #categoryInputElement nz-input nzSize="small" *ngIf="categories.isVisible" type="text"
+              [(ngModel)]="categories.inputValue" style="width: 78px;" (blur)="addTag('categories')"
+              (keydown.enter)="addTag('categories')" />
+          </nz-form-item>
+          <nz-form-item>
+            <button nz-button class="create-recipe__submit-button" [nzType]="'primary'" (click)="createRecipe()" nzSize="large">
+              Create recipe
+            </button>
+            Or
+            <a [routerLink]="['/recipes']" class="create-recipe__cancel-button">Cancel</a>
+          </nz-form-item>
+        </div>
+      </div>
+      <ng-template #prefixTitle><i nz-icon type="user"></i></ng-template>
+      <ng-template #prefixMail><i nz-icon type="mail"></i></ng-template>
+      <ng-template #prefixLock><i nz-icon type="lock"></i></ng-template>
+    </nz-page-header-content>
+  </nz-page-header>
+</nz-layout>

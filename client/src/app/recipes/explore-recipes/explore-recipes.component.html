@@ -1,0 +1,106 @@
+<nz-layout class="explore-recipes">
+  <nz-page-header [nzBackIcon]="backIconTemplate">
+    <nz-breadcrumb nz-page-header-breadcrumb>
+      <nz-breadcrumb-item><a [routerLink]="['/']">Recipes</a></nz-breadcrumb-item>
+      <nz-breadcrumb-item>Explore</nz-breadcrumb-item>
+    </nz-breadcrumb>
+    <ng-template #backIconTemplate>
+      <i nz-icon nzType="arrow-left" [routerLink]="['/']"></i>
+    </ng-template>
+    <nz-page-header-title>
+      <h3>Explore recipes</h3>
+    </nz-page-header-title>
+    <nz-page-header-subtitle>
+      <span>Maybe you can find your new favorite recipe here</span>
+    </nz-page-header-subtitle>
+    <nz-page-header-content>
+      <nz-row [nzGutter]="24">
+        <nz-col [nzSpan]="8" nzXs="24" nzSm="24" nzMd="24" nzLg="12">
+          <nz-form-item>
+            <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton" (keydown.enter)="initRecipes()">
+              <input type="text" nz-input placeholder="Recipe title" [(ngModel)]="title" />
+            </nz-input-group>
+            <ng-template #suffixButton>
+              <button nz-button nzType="primary" nzSize="large" nzSearch (click)="initRecipes()">
+                <i nz-icon nzType="search"></i>
+                Search
+              </button>
+            </ng-template>
+          </nz-form-item>
+        </nz-col>
+      </nz-row>
+      <nz-row [nzGutter]="24">
+        <nz-col [nzSpan]="8" nzXs="24" nzSm="12" nzMd="12" nzLg="6">
+          <nz-form-item>
+            <h3>Ingredients</h3>
+            <nz-list [nzSplit]="false">
+              <nz-list-item *ngFor="let ingredient of ingredients.values; let i = index">
+                <nz-list-item-meta [nzTitle]="title">
+                  <ng-template #title>
+                    <nz-avatar [nzText]="i + 1" class="explore-recipes__list-item-index"></nz-avatar>
+                    <div class="explore-recipes__list-item">
+                      <p>{{ingredient}}</p>
+                      <div class="explore-recipes__list-item-delete">
+                        <button nz-button nzType="danger" (click)="deleteTag(ingredient, 'ingredients')"><i nz-icon
+                            type="delete"></i></button>
+                      </div>
+                    </div>
+                  </ng-template>
+                </nz-list-item-meta>
+              </nz-list-item>
+            </nz-list>
+            <button nz-button *ngIf="!ingredients.isVisible" class="explore-recipes__ingredient-button"
+              (click)="showTagInput('ingredients')">
+              <i nz-icon type="plus" class="explore-recipes__ingredient-button-icon"></i> New Ingredient
+            </button>
+            <input #ingredientInputElement nz-input nzSize="small" *ngIf="ingredients.isVisible" type="text"
+              [(ngModel)]="ingredients.inputValue" (blur)="addTag('ingredients')"
+              (keydown.enter)="addTag('ingredients')" class="explore-recipes__ingredient-input" />
+          </nz-form-item>
+        </nz-col>
+        <nz-col [nzSpan]="8" nzXs="24" nzSm="12" nzMd="12" nzLg="6">
+          <nz-form-item>
+            <h3>Categories</h3>
+            <nz-list [nzSplit]="false">
+              <nz-list-item *ngFor="let category of categories.values; let i = index">
+                <nz-list-item-meta [nzTitle]="title">
+                  <ng-template #title>
+                    <nz-avatar [nzText]="i + 1" class="explore-recipes__list-item-index"></nz-avatar>
+                    <div class="explore-recipes__list-item">
+                      <p>{{category}}</p>
+                      <div class="explore-recipes__list-item-delete">
+                        <button nz-button nzType="danger" (click)="deleteTag(category, 'categories')"><i nz-icon
+                            type="delete"></i></button>
+                      </div>
+                    </div>
+                  </ng-template>
+                </nz-list-item-meta>
+              </nz-list-item>
+            </nz-list>
+            <button nz-button *ngIf="!categories.isVisible" class="explore-recipes__ingredient-button"
+              (click)="showTagInput('categories')">
+              <i nz-icon type="plus" class="explore-recipes__ingredient-button-icon"></i> New Category
+            </button>
+            <input #categoryInputElement nz-input nzSize="small" *ngIf="categories.isVisible" type="text"
+              [(ngModel)]="categories.inputValue" (blur)="addTag('categories')" (keydown.enter)="addTag('categories')"
+              class="explore-recipes__ingredient-input" />
+          </nz-form-item>
+        </nz-col>
+      </nz-row>
+    </nz-page-header-content>
+  </nz-page-header>
+  <nz-card [nzBordered]="false">
+    <div nz-row [nzGutter]="24">
+      <nz-empty *ngIf="!recipes?.results.length && !isLoading" nzNotFoundContent="No matching recipes found"></nz-empty>
+      <nz-skeleton *ngIf="recipes" [nzActive]="true" [nzLoading]="isLoading" class="explore-recipes__skeleton">
+        <div nz-col [nzSpan]="8" *ngFor="let recipe of recipes.results" nzXs="24" nzSm="12" nzMd="12" nzLg="6">
+          <app-recipe-card [recipe]="recipe"></app-recipe-card>
+        </div>
+      </nz-skeleton>
+    </div>
+    <nz-pagination *ngIf="recipes && recipes.total" [(nzPageIndex)]="paginationOptions.skip" [(nzTotal)]="recipes.total"
+      [(nzPageSize)]="paginationOptions.take" [nzPageSizeOptions]="[8, 16, 32, 48]" nzShowQuickJumper nzShowSizeChanger
+      (nzPageIndexChange)="initRecipes()" (nzPageSizeChange)="initRecipes()">
+    </nz-pagination>
+  </nz-card>
+</nz-layout>

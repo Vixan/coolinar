@@ -1,0 +1,29 @@
+<nz-layout class="user-profile">
+  <nz-page-header nzBackIcon *ngIf="user">
+    <nz-page-header-title>Your profile</nz-page-header-title>
+    <nz-page-header-subtitle>{{user.name}}</nz-page-header-subtitle>
+    <nz-page-header-tags>
+      <nz-tag [nzColor]="'green'">Active</nz-tag>
+    </nz-page-header-tags>
+    <nz-page-header-content>
+      <div nz-row nzType="flex" nzAlign="middle" [nzGutter]="24">
+        <div nz-col>
+          <nz-avatar nzIcon="user" [nzSrc]="user.avatarUrl" [nzSize]="128" class="user-profile__avatar"></nz-avatar>
+        </div>
+        <div nz-col>
+          <h4>Email address</h4>
+          <p>{{user.email}}</p>
+          <h4>Registered on</h4>
+          <p>{{user.dateCreated | date}}</p>
+          <h4>No favorite recipes</h4>
+          <p>
+            <nz-badge [nzCount]="user.favoriteRecipes.length"
+              [nzStyle]="{ backgroundColor: '#fff', color: '#999', boxShadow: '0 0 0 1px #d9d9d9 inset', marginRight: '12px' }">
+            </nz-badge>
+            <a [routerLink]="['/recipes/favorite']">See them here</a>
+          </p>
+        </div>
+      </div>
+    </nz-page-header-content>
+  </nz-page-header>
+</nz-layout>

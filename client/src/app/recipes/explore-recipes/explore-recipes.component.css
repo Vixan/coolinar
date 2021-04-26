@@ -1,0 +1,41 @@
+.explore-recipes {
+    padding: 28px 0;
+}
+
+@media only screen and (min-width: 768px) {
+    .explore-recipes {
+      padding: 28px;
+    }
+}
+
+.explore-recipes__list-item-index {
+  float: left;
+}
+
+.explore-recipes__list-item {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 5px;
+  padding-left: 20px;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.explore-recipes__list-item-delete {
+  padding-left: 14px;
+}
+
+.explore-recipes__ingredient-button {
+  display: flex;
+  height: 32px;
+  align-items: center;
+  width: 100%;
+}
+
+.explore-recipes__ingredient-input {
+  height: 32px;
+}
+
+.explore-recipes__skeleton {
+  display: block;
+}

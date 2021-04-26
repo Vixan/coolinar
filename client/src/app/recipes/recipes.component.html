@@ -1,0 +1,10 @@
+<nz-layout class="recipes">
+  <app-recipes-widget *ngIf="latestRecipes" title="Latest Recipes"
+    description="The freshly added recipes may pique your interest. Give it a look!" icon="clock-circle" link="/recipes/latest"
+    [recipes]="latestRecipes.results" class="recipes__widget">
+  </app-recipes-widget>
+  <app-recipes-widget *ngIf="topRecipes" title="Top Recipes"
+    description="We've picked the best rated recipes, because we care what you think." icon="star" link="/recipes/top-rated"
+    [recipes]="topRecipes.results" class="recipes__widget">
+  </app-recipes-widget>
+</nz-layout>

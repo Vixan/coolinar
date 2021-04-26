@@ -1,0 +1,19 @@
+.recipe-reviews__text {
+  margin-top: 1em;
+}
+
+.recipe-reviews__score-text {
+  color: #1890ff;
+}
+
+.recipe-reviews__user-review {
+  margin-bottom: 28px;
+}
+
+.recipe-reviews__actions {
+  margin-top: 28px;
+}
+
+.recipe-reviews__actions-button {
+  margin-right: 14px;
+}

@@ -1,0 +1,25 @@
+.top-recipes__card {
+  margin-bottom: 24px;
+}
+
+.top-recipes__card-meta {
+  height: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.top-recipes__card-img {
+  height: 200px;
+  object-fit: cover;
+}
+
+.top-recipes__average-score {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: #f56a00;
+  background-color: #fde3cf;
+  border: 1px solid #e8e8e8;
+  /* color: #ffffff;
+    background-color: #1890ff; */
+}
