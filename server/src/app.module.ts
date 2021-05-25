@@ -12,12 +12,6 @@ import { IngredientsModule } from "./ingredients/ingredients.module";
 import { DirectionsModule } from "./directions/directions.module";
 import { DbConfigService } from "./config/db-config.service";
 
-/**
- * Main module of the application.
- *
- * @export
- * @class AppModule
- */
 @Module({
     imports: [
         UsersModule,

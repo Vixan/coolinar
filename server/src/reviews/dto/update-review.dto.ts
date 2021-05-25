@@ -1,11 +1,6 @@
 import { Exclude, Expose } from "class-transformer";
 import { IsString, IsOptional, IsInt, Max, Min } from "class-validator";
 
-/**
- * Updated recipe review created by the client.
- *
- * @class CreateReviewDto
- */
 @Exclude()
 export class UpdateReviewDto {
     @Expose()

@@ -12,15 +12,6 @@ interface ClassType<T> {
     new (): T;
 }
 
-/**
- * Response interceptor to map a type to another.
- * Usually needed for mapping models/entities to DTOs.
- *
- * @export
- * @class TransformInterceptor
- * @implements {NestInterceptor<Partial<T>, T>}
- * @template T
- */
 @Injectable()
 export class TransformInterceptor<T> implements NestInterceptor<Partial<T>, T> {
     constructor(private readonly classType: ClassType<T>) {}

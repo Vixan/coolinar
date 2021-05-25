@@ -3,11 +3,6 @@ import { Column, Entity, ManyToOne } from "typeorm";
 import { IsString, MaxLength } from "class-validator";
 import { Recipe } from "../recipes/recipes.entity";
 
-/**
- * Recipe ingredient database model.
- *
- * @class Ingredient
- */
 @Entity()
 export class Ingredient extends BaseEntity {
     @Column({ unique: true })

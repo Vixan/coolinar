@@ -17,13 +17,6 @@ import { User } from "../users/users.entity";
 import { Nutrition } from "./nutrition.entity";
 import slug = require("slug");
 
-/**
- * Recipe database entity.
- *
- * @export
- * @class Recipe
- * @extends {BaseEntity}
- */
 @Entity()
 export class Recipe extends BaseEntity {
     @Column()

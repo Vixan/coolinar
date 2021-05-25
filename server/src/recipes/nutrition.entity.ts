@@ -1,11 +1,6 @@
 import { IsOptional, Min } from "class-validator";
 import { BaseEntity } from "../shared/base/base.entity";
 
-/**
- * Recipe nutrition database model.
- *
- * @class Nutrition
- */
 export class Nutrition extends BaseEntity {
     @IsOptional()
     @Min(0, { message: "Recipe calories value must be pozitive or 0" })

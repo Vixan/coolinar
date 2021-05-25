@@ -5,11 +5,6 @@ import {
 import { Column, Entity } from "typeorm";
 import { BaseEntity } from "../shared/base/base.entity";
 
-/**
- * Recipe category database model.
- *
- * @class Category
- */
 @Entity()
 export class Category extends BaseEntity {
     @Column({ unique: true })

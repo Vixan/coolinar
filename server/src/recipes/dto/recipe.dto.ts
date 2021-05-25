@@ -14,11 +14,6 @@ import { Direction } from "../../directions/directions.entity";
 import { Ingredient } from "../../ingredients/ingredients.entity";
 import { Category } from "../../categories/categories.entity";
 
-/**
- * Recipe data sent to the client.
- *
- * @class RecipeDto
- */
 @Exclude()
 export class RecipeDto {
     @Expose()

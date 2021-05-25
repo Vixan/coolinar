@@ -11,11 +11,6 @@ import { JwtStrategy } from "./strategies/jwt/jwt.strategy";
 import { LocalStrategy } from "./strategies/local/local.strategy";
 import { IsUserEmailAvailable } from "./validation/user-email-available.constraint";
 
-/**
- * Module that encapsulates authentication logic.
- *
- * @class AuthModule
- */
 @Module({
     imports: [
         ConfigModule,

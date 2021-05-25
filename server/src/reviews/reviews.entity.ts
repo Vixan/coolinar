@@ -16,12 +16,6 @@ import { Recipe } from "../recipes/recipes.entity";
 import { BaseEntity } from "../shared/base/base.entity";
 import { User } from "../users/users.entity";
 
-/**
- * Recipe review database model.
- *
- * @export
- * @class Review
- */
 @Entity()
 export class Review extends BaseEntity {
     @Column()

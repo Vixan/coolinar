@@ -14,12 +14,6 @@ import * as bcrypt from "bcryptjs";
 import constraints from "./users.constraints";
 import slug = require("slug");
 
-/**
- * User database entity.
- *
- * @class User
- * @extends {BaseEntity}
- */
 @Entity()
 export class User extends BaseEntity {
     @Column()

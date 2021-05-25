@@ -5,12 +5,6 @@ import { JwtConfigService } from "src/auth/strategies/jwt/jwt-config.service";
 import { ApiConfigService } from "./api-config.service";
 import { DbConfigService } from "./db-config.service";
 
-/**
- * Module that encapsulates the Configuration logic.
- *
- * @export {ApiConfigService} The configuration service.
- * @class ConfigModule
- */
 @Module({
     imports: [
         NestConfigModule.forRoot({

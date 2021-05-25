@@ -17,11 +17,6 @@ import { FavoritesService } from "./favorites.service";
 import { TransformInterceptor } from "src/shared/interceptors/transform.interceptor";
 import { Recipe } from "../recipes/recipes.entity";
 
-/**
- * Controller that handles the routes for favorite collections.
- *
- * @class FavoritesController
- */
 @Controller("users/:userSlug/favorites")
 export class FavoritesController {
     constructor(
@@ -30,13 +25,6 @@ export class FavoritesController {
         private readonly recipesService: RecipesService
     ) {}
 
-    /**
-     * Retrieve the favorite recipes of the user.
-     *
-     * @param {string} userSlug User slug.
-     * @returns {Promise<RecipeDto[]>} Promise of the list of favorite recipes.
-     * @memberof FavoritesController
-     */
     @Get("/recipes")
     @UseGuards(AuthGuard("jwt"))
     @UseInterceptors(new TransformInterceptor(RecipeDto))
@@ -54,14 +42,6 @@ export class FavoritesController {
         return this.favoritesService.findAll(user);
     }
 
-    /**
-     * Add recipe to the favorites list of the user.
-     *
-     * @param {string} userSlug User slug.
-     * @param {string} slug Recipe slug.
-     * @returns {Promise<RecipeDto[]>} Promise of the list of favorite recipes.
-     * @memberof FavoritesController
-     */
     @Post("/recipes/:slug")
     @UseGuards(AuthGuard("jwt"))
     @UseInterceptors(new TransformInterceptor(RecipeDto))
@@ -100,14 +80,6 @@ export class FavoritesController {
         return this.favoritesService.findAll(user);
     }
 
-    /**
-     * Remove recipe from the favorites list of the user.
-     *
-     * @param {string} userSlug User slug.
-     * @param {string} slug Recipe slug.
-     * @returns {Promise<RecipeDto[]>} Promise of the list of favorite recipes.
-     * @memberof FavoritesController
-     */
     @Delete("/recipes/:slug")
     @UseGuards(AuthGuard("jwt"))
     @UseInterceptors(new TransformInterceptor(RecipeDto))

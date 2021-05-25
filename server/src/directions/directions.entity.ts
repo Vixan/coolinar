@@ -3,11 +3,6 @@ import { Column, Entity, ManyToOne } from "typeorm";
 import { Recipe } from "../recipes/recipes.entity";
 import { BaseEntity } from "../shared/base/base.entity";
 
-/**
- * Recipe Direction database model.
- *
- * @class Direction
- */
 @Entity()
 export class Direction extends BaseEntity {
     @Column({ unique: true })

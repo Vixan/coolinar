@@ -44,14 +44,6 @@ export class ReviewsService {
         });
     }
 
-    /**
-     * Add a recipe review to the database.
-     *
-     * @param {Recipe} recipe Recipe to be reviewed.
-     * @param {Review} review
-     * @returns {Promise<Recipe>} Promise of the reviewed recipe.
-     * @memberof ReviewsService
-     */
     async create(
         currentUser: JwtPayload,
         recipeSlug: string,
@@ -90,14 +82,6 @@ export class ReviewsService {
         return review;
     }
 
-    /**
-     * Update the review of a recipe in the database.
-     *
-     * @param {Recipe} recipe Recipe to be reviewed.
-     * @param {Review} review
-     * @returns {Promise<Recipe>} Promise of the reviewed recipe.
-     * @memberof ReviewsService
-     */
     async update(
         currentUser: JwtPayload,
         recipeSlug: string,
@@ -137,14 +121,6 @@ export class ReviewsService {
         return review;
     }
 
-    /**
-     * Remove the recipe review from the database.
-     *
-     * @param {Recipe} recipe
-     * @param {Review} review Review to be removed.
-     * @returns {Promise<Recipe>} Promise of the reviewed recipe.
-     * @memberof ReviewsService
-     */
     async delete(currentUser: JwtPayload, recipeSlug: string): Promise<Review> {
         let recipe = await this.recipesService.findOneBySlug(recipeSlug);
         if (!recipe) {
@@ -177,14 +153,6 @@ export class ReviewsService {
         return review;
     }
 
-    /**
-     * Average the reviews score.
-     *
-     * @private
-     * @param {Recipe} recipe
-     * @returns {number} Review score average.
-     * @memberof ReviewsService
-     */
     private calculateReviewsAverage(recipe: Recipe): number {
         if (!recipe.reviews || !recipe.reviews.length) {
             return 0;

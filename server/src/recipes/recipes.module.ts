@@ -9,12 +9,6 @@ import { RecipesController } from "./recipes.controller";
 import { Recipe } from "./recipes.entity";
 import { RecipesService } from "./recipes.service";
 
-/**
- * Module to encapsulate recipes logic.
- *
- * @export RecipesService Service that exposes methods for handling recipes logic.
- * @class RecipesModule
- */
 @Module({
     imports: [
         TypeOrmModule.forFeature([Recipe]),

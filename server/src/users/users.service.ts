@@ -4,12 +4,6 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { User } from "./users.entity";
 import { BaseService } from "../shared/base/base.service";
 
-/**
- * Injectable service for user database logic.
- *
- * @class UsersService
- * @extends {BaseService<User>}
- */
 @Injectable()
 export class UsersService extends BaseService<User> {
     constructor(
@@ -25,13 +19,6 @@ export class UsersService extends BaseService<User> {
         });
     }
 
-    /**
-     * Retrieve user by name.
-     *
-     * @param {string} name
-     * @returns {Promise<User>} Promise of the user.
-     * @memberof UsersService
-     */
     async findOneByName(name: string): Promise<User> {
         return this.usersRepository.findOne({
             relations: ["favoriteRecipes", "createdRecipes", "reviews"],
@@ -39,13 +26,6 @@ export class UsersService extends BaseService<User> {
         });
     }
 
-    /**
-     * Retrieve the user by slug.
-     *
-     * @param {string} slug
-     * @returns {Promise<User>} Promise of the user.
-     * @memberof UsersService
-     */
     async findOneBySlug(slug: string): Promise<User> {
         return this.usersRepository.findOne({
             relations: ["favoriteRecipes", "createdRecipes", "reviews"],
@@ -53,13 +33,6 @@ export class UsersService extends BaseService<User> {
         });
     }
 
-    /**
-     * Retrieve the user by email.
-     *
-     * @param {string} email
-     * @returns {Promise<User>} Promise of the user.
-     * @memberof UsersService
-     */
     async findOneByEmail(email: string): Promise<User> {
         return this.usersRepository.findOne({
             relations: ["favoriteRecipes", "createdRecipes", "reviews"],

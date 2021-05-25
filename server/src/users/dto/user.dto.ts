@@ -8,11 +8,6 @@ import {
     IsUrl
 } from "class-validator";
 
-/**
- * User data sent as a response.
- *
- * @class UserDto
- */
 @Exclude()
 export class UserDto {
     @Expose()
